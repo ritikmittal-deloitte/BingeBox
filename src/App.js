@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.scss";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Login from "./components/Login/Login";
+import AppLayout from "./components/AppLayout/AppLayout";
+import Home from "./components/Home/Home";
+import WatchList from "./components/WatchList/WatchList";
+import { useState } from "react";
 
 function App() {
+  const [isLogin,setIsLogin]=useState(false)
+  console.log("islogin",isLogin)
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Routes>
+        
+        
+        <Route path="/" element={<Navigate to="/login" replace />} />
+        <Route path="/login" element={<Login setIsLogin={setIsLogin}/>} />
+        {
+          isLogin&&(<Route element={<AppLayout/>}>
+          <Route path="/home" element={<Home/>} />      
+          <Route path="/watchlist" element={<WatchList/>} />                                                                                                                                                                                
+          </Route>)
+        }
+        
+      </Routes>
     </div>
   );
 }
