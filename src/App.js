@@ -4,7 +4,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./components/Login/Login";
 import AppLayout from "./components/AppLayout/AppLayout";
 import Home from "./components/Home/Home";
-import WatchList from "./components/WatchList/WatchList";
+import WishList from "./components/WishList/WishList";
 import { useState } from "react";
 
 function App() {
@@ -21,7 +21,7 @@ function App() {
         {
           (<Route element={<AppLayout/>}>
           <Route path="/home" element={<Home/>} />      
-          <Route path="/watchlist" element={<WatchList/>} />                                                                                                                                                                                
+          <Route path="/wishlist" element={<WishList/>} />                                                                                                                                                                                
           </Route>)
         }
         

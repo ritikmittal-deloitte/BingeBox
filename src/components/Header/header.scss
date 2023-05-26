@@ -1,12 +1,40 @@
-.header-container{
-    background-color: black;
-    padding: 1rem;
-    a{
-        text-decoration: none;
+.header-container {
+  background-color: black;
+  padding: 1rem;
+  padding-left: 3rem;
+  padding-right: 2rem;
+  a {
+    text-decoration: none;
+    color: white !important;
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+    
+    input{
+        background-color: #1D1F20;;
+        border: none;
+        padding-left: 4%;
+        width: 13rem;
+        height: 1.22rem;
         color: white;
-        font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 400;
-    }
- }
- 
+      }
+
+  
+  
+}
+.header-link-active-style {
+  font-weight: bold;
+  border-bottom: 2px solid red;
+  
+}
+.last-container{
+    
+    padding-left:7rem;
+}
+.profile-style{
+    width: 75%;
+    height: 75%;
+    padding-left: 2rem;
+}
