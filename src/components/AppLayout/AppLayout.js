@@ -10,7 +10,10 @@ const AppLayout = () => {
             <Header/>
             <div className='d-flex h-100'>
             <Navbar/>
+            <div >
             <Outlet/>
+            </div>
+            
 
             </div>
             

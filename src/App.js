@@ -19,7 +19,7 @@ function App() {
         <Route path="/" element={<Navigate to="/login" replace />} />
         <Route path="/login" element={<Login setIsLogin={setIsLogin}/>} />
         {
-          isLogin&&(<Route element={<AppLayout/>}>
+          (<Route element={<AppLayout/>}>
           <Route path="/home" element={<Home/>} />      
           <Route path="/watchlist" element={<WatchList/>} />                                                                                                                                                                                
           </Route>)
