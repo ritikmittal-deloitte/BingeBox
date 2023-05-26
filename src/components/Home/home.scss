@@ -1,0 +1,64 @@
+.home-container {
+    padding-top: 2rem;
+  width: 80%;
+  height: 100%;
+  flex-grow: 100;
+  z-index: 0;
+   position: relative;
+
+  .top-movies-grid {
+    display: flex;
+    position: relative;
+
+    .cards {
+        position: relative;
+        z-index: 0;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      display: grid;
+      grid-gap: 1rem;
+      grid-auto-flow: column;
+      //   grid-auto-columns: calc(100% - 2rem);
+      min-height: 14.75rem;
+    }
+    
+  }
+  .arrow-style{
+    display: flex;
+    position: absolute;
+    z-index: 1;
+    margin-left: 7.8%;
+    margin-top: 7%;
+    transform: rotate(180deg);
+    width: 3.4rem;
+    height: 3.4rem;
+    background-color: linear-gradient(
+        90deg,
+        #1e1515 27.37%,
+        rgba(30, 21, 21, 0.08) 100%
+      );
+      backdrop-filter: blur(19.7356px);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-style1{
+   margin-top: 7%;
+   position: absolute;
+   z-index: 1;
+   margin-left: 97%;
+   width: 3.4rem;
+    height: 3.4rem;
+    background-color: linear-gradient(
+        90deg,
+        #1e1515 27.37%,
+        rgba(30, 21, 21, 0.08) 100%
+      );
+      backdrop-filter: blur(19.7356px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+    justify-content: center;
+}
+}

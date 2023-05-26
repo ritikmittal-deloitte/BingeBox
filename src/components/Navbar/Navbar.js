@@ -12,7 +12,7 @@ const Navbar = () => {
   const handleMouseOut = () => { setOnHovering(false)};
   return (
     <div
-      className="d-flex flex-column justify-content-center navbar-container align-items-center"
+      className="d-flex flex-column justify-content-center navbar-container align-items-center "
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
