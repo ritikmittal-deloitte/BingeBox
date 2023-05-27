@@ -1,16 +1,10 @@
 .item-card-design{
     margin-left: 3%;
-    background-color: green;
     color: black;
     width: 25%;
-    height: 7rem;
-    :hover{
-        width: 120%;
-        height: 10rem;
-        background-color: blueviolet;
-    }
+    height: 8rem;
 }
-.--bs-card-bg{
-    color:green
-
+.item-card-design:hover{
+    width: 26%;
+    height: 10rem;
 }

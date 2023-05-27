@@ -2,6 +2,7 @@ import React from 'react';
 import "./home.scss";
 import ItemCard from '../Card/ItemCard';
 
+
 const Home = () => {
     return (
         <div className='background-design '>
@@ -10,7 +11,7 @@ const Home = () => {
             </div>
             <div className='w-100 design-bpart'>
             <ItemCard/>  
-                    
+
             </div>
         </div>
     );

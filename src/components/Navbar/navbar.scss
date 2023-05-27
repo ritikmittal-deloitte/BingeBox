@@ -1,5 +1,5 @@
 .navbar-container {
-  width: 10%;
+  width: 7%;
   height: inherit;
   background-color: black;
   //padding: 350px 35px 400px;
@@ -23,13 +23,16 @@
       color: white;
       text-decoration: none;
       //color:#F03A47;
+      
     }
     p {
       padding-left: 0.5rem;
     }
   }
 }
+
 .navlink-active-style {
+  
   color: #f03a47 !important;
   svg path {
     fill: #f03a47 !important;
