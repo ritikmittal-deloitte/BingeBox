@@ -8,11 +8,16 @@ const AppLayout = () => {
     return (
         <div className='applayout-container'>
             <Header/>
-            <div className='d-flex h-100'>
-            <Navbar/>
-            <div >
+            <div className='d-flex h-100 w-100 c'>
+                {/* <div className='a'> */}
+                <Navbar/>
+                {/* </div> */}
+            
+            {/* <div className='b'> */}
             <Outlet/>
-            </div>
+            {/* </div> */}
+            
+            
             
 
             </div>
