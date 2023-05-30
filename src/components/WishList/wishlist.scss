@@ -1,0 +1,32 @@
+.wishlist-page{
+    padding-top: 2rem;
+    width: 80%;
+    height: 100%;
+    flex-grow: 100;
+    z-index: 0;
+     position: relative;
+    p{
+        font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 44px;
+margin-left: 10%;
+
+
+color: #FFFFFF;
+    }
+}
+.wishlist-grid-container{
+    display: grid;
+    grid-template-columns: auto auto auto ;
+    grid-template-rows: max-content;
+    column-gap: 2rem;
+    row-gap: 4rem;
+    margin-left: 10%;
+
+    width: 90%;
+    .card-container{
+        height: 15rem;
+    }
+}
