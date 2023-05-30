@@ -8,11 +8,62 @@
   display: flex;
 
   justify-content: center;
+  position: relative;
 }
 .hover-card-style {
-    iframe{
-        width:100%;
-        height:100%;
-        border-radius: 0.938rem;
-    }
+  video {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.938rem;
+  }
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.base-styles {
+  position: relative;
+  z-index: 0;
+}
+.overlay-styles {
+  position: absolute;
+  z-index: 1;
+}
+.card-details-container {
+  h2,
+  h4 {
+    font-family: "Nunito Sans";
+    font-style: normal;
+    font-weight: 700;
+
+    line-height: 40px;
+    /* or 100% */
+
+    color: #ffffff;
+  }
+  h4 {
+    font-size: 15px;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  
+}
+.cbfc-style {
+  border: 1px solid white;
+  border-radius: 10%;
+  color: white;
+  height: 30px;
+  padding: 4px;
+}
+.card-logo-container{
+  width: 35%;
+  justify-content: space-between;
+  //justify-content: end;
+}
+.card-container-hovering-style{
+  //width: 30.188rem !important;
+  
+  
+}
+.iframe-style{
+  // width: 510px;
+  
 }

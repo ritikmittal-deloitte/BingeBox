@@ -6,6 +6,7 @@ import AppLayout from "./components/AppLayout/AppLayout";
 import Home from "./components/Home/Home";
 import WishList from "./components/WishList/WishList";
 import { useState } from "react";
+import Description from "./components/Description/Description";
 
 function App() {
   const [isLogin,setIsLogin]=useState(false)
@@ -21,7 +22,8 @@ function App() {
         {
           (<Route element={<AppLayout/>}>
           <Route path="/home" element={<Home/>} />      
-          <Route path="/wishlist" element={<WishList/>} />                                                                                                                                                                                
+          <Route path="/wishlist" element={<WishList/>} />   
+          <Route path="/description/:movieId" element={<Description/>}/>                                                                                                                                                                             
           </Route>)
         }
         
