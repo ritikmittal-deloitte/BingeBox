@@ -1,0 +1,30 @@
+.wishlist-main{
+    padding-top: 2rem;
+  width: 93%;
+  height: 100%;
+  z-index: 0;
+   position: relative;
+}
+.head-1{
+    display: flex;
+    margin-left: 7%;
+    text-align: start;
+    font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 32px;
+line-height: 44px;
+color: #FFFFFF;
+}
+.cards-wrap{
+    width: 100%;
+    display: flex;
+    margin-left: 7%;
+    text-align: start;
+    // min-height: 14.75rem;
+    height: 100%;
+    overflow-y: scroll;
+    gap: 3%;
+    display: flex;
+    flex-wrap:wrap;   
+}
