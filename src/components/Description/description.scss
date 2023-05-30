@@ -1,0 +1,110 @@
+.desc-container{
+    position: relative;
+    z-index: 0;
+    color: white;
+    overflow-y: scroll;
+    
+    background-image: url("../../assets//images/fish.gif");
+    background-size: cover;
+    .desc-details-container{
+      height: max-content;
+        position: absolute;
+        z-index: 1;
+        
+        background: linear-gradient(115.57deg, rgba(255, 255, 255, 0.19) -4.2%, rgba(31, 18, 18, 0.081) 70.71%, rgba(223, 214, 214, 0) 125.93%);
+        backdrop-filter: blur(37.1763px);
+        /* Note: backdrop-filter has minimal browser support */
+        
+        border-radius: 30px;
+        
+        width: 75.5rem;
+    }
+}
+.desc-card-details-container {
+    h2,
+    h4 {
+      font-family: "Nunito Sans";
+      font-style: normal;
+      font-weight: 700;
+  
+      line-height: 40px;
+      /* or 100% */
+  
+      color: #ffffff;
+    }
+    h4 {
+      font-size: 15px;
+    }
+    h2 {
+      //font-size: 20px;
+      font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 40px;
+line-height: 40px;
+/* or 100% */
+
+
+color: #FFFFFF;
+    }
+    
+  }
+  .desc-card-logo-container{
+    width: 20%;
+  justify-content: space-between;
+
+  }
+  .play-button{
+//     width:162px;
+// height:64px;
+    width: 8rem;
+    height: 3rem;
+    background-color: #F03A47;;
+    color: white;
+    border-radius: 20px;
+    padding: 15px;
+    //padding-left: 10px;
+    h5{
+        font-family: 'Inter';
+font-style: normal;
+font-weight: 700;
+font-size: 20px;
+line-height: 24px;
+
+color: #FFFFFF;
+        padding-left: 20%;
+    }
+  }
+  .desc-end-container{
+    padding-top: 3rem;
+    span{
+        font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+        color: white;
+        margin-left: -10px;
+    
+    }
+  }
+  .cast-container{
+    margin-top: 3rem;
+    .inner{
+      margin-top: 0.2rem;
+      //margin-left: 0.3rem;
+    }
+    p{
+    font-size: 1.6rem;
+    }
+  }
+  .more-like-con{
+    margin-top: 70rem;
+    position: absolute;
+    z-index: 1;
+  }
+  .desc-footer{
+    width: 100%;
+    height: 60px;
+    margin-top: 10%;
+  }
