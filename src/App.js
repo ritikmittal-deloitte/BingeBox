@@ -8,6 +8,7 @@ import WishList from "./components/WishList/WishList";
 import { useState } from "react";
 import Description from "./components/Description/Description";
 import UserPreferences from "./components/UserPreferences/UserPreferences";
+import Profile from "./components/Profile/Profile";
 
 function App() {
   const [isLogin,setIsLogin]=useState(false)
@@ -26,6 +27,7 @@ function App() {
           <Route path="/home" element={<Home/>} />      
           <Route path="/wishlist" element={<WishList/>} />   
           <Route path="/description/:movieId" element={<Description/>}/>      
+          <Route path="/profile" element={<Profile/>}/>      
           </Route>)
         }
         

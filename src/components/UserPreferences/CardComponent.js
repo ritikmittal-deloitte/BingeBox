@@ -23,8 +23,8 @@ export default function CardComponent({ item }) {
         }}
             onClick={(e) => { addPreference() }}>
 
-            {selected && <img src={CheckIcon} style={{ height: '20%', width: '15%' }} alt='not available' />}
-            <div>{item.category}</div>
+            {selected && <img src={CheckIcon} style={{ height: '20%', width: '10%' }} alt='not available' />}
+            <div style={{fontFamily:'sans-serif',fontWeight:'500'}}>{item.category}</div>
         </div>
     )
 }
