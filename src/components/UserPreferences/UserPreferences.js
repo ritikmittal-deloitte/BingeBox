@@ -9,6 +9,9 @@ import Action from './images/action.png'
 import Documentaries from './images/documentaries.png'
 import Hollywood from './images/hollywood.png'
 import Bollywood from './images/bollywood.png'
+import Fantasy from './images/fantasy.jpg'
+import Binge from './images/BINGE.png'
+import Box from './images/BOX.png'
 import CardComponent from './CardComponent'
 
 export default function UserPreferences() {
@@ -27,10 +30,10 @@ export default function UserPreferences() {
             <div className='main-container-preferences'>
                 <div className='binge-box-heading'>
                     <div className='binge-heading'>
-                        BINGE
+                        <img src={Binge} style={{}} alt='logo not available'/>
                     </div>
                     <div className='box-heading'>
-                        BOX
+                        <img src={Box} style={{}} alt='logo not available'/>
                     </div>
                 </div>
                 <div className='contents-preferences'>
@@ -62,9 +65,6 @@ export default function UserPreferences() {
     )
 }
 
-const preference = [
-    1, 2, 3, 4, 5, 6, 7, 8, 9
-]
 const preferences = [
     {
         img: Horror,
@@ -101,5 +101,9 @@ const preferences = [
     {
         img: Bollywood,
         category: 'Bollywood'
+    },
+    {
+        img:Fantasy,
+        category:'Fantasy'
     }
 ]
