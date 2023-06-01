@@ -17,6 +17,8 @@ position: absolute;
   }
   .navbar-item-container {
     height: 30%;
+    gap:2rem;
+    font-weight: 300;
 
     a {
       svg path {
@@ -28,16 +30,25 @@ position: absolute;
       
     }
     p {
-      padding-left: 0.5rem;
+      padding-left: 1rem;
     }
   }
 }
+
 .navlink-active-style {
-  
-    
   
   color: #f03a47 !important;
   svg path {
     fill: #f03a47 !important;
   }
+}
+.navlink-active-style :hover{
+
+  font-weight: 400;
+}
+.sidebar-item{
+font-weight: 300;
+}
+.sidebar-item:hover{
+  font-weight: 400;
 }
