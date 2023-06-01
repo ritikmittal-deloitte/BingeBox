@@ -7,26 +7,25 @@ import Home from "./components/Home/Home";
 import WishList from "./components/WishList/WishList";
 import { useState } from "react";
 import Description from "./components/Description/Description";
+import Signup from "./components/Signup/Signup";
 
 function App() {
-  const [isLogin,setIsLogin]=useState(false)
-  console.log("islogin",isLogin)
-  
+  const [isLogin, setIsLogin] = useState(false);
+  console.log("islogin", isLogin);
+
   return (
     <div className="App">
       <Routes>
-        
-        
         <Route path="/" element={<Navigate to="/login" replace />} />
-        <Route path="/login" element={<Login setIsLogin={setIsLogin}/>} />
+        <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+        <Route path="/signup" element={<Signup />} />
         {
-          (<Route element={<AppLayout/>}>
-          <Route path="/home" element={<Home/>} />      
-          <Route path="/wishlist" element={<WishList/>} />   
-          <Route path="/description/:movieId" element={<Description/>}/>                                                                                                                                                                             
-          </Route>)
+          <Route element={<AppLayout />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/wishlist" element={<WishList />} />
+            <Route path="/description/:movieId" element={<Description />} />
+          </Route>
         }
-        
       </Routes>
     </div>
   );
