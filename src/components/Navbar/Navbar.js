@@ -3,6 +3,7 @@ import { ReactComponent as HomeLogo } from "../../assets/icons/home.svg";
 import { ReactComponent as WishlistLogo } from "../../assets/icons/wishlist.svg";
 import { ReactComponent as FilterLogo } from "../../assets/icons/filters.svg";
 import { ReactComponent as SettingsLogo } from "../../assets/icons/settings.svg";
+import { ReactComponent as ProfileLogo } from "../../assets/icons/Vector2.svg";
 import { Link, NavLink } from "react-router-dom";
 import "./navbar.scss";
 
@@ -16,13 +17,13 @@ const Navbar = () => {
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
     >
-      <div className=" d-flex flex-column justify-content-between navbar-item-container">
+      <div className=" d-flex flex-column  navbar-item-container">
         <NavLink
           to="/home"
-          className={({ isActive }) => (isActive ? "navlink-active-style" : "")}
+          className={({ isActive }) => (isActive ? "navlink-active-style" : "sidebar-item")}
         >
           <span className="d-flex">
-            <HomeLogo />
+            <HomeLogo /> 
             {
                 onHovering&&<p> Home</p>
             }
@@ -31,29 +32,29 @@ const Navbar = () => {
         </NavLink>
         <NavLink
           to="/wishlist"
-          className={({ isActive }) => (isActive ? "navlink-active-style" : "")}
+          className={({ isActive }) => (isActive ? "navlink-active-style" : "sidebar-item")}
         >
-            <span className="d-flex">
+            <span className="d-flex sidebar-item">
             <WishlistLogo />
             {onHovering&&
-            <p> Wishlist</p>}
+            <p> Watchlist</p>}
           </span>
           
         </NavLink>
         <NavLink
-          to="/filter"
-          className={({ isActive }) => (isActive ? "navlink-active-style" : "")}
+          to="/profile"
+          className={({ isActive }) => (isActive ? "navlink-active-style" : "sidebar-item")}
         >
-             <span className="d-flex">
-             <FilterLogo />
+             <span className="d-flex ">
+             <ProfileLogo/>
              {
-                onHovering&&<p> Filters</p>
+                onHovering&&<p> Profile</p>
              }
             
           </span>
           
         </NavLink>
-        <NavLink
+        {/* <NavLink
           to="/settings"
           className={({ isActive }) => (isActive ? "navlink-active-style" : "")}
         >
@@ -65,7 +66,7 @@ const Navbar = () => {
             
           </span>
           
-        </NavLink>
+        </NavLink> */}
       </div>
     </div>
   );

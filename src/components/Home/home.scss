@@ -31,27 +31,38 @@
 
 
 .home-container {
+  overflow-y: scroll;
     padding-top: 2rem;
   width: 80%;
-  height: 100%;
+  //height: 100%;
   flex-grow: 100;
   z-index: 0;
    position: relative;
+   
 
   .top-movies-grid {
+    
+    
     display: flex;
     position: relative;
+    ::-webkit-scrollbar-thumb {
+      background-color: transparent;
+      border-radius: 10px;
+      border: 1px solid transparent;
+    }
 
-    .cards {
+    .cards,.recent-release-cards,.your-watches-cards,.trending-movie-cards {
         position: relative;
         z-index: 0;
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
       display: grid;
-      grid-gap: 1rem;
+      grid-gap: 1.5rem; 
       grid-auto-flow: column;
+      align-items: center;
       //   grid-auto-columns: calc(100% - 2rem);
-      min-height: 14.75rem;
+      // min-height: 14.75rem;
+      min-height: 17rem;
     }
     
   }
@@ -59,8 +70,8 @@
     display: flex;
     position: absolute;
     z-index: 1;
-    margin-left: 7.8%;
-    margin-top: 7%;
+    margin-left: 0.5%;
+    margin-top: 6.5%;
     transform: rotate(180deg);
     width: 3.4rem;
     height: 3.4rem;
@@ -76,10 +87,10 @@
 }
 
 .arrow-style1{
-   margin-top: 7%;
+   margin-top: 6.5%;
    position: absolute;
    z-index: 1;
-   margin-left: 97%;
+   margin-left: 96%;
    width: 3.4rem;
     height: 3.4rem;
     background-color: linear-gradient(
@@ -93,4 +104,146 @@
       align-items: center;
     justify-content: center;
 }
+}
+.top-movie-container{
+  margin-top: 3%;
+  width: 95%;
+  margin-left: 5%;
+  p{
+    font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 600;
+font-size: 24px;
+line-height: 24px;
+/* identical to box height, or 100% */
+position: relative;
+margin-left: 2%;
+color: #FFFFFF;
+  }
+}
+
+.base-styles-1 {
+  position: relative;
+  z-index: 0;
+}
+.overlay-styles {
+  position: absolute;
+  z-index: 1;
+}
+.main-banner{
+  position: relative;
+  width: 95%;
+  margin-left: 5%;
+}
+.main-banner-container{
+  position: relative;
+   height: 30rem;
+ }
+
+.footer{
+  width: 100%;
+  height: 60px;
+  margin-top: 10%;
+}
+.banner-video{
+  position: relative;
+  z-index: 0;
+  height: 30rem;
+  width: 100%;
+
+}
+.banner-video-text-box{
+  position: absolute;
+  z-index: 1;
+  width: 35%;
+  margin-left: 62%;
+  margin-top: -22rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+ 
+  background-blend-mode: screen;
+}
+.banner-video-text-box-1{
+  position: absolute;
+  z-index: 1;
+  width: 25%;
+  margin-left: 72%;
+  margin-top: -20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+ 
+  background-blend-mode: screen;
+}
+.video-heading{
+  color: white;
+}
+.video-description{
+margin-top: 3%;
+color: #FFFFFF;
+text-align: justify;
+}
+.video-category{
+  margin-top: 3%;
+  display: flex;
+  gap: 1.5rem;
+}
+.last-2{
+  box-sizing: border-box;
+  background: #6D6B6B;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: max-content;
+  height: 1.5rem;
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 14px;
+line-height: 14px;
+
+color: #FFFFFF;
+}
+.banner-play-box{
+display: flex;
+margin-top: 5%;
+gap: 15%;
+}
+.carousel-box{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+  width: 95%;
+  margin-left: 5%;
+  margin-top: -2%;
+  color: #FFFFFF;
+}
+.carousel-main-box{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 1rem;
+width: 6rem;
+background-color: linear-gradient(
+  90deg,
+  #1e1515 27.37%,
+  rgba(30, 21, 21, 0.08) 100%
+);
+backdrop-filter: blur(19.7356px);
+border-radius: 20px;
+}
+.selected-one{
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+background-color: red;
+}
+.non-selected-1{
+  width: 8px;
+  height: 8px;
+  border-radius: 8px;
+background-color: #FFFFFF;
 }
