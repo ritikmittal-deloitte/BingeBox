@@ -5,8 +5,9 @@ import { movies } from "../../mockData/moviesMockData";
 import { ReactComponent as ScrollLogo } from "../../assets/icons/arrow.svg";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
-//import "../card/card.scss"
-
+import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
+import img1 from "../../assets/images/Variant8.png";
+//import "../card/card.scss";
 import axios from "axios";
 
 const Home = () => {
@@ -15,11 +16,15 @@ const Home = () => {
   const [trendingMovies, settrendingMovies] = useState([]);
   const [yourWatches, setyourWatches] = useState([]);
   const [onHovering, setOnHovering] = useState(false);
+  const [current, setCurrent] = useState(1);
   const handleMouseOver = () => {
-    //setOnHovering(true);
+    setOnHovering(true);
   };
   const handleMouseOut = () => {
-    //setOnHovering(false);
+    setOnHovering(false);
+  };
+  const handleAddToWatchList = () => {
+    console.log("add to watch lsit");
   };
 
   const fetchTrendingMovies = async () => {
@@ -50,6 +55,37 @@ const Home = () => {
     fetchYourWatches();
   }, []);
 
+  const check = () => {
+    //  console.log("Current page:",current)
+    if (current === 5) {
+      console.log("Now current:", current);
+      setCurrent(1);
+    } else {
+      console.log("Current page:", current);
+      setCurrent(current + 1);
+    }
+    return ;
+  };
+  useEffect(() => {
+ if(!onHovering)
+ {
+  setTimeout(() => {
+      check(); 
+    
+      }, 5000);
+ } 
+   
+  },[onHovering])
+ 
+ 
+  setTimeout(() => {
+if(!onHovering)
+{
+  check(); 
+}
+  }, 5000);
+
+
   const leftScroll = (querySelect) => {
     const left = document.querySelector(querySelect);
     left.scrollBy(-200, 0);
@@ -69,14 +105,78 @@ const Home = () => {
     <div className="home-container">
       <div
         className="main-banner"
-        // onMouseOver={handleMouseOver}
-        // onMouseOut={handleMouseOut}
+        onMouseOver={handleMouseOver}
+        onMouseOut={handleMouseOut}
       >
-        <div
-          style={handleBackgorndImage(movies[6].posterImage)}
-          className={`w-100 main-banner-container`}
-        ></div>
-        
+        {!onHovering && (
+          <>
+            <div
+              style={handleBackgorndImage(movies[current].posterImage)}
+              className={`main-banner-container`}
+            ></div>
+            <div className="banner-video-text-box-1">
+              <div className="video-heading">
+                <h2>{movies[current].title}</h2>
+              </div>
+            </div>
+          </>
+        )}
+
+        {onHovering && (
+          <>
+            <iframe
+              src={`${movies[current].videoUrl}` + "?autoplay=1&controls=0"}
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              className={`banner-video ${onHovering ? "base-styles-1" : ""}`}
+            ></iframe>
+            <div className="banner-video-text-box">
+              <div className="video-heading">
+                <h2>{movies[current].title}</h2>
+              </div>
+              <div className="video-description">
+                {movies[current].description}
+              </div>
+              <div className="video-category">
+                <div className="last-2">
+                  &nbsp;&nbsp;&nbsp;sci-fi&nbsp;&nbsp;&nbsp;
+                </div>
+                <div className="last-2">
+                  &nbsp;&nbsp;&nbsp;Adventure&nbsp;&nbsp;&nbsp;
+                </div>
+              </div>
+              <div className="banner-play-box">
+                <div className="play-button d-flex">
+                  <Triangle /> <h5>Play</h5>{" "}
+                </div>
+                {/* <a  href={movies[0].videoUrl} target="_blank"><PlayLogo /></a > */}
+                <div onClick={handleAddToWatchList}>
+                  <AddToLogo width={50} height={51} />
+                </div>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+      <div className="carousel-box">
+        <div className="carousel-main-box">
+          <div
+            className={current === 1 ? "selected-one" : "non-selected-1"}
+          ></div>
+          <div
+            className={current === 2 ? "selected-one" : "non-selected-1"}
+          ></div>
+          <div
+            className={current === 3 ? "selected-one" : "non-selected-1"}
+          ></div>
+          <div
+            className={current === 4 ? "selected-one" : "non-selected-1"}
+          ></div>
+          <div
+            className={current === 5 ? "selected-one" : "non-selected-1"}
+          ></div>
+        </div>
       </div>
 
       <div className="top-movie-container">

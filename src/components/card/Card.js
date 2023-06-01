@@ -1,12 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
 
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import "./card.scss";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../context/Context/UserContext/UserState";
+
 
 const Card = ({ cardData }) => {
   const [onHovering, setOnHovering] = useState(false);
+  const {watchList,setWatchList}=useContext(UserContext);
+
+ // console.log("Card Data :",cardData)
   const navigate = useNavigate();
   const handleMouseOver = () => {
     setOnHovering(true);
@@ -30,14 +35,22 @@ const Card = ({ cardData }) => {
       borderRadius: "0.938rem",
     };
   };
-  const handleAddToWatchList=()=>{
-   console.log("add to watch lsit")
+  const handleAddToWatchList=(event)=>{
+    console.log("Card Data :",cardData.movieId)
+    console.log("Current Watch List:",watchList)
+    setWatchList([...watchList,cardData.movieId])
+   console.log("add to watch list:",event)
+   event.stopPropagation();
+   navigate("/wishlist");
+
   }
   // const handlePlayMovie=()=>{
   //   console.log("play movie")
   //   window.location.replace('https://www.youtube.com/watch?v=fb5ELWi-ekk');
   // }
+
   const handleOnClick=()=>{
+//    navigate("/wishlist");
     navigate("/description/10")
   }
   return (
@@ -101,7 +114,7 @@ const Card = ({ cardData }) => {
             </div> */}
             <div className="d-flex card-logo-container align-items-center">
             <a  href={cardData.videoUrl} target="_blank"><PlayLogo /></a >
-              <div onClick={handleAddToWatchList}><AddToLogo width={50} height={51} /></div >
+              <div onClick={(event)=>{handleAddToWatchList(event)}}><AddToLogo width={50} height={51} /></div >
               
             </div>
           </div>
