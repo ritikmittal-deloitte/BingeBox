@@ -18,7 +18,7 @@ export default function Cards2({ cardData }) {
         </div>
 
           <div className="d-flex">
-          <div className="cbfc-1">&nbsp;CBFC : U/A&nbsp;</div>
+          <div className="rate-1">&nbsp;CBFC : U/A&nbsp;</div>
           <div className="ab-2"> 2018 | 2h 9m</div>         
           </div>
           <div className="last-bar">

@@ -1,11 +1,17 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './SearchPage.scss'
+import { useLocation, useParams } from 'react-router-dom'
+import { movies } from '../../mockData/moviesMockData'
+import { UserContext } from '../../context/Context/UserContext/UserState'
 
 export default function SearchPage() {
-    const [searchText, setSearchText] = useState('Jurassic')
-    const [allMoviesData,setAllMoviesData] = useState([])
-    const [filterMovies,setFilterMovies] = useState([])
+    const {searchText,setSearchText} = useContext(UserContext)
 
+    const [allMoviesData,setAllMoviesData] = useState(movies)
+    const [filterMovies,setFilterMovies] = useState([])
+    const {text}=useParams();
+ 
+    console.log("Search for:",text)
     const filterFunction = () => {
         let search = searchText.trim()
         if(search==='')
@@ -15,18 +21,31 @@ export default function SearchPage() {
         }
         let filterData = []
         filterData = allMoviesData.filter((itemObj)=>{
-            let title = itemObj.name
+            let title = itemObj.title.toLowerCase()
             let result1 = title.includes(search.toLowerCase());
             if(result1){
                 return result1;
             }
             let genre = itemObj.genre
-            let result2 = genre.includes(search.toLowerCase())
+            let result2 = false;
+            for(let i = 0;i<genre.length;i++){
+                let g = genre[i].toLowerCase()
+                if(g.includes(search.toLowerCase())){
+                    result2 = true;
+                    break;
+                }
+            }
             return result2;
         })
         setFilterMovies(filterData)
     }
 
+    useEffect(()=>{
+        setSearchText(text);
+    })
+    useEffect(()=>{
+        filterFunction()
+    },[searchText])
 
     return (
         <div className='search-page-container'>
@@ -35,9 +54,9 @@ export default function SearchPage() {
                     Results for "{searchText}"
                 </div>
                 <div className='search-results-movies'>
-                    {filter.map((obj) => {
+                    {filterMovies.map((obj) => {
                         return (
-                                <img className='search-movie-card' src='https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2022/07/Avengers-Age-of-Ultron-2015jpeg.jpeg?w=720'alt='poster-not-available'/>
+                                <img className='search-movie-card' src={obj.posterImage} alt='poster-not-available'/>
                         )
                     })
                     }
@@ -48,9 +67,9 @@ export default function SearchPage() {
                     Other Related Matches for You
                 </div>
                 <div className='other-results-movies'>
-                {filter.map((obj) => {
+                {allMoviesData.slice(2,6).map((obj) => {
                         return (
-                                <img className='other-movie-card' src='https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2022/07/Avengers-Age-of-Ultron-2015jpeg.jpeg?w=720'alt='poster-not-available'/>
+                                <img className='other-movie-card' src={obj.posterImage} alt='poster-not-available'/>
                         )
                     })
                     }

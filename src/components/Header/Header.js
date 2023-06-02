@@ -1,19 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { ReactComponent as NotifiactionLogo } from "../../assets/icons/Vector.svg";
 import "./header.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { ReactComponent as SearchLogo } from "../../assets/icons/search.svg";
 import { ReactComponent as SettingsLogo } from "../../assets/icons/settings.svg";
 import { ReactComponent as Logo1 } from "../../assets/images/avatar1.svg";
 import { ReactComponent as Logo2 } from "../../assets/images/avatar2.svg";
 import profilePhoto from "../../assets/images/profile-photo.svg";
 import Logo from "../Logo/Logo";
+import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import CategoryType from "../CategoryType/CategoryType";
+import { UserContext } from "../../context/Context/UserContext/UserState";
 
 const Header = () => {
   const [selected, setSelected] = useState("1");
   const [profile, setProfile] = useState(false);
-
+  const {searchText,setSearchText} = useContext(UserContext)
+  const [helperSearchText,setHelperSearchText] = useState('')
+  const navigate = useNavigate()
   const genres = [
     "Horror",
     "Romantic",
@@ -41,10 +45,19 @@ const Header = () => {
     console.log("Value:", value);
   };
 
+  const searchTextFunction = (e) => {
+    setHelperSearchText(e.target.value)
+  }
+
+  const searchPageOpen = () => {
+    setSearchText(helperSearchText)
+    navigate(`/searchresults/${helperSearchText}`,{state:searchText})
+  }
+
   return (
     <div className="d-flex justify-content-between w-100 align-items-end header-container">
-      <Logo className="w-30" />
-
+      {/* <Logo className="w-30" /> */}
+      <MainLogo />
       <div className="w-30">
         <div className="d-flex justify-content-between">
           <NavLink
@@ -120,11 +133,12 @@ const Header = () => {
 
       <div className="d-flex  align-items-end w-40">
         <div className=" search-box">
-          &nbsp; <SearchLogo width="1.3rem" height="1.3rem" />
+          &nbsp; <SearchLogo width="1.3rem" height="1.3rem" onClick={(e)=>{searchPageOpen()}}/>
           <input
             type="text"
             placeholder="search here"
-            style={{ color: "white" }}
+            style={{ color: "white" , borderColor:"transparent" }}
+            onChange={(e)=>{searchTextFunction(e)}}
           />
         </div>
         <div>
@@ -146,6 +160,7 @@ const Header = () => {
           {profile &&  <div className="profile-box">
               <div className=""></div>
               <div className="selected-1">&nbsp;&nbsp;&nbsp; Manisha Singh</div>
+              <div className="line-2"></div>
               <div className="avatar-box">
               &nbsp;&nbsp;&nbsp;
                 <div>
@@ -157,9 +172,11 @@ const Header = () => {
                   <div className="avatar-text">Raman</div>
                 </div>
               </div>
+              <div className="line-2"></div>
               <div className="Box-1" >
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Profile
               </div>
+              <div className="line-2"></div>
               <div className="Box-1" >
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Help
               </div>
