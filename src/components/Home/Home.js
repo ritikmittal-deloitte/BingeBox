@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./home.scss";
 import Card from "../card/Card";
+import Card3 from "../card3/Card3";
 import { movies } from "../../mockData/moviesMockData";
 import { ReactComponent as ScrollLogo } from "../../assets/icons/arrow.svg";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
@@ -237,7 +238,7 @@ const Home = () => {
 
           <section className="your-watches-cards">
             {yourWatches.map((movie, index) => (
-              <Card cardData={movie} key={index} />
+              <Card3 cardData={movie} key={index} />
             ))}
           </section>
 

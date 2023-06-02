@@ -29,7 +29,7 @@ function App() {
               <Route path="/home" element={<Home />} />
 
               <Route path="/profile" element={<Profile />} />
-              <Route path="/searchresults" element={<SearchPage />} />
+              <Route path="/searchresults/:text" element={<SearchPage />} />
               <Route path="/wishlist" element={<WishList />} />
               <Route path="/description/:movieId" element={<Description />} />
             </Route>
