@@ -48,7 +48,9 @@ const Header = () => {
   const searchTextFunction = (e) => {
     setHelperSearchText(e.target.value)
   }
-
+  const profileNavigate = (e) => {
+    navigate('/profile')
+  }
   const searchPageOpen = () => {
     setSearchText(helperSearchText)
     navigate(`/searchresults/${helperSearchText}`,{state:searchText})
@@ -173,7 +175,7 @@ const Header = () => {
                 </div>
               </div>
               <div className="line-2"></div>
-              <div className="Box-1" >
+              <div className="Box-1"  onClick={(e)=>{profileNavigate(e)}}>
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Profile
               </div>
               <div className="line-2"></div>
