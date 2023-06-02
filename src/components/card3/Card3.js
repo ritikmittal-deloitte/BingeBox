@@ -27,13 +27,13 @@ const Card = ({ cardData }) => {
         
         height: '23rem',
         width: '45rem',
-        transition: 'height 0.5s, width 0.5s',
+        transition: 'height 0s, width 0.3s',
       };
     }
     return {
       height: '23rem',
       width: '20rem',
-      transition: 'height 0.5s, width 0.5s',
+      transition: 'height 0s, width 0.3s',
     };
   };
 
