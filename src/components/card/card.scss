@@ -10,7 +10,12 @@ height: 14rem;
   align-items: center;
   position: relative;
 }
-
+.card-end-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .card-container:hover{
   position: relative;
   z-index: 1;
@@ -33,7 +38,10 @@ height: 14rem;
   z-index: 1;
 }
 .card-details-container {
-  h2,
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4%;
+  
   h4 {
     font-family: "Nunito Sans";
     font-style: normal;
@@ -47,29 +55,47 @@ height: 14rem;
   h4 {
     font-size: 15px;
   }
-  h2 {
-    font-size: 20px;
-  }
   
+}
+
+.card-movie-name{
+  text-align: start;
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  color: #ffffff;
 }
 .cbfc-style {
   border: 1px solid white;
   border-radius: 10%;
-  color: white;
   height: 30px;
   padding: 4px;
 }
 .card-logo-container{
-  width: 35%;
-  justify-content: space-between;
+  width: 90%;
+  display: flex;
+  gap: 1rem;
+  margin-left: 5%;
+  margin-top: 5%;
+  align-items: center;
+  justify-content: end;
   //justify-content: end;
 }
-.card-container-hovering-style{
-  //width: 30.188rem !important;
-  
-  
+.ab-3{
+  display: flex;
+  align-items: center;
+  margin-left: 0%;
+  font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 10px;
+line-height: 12px;
+
+color: #FFFFFF;
+
 }
-.iframe-style{
-  // width: 510px;
-  
+.card-last-container{
+  display: flex;
+  gap: 4%;
 }

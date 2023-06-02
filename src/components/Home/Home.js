@@ -67,23 +67,26 @@ const Home = () => {
     return ;
   };
   useEffect(() => {
- if(!onHovering)
- {
-  setTimeout(() => {
-      check(); 
-    
-      }, 5000);
- } 
-   
-  },[onHovering])
+
+    const interval = setInterval(()=>{
+      if(!onHovering)
+      {check();}
+    },5000)
+    return ()=> {
+      if(interval){
+        clearInterval(interval);
+      }
+    };
+  });
+
  
  
-  setTimeout(() => {
-if(!onHovering)
-{
-  check(); 
-}
-  }, 5000);
+//   setTimeout(() => {
+// if(!onHovering)
+// {
+//   check(); 
+// }
+//   }, 5000);
 
 
   const leftScroll = (querySelect) => {
