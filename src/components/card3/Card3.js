@@ -11,6 +11,7 @@ const Card = ({ cardData }) => {
   const [onHovering, setOnHovering] = useState(false);
   const {watchList,setWatchList}=useContext(UserContext);
 
+ 
  // console.log("Card Data :",cardData)
   const navigate = useNavigate();
   const handleMouseOver = () => {
@@ -20,6 +21,23 @@ const Card = ({ cardData }) => {
     setOnHovering(false);
   };
 
+  const getDynamicStyles = () => {
+    if (onHovering) {
+      return {
+        
+        height: '23rem',
+        width: '45rem',
+        transition: 'height 0.5s, width 0.5s',
+      };
+    }
+    return {
+      height: '23rem',
+      width: '20rem',
+      transition: 'height 0.5s, width 0.5s',
+    };
+  };
+
+  
   const handleBackgorndImage = (image) => {
     return {
       backgroundImage: `url(${image})`,
@@ -54,9 +72,11 @@ const Card = ({ cardData }) => {
 //    navigate("/wishlist");
     navigate("/description/10")
   }
+
   return (
     <div
-      className={`card-container-1 ${onHovering?"card-container-hovering-style":""}`}
+      className={`card-container-3 ${onHovering?"card-container-hovering-style-3":""}`}
+      style={getDynamicStyles()}
       onMouseOver={handleMouseOver}
       onMouseOut={handleMouseOut}
       onClick={handleOnClick}
@@ -64,7 +84,7 @@ const Card = ({ cardData }) => {
       {
         !onHovering&&<div
         style={handleBackgorndImage(cardData.posterImage)}
-        className={`w-100 h-100 ${onHovering ? "base-styles" : ""}`}
+        className={`w-100 h-100 ${onHovering ? "base-styles-3" : ""}`}
         
       >
         </div>
@@ -73,7 +93,7 @@ const Card = ({ cardData }) => {
       {/* {onHovering && (
         <div
           className={`d-flex align-items-end  w-100 h-100 hover-card-style  ${
-            onHovering ? "overlay-styles" : ""
+            onHovering ? "overlay-styles-3" : ""
           }`}
         >
           <div className="card-end-container w-100 d-flex justify-content-around">
@@ -97,27 +117,27 @@ const Card = ({ cardData }) => {
       )} */}
       {onHovering && (
         <>
-        <iframe width="560" height="315"  src={`${cardData.videoUrl}`+"?autoplay=1&controls=0"} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className={`w-100 h-100 ${onHovering ? "base-styles" : ""}`}></iframe>
+        <iframe width="560" height="315"  src={`${cardData.videoUrl}`+"?autoplay=1&controls=0"} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" className={`w-100 h-100 ${onHovering ? "base-styles-3" : ""}`}></iframe>
         <div
-          className={`d-flex   w-100 h-100 hover-card-style  ${
-            onHovering ? "overlay-styles" : ""
+          className={`d-flex   w-100 h-100 hover-card-style-3  ${
+            onHovering ? "overlay-styles-3" : ""
           }`}
         >
           <div className="card-end-container">
-          <div className="card-logo-container ">
+          <div className="card-logo-container-3 ">
             <a  href={cardData.videoUrl} target="_blank"><PlayLogo width={40} height={41} /></a >
               <div onClick={(event)=>{handleAddToWatchList(event)}}><AddToLogo width={40} height={41} /></div >
               
             </div>
-            <div className="card-details-container ">
-              <div className="card-movie-name">&nbsp;&nbsp;{cardData.title}</div>
+            <div className="card-details-container-3 ">
+              <div className="card-movie-name-3">&nbsp;&nbsp;{cardData.title}</div>
               {/* <div className="d-flex  justify-content-between card-release-style">
                 <div className="cbfc-style">CBFC : U/A</div>
 
                 <h4 className="px-3">{cardData.releaseYear}</h4>
                 <h4>{cardData.movieDuraction}</h4>
               </div> */}
-              <div className="card-last-container">
+              <div className="card-last-container-3">
           <div className="rate-1">&nbsp;CBFC : U/A&nbsp;</div>
           <div className="ab-3"> {cardData.releaseYear} | {cardData.duration}</div>   
           {cardData.genre.map((item)=>{
