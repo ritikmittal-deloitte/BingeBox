@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AppleIcon from "@mui/icons-material/Apple";
 import GoogleIcon from "@mui/icons-material/Google";
-import "../Login/login.css";
+import "../Login/login.scss";
 
 const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");

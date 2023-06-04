@@ -1,0 +1,131 @@
+.payment-container {
+ 
+  position: absolute;
+  z-index: 1;
+  margin-top: 30rem;
+  left: 26.93rem;
+  transform: translate(-50%, -50%);
+  width: 30% !important;
+ 
+  // height: 600px;
+  /* background: url("../../assets/images/bg-login.png") no-repeat; */
+  background-color: transparent;
+  background-position: center;
+  border-radius: 10px;
+  // margin-top: 5%;
+
+  .binge-box-heading {
+    // margin-top: 3.5rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    display: flex;
+
+    .binge-heading {
+      height: 80%;
+      width: 40%;
+      background-color: #f03a47;
+      font-family: "Sora";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 54.282px;
+      line-height: 68px;
+      color: #ffffff;
+    }
+
+    .box-heading {
+      height: 80%;
+      width: 10%;
+      margin-left: 2%;
+      color: #f03a47;
+      font-family: "Sora";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 54.282px;
+      line-height: 68px;
+    }
+  }
+
+  p {
+    font-weight: 600;
+    font-size: 32px;
+    align-items: center;
+    text-align: center;
+    margin-left: 8rem;
+    color: #d8d8d8;
+  }
+  .method {
+    width: 50rem !important;
+    display: flex;
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 18px;
+    list-style: none;
+    justify-content: space-between;
+    margin-left: 5.7rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
+  .card {
+    padding: 4rem;
+    display: flex;
+    flex-direction: row;
+    width: 65rem;
+    border-radius: 25px;
+    background: linear-gradient(
+      115.57deg,
+      rgba(255, 255, 255, 0.19) -4.2%,
+      rgba(234, 234, 234, 0.0806194) 70.71%,
+      rgba(223, 214, 214, 0) 125.93%
+    );
+    .left {
+      width: 40%;
+      justify-content: flex-start;
+      margin-left: -8rem;
+    }
+    .right {
+      margin-left: 7rem;
+      width: 35rem;
+      .form {
+        align-items: flex-start;
+        label {
+          margin-top: 0rem;
+          margin-left: 1rem;
+          font-size: 1rem;
+         
+        }
+        .inputs {
+          margin-top: 1rem;
+          width: 35rem;
+          margin-bottom: 4.375rem;
+         }
+        .date-cvv {
+          display: flex;
+          width: 100%;
+          .valid-date {
+            width: 60%;
+          }
+          .cvv {
+            width: 20%;
+          }
+        }
+        .pay-btn{
+          border: none;
+          margin-left: 15.5rem;
+          width: 19.5rem;
+          height: 4rem;
+          background: #F03A47;
+            border-radius: 1.25rem;
+            font-weight: 700;
+              font-size: 1.25rem;
+              line-height: 1.5rem;
+              text-align: center;
+            
+              color: #FFFFFF;
+
+        }
+      }
+    }
+  }
+}
