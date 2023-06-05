@@ -14,72 +14,32 @@ function Subscriptionplans() {
       </div>
       <div className="right-container">
         <div className="cards">
-          <div className="card">
-            <h2 className="plan-type">Premium</h2>
-            <h4 className="price">
-              Rs. <span>1499</span>/yr
-            </h4>
-            <p className="device">4 device</p>
-            <div className="resolution">
-              <p>Resolution</p>
-              <h5>4k(Ultra HD) + HDR</h5>
-            </div>
-            <hr />
-            <div className="quality">
-              <p>Video Quality</p>
-              <h5>Best</h5>
-            </div>
-            <hr />
-            <div className="supported-device">
-              <p>Supported Devices</p>
-              <h5>Tv,computer, mobile, tablet</h5>
-            </div>
-            <button className="btn">Buy Now</button>
-          </div>
-          <div className="card">
-            <h2 className="plan-type">Premium</h2>
-            <h4 className="price">
-              Rs. <span>1499</span>/yr
-            </h4>
-            <p className="device">4 device</p>
-            <div className="resolution">
-              <p>Resolution</p>
-              <h5>4k(Ultra HD) + HDR</h5>
-            </div>
-            <hr />
-            <div className="quality">
-              <p>Video Quality</p>
-              <h5>Best</h5>
-            </div>
-            <hr />
-            <div className="supported-device">
-              <p>Supported Devices</p>
-              <h5>Tv,computer, mobile, tablet</h5>
-            </div>
-            <button className="btn">Buy Now</button>
-          </div>
-          <div className="card">
-            <h2 className="plan-type">Premium</h2>
-            <h4 className="price">
-              Rs. <span>1499</span>/yr
-            </h4>
-            <p className="device">4 device</p>
-            <div className="resolution">
-              <p>Resolution</p>
-              <h5>4k(Ultra HD) + HDR</h5>
-            </div>
-            <hr />
-            <div className="quality">
-              <p>Video Quality</p>
-              <h5>Best</h5>
-            </div>
-            <hr />
-            <div className="supported-device">
-              <p>Supported Devices</p>
-              <h5>Tv,computer, mobile, tablet</h5>
-            </div>
-            <button className="btn">Buy Now</button>
-          </div>
+          {plans.map((p, index) => {
+            return (
+              <div className="card" id={"card-" + index}>
+                <h2 className="plan-type">{p.type}</h2>
+                <h4 className="price">
+                  Rs. <span>{p.price}</span>/yr
+                </h4>
+                <p className="device">4 device</p>
+                <div className="resolution">
+                  <p>Resolution</p>
+                  <h5>{p.resolution}</h5>
+                </div>
+                <hr />
+                <div className="quality">
+                  <p>Video Quality</p>
+                  <h5>{p.quality}</h5>
+                </div>
+                <hr />
+                <div className="supported-device">
+                  <p>Supported Devices</p>
+                  <h5>{p.supporteddevice}</h5>
+                </div>
+                <button className="btn">Buy Now</button>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
@@ -95,5 +55,22 @@ const plans = [
     device: "4",
     resolution: "4k(Ultra HD) + HDR",
     quality: "Best",
+    supporteddevice: "Tv,computer, mobile, tablet",
+  },
+  {
+    type: "Super",
+    price: "899",
+    device: "4",
+    resolution: "1080p",
+    quality: "Better",
+    supporteddevice: "Tv,computer, mobile, tablet",
+  },
+  {
+    type: "Mobile",
+    price: "499",
+    device: "4",
+    resolution: "480p",
+    quality: "Good",
+    supporteddevice: "Mobile, Tablet",
   },
 ];
