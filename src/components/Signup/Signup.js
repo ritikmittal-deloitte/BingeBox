@@ -103,6 +103,7 @@ function Signup() {
       </div>
       <div className="right-container">
         <div className="change-text">
+          {currentIndex===0 ?  
           <h1
             style={{
               color: "#F03A47",
@@ -111,8 +112,16 @@ function Signup() {
               fontWeight: "900",
             }}
           >
-            {texts.length > 0 ? texts[currentIndex] : "Loading..."}
+            "Lights, Camera, <span style={{color:'white'}}> Sign Up </span>"
+          </h1>:
+          <h1 style={{
+            color: "#F03A47",
+            fontSize: "6rem",
+            fontWeight: "900",
+          }}>
+            "<span style={{color:'white'}}>Join</span> the Movie Streaming Revolution"
           </h1>
+        }
           <p
             style={{
               fontWeight: "400",
