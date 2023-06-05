@@ -23,11 +23,9 @@ function App() {
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
           <Route path="/userpreferences" element={<UserPreferences />} />
-
           {
             <Route element={<AppLayout />}>
               <Route path="/home" element={<Home />} />
-
               <Route path="/profile" element={<Profile />} />
               <Route path="/searchresults/:text" element={<SearchPage />} />
               <Route path="/wishlist" element={<WishList />} />

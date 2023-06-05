@@ -9,8 +9,7 @@ export default function SearchPage() {
 
     const [allMoviesData,setAllMoviesData] = useState(movies)
     const [filterMovies,setFilterMovies] = useState([])
-    const {text}=useParams();
- 
+    const {text}=useParams(); 
     console.log("Search for:",text)
     const filterFunction = () => {
         let search = searchText.trim()
