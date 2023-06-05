@@ -13,6 +13,11 @@ const belowTexts = [
 function Signup() {
   const [texts, setTexts] = useState([]);
   const [lowerText, setLowertext] = useState([]);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmpassword, setConfirmpassword] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   useEffect(() => {
     setTexts(upperTexts);
@@ -25,6 +30,9 @@ function Signup() {
     }, 2000); // Change text every 2 seconds
     return () => clearInterval(interval);
   }, [texts, lowerText]);
+
+  // const inEnabled = name.length >0 && email
+
   return (
     <div className="signup-container">
       <div className="left-container">
@@ -37,16 +45,36 @@ function Signup() {
             Sign Up
           </h3>
           <div className="inputs">
-            <input placeholder="Name" type="text" id="name" />
+            <input
+              placeholder="Name"
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+            />
           </div>
           <div className="inputs">
-            <input placeholder="Email Id" type="email" id="email" />
+            <input
+              placeholder="Email Id"
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+            />
           </div>
           <div className="inputs">
             <input
               placeholder="Create Password"
               type="password"
               id="password"
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <div className="inputs">
@@ -54,17 +82,21 @@ function Signup() {
               placeholder="Confirm Password"
               type="password"
               id="confirm-password"
+              value={confirmpassword}
+              onChange={(e) => {
+                setConfirmpassword(e.target.value);
+              }}
             />
           </div>
 
           <div className="privacy-policy">
             <label htmlFor="">
-              <input type="checkbox" />
+              <input type="checkbox" value={checkbox} />
             </label>
             By signing up you agree to our <a href="#">privacy policy</a>
           </div>
 
-          <button type="submit" className="btn">
+          <button type="submit" className="btn" disabled>
             Sign Up
           </button>
         </form>

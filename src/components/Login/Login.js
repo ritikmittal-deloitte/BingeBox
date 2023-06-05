@@ -3,12 +3,15 @@ import { useNavigate } from "react-router-dom";
 import AppleIcon from "@mui/icons-material/Apple";
 import GoogleIcon from "@mui/icons-material/Google";
 import "../Login/login.scss";
-
+import { UserContextProvider } from "../../context/Context/UserContext/UserState";
 const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
   const navigate = useNavigate();
+
+  // const Login = ({setIsLogin}) => {
+  //     const navigate = useNavigate();
 
   const validateForm = () => {
     const errors = {};

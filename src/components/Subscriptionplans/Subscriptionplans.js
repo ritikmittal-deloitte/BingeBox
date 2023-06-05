@@ -87,3 +87,13 @@ function Subscriptionplans() {
 }
 
 export default Subscriptionplans;
+
+const plans = [
+  {
+    type: "Premium",
+    price: "1499",
+    device: "4",
+    resolution: "4k(Ultra HD) + HDR",
+    quality: "Best",
+  },
+];
