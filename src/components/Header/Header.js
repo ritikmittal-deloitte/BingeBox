@@ -53,7 +53,9 @@ const Header = () => {
   }
   const searchPageOpen = () => {
     setSearchText(helperSearchText)
-    navigate(`/searchresults/${helperSearchText}`,{state:searchText})
+    if(searchText.trim()!==''){
+      navigate(`/searchresults/${helperSearchText}`,{state:searchText})
+    }
   }
 
   return (
