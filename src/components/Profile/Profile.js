@@ -1,14 +1,21 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import PencilSquare from '../../assets/icons/pencil-square.png'
 import User1 from '../../assets/images/image 74.png'
 import User2 from '../../assets/images/image 75.png'
 import User3 from '../../assets/images/image 76.png'
 import PlusIcon from '../../assets/icons/plus.png'
 import './Profile.scss'
+import { UserContext } from '../../context/Context/UserContext/UserState'
 
 export default function Profile() {
+    const navigate = useNavigate()
+    const {genre,setGenre} = useContext(UserContext)
     const logout = () => {
 
+    }
+    const handlePreferencesPage = (e) => {
+        navigate('/userpreferences',{state:dummyData.genre})
     }
     return (
         <div className='profile-page'>
@@ -29,13 +36,13 @@ export default function Profile() {
                         <div className='heading-container-genre'><div className='genre-heading'>Interested Genres</div></div>
                         <div className='interested-genre-section'>
                             <div className='genre-detail'> 
-                                {dummyData.genre.map((item)=>{
+                                {genre.map((item)=>{
                                     return (
                                         <div className='genre-box'>{item}</div>
                                     )
                                 })}
                             </div>
-                            <div className='genre-edit-tool'><img src={PencilSquare} alt='tool-icon-not-available' /></div>
+                            <div className='genre-edit-tool'onClick={(e)=>handlePreferencesPage(e)} style={{cursor:'pointer'}}><img src={PencilSquare} alt='tool-icon-not-available' /></div>
                         </div>
                 </div>
                 <div className="line"></div>

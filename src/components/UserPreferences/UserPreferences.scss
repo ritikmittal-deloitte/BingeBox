@@ -23,7 +23,14 @@
     align-items: center;
     margin-bottom: 1rem;
 }
-
+.binge-box-heading-preference {
+    height: 3.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 .binge-heading {
     height: 3.5rem;
     width: 8.1875rem;
@@ -96,6 +103,7 @@
     color: white;
     width: 10%;
     margin-bottom: 0.2%;
+    cursor: pointer;
 }
 
 .next-row {
@@ -116,6 +124,7 @@
     font-weight: 700;
     font-size: 1.75rem;
     line-height: 2.125rem;
+    cursor: pointer;
 }
 
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './UserPreferences.scss'
 import Comedy from './images/comedy.png'
 import Drama from './images/drama.png'
@@ -13,9 +13,13 @@ import Fantasy from './images/fantasy.jpg'
 import Binge from './images/BINGE.png'
 import Box from './images/BOX.png'
 import CardComponent from './CardComponent'
+import { generatePath, useLocation, useNavigate } from 'react-router-dom'
+import { UserContext } from '../../context/Context/UserContext/UserState'
 
 export default function UserPreferences() {
     const [hoveredIndex, setHoveredIndex] = useState(-1);
+    const {genre,setGenre} = useContext(UserContext)
+    const navigate = useNavigate()
 
     const handleMouseEnter = (index) => {
         setHoveredIndex(index);
@@ -28,7 +32,7 @@ export default function UserPreferences() {
     return (
         <div className='user-preferences-page' style={{ color: 'white' }}>
             <div className='main-container-preferences'>
-                <div className='binge-box-heading'>
+                <div className='binge-box-heading-preference'>
                     <div className='binge-heading'>
                         <img src={Binge} style={{}} alt='logo not available'/>
                     </div>
@@ -40,7 +44,7 @@ export default function UserPreferences() {
                     <div className='main-container'>
                         <div className='skip-row'>
                             <div className='you-prefer-text'>You Prefer</div>
-                            <div className='skip-text'>Skip</div>
+                            <div className='skip-text' onClick={(e)=>{navigate('/home')}}>Skip</div>
                         </div>
                         <div className='contents-row'>
                             <div className='contents-boxes'>
@@ -50,13 +54,13 @@ export default function UserPreferences() {
                                             onMouseEnter={() => handleMouseEnter(index)}
                                             onMouseLeave={handleMouseLeave}
                                             >
-                                            <CardComponent item={item} />
+                                            <CardComponent item={item} present={checkPresent(genre,item.category)}genre={genre} setGenre={setGenre}/>
                                         </div>)
                                 })}
                             </div>
                         </div>
                         <div className='next-row'>
-                            <div className='next-text'>Next</div>
+                            <div className='next-text' onClick={(e)=>navigate('/profile')}>Next</div>
                         </div>
                     </div>
                 </div>
@@ -65,10 +69,20 @@ export default function UserPreferences() {
     )
 }
 
+
+function checkPresent(arr,item){
+    for(let i = 0;i<arr.length;i++){
+        let a = arr[i].toLowerCase()
+        if(a.includes(item.toLowerCase())){
+            return true
+        }
+    }
+    return false
+}
 const preferences = [
     {
         img: Horror,
-        category: 'Horrors & Thrillers'
+        category: 'Horror'
     },
     {
         img: Comedy,
