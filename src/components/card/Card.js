@@ -2,16 +2,18 @@ import React, { useContext, useState } from "react";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
 import { ReactComponent as DeleteLogo } from "../../assets/icons/delete icon.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
+
+import { ReactComponent as CheckedIcon } from "../../assets/icons/checked.svg";
 import "./card.scss";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Context/UserContext/UserState";
 
 
-const Card = ({ cardData }) => {
+const Card = ({ cardData , direct }) => {
   const [onHovering, setOnHovering] = useState(false);
   const {watchList,setWatchList}=useContext(UserContext);
   const watch = new Set(watchList);
-  console.log("Card Data :",cardData)
+//  console.log("Card Data :",cardData)
   const show = watch.has(cardData.movieId) 
   const navigate = useNavigate();
   const handleMouseOver = () => {
@@ -55,7 +57,7 @@ const Card = ({ cardData }) => {
 
   const handleOnClick=()=>{
 //    navigate("/wishlist");
-    navigate("/description/10")
+    navigate(`/description/${cardData.movieId}`)
   }
   return (
     <div
@@ -111,7 +113,9 @@ const Card = ({ cardData }) => {
             <a  href={cardData.videoUrl} target="_blank"><PlayLogo width={40} height={41} /></a >
             
               {!show && <div onClick={(event)=>{handleAddToWatchList(event)}}><AddToLogo width={40} height={41} /></div >} 
-              {show && <div onClick={(event)=>{handleDeleteFromWatchList(event)}}><DeleteLogo width={40} height={41} /></div >} 
+              {direct==="WatchList" && show && <div onClick={(event)=>{handleDeleteFromWatchList(event)}}><DeleteLogo width={40} height={41} /></div >} 
+              {direct==="Home" && show && <div ><CheckedIcon width={40} height={41}  /></div >} 
+          
             </div>
             <div className="card-details-container ">
               <div className="card-movie-name">&nbsp;&nbsp;{cardData.title}</div>

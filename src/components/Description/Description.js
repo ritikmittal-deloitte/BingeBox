@@ -39,26 +39,26 @@ const Description = () => {
         <div className="desc-details-container d-flex flex-column p-5">
           <div className="d-flex justify-content-between">
             <div className="desc-card-details-container d-flex flex-column align-items-start">
-              <h2>{movies[0].title}</h2>
+              <h2>{movies[movieId-1].title}</h2>
               <div className="d-flex  justify-content-between card-release-style">
                 <div className="cbfc-style">CBFC : U/A</div>
 
-                <h4 className="px-3">{movies[0].releaseYear}</h4>
-                <h4>{movies[0].movieDuraction}</h4>
+                <h4 className="px-3">{movies[movieId-1].releaseYear}</h4>
+                <h4>{movies[movieId-1].movieDuraction}</h4>
               </div>
             </div>
             <div className="d-flex desc-card-logo-container align-items-center">
               <div className="play-button d-flex">
                 <Triangle /> <h5>Play</h5>{" "}
               </div>
-              {/* <a  href={movies[0].videoUrl} target="_blank"><PlayLogo /></a > */}
+              {/* <a  href={movies[movieId-1].videoUrl} target="_blank"><PlayLogo /></a > */}
               <div onClick={handleAddToWatchList}>
                 <AddToLogo width={50} height={51} />
               </div>
             </div>
           </div>
           <div className="desc-end-container">
-            <span>{movies[0].description}</span>
+            <span>{movies[movieId-1].description}</span>
           </div>
           <div className="cast-container d-flex flex-column justify-content-start align-items-start">
             <p>Cast</p>
