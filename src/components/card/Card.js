@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
-
+import { ReactComponent as DeleteLogo } from "../../assets/icons/delete icon.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import "./card.scss";
 import { useNavigate } from "react-router-dom";
@@ -10,8 +10,9 @@ import { UserContext } from "../../context/Context/UserContext/UserState";
 const Card = ({ cardData }) => {
   const [onHovering, setOnHovering] = useState(false);
   const {watchList,setWatchList}=useContext(UserContext);
-
- // console.log("Card Data :",cardData)
+  const watch = new Set(watchList);
+  console.log("Card Data :",cardData)
+  const show = watch.has(cardData.movieId) 
   const navigate = useNavigate();
   const handleMouseOver = () => {
     setOnHovering(true);
@@ -36,14 +37,16 @@ const Card = ({ cardData }) => {
     };
   };
   const handleAddToWatchList=(event)=>{
-    console.log("Card Data :",cardData.movieId)
-    console.log("Current Watch List:",watchList)
-    setWatchList([...watchList,cardData.movieId]);  
-//    setWatchList(previousState => new Set([...previousState,cardData.movieId]));
-   console.log("add to watch list:",event)
+    setWatchList(previousState => new Set([...previousState,cardData.movieId]));
    event.stopPropagation();
    navigate("/wishlist");
 
+  }
+  const handleDeleteFromWatchList = (event) =>{
+    watch.delete(cardData.movieId);
+    console.log("Watch list updated:",watch)
+    setWatchList(new Set(watch))
+    event.stopPropagation();
   }
   // const handlePlayMovie=()=>{
   //   console.log("play movie")
@@ -106,8 +109,9 @@ const Card = ({ cardData }) => {
           <div className="card-end-container">
           <div className="card-logo-container ">
             <a  href={cardData.videoUrl} target="_blank"><PlayLogo width={40} height={41} /></a >
-              <div onClick={(event)=>{handleAddToWatchList(event)}}><AddToLogo width={40} height={41} /></div >
-              
+            
+              {!show && <div onClick={(event)=>{handleAddToWatchList(event)}}><AddToLogo width={40} height={41} /></div >} 
+              {show && <div onClick={(event)=>{handleDeleteFromWatchList(event)}}><DeleteLogo width={40} height={41} /></div >} 
             </div>
             <div className="card-details-container ">
               <div className="card-movie-name">&nbsp;&nbsp;{cardData.title}</div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./home.scss";
 import Card from "../card/Card";
 import Card3 from "../card3/Card3";
@@ -10,8 +10,20 @@ import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import img1 from "../../assets/images/Variant8.png";
 //import "../card/card.scss";
 import axios from "axios";
+import { UserContext } from "../../context/Context/UserContext/UserState";
 
 const Home = () => {
+
+  const {watchList,setWatchList}=useContext(UserContext);
+
+  const watch = new Set(watchList);
+  const data=movies.filter((item)=>{
+    if(!watch.has(item.movieId))
+    {
+      return item ;
+    }
+  })
+  console.log("Data filtered out :",data)
   const [topMovies, setTopMovies] = useState([]);
   const [recentMovies, setrecentMovies] = useState([]);
   const [trendingMovies, settrendingMovies] = useState([]);
@@ -31,22 +43,22 @@ const Home = () => {
   const fetchTrendingMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    settrendingMovies(movies);
+    settrendingMovies(data);
   };
   const fetchTopMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setTopMovies(movies);
+    setTopMovies(data);
   };
   const fetchRecentMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setrecentMovies(movies);
+    setrecentMovies(data);
   };
   const fetchYourWatches = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setyourWatches(movies);
+    setyourWatches(data);
   };
 
   useEffect(() => {
@@ -89,14 +101,13 @@ const Home = () => {
 // }
 //   }, 5000);
 
-
   const leftScroll = (querySelect) => {
     const left = document.querySelector(querySelect);
-    left.scrollBy(-200, 0);
+    left.scrollBy(-1600, 0);
   };
   const rightScroll = (querySelect) => {
     const right = document.querySelector(querySelect);
-    right.scrollBy(200, 0);
+    right.scrollBy(1660, 0);
   };
   const handleBackgorndImage = (image) => {
     return {

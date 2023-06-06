@@ -10,6 +10,8 @@ function Subscriptionplans() {
     console.log("Value::", value);
         navigate('/selected-plan', { state: value });
   };
+
+  
   return (
     <div className="plans-container">
       <div className="left-container">

@@ -1,17 +1,37 @@
 import React, { useState } from 'react'
 import CheckIcon from './images/check-icon.png'
 
-export default function CardComponent({ item }) {
-    const [selected, setSelected] = useState(false)
+export default function CardComponent({ item,present,genre,setGenre }) {
+    const [selected, setSelected] = useState(present)
 
     function addPreference(e) {
         console.log(item)
         if (selected) {
+            setGenre(toggleElementInArray(genre,item.category))
             setSelected(false)
         } else {
+            setGenre(toggleElementInArray(genre,item.category))
             setSelected(true)
         }
     }
+
+    function toggleElementInArray(array, element) {
+        let arr = array
+        const index = arr.indexOf(element);
+        
+        if (index !== -1) {
+          // Element is already present, so remove it
+          arr.splice(index, 1);
+        } else {
+          // Element is not present, so add it
+          arr.push(element);
+        }
+        for(let i = 0;i<arr.length;i++){
+            console.log(i,arr[i])
+        }
+        return arr
+      }
+
     return (
         <div className='card-component' style={{
             backgroundImage: `url(${item.img})`,

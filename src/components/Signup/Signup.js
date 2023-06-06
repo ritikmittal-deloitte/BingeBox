@@ -16,9 +16,60 @@ function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmpassword, setConfirmpassword] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let errors = {};
+
+    if (name.trim() === "") {
+      errors.name = "Name is required";
+    }
+
+    if (email.trim() === "") {
+      errors.email = "Email is required";
+    } else {
+      // Simple email format validation
+      const emailRegex = /^\S+@\S+\.\S+$/;
+      if (!emailRegex.test(email)) {
+        errors.email = "Invalid email format";
+      }
+    }
+
+    if (mobile.trim() === "") {
+      errors.mobile = "Mobile number is required.";
+    }
+
+    if (password.trim() === "") {
+      errors.password = "Password is required";
+    }
+
+    if (confirmPassword.trim() === "") {
+      errors.confirmPassword = "Confirm password is required";
+    } else if (confirmPassword !== password) {
+      errors.confirmPassword = "Passwords do not match";
+    }
+    console.log(checkbox);
+    if (checkbox === false) {
+      errors.checkbox = "Please click on checkbox to agree with Privacy Policy";
+    }
+
+    setErrors(errors);
+
+    // Return true if there are no errors
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (validateForm()) {
+      // Perform signup logic
+      console.log("Signup successful!");
+    }
+  };
   useEffect(() => {
     setTexts(upperTexts);
     setLowertext(belowTexts);
@@ -40,7 +91,7 @@ function Signup() {
           <div className="binge-heading"> BINGE</div>
           <div className="box-heading">BOX</div>
         </div>
-        <form action="" className="signup-form">
+        <form action="" className="signup-form" onSubmit={handleSubmit}>
           <h3 className="d-flex justify-content-start w-100 mb-0 signup-heading">
             Sign Up
           </h3>
@@ -54,6 +105,9 @@ function Signup() {
                 setName(e.target.value);
               }}
             />
+            <div className="error-signup">
+              {errors.name && <span>* {errors.name}</span>}
+            </div>
           </div>
           <div className="inputs">
             <input
@@ -65,6 +119,23 @@ function Signup() {
                 setEmail(e.target.value);
               }}
             />
+            <div className="error-signup">
+              {errors.email && <span>* {errors.email}</span>}
+            </div>
+          </div>
+          <div className="inputs">
+            <input
+              placeholder="Mobile Number"
+              type="number"
+              id="mobile"
+              value={mobile}
+              onChange={(e) => {
+                setMobile(e.target.value);
+              }}
+            />
+            <div className="error-signup">
+              {errors.mobile && <span>* {errors.mobile}</span>}
+            </div>
           </div>
           <div className="inputs">
             <input
@@ -76,43 +147,88 @@ function Signup() {
                 setPassword(e.target.value);
               }}
             />
+            <div className="error-signup">
+              {errors.password && <span>* {errors.password}</span>}
+            </div>
           </div>
           <div className="inputs">
             <input
               placeholder="Confirm Password"
               type="password"
               id="confirm-password"
-              value={confirmpassword}
+              value={confirmPassword}
               onChange={(e) => {
-                setConfirmpassword(e.target.value);
+                setConfirmPassword(e.target.value);
               }}
             />
+            <div className="error-signup">
+              {errors.confirmPassword && (
+                <span>* {errors.confirmPassword}</span>
+              )}
+            </div>
           </div>
-
           <div className="privacy-policy">
             <label htmlFor="">
-              <input type="checkbox" value={checkbox} />
+              <input
+                type="checkbox"
+                value={checkbox}
+                onChange={(e) => {
+                  setCheckbox(!checkbox);
+                }}
+              />
             </label>
             By signing up you agree to our <a href="#">privacy policy</a>
           </div>
-
-          <button type="submit" className="btn" disabled>
-            Sign Up
-          </button>
+          <div className="error-signup" style={{ marginBottom: "1%" }}>
+            {errors.checkbox && <span>* {errors.checkbox}</span>}
+          </div>
+          {name === "" ||
+          email === "" ||
+          password === "" ||
+          confirmPassword === "" ? (
+            <button type="submit" className="btn" disabled>
+              Sign Up
+            </button>
+          ) : (
+            <button
+              type="submit"
+              className="btn"
+              style={{
+                backgroundColor: "#F03A47",
+                fontSize: "1.5rem",
+                fontWeight: "600",
+              }}
+            >
+              Sign Up
+            </button>
+          )}
         </form>
       </div>
       <div className="right-container">
         <div className="change-text">
-          <h1
-            style={{
-              color: "#F03A47",
-              fontSize: "6rem",
+          {currentIndex === 0 ? (
+            <h1
+              style={{
+                color: "#F03A47",
+                fontSize: "6rem",
 
-              fontWeight: "900",
-            }}
-          >
-            {texts.length > 0 ? texts[currentIndex] : "Loading..."}
-          </h1>
+                fontWeight: "900",
+              }}
+            >
+              "Lights, Camera, <span style={{ color: "white" }}> Sign Up</span>"
+            </h1>
+          ) : (
+            <h1
+              style={{
+                color: "#F03A47",
+                fontSize: "6rem",
+                fontWeight: "900",
+              }}
+            >
+              "<span style={{ color: "white" }}>Join</span> the Movie Streaming
+              Revolution"
+            </h1>
+          )}
           <p
             style={{
               fontWeight: "400",

@@ -49,7 +49,6 @@ function App() {
           {
             <Route element={<AppLayout />}>
               <Route path="/home" element={<Home />} />
-
               <Route path="/profile" element={<Profile />} />
               <Route path="/searchresults/:text" element={<SearchPage />} />
               <Route path="/wishlist" element={<WishList />} />
