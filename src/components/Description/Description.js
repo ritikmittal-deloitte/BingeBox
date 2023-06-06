@@ -16,11 +16,11 @@ const Description = () => {
   let { movieId } = useParams();
   const leftScroll = (querySelect) => {
     const left = document.querySelector(querySelect);
-    left.scrollBy(-200, 0);
+    left.scrollBy(-1600, 0);
   };
   const rightScroll = (querySelect) => {
     const right = document.querySelector(querySelect);
-    right.scrollBy(200, 0);
+    right.scrollBy(1660, 0);
   };
   const handleAddToWatchList = () => {
     console.log("add to watch lsit");

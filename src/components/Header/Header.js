@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext , useRef, useState , useEffect} from "react";
 import { ReactComponent as NotifiactionLogo } from "../../assets/icons/Vector.svg";
 import "./header.scss";
 import { NavLink,useNavigate } from "react-router-dom";
@@ -18,6 +18,10 @@ const Header = () => {
   const {searchText,setSearchText} = useContext(UserContext)
   const [helperSearchText,setHelperSearchText] = useState('')
   const navigate = useNavigate()
+  const [open, setOpen] = useState(false);
+  const [open2, setOpen2] = useState(false);
+  const ref = useRef(null);
+  const ref2 = useRef(null);
   const genres = [
     "Horror",
     "Romantic",
@@ -41,6 +45,24 @@ const Header = () => {
     "Marathi",
     "Bengali",
   ];
+
+
+
+  const handleClickOutside = (event) => {
+//      console.log("Worked")
+    if (!ref?.current?.contains(event.target)) {
+//      console.log("Worked233")
+      setOpen(false);
+    }
+    if (!ref2?.current?.contains(event.target)) {
+            setOpen2(false);
+            setProfile(false);
+          }
+  };
+useEffect(() => {
+  document.addEventListener("mousedown", handleClickOutside);
+  document.addEventListener("mousedown", handleClickOutside);
+}, []);
   const check = (value) => {
     console.log("Value:", value);
   };
@@ -104,13 +126,15 @@ const Header = () => {
             className={selected === "5" ? "header-link-active-style" : ""}
             onClick={() => {
               setSelected("5");
+              setOpen(true);
+              document.addEventListener("mousedown", handleClickOutside);
             }}
           >
             Categories
           </NavLink>
         </div>
-        {selected === "5" && (
-          <div className="category-box w-30">
+        {selected === "5" && open && (
+          <div className="category-box w-30" ref={ref}>
             <div className="genres-box-1">
               <span style={{ color: "white" }}>Genres</span>
               <div className="genres-box">
@@ -154,12 +178,14 @@ const Header = () => {
               src={profilePhoto}
               className="profile-style"
               onClick={() => {
-                setProfile(!profile);
+                setProfile(true);
+                setOpen2(true);
+                document.addEventListener("mousedown", handleClickOutside);
               }}
             />
           </div>
 
-          {profile &&  <div className="profile-box">
+          {profile && open2 && <div className="profile-box" ref={ref2} >
               <div className=""></div>
               <div className="selected-1">&nbsp;&nbsp;&nbsp; Manisha Singh</div>
               <div className="line-2"></div>
