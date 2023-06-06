@@ -73,7 +73,18 @@ useEffect(() => {
   const profileNavigate = (e) => {
     navigate('/profile')
   }
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      // 👇 Get input value
+      searchPageOpen()
+    }
+  };
+
   const searchPageOpen = () => {
+    if(helperSearchText.trim()===''){
+      return
+    }
     setSearchText(helperSearchText)
     navigate(`/searchresults/${helperSearchText}`,{state:searchText})
   }
@@ -165,6 +176,7 @@ useEffect(() => {
             placeholder="search here"
             style={{ color: "white" , borderColor:"transparent" }}
             onChange={(e)=>{searchTextFunction(e)}}
+            onKeyDown={handleKeyDown}
           />
         </div>
         <div>
