@@ -32,7 +32,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 // export const movies = [
 //     {
-//         movieId: 1,
+//         id: 1,
 //         posterImage: jurrasic,
 //         videoUrl: "https://www.youtube.com/embed/fb5ELWi-ekk",
 //         title: "Jurrasic World Dominon",
@@ -42,7 +42,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 //     },
 //     {
-//         movieId: 2,
+//         id: 2,
 //         posterImage: aquaman,
 //         videoUrl: "https://www.youtube.com/embed/WDkg3h8PCVU",
 //         description: "Jurassic World Dominion is a 2022 American science fiction action film directed by Colin Trevorrow, who co-wrote the screenplay with Emily Carmichael from a story by Derek Connolly and Trevorrow. ",
@@ -52,7 +52,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 //     }
 //     , {
-//         movieId: 3,
+//         id: 3,
 //         posterImage: chatterji,
 //         videoUrl: "https://www.youtube.com/embed/1Bll53fBa9U",
 //         description: "Jurassic World Dominion is a 2022 American science fiction action film directed by Colin Trevorrow, who co-wrote the screenplay with Emily Carmichael from a story by Derek Connolly and Trevorrow. ",
@@ -62,7 +62,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 //     }
 //     , {
-//         movieId: 4,
+//         id: 4,
 //         posterImage: ironman,
 //         videoUrl: "https://www.youtube.com/embed/kyXjxhI_-ws",
 //         description: "Jurassic World Dominion is a 2022 American science fiction action film directed by Colin Trevorrow, who co-wrote the screenplay with Emily Carmichael from a story by Derek Connolly and Trevorrow. ",
@@ -71,7 +71,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 //         movieDuraction: "2h 4m"
 
 //     }, {
-//         movieId: 5,
+//         id: 5,
 //         posterImage: shawshank,
 //         videoUrl: "https://www.youtube.com/embed/NmzuHjWmXOc",
 //         title: "The Shawshank Redemption",
@@ -80,7 +80,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 //         movieDuraction: "2h 4m"
 
 //     }, {
-//         movieId: 6,
+//         id: 6,
 //         posterImage: inception,
 //         videoUrl: "https://www.youtube.com/embed/YoHD9XEInc0",
 //         title: "Inception",
@@ -90,7 +90,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 //     },
 //     {
-//         movieId: 7,
+//         id: 7,
 //         posterImage: jurrasic,
 //         videoUrl: "https://www.youtube.com/embed/fb5ELWi-ekk",
 //         title: "Jurrasic World Dominon",
@@ -100,7 +100,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 //     },
 //     {
-//         movieId: 8,
+//         id: 8,
 //         posterImage: aquaman,
 //         videoUrl: "https://www.youtube.com/embed/WDkg3h8PCVU",
 //         title: "Aquaman",
@@ -110,7 +110,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 //     }
 //     , {
-//         movieId: 9,
+//         id: 9,
 //         posterImage: chatterji,
 //         videoUrl: "https://www.youtube.com/embed/1Bll53fBa9U",
 //         title: "Mrs Chatterjee vs Norway",
@@ -120,7 +120,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 //     }
 //     , {
-//         movieId: 10,
+//         id: 10,
 //         posterImage: ironman,
 //         videoUrl: "https://www.youtube.com/embed/kyXjxhI_-ws",
 //         title: "Iron Man",
@@ -129,7 +129,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 //         movieDuraction: "2h 4m"
 
 //     }, {
-//         movieId: 11,
+//         id: 11,
 //         posterImage: shawshank,
 //         videoUrl: "https://www.youtube.com/embed/NmzuHjWmXOc",
 //         title: "The Shawshank Redemption",
@@ -138,7 +138,7 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 //         movieDuraction: "2h 4m"
 
 //     }, {
-//         movieId: 12,
+//         id: 12,
 //         posterImage: inception,
 //         videoUrl: "https://www.youtube.com/embed/YoHD9XEInc0",
 //         title: "Inception",
@@ -150,9 +150,10 @@ import PrincessBride from '../assets/posters/princessbride.jpg'
 
 // ]
 
+// change name to mock data
 export const movies = [
     {
-        "movieId": 1,
+        "id": 1,
         "posterImage": AvengersEndgame,
         "videoUrl": "https://www.youtube.com/embed/TcMBFSGVi1c",
         "title": "Avengers: Endgame",
@@ -162,7 +163,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Sci-Fi"]
     },
     {
-        "movieId": 2,
+        "id": 2,
         "posterImage": Fast9,
         "videoUrl": "https://www.youtube.com/embed/FUK2kdPsBws",
         "title": "Fast & Furious 9",
@@ -172,7 +173,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Crime"]
     },
     {
-        "movieId": 3,
+        "id": 3,
         "posterImage": BlackWidow,
         "videoUrl": "https://www.youtube.com/embed/ybji16u608U",
         "title": "Black Widow",
@@ -182,7 +183,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Sci-Fi"]
     },
     {
-        "movieId": 4,
+        "id": 4,
         "posterImage": Joker,
         "videoUrl": "https://www.youtube.com/embed/zAGVQLHvwOY",
         "title": "Joker",
@@ -192,7 +193,7 @@ export const movies = [
         "genre": ["Crime", "Drama", "Thriller"]
     },
     {
-        "movieId": 5,
+        "id": 5,
         "posterImage": Inception,
         "videoUrl": "https://www.youtube.com/embed/YoHD9XEInc0",
         "title": "Inception",
@@ -202,7 +203,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Sci-Fi"]
     },
     {
-        "movieId": 6,
+        "id": 6,
         "posterImage": DarkKnight,
         "videoUrl": "https://www.youtube.com/embed/EXeTwQWrcwY",
         "title": "The Dark Knight",
@@ -212,7 +213,7 @@ export const movies = [
         "genre": ["Action", "Crime", "Drama"]
     },
     {
-        "movieId": 7,
+        "id": 7,
         "posterImage": JurassicPark,
         "videoUrl": "https://www.youtube.com/embed/QWBKEmWWL38",
         "title": "Jurassic Park",
@@ -222,7 +223,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Sci-Fi"]
     },
     {
-        "movieId": 8,
+        "id": 8,
         "posterImage": LordRing,
         "videoUrl": "https://www.youtube.com/embed/V75dMMIW2B4",
         "title": "The Lord of the Rings: The Fellowship of the Ring",
@@ -232,7 +233,7 @@ export const movies = [
         "genre": ["Adventure", "Drama", "Fantasy"]
     },
     {
-        "movieId": 9,
+        "id": 9,
         "posterImage": Interstellar,
         "videoUrl": "https://www.youtube.com/embed/zSWdZVtXT7E",
         "title": "Interstellar",
@@ -242,7 +243,7 @@ export const movies = [
         "genre": ["Adventure", "Drama", "Sci-Fi"]
     },
     {
-        "movieId": 10,
+        "id": 10,
         "posterImage": Happiness,
         "videoUrl": "https://www.youtube.com/embed/DMOBlEcRuw8",
         "title": "The Pursuit of Happyness",
@@ -252,7 +253,7 @@ export const movies = [
         "genre": ["Biography", "Drama"]
       },
     {
-        "movieId": 11,
+        "id": 11,
         "posterImage": Matrix,
         "videoUrl": "https://www.youtube.com/embed/9ix7TUGVYIo",
         "title": "The Matrix",
@@ -262,7 +263,7 @@ export const movies = [
         "genre": ["Action", "Sci-Fi"]
     },
     {
-        "movieId": 12,
+        "id": 12,
         "posterImage": PulpFiction,
         "videoUrl": "https://www.youtube.com/embed/s7EdQ4FqbhY",
         "title": "Pulp Fiction",
@@ -272,7 +273,7 @@ export const movies = [
         "genre": ["Crime", "Drama"]
     },
     {
-        "movieId": 13,
+        "id": 13,
         "posterImage": Avengers,
         "videoUrl": "https://www.youtube.com/embed/eOrNdBpGMv8",
         "title": "The Avengers",
@@ -282,7 +283,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Sci-Fi"]
     },
     {
-        "movieId": 14,
+        "id": 14,
         "posterImage": Titanic,
         "videoUrl": "https://www.youtube.com/embed/kVrqfYjkTdQ",
         "title": "Titanic",
@@ -292,7 +293,7 @@ export const movies = [
         "genre": ["Drama", "Romance"]
     },
     {
-        "movieId": 15,
+        "id": 15,
         "posterImage": LionKing,
         "videoUrl": "https://www.youtube.com/embed/7TavVZMewpY",
         "title": "The Lion King",
@@ -302,7 +303,7 @@ export const movies = [
         "genre": ["Animation", "Adventure", "Drama", "Kids"]
     },
     {
-        "movieId": 16,
+        "id": 16,
         "posterImage": HarryPotter,
         "videoUrl": "https://www.youtube.com/embed/mNgwNXKBEW0",
         "title": "Harry Potter and the Philosopher's Stone",
@@ -312,7 +313,7 @@ export const movies = [
         "genre": ["Adventure", "Family", "Fantasy"]
     },
     {
-        "movieId": 17,
+        "id": 17,
         "posterImage": ForrestGump,
         "videoUrl": "https://www.youtube.com/embed/bLvqoHBptjg",
         "title": "Forrest Gump",
@@ -322,7 +323,7 @@ export const movies = [
         "genre": ["Drama", "Romance"]
     },
     {
-        "movieId": 18,
+        "id": 18,
         "posterImage": Godfather,
         "videoUrl": "https://www.youtube.com/embed/UaVTIH8mujA",
         "title": "The Godfather",
@@ -332,7 +333,7 @@ export const movies = [
         "genre": ["Crime", "Drama"]
     },
     {
-        "movieId": 19,
+        "id": 19,
         "posterImage": Avatar,
         "videoUrl": "https://www.youtube.com/embed/CM79GTEm2ps",
         "title": "Avatar",
@@ -342,7 +343,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Fantasy"]
     },
     {
-        "movieId": 20,
+        "id": 20,
         "posterImage": DarkKnightRises,
         "videoUrl": "https://www.youtube.com/embed/GokKUqLcvD8",
         "title": "The Dark Knight Rises",
@@ -352,7 +353,7 @@ export const movies = [
         "genre": ["Action", "Adventure"]
     },
     {
-        "movieId": 21,
+        "id": 21,
         "posterImage": GreatGatsby,
         "videoUrl": "https://www.youtube.com/embed/rARN6agiW7o",
         "title": "The Great Gatsby",
@@ -362,7 +363,7 @@ export const movies = [
         "genre": ["Drama", "Romance"]
     },
     {
-        "movieId": 22,
+        "id": 22,
         "posterImage": Social,
         "videoUrl": "https://www.youtube.com/embed/lB95KLmpLR4",
         "title": "The Social Network",
@@ -372,7 +373,7 @@ export const movies = [
         "genre": ["Biography", "Drama"]
     },
     {
-        "movieId": 23,
+        "id": 23,
         "posterImage": LalaLand,
         "videoUrl": "https://www.youtube.com/embed/0pdqf4P9MB8",
         "title": "La La Land",
@@ -382,7 +383,7 @@ export const movies = [
         "genre": ["Comedy", "Drama", "Music"]
     },
     {
-        "movieId": 24,
+        "id": 24,
         "posterImage": HungerGames,
         "videoUrl": "https://www.youtube.com/embed/PbA63a7H0bo",
         "title": "The Hunger Games",
@@ -393,7 +394,7 @@ export const movies = [
     }
     ,
     {
-        "movieId": 25,
+        "id": 25,
         "posterImage": jurrasic,
         "videoUrl": "https://www.youtube.com/embed/fb5ELWi-ekk",
         "title": "Jurrasic World Dominon",
@@ -404,7 +405,7 @@ export const movies = [
 
     },
     {
-        "movieId": 26,
+        "id": 26,
         "posterImage": aquaman,
         "videoUrl": "https://www.youtube.com/embed/WDkg3h8PCVU",
         "description": "A half-Atlantean, half-human who is reluctant to be king of the undersea nation of Atlantis. He is a member of the Justice League. He possesses superhuman strength, durability, and has the ability to manipulate hydrokinesis, the tides, communicate with sea creatures and swim at supersonic speeds. ",
@@ -414,7 +415,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Sci-Fi"]
     }
     , {
-        "movieId": 27,
+        "id": 27,
         "posterImage": chatterji,
         "videoUrl": "https://www.youtube.com/embed/1Bll53fBa9U",
         "description": "An immigrant Indian mother fights the Norwegian foster care system and legal machinery to win back custody the of her children. ",
@@ -424,7 +425,7 @@ export const movies = [
         "genre": ["Drama"]
     }
     , {
-        "movieId": 28,
+        "id": 28,
         "posterImage": ironman,
         "videoUrl": "https://www.youtube.com/embed/kyXjxhI_-ws",
         "description": "When Tony Stark, an industrialist, is captured, he constructs a high-tech armoured suit to escape. Once he manages to escape, he decides to use his suit to fight against evil forces to save the world. ",
@@ -434,7 +435,7 @@ export const movies = [
         "genre": ["Action", "Adventure", "Sci-Fi"]
 
     }, {
-        "movieId": 29,
+        "id": 29,
         "posterImage": shawshank,
         "videoUrl": "https://www.youtube.com/embed/NmzuHjWmXOc",
         "title": "The Shawshank Redemption",
@@ -445,7 +446,7 @@ export const movies = [
 
     },
     {
-        "movieId": 30,
+        "id": 30,
         "posterImage": PrincessBride,
         "videoUrl": "https://www.youtube.com/embed/P9FRDyTerZA",
         "title": "The Princess Bride",

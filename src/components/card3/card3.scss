@@ -14,8 +14,8 @@
 .card-end-container-3 {
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-end;
+  align-items: flex-end;
 }
 
 // .card-container-3:hover {
@@ -48,6 +48,8 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 4%;
+  width:100%;
+  height:40%;
 
   h4 {
     font-family: "Nunito Sans";
@@ -71,7 +73,9 @@
   font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 600;
-  font-size: 20px;
+  display: flex;
+  justify-content: flex-start;
+  font-size: 26px;
   color: #ffffff;
 }
 
@@ -83,13 +87,11 @@
 }
 
 .card-logo-container-3 {
-  width: 90%;
+  width: 80%;
   display: flex;
   gap: 1rem;
-  margin-left: 5%;
-  margin-top: 5%;
   align-items: center;
-  justify-content: end;
+  justify-content: space-evenly;
   //justify-content: end;
 }
 
@@ -100,14 +102,34 @@
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 10px;
+  font-size: 12px;
   line-height: 12px;
+  height:50%;
 
   color: #FFFFFF;
+  width:40%;
 
 }
 
 .card-last-container-3 {
   display: flex;
   gap: 4%;
+  height:60%;
+}
+
+.rate-1-card-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: 0.6px solid #9A9B9C;
+  border-radius: 26px;
+  color: white;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 12px;
+  width:30%;
+  
 }
