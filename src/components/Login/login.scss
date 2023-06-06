@@ -89,6 +89,11 @@
   border: 1px solid #8b8b8b;
   border-radius: 1rem !important;
   margin-top: 10%;
+  .error-signup {
+      color: #F03A47;
+      display: flex;
+      justify-content: flex-start;
+    }
 }
 
 .form .inputs input {

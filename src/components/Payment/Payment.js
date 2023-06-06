@@ -1,7 +1,11 @@
 import React from "react";
 import "./payment.scss";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Payment() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  let p = location.state;
   return (
     <div className="payment-container">
       <div className="binge-box-heading">
@@ -20,7 +24,7 @@ function Payment() {
         <div className="left">
           <p style={{ fontWeight: "400", fontSize: "1.25rem" }}>Payment</p>
           <p style={{ fontWeight: "700", fontSize: "2.5rem" }}>
-            Rs. <span style={{ marginLeft: "2rem" }}>899</span>
+            Rs. <span style={{ marginLeft: "2rem" }}>{p.price}</span>
           </p>
         </div>
         <div className="right">
@@ -64,7 +68,14 @@ function Payment() {
                 </div>
               </div>
             </div>
-            <button className="pay-btn">Pay Now</button>
+            <button
+              className="pay-btn"
+              onClick={() => {
+                navigate("/payment-successful");
+              }}
+            >
+              Pay Now
+            </button>
           </form>
         </div>
       </div>

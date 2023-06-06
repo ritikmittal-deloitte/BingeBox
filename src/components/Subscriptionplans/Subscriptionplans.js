@@ -1,13 +1,27 @@
 import React from "react";
 import "./subscriptionplans.scss";
+import { useNavigate } from "react-router-dom";
 import SubscriptionComponent from "./SubscriptionComponent";
 
 function Subscriptionplans() {
+  // const navigate = useNavigate();
+  // const SelectPlan = (value) => {
+  //   let x = 1;
+  //   console.log("Checking");
+  //   console.log("Value::", value);
+  //   navigate("/selected-plan", { state: value });
+  // };
+
   return (
     <div className="plans-container">
       <div className="left-container">
         <div className="binge-box-heading" style={{ marginTop: "17rem" }}>
-          <div className="binge-heading"> BINGE</div>
+          <div
+            className="binge-heading"
+            style={{ heigh: "4rem", width: "17rem" }}
+          >
+            BINGE
+          </div>
           <div className="box-heading">BOX</div>
         </div>
         <h2>"Unleash Your Movie Magic"</h2>
@@ -16,9 +30,7 @@ function Subscriptionplans() {
       <div className="right-container">
         <div className="cards">
           {plans.map((p, index) => {
-            return (
-              <SubscriptionComponent p={p} index={index}/>
-            );
+            return <SubscriptionComponent p={p} index={index} />;
           })}
         </div>
       </div>
