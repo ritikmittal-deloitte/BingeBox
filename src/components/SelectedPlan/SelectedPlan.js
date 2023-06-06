@@ -1,7 +1,19 @@
 import React from "react";
 import "./selectedplan.scss";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function SelectedPlan() {
+  const todayDate = new Date();
+  const navigate = useNavigate();
+  const location = useLocation();
+  let p = location.state;
+  console.log("Value Recieved:", p);
+  const Payment = (value) => {
+    let x = 1;
+    console.log("Checking");
+    console.log("plan Value::", value);
+    navigate("/payment", { state: value });
+  };
   return (
     <div className="selected-container">
       <div className="binge-box-heading">
@@ -9,12 +21,12 @@ function SelectedPlan() {
         <div className="box-heading">BOX</div>
       </div>
       <div className="card">
-        <h2>Premium Plan</h2>
+        <h2>{p.type} Plan</h2>
         <p>
           Hi <span>Manish Singh</span>, Here is your Subscription Plan Details!
         </p>
         <p style={{ marginTop: "1.5rem" }}>
-          Validity: <span>1 June 2024</span>
+          Validity: <span>{todayDate.getFullYear()}</span>
         </p>
         <div className="features">
           <h4>Price</h4>
@@ -24,19 +36,31 @@ function SelectedPlan() {
         </div>
         <div className="rate">
           <p>
-            Rs. <span>1499</span>/yr
+            Rs. <span>{p.price}</span>/yr
           </p>
           <p style={{ marginLeft: "-1.2rem", marginRight: "0rem" }}>
-            4k (Ultra HD) + HDR
+            {p.resolution}
           </p>
-          <p style={{ marginLeft: "7rem", marginRight: "0rem" }}>Best</p>
+          <p style={{ marginLeft: "7rem", marginRight: "0rem" }}>{p.quality}</p>
           <p style={{ marginLeft: "16.8rem", marginRight: "0rem" }}>
-            TV, Computer, Mobile
+            {p.supporteddevice}
           </p>
         </div>
         <div className="btn">
-          <div className="back-btn">Back</div>
-          <div className="payment-btn">Proceed to Payment</div>
+          <button
+            className="back-btn"
+            onClick={() => navigate("/subscription-plans")}
+          >
+            Back
+          </button>
+          <button
+            className="payment-btn"
+            onClick={() => {
+              Payment(p);
+            }}
+          >
+            Proceed to Payment
+          </button>
         </div>
       </div>
     </div>

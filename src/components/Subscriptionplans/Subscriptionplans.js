@@ -1,12 +1,25 @@
 import React from "react";
 import "./subscriptionplans.scss";
+import { useNavigate } from "react-router-dom";
 
 function Subscriptionplans() {
+  const navigate = useNavigate();
+  const SelectPlan = (value) => {
+    let x = 1;
+    console.log("Checking");
+    console.log("Value::", value);
+        navigate('/selected-plan', { state: value });
+  };
   return (
     <div className="plans-container">
       <div className="left-container">
         <div className="binge-box-heading" style={{ marginTop: "17rem" }}>
-          <div className="binge-heading"> BINGE</div>
+          <div
+            className="binge-heading"
+            style={{ heigh: "4rem", width: "17rem" }}
+          >
+            BINGE
+          </div>
           <div className="box-heading">BOX</div>
         </div>
         <h2>"Unleash Your Movie Magic"</h2>
@@ -36,7 +49,14 @@ function Subscriptionplans() {
                   <p>Supported Devices</p>
                   <h5>{p.supporteddevice}</h5>
                 </div>
-                <button className="btn">Buy Now</button>
+                <button
+                  className="btn"
+                  onClick={() => {
+                    SelectPlan(p);
+                  }}
+                >
+                  Buy Now
+                </button>
               </div>
             );
           })}
