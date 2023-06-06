@@ -9,11 +9,16 @@ import { ReactComponent as Logo2 } from "../../assets/images/avatar2.svg";
 import profilePhoto from "../../assets/images/profile-photo.svg";
 import Logo from "../Logo/Logo";
 import CategoryType from "../CategoryType/CategoryType";
+import { useSelector ,useDispatch} from "react-redux";
+import { dummyData } from "../../mockData/accountsMockData";
+import { AccountAction } from "../../redux/AccountSlice";
 
 const Header = () => {
   const [selected, setSelected] = useState("1");
   const [profile, setProfile] = useState(false);
-
+  const dispatch=useDispatch()
+  const selectedAccount=useSelector((state)=>state.account.currentAccount)
+    console.log("in header",selectedAccount)
   const genres = [
     "Horror",
     "Romantic",
@@ -40,6 +45,10 @@ const Header = () => {
   const check = (value) => {
     console.log("Value:", value);
   };
+  const handleChangingAccount=(account)=>{
+    dispatch(AccountAction.selectCurrentAccount(account))
+
+  }
 
   return (
     <div className="d-flex justify-content-between w-100 align-items-end header-container">
@@ -135,7 +144,7 @@ const Header = () => {
               className="noti-icon"
             />
             <img
-              src={profilePhoto}
+              src={selectedAccount.img}
               className="profile-style"
               onClick={() => {
                 setProfile(!profile);
@@ -146,18 +155,23 @@ const Header = () => {
           {profile &&  <div className="profile-box">
               <div className=""></div>
               <div className="selected-1">&nbsp;&nbsp;&nbsp; Manisha Singh</div>
-              <div className="avatar-box">
+              {
+               dummyData.accounts.length>1&&( <div className="avatar-box">
               &nbsp;&nbsp;&nbsp;
-                <div>
-              <Logo1/>
-                  <div className="avatar-text">Manan</div>
+              {
+                dummyData.accounts.filter((account)=>account.name!==selectedAccount.name).map((account)=>(
+                  <div>
+              <img src={account.img} onClick={()=>handleChangingAccount(account)}/>
+                  <div className="avatar-text">{account.name}</div>
                 </div>
-                <div>
-              <Logo2/>
-                  <div className="avatar-text">Raman</div>
-                </div>
+                ))
+              }
+                
               </div>
-              <div className="Box-1" >
+               )
+              }
+              
+              <div className="Box-1 mt-3" >
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Profile
               </div>
               <div className="Box-1" >

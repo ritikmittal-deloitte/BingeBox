@@ -11,6 +11,7 @@ import { UserContextProvider } from "./context/Context/UserContext/UserState";
 import UserPreferences from "./components/UserPreferences/UserPreferences";
 import Profile from "./components/Profile/Profile";
 import SearchPage from "./components/Searchpage/SearchPage";
+import Accounts from "./components/accounts/Accounts";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -22,6 +23,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+          <Route path="/accounts" element={<Accounts/>}/>
           <Route path="/userpreferences" element={<UserPreferences />} />
 
           {

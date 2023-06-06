@@ -5,8 +5,13 @@ import User2 from '../../assets/images/image 75.png'
 import User3 from '../../assets/images/image 76.png'
 import PlusIcon from '../../assets/icons/plus.png'
 import './Profile.scss'
+import { dummyData } from '../../mockData/accountsMockData'
+import { useSelector } from "react-redux";
 
 export default function Profile() {
+    const account=useSelector((state)=>state.account.currentAccount)
+    console.log("in profile",account)
+
     const logout = () => {
 
     }
@@ -66,9 +71,9 @@ export default function Profile() {
     )
 }
 
-const dummyData = {
-    email: 'manishsingh96@gmail.com',
-    phone: '845984958988',
-    genre: ['Horror', 'Romantic', 'Comedy'],
-    accounts: [{ name: 'Sonali', img: User2 }, { name: 'Naina', img: User3 }, { name: 'Saurabh', img: User1 },]
-}
+// const dummyData = {
+//     email: 'manishsingh96@gmail.com',
+//     phone: '845984958988',
+//     genre: ['Horror', 'Romantic', 'Comedy'],
+//     accounts: [{ name: 'Sonali', img: User2 }, { name: 'Naina', img: User3 }, { name: 'Saurabh', img: User1 },]
+// }

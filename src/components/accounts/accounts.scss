@@ -1,0 +1,73 @@
+.accounts-main-container{
+    width: 100%;
+    height: 100%;
+    color:white;
+    display: flex;
+    margin-top: 11.375rem;
+    margin-right: 42.823rem;
+}
+.inner-account-container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    
+    h3{
+
+        justify-content: center;
+        font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 36px;
+line-height: 49px;
+display: flex;
+align-items: center;
+text-align: center;
+padding-top: 3.625rem;
+
+color: #FFFFFF;
+    }
+}
+.logo-conatiner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.accounts-container{
+    justify-content: center;
+    display: flex;
+    padding-top:3.625rem ;
+    padding-left: 5rem;
+
+}
+.account-style{
+    display: flex;
+    flex-direction: column;
+    // row-gap:4.593rem;
+    padding-right: 4.593rem;
+    img{
+        width: 8.324rem;
+        height: 8.324rem;
+        &:hover{
+           border: 0.328rem solid #F03A47;
+           border-radius: 50%;
+           width: 10.188rem;
+        height: 10.188rem;
+        }
+        //padding-bottom: 1.148rem;
+    }
+    .account-name-style{
+        padding-top: 1.148rem;
+        font-family: 'Nunito Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 28px;
+line-height: 45px;
+/* identical to box height, or 159% */
+
+text-align: center;
+
+/* Neurtal/White */
+
+color: #FFFFFF;
+    }
+}
