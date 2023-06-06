@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import "./home.scss";
 import Card from "../card/Card";
 import Card3 from "../card3/Card3";
+import {useLocation} from "react-router-dom";
 import { movies } from "../../mockData/moviesMockData";
 import { ReactComponent as ScrollLogo } from "../../assets/icons/arrow.svg";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
@@ -23,7 +24,10 @@ const Home = () => {
       return item ;
     }
   })
-  console.log("Data filtered out :",data)
+  const location = useLocation();
+  let url= location.pathname;
+  console.log("PATH Name:",url)
+//  console.log("Data filtered out :",data)
   const [topMovies, setTopMovies] = useState([]);
   const [recentMovies, setrecentMovies] = useState([]);
   const [trendingMovies, settrendingMovies] = useState([]);
@@ -43,22 +47,22 @@ const Home = () => {
   const fetchTrendingMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    settrendingMovies(data);
+    settrendingMovies(movies);
   };
   const fetchTopMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setTopMovies(data);
+    setTopMovies(movies);
   };
   const fetchRecentMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setrecentMovies(data);
+    setrecentMovies(movies);
   };
   const fetchYourWatches = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setyourWatches(data);
+    setyourWatches(movies);
   };
 
   useEffect(() => {
@@ -195,7 +199,13 @@ const Home = () => {
       </div>
 
       <div className="top-movie-container">
-        <p className="d-flex">Top Movies for you</p>
+        <p className="d-flex">
+        {url==="/home" && <>Top Recommendations for you</>}
+        {url==="/anime" && <>Top Animes for you</>}
+        {url==="/movies" && <>Top Movies for you</>}
+        {url==="/tv-shows" && <>Top Tv Shows for you</>}
+        {url==="/series" && <>Top Series for you</>}
+        </p>
         <div className="top-movies-grid">
           <div onClick={() => leftScroll(".cards")} className="arrow-style">
             <ScrollLogo />
@@ -203,7 +213,7 @@ const Home = () => {
 
           <section className="cards">
             {topMovies.map((movie, index) => (
-              <Card cardData={movie} key={index} />
+              <Card cardData={movie} key={index} direct="Home" />
             ))}
           </section>
 
@@ -249,7 +259,7 @@ const Home = () => {
 
           <section className="your-watches-cards">
             {yourWatches.map((movie, index) => (
-              <Card3 cardData={movie} key={index} />
+              <Card3 cardData={movie} key={index} direct="Home"/>
             ))}
           </section>
 
@@ -262,7 +272,14 @@ const Home = () => {
         </div>
       </div>
       <div className="top-movie-container">
-        <p className="d-flex">Trending Movies</p>
+        <p className="d-flex">
+        {url==="/home" && <>Trending Now</>}
+        {url==="/anime" && <>Trending Animes</>}
+        {url==="/movies" && <>Trending Movies</>}
+        {url==="/tv-shows" && <>Trending Tv Shows</>}
+        {url==="/series" && <>Trending Series</>}
+        
+        </p>
         <div className="top-movies-grid">
           <div
             onClick={() => leftScroll(".trending-movie-cards")}
@@ -273,7 +290,7 @@ const Home = () => {
 
           <section className="trending-movie-cards">
             {trendingMovies.map((movie, index) => (
-              <Card cardData={movie} key={index} />
+              <Card cardData={movie} key={index} direct="Home"/>
             ))}
           </section>
 

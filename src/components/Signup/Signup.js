@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./signup.scss";
+import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 
 const upperTexts = [
   '"Lights, Camera, Sign Up "',
@@ -83,10 +84,10 @@ function Signup() {
   return (
     <div className="signup-container">
       <div className="left-container">
-        <div className="binge-box-heading">
+         <div className="binge-box-heading">
           <div className="binge-heading"> BINGE</div>
           <div className="box-heading">BOX</div>
-        </div>
+        </div> 
         <form action="" className="signup-form" onSubmit={handleSubmit}>
           <h3 className="d-flex justify-content-start w-100 mb-0 signup-heading">
             Sign Up
