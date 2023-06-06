@@ -1,5 +1,6 @@
 import React from "react";
 import "./subscriptionplans.scss";
+import SubscriptionComponent from "./SubscriptionComponent";
 
 function Subscriptionplans() {
   return (
@@ -16,28 +17,7 @@ function Subscriptionplans() {
         <div className="cards">
           {plans.map((p, index) => {
             return (
-              <div className="card" id={"card-" + index}>
-                <h2 className="plan-type">{p.type}</h2>
-                <h4 className="price">
-                  Rs. <span>{p.price}</span>/yr
-                </h4>
-                <p className="device">4 device</p>
-                <div className="resolution">
-                  <p>Resolution</p>
-                  <h5>{p.resolution}</h5>
-                </div>
-                <hr />
-                <div className="quality">
-                  <p>Video Quality</p>
-                  <h5>{p.quality}</h5>
-                </div>
-                <hr />
-                <div className="supported-device">
-                  <p>Supported Devices</p>
-                  <h5>{p.supporteddevice}</h5>
-                </div>
-                <button className="btn">Buy Now</button>
-              </div>
+              <SubscriptionComponent p={p} index={index}/>
             );
           })}
         </div>

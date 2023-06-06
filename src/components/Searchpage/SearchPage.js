@@ -3,6 +3,7 @@ import './SearchPage.scss'
 import { useParams } from 'react-router-dom'
 import { movies } from '../../mockData/moviesMockData'
 import { UserContext } from '../../context/Context/UserContext/UserState'
+import Card from '../card/Card'
 
 export default function SearchPage() {
     const {searchText,setSearchText} = useContext(UserContext)
@@ -78,7 +79,7 @@ export default function SearchPage() {
                 <div className='search-results-movies'>
                     {filterMovies.map((obj) => {
                         return (
-                                <img className='search-movie-card' src={obj.posterImage} alt='poster-not-available'/>
+                            <Card cardData={obj}/>
                         )
                     })
                     }
@@ -91,7 +92,7 @@ export default function SearchPage() {
                 <div className='other-results-movies'>
                 {other.slice(0,5).map((obj) => {
                         return (
-                                <img className='other-movie-card' src={obj.posterImage} alt='poster-not-available'/>
+                            <Card cardData={obj}/>
                         )
                     })
                     }

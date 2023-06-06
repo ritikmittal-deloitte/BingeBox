@@ -90,7 +90,7 @@ const Login = ({ setIsLogin }) => {
                 <div className=" google-icon"></div>Google
               </button>
               <button className="mac-signin">
-                {/* <AppleIcon className="apple-icon" /> Apple */}
+                <div className="apple-icon" ></div> Apple
               </button>
             </div>
           </form>

@@ -28,7 +28,7 @@
     // margin-left: 60rem;
     margin-top: 10rem;
     // margin-left: 5rem;
-    .cards {
+    .cards {    
       display: flex;
       justify-content: space-around;
       margin-top: 9rem;
@@ -101,43 +101,43 @@
           }
         }
 
-        .btn {
-          background-color: #f03a47;
-          color: #ffffff;
-          width: 14.5rem;
-          height:0rem !important;
-          align-items: center;
-          margin-left: 1.4rem;
-          margin-top: 0rem !important;
-          font-size: 1.5rem;
-          font-weight: 600;
-          border-radius: 1.4rem;
-          opacity: 0;
+        // .btn {
+        //   background-color: #f03a47;
+        //   color: #ffffff;
+        //   width: 14.5rem;
+        //   height:0rem !important;
+        //   align-items: center;
+        //   margin-left: 1.4rem;
+        //   margin-top: 0rem !important;
+        //   font-size: 1.5rem;
+        //   font-weight: 600;
+        //   border-radius: 1.4rem;
+        //   opacity: 0;
        
-          margin: auto;
-        }
+        //   margin: auto;
+        // }
         
       }
-      .card:hover {
-        transform: scale(1.10);
-        transition: 0.15s linear;
-        .btn {
-                background-color: #f03a47;
-                    color: #ffffff;
-                    width: 14.5rem;
-                    height: 4.3rem !important;
-                    align-items: center;
-                    margin-left: 1.4rem;
-                    margin-top: 3rem !important;
-                    font-size: 1.5rem;
-                    font-weight: 600;
-                    border-radius: 1.4rem;
-                    opacity: 1;
-                    display: block;
-                    margin: auto;
+      // .card:hover {
+      //   transform: scale(1.10);
+      //   transition: 0.15s linear;
+      //   .btn {
+                // background-color: #f03a47;
+                //     color: #ffffff;
+                //     width: 14.5rem;
+                //     height: 4.3rem !important;
+                //     align-items: center;
+                //     margin-left: 1.4rem;
+                //     margin-top: 3rem !important;
+                //     font-size: 1.5rem;
+                //     font-weight: 600;
+                //     border-radius: 1.4rem;
+                //     opacity: 1;
+                //     display: block;
+                //     margin: auto;
               
-            }
-      }
+      //       }
+      // }
     }
   }
 }
