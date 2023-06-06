@@ -1,17 +1,17 @@
 import React from "react";
 import "./subscriptionplans.scss";
 import { useNavigate } from "react-router-dom";
+import SubscriptionComponent from "./SubscriptionComponent";
 
 function Subscriptionplans() {
-  const navigate = useNavigate();
-  const SelectPlan = (value) => {
-    let x = 1;
-    console.log("Checking");
-    console.log("Value::", value);
-        navigate('/selected-plan', { state: value });
-  };
+  // const navigate = useNavigate();
+  // const SelectPlan = (value) => {
+  //   let x = 1;
+  //   console.log("Checking");
+  //   console.log("Value::", value);
+  //   navigate("/selected-plan", { state: value });
+  // };
 
-  
   return (
     <div className="plans-container">
       <div className="left-container">
@@ -30,37 +30,7 @@ function Subscriptionplans() {
       <div className="right-container">
         <div className="cards">
           {plans.map((p, index) => {
-            return (
-              <div className="card" id={"card-" + index}>
-                <h2 className="plan-type">{p.type}</h2>
-                <h4 className="price">
-                  Rs. <span>{p.price}</span>/yr
-                </h4>
-                <p className="device">4 device</p>
-                <div className="resolution">
-                  <p>Resolution</p>
-                  <h5>{p.resolution}</h5>
-                </div>
-                <hr />
-                <div className="quality">
-                  <p>Video Quality</p>
-                  <h5>{p.quality}</h5>
-                </div>
-                <hr />
-                <div className="supported-device">
-                  <p>Supported Devices</p>
-                  <h5>{p.supporteddevice}</h5>
-                </div>
-                <button
-                  className="btn"
-                  onClick={() => {
-                    SelectPlan(p);
-                  }}
-                >
-                  Buy Now
-                </button>
-              </div>
-            );
+            return <SubscriptionComponent p={p} index={index} />;
           })}
         </div>
       </div>

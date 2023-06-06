@@ -12,17 +12,23 @@ const Login = ({ setIsLogin }) => {
   //     const navigate = useNavigate();
 
   const validateForm = () => {
-    const errors = {};
+    const validateForm = () => {
+      const errors = {};
+      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+      if (!emailRegex.test(email)) {
+        errors.email = "Incorrect Email Id";
+      } else if (email.trim() === "") {
+        errors.email = "Email Id is required.";
+      }
 
-    if (!email) {
-      errors.email = "Email is required";
-    }
+      if (!password) {
+        errors.password = "Password is required";
+      }
 
-    if (!password) {
-      errors.password = "Password is required";
-    }
-
-    return errors;
+      setErrors(errors);
+      // Return true if there are no errors
+      return Object.keys(errors).length === 0;
+    };
   };
 
   const handleLogin = (e) => {
@@ -33,7 +39,7 @@ const Login = ({ setIsLogin }) => {
     } else {
       setErrors(errors);
     }
-    // setIsLogin(true);
+    setIsLogin(true);
     // setEmail("");
     // setPassword("");
     navigate("/home");
@@ -58,6 +64,9 @@ const Login = ({ setIsLogin }) => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
+              <div className="error-signup">
+                {errors.email && <span>* {errors.email}</span>}
+              </div>
             </div>
             <div className="inputs">
               <input
@@ -67,6 +76,9 @@ const Login = ({ setIsLogin }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
+              <div className="error-signup">
+                {errors.password && <span>* {errors.password}</span>}
+              </div>
             </div>
             <div className="remember-forgot">
               <label htmlFor="">
@@ -80,7 +92,13 @@ const Login = ({ setIsLogin }) => {
             </button>
             <div className="sign-up">
               <label htmlFor="">Doesn't Have An Account ?</label>
-              <a href="#">Sign Up</a>
+              <a
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                Sign Up
+              </a>
             </div>
             <div className="divider">
               <span className="divider-title">or Login with</span>
@@ -90,7 +108,7 @@ const Login = ({ setIsLogin }) => {
                 <div className=" google-icon"></div>Google
               </button>
               <button className="mac-signin">
-                <AppleIcon className="apple-icon" /> Apple
+                <div className="apple-icon"></div> Apple
               </button>
             </div>
           </form>
