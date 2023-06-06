@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Login/login.scss";
+import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { UserContextProvider } from "../../context/Context/UserContext/UserState";
 const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
@@ -43,8 +44,9 @@ const Login = ({ setIsLogin }) => {
       <div className="overlay">
         <div className="container">
           <div className="binge-box-heading">
-            <div className="binge-heading"> BINGE</div>
-            <div className="box-heading">BOX</div>
+            {/* <div className="binge-heading"> BINGE</div>
+            <div className="box-heading">BOX</div> */}
+            <MainLogo/>
           </div>
           <form onSubmit={handleLogin} className="form">
             <h3 className="d-flex justify-content-start w-100 mb-0 heading">
