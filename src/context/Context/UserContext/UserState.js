@@ -4,9 +4,10 @@ const UserContext = createContext()
 const UserContextProvider = ({ children }) => {
 
     const [watchList , setWatchList]=useState([1])
+    const [searchText, setSearchText] = useState('')
 
     return (
-        <UserContext.Provider value={{ watchList,setWatchList}}>
+        <UserContext.Provider value={{ watchList,setWatchList,searchText, setSearchText}}>
             {children}
         </UserContext.Provider>
     )
