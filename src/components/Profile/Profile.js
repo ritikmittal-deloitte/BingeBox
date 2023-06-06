@@ -24,11 +24,15 @@ export default function Profile() {
                     <div className='heading-container-profile'><div className='profile-heading'>Profile</div></div>
                     <div className='email-section'>
                         <div className='email-detail'>Email &nbsp;-&nbsp;&nbsp; {dummyData.email}</div>
-                        <div className='email-edit-tool'><img src={PencilSquare} alt='tool-icon-not-available' /></div>
+                        <div className='email-edit-tool'>
+                        {/* <img src={PencilSquare} alt='tool-icon-not-available' /> */}
+                        </div>
                     </div>
                     <div className='phone-section'>
                         <div className='phone-detail'>Phone&nbsp; number&nbsp; - &nbsp;&nbsp;{dummyData.phone}</div>
-                        <div className='phone-edit-tool'><img src={PencilSquare} alt='tool-icon-not-available' /></div>
+                        <div className='phone-edit-tool'>
+                        {/* <img src={PencilSquare} alt='tool-icon-not-available' /> */}
+                        </div>
                     </div>
                 </div>
                 <div className="line"></div>

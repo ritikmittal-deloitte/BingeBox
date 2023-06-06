@@ -14,6 +14,7 @@ import Cards2 from "../Cards2/Cards2";
 const Description = () => {
   const [simMovies, setSimMovies] = useState([]);
   let { movieId } = useParams();
+
   const leftScroll = (querySelect) => {
     const left = document.querySelector(querySelect);
     left.scrollBy(-1600, 0);
@@ -23,7 +24,7 @@ const Description = () => {
     right.scrollBy(1660, 0);
   };
   const handleAddToWatchList = () => {
-    console.log("add to watch lsit");
+//    console.log("add to watch lsit");
   };
   const fetchSimilarMovies = async () => {
     //const response=await axios.get("")
@@ -44,7 +45,7 @@ const Description = () => {
                 <div className="cbfc-style">CBFC : U/A</div>
 
                 <h4 className="px-3">{movies[movieId-1].releaseYear}</h4>
-                <h4>{movies[movieId-1].movieDuraction}</h4>
+                <h4>{movies[movieId-1].duration}</h4>
               </div>
             </div>
             <div className="d-flex desc-card-logo-container align-items-center">
