@@ -11,35 +11,37 @@ const Login = ({ setIsLogin }) => {
   // const Login = ({setIsLogin}) => {
   //     const navigate = useNavigate();
 
+  // const validateForm = () => {
   const validateForm = () => {
-    const validateForm = () => {
-      const errors = {};
-      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-      if (!emailRegex.test(email)) {
-        errors.email = "Incorrect Email Id";
-      } else if (email.trim() === "") {
-        errors.email = "Email Id is required.";
-      }
+    const errors = {};
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if (!emailRegex.test(email)) {
+      errors.email = "Incorrect Email Id";
+    } else if (email.trim() === "") {
+      errors.email = "Email Id is required.";
+    }
 
-      if (!password) {
-        errors.password = "Password is required";
-      }
+    if (!password) {
+      errors.password = "Password is required";
+    }
 
-      setErrors(errors);
-      // Return true if there are no errors
-      return Object.keys(errors).length === 0;
-    };
+    setErrors(errors);
+    // Return true if there are no errors
+    return Object.keys(errors).length === 0;
   };
+  // };
 
   const handleLogin = (e) => {
     e.preventDefault();
     const errors = validateForm();
+    console.log(errors);
+    console.log("errors:", Object.keys(errors).length);
     if (Object.keys(errors).length === 0) {
       console.log("Login successful");
     } else {
       setErrors(errors);
     }
-    setIsLogin(true);
+    // setIsLogin(true);
     // setEmail("");
     // setPassword("");
     navigate("/home");

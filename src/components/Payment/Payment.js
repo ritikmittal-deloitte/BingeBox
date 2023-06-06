@@ -1,9 +1,10 @@
 import React from "react";
 import "./payment.scss";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 function Payment() {
   const location = useLocation();
+  const navigate = useNavigate();
   let p = location.state;
   return (
     <div className="payment-container">
@@ -67,7 +68,14 @@ function Payment() {
                 </div>
               </div>
             </div>
-            <button className="pay-btn">Pay Now</button>
+            <button
+              className="pay-btn"
+              onClick={() => {
+                navigate("/payment-successful");
+              }}
+            >
+              Pay Now
+            </button>
           </form>
         </div>
       </div>

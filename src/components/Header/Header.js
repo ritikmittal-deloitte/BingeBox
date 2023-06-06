@@ -1,7 +1,7 @@
-import React, { useContext , useRef, useState , useEffect} from "react";
+import React, { useContext , useRef, useState , useEffect } from "react";
 import { ReactComponent as NotifiactionLogo } from "../../assets/icons/Vector.svg";
 import "./header.scss";
-import { NavLink,useNavigate } from "react-router-dom";
+import { NavLink,useNavigate , useLocation } from "react-router-dom";
 import { ReactComponent as SearchLogo } from "../../assets/icons/search.svg";
 import { ReactComponent as SettingsLogo } from "../../assets/icons/settings.svg";
 import { ReactComponent as Logo1 } from "../../assets/images/avatar1.svg";
@@ -13,13 +13,15 @@ import CategoryType from "../CategoryType/CategoryType";
 import { UserContext } from "../../context/Context/UserContext/UserState";
 
 const Header = () => {
-  const [selected, setSelected] = useState("1");
+  const [selected, setSelected] = useState("0");
   const [profile, setProfile] = useState(false);
   const {searchText,setSearchText} = useContext(UserContext)
   const [helperSearchText,setHelperSearchText] = useState('')
   const navigate = useNavigate()
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [open3,setOpen3]=useState(false);
+
   const ref = useRef(null);
   const ref2 = useRef(null);
   const genres = [
@@ -53,10 +55,12 @@ const Header = () => {
     if (!ref?.current?.contains(event.target)) {
 //      console.log("Worked233")
       setOpen(false);
+      
     }
     if (!ref2?.current?.contains(event.target)) {
             setOpen2(false);
             setProfile(false);
+
           }
   };
 useEffect(() => {
@@ -67,6 +71,7 @@ useEffect(() => {
     console.log("Value:", value);
   };
 
+  console.log("Opened:",open)
   const searchTextFunction = (e) => {
     setHelperSearchText(e.target.value)
   }
@@ -95,48 +100,67 @@ useEffect(() => {
       <MainLogo />
       <div className="w-30">
         <div className="d-flex justify-content-between">
+        <NavLink
+                to="/home"
+                className={({ isActive }) =>
+    isActive ? 'header-link-active-style' : ''}
+            // className={selected === "0" ? "header-link-active-style" : ""}
+            // onClick={() => {
+            //   setSelected("0");
+            // }}
+          >
+            Home
+          </NavLink>
           <NavLink
-            //    to="/movies"
-            className={selected === "1" ? "header-link-active-style" : ""}
-            onClick={() => {
-              setSelected("1");
-            }}
+                to="/movies"
+         //   className={selected === "1" ? "header-link-active-style" : ""}
+            className={({ isActive }) =>
+    isActive ? 'header-link-active-style' : ''}
+            // onClick={() => {
+            //   setSelected("1");
+            // }}
           >
             Movies
           </NavLink>
           <NavLink
-            //  to="/series"
-            className={selected === "2" ? "header-link-active-style" : ""}
-            onClick={() => {
-              setSelected("2");
-            }}
+              to="/series"
+            // className={selected === "2" ? "header-link-active-style" : ""}
+            // onClick={() => {
+            //   setSelected("2");
+            // }}
+            className={({ isActive }) =>
+    isActive ? 'header-link-active-style' : ''}
           >
             Series
           </NavLink>
           <NavLink
-            //to="/tv-shows"
-            className={selected === "3" ? "header-link-active-style" : ""}
-            onClick={() => {
-              setSelected("3");
-            }}
+            to="/tv-shows"
+            // className={selected === "3" ? "header-link-active-style" : ""}
+            // onClick={() => {
+            //   setSelected("3");
+            // }}
+            className={({ isActive }) =>
+    isActive ? 'header-link-active-style' : ''}
           >
             TV Shows
           </NavLink>
 
           <NavLink
-            //to="/anime"
-            className={selected === "4" ? "header-link-active-style" : ""}
-            onClick={() => {
-              setSelected("4");
-            }}
+            to="/anime"
+            // className={selected === "4" ? "header-link-active-style" : ""}
+            // onClick={() => {
+            //   setSelected("4");
+            // }}
+            className={({ isActive }) =>
+    isActive ? 'header-link-active-style' : ''}
           >
             Anime
           </NavLink>
           <NavLink
             //to="/anime"
-            className={selected === "5" ? "header-link-active-style" : ""}
-            onClick={() => {
-              setSelected("5");
+//            className={open ? "header-link-active-style" : ""}
+
+            onClick={() => {  
               setOpen(true);
               document.addEventListener("mousedown", handleClickOutside);
             }}
@@ -144,13 +168,13 @@ useEffect(() => {
             Categories
           </NavLink>
         </div>
-        {selected === "5" && open && (
+        {open && (
           <div className="category-box w-30" ref={ref}>
             <div className="genres-box-1">
               <span style={{ color: "white" }}>Genres</span>
               <div className="genres-box">
                 {genres.map((item) => {
-                  console.log("Item:", item);
+              //    console.log("Item:", item);
                   return <CategoryType text={item} />;
                 })}
               </div>
@@ -159,7 +183,7 @@ useEffect(() => {
               <span style={{ color: "white" }}>Languages</span>
               <div className="genres-box">
                 {languages.map((item) => {
-                  console.log("Item:", item);
+          //        console.log("Item:", item);
                   return <CategoryType text={item} />;
                 })}
               </div>

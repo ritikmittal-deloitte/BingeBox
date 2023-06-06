@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./signup.scss";
+import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 
 const upperTexts = [
   '"Lights, Camera, Sign Up "',
@@ -126,7 +127,8 @@ function Signup() {
           <div className="inputs">
             <input
               placeholder="Mobile Number"
-              type="number"
+              type="text"
+              pattern="0-9"
               id="mobile"
               value={mobile}
               onChange={(e) => {

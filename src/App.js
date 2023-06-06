@@ -16,6 +16,7 @@ import { UserContextProvider } from "./context/Context/UserContext/UserState";
 import UserPreferences from "./components/UserPreferences/UserPreferences";
 import Profile from "./components/Profile/Profile";
 import SearchPage from "./components/Searchpage/SearchPage";
+import Accounts from "./components/accounts/Accounts";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -44,11 +45,16 @@ function App() {
           <Route path="/subscription-plans" element={<Subscriptionplans />} />
           <Route path="/payment-successful" element={<PaymentSuccessful />} />
           <Route path="/selected-plan" element={<SelectedPlan />} />
+          <Route path="/accounts" element={<Accounts/>}/>
           <Route path="/payment" element={<Payment />} />
 
           {
             <Route element={<AppLayout />}>
               <Route path="/home" element={<Home />} />
+              <Route path="/movies" element={<Home />} />
+              <Route path="/series" element={<Home />} />
+              <Route path="/anime" element={<Home />} />
+              <Route path="/tv-shows" element={<Home />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/searchresults/:text" element={<SearchPage />} />
               <Route path="/wishlist" element={<WishList />} />

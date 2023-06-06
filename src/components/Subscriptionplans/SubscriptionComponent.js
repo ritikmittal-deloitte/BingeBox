@@ -64,8 +64,8 @@ export default function SubscriptionComponent({ p, index }) {
     <div
       className="card"
       id={"card-" + index}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+      onMouseOver={handleMouseEnter}
+      onMouseOut={handleMouseLeave}
       style={cardStyle}
     >
       <h2 className="plan-type">{p.type}</h2>
@@ -87,7 +87,7 @@ export default function SubscriptionComponent({ p, index }) {
         <p>Supported Devices</p>
         <h5>{p.supporteddevice}</h5>
       </div>
-      <button className="btn" style={btnStyle()} onClick={SelectPlan(p)}>
+      <button className="btn" style={btnStyle()} onClick={()=>{SelectPlan(p)}}>
         Buy Now
       </button>
     </div>
