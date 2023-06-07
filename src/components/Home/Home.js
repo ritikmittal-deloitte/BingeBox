@@ -19,7 +19,7 @@ const Home = () => {
 
   const watch = new Set(watchList);
   const data = movies.filter((item) => {
-    if (!watch.has(item.movieId)) {
+    if (!watch.has(item.id)) {
       return item;
     }
   })

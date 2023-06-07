@@ -14,7 +14,7 @@ const Card = ({ cardData , direct }) => {
   const {watchList,setWatchList}=useContext(UserContext);
   const watch = new Set(watchList);
 //  console.log("Card Data :",cardData)
-  const show = watch.has(cardData.movieId) 
+  const show = watch.has(cardData.id) 
   const navigate = useNavigate();
   const handleMouseOver = () => {
     setOnHovering(true);
@@ -39,13 +39,13 @@ const Card = ({ cardData , direct }) => {
     };
   };
   const handleAddToWatchList=(event)=>{
-    setWatchList(previousState => new Set([...previousState,cardData.movieId]));
+    setWatchList(previousState => new Set([...previousState,cardData.id]));
    event.stopPropagation();
    navigate("/wishlist");
 
   }
   const handleDeleteFromWatchList = (event) =>{
-    watch.delete(cardData.movieId);
+    watch.delete(cardData.id);
     console.log("Watch list updated:",watch)
     setWatchList(new Set(watch))
     event.stopPropagation();
