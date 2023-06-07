@@ -2,6 +2,7 @@ import React from "react";
 import "./subscriptionplans.scss";
 import { useNavigate } from "react-router-dom";
 import SubscriptionComponent from "./SubscriptionComponent";
+import Logo from "../Logo/Logo";
 
 function Subscriptionplans() {
   // const navigate = useNavigate();
@@ -15,14 +16,18 @@ function Subscriptionplans() {
   return (
     <div className="plans-container">
       <div className="left-container">
-        <div className="binge-box-heading" style={{ marginTop: "17rem" }}>
-          <div
+        <div
+          className="binge-box-heading"
+          style={{ marginTop: "17rem", marginLeft: "10rem" }}
+        >
+          <Logo />
+          {/* <div
             className="binge-heading"
             style={{ heigh: "4rem", width: "17rem" }}
           >
             BINGE
           </div>
-          <div className="box-heading">BOX</div>
+          <div className="box-heading">BOX</div> */}
         </div>
         <h2>"Unleash Your Movie Magic"</h2>
         <h4>Subscription Plans for Endless Streaming Delight!"</h4>
