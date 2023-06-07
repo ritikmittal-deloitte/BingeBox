@@ -1,15 +1,31 @@
 import React, { useState } from "react";
 import "./payment.scss";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useCreditCardValidator, images } from "react-creditcard-validator";
 
 function Payment() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [cardnumber, setCardnumber] = useState("");
+  const [validdate, setValiddate] = useState("");
+  const [cvv, setCvv] = useState("");
+  const [errors, setErrors] = useState({});
   const [activeTab, setActivaTab] = useState("creditDebit");
+  const [isValid, setValid] = useState(false);
+
+  const {
+    getCardNumberProps,
+    getExpiryDateProps,
+    getCVCProps,
+    getCardImageProps,
+    meta: { erroredInputs },
+  } = useCreditCardValidator();
   let p = location.state;
   const handleTabClick = (tab) => {
     setActivaTab(tab);
   };
+
   return (
     <div className="payment-container">
       <div className="binge-box-heading">
@@ -60,16 +76,41 @@ function Payment() {
             <form className="form">
               <label htmlFor="">Name on Card </label>
               <div className="inputs">
-                <input placeholder="Name" type="text" id="name" />
-              </div>
-
-              <label htmlFor="">Card Number </label>
-              <div className="inputs">
                 <input
-                  placeholder="XXXX XXXX XXXX XXXX "
-                  type="number"
-                  id="card-number"
+                  placeholder="Name"
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
                 />
+              </div>
+              <div className="error-payment">
+                {errors.name && <span>* {errors.name}</span>}
+              </div>
+              <label htmlFor="">Card Number </label>
+              <div style={{ display: "flex" }}>
+                <div className="inputs" style={{ width: "30rem" }}>
+                  <input
+                    {...getCardNumberProps()}
+                    placeholder="XXXX XXXX XXXX XXXX "
+                    // type="number"
+                    id="cardnumber"
+                  />
+                </div>
+                <svg
+                  style={{
+                    width: "4rem",
+                    height: "2rem",
+                    marginTop: "1.5rem",
+                    marginLeft: "1rem",
+                  }}
+                  {...getCardImageProps({ images })}
+                />
+              </div>
+              <div className="error-payment">
+                {erroredInputs.cardNumber && erroredInputs.cardNumber}
               </div>
 
               <div className="date-cvv">
@@ -82,29 +123,47 @@ function Payment() {
                     style={{ width: "20rem", marginRight: "2rem" }}
                   >
                     <input
-                      placeholder="DD/MM/YYYY "
-                      type="number"
+                      {...getExpiryDateProps()}
+                      placeholder="MM/YYYY "
+                      type="text"
                       id="valid-date"
                     />
                   </div>
                 </div>
+
                 <div className="cvv">
                   <label htmlFor="" style={{ marginLeft: "-3rem" }}>
                     CVV
                   </label>
                   <div className="inputs" style={{ width: "12.875rem" }}>
-                    <input placeholder="***" type="password" id="cvv" />
+                    <input
+                      {...getCVCProps()}
+                      placeholder="***"
+                      type="password"
+                      id="cvv"
+                    />
                   </div>
                 </div>
               </div>
-              <button
-                className="pay-btn"
-                onClick={() => {
-                  navigate("/payment-successful");
-                }}
-              >
-                Pay Now
-              </button>
+              <div style={{ display: "flex", justifyContent: "space-between" }}>
+                <div className="error-payment">
+                  {erroredInputs.expiryDate && erroredInputs.expiryDate}
+                </div>
+                <div className="error-payment" style={{ marginLeft: "10rem" }}>
+                  {erroredInputs.cvc && erroredInputs.cvc}
+                </div>
+              </div>
+
+              {
+                <button
+                  className="pay-btn"
+                  onClick={() => {
+                    navigate("/payment-successful");
+                  }}
+                >
+                  Pay Now
+                </button>
+              }
             </form>
           )}
           {activeTab === "upi" && (
@@ -112,6 +171,16 @@ function Payment() {
               <label htmlFor="">UPI Id</label>
               <div className="inputs">
                 <input placeholder="Enter UPI Id" type="text" id="name" />
+              </div>
+              <div className="upi">
+                <ul className="upi-method">
+                  <li className="method">@oksbi</li>
+                  <li className="method">@okaxis</li>
+                  <li className="method">@ybl</li>
+                  <li className="method">@paytm</li>
+                  <li className="method">@upi</li>
+                  <li className="method">@ap1</li>
+                </ul>
               </div>
             </form>
           )}

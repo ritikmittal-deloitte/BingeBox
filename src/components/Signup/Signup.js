@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import "./signup.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { useNavigate } from "react-router-dom";
+import validator from "validator";
+import Logo from "../Logo/Logo";
 
 const upperTexts = [
   '"Lights, Camera, Sign Up "',
@@ -20,10 +22,31 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
+  const [isValid, setIsValid] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [errors, setErrors] = useState({});
+
+  function checkPhone(phone) {
+    let r1 = false;
+    let r2 = false;
+    if (phone.length !== 10) {
+      r1 = true;
+    }
+    r2 = isNaN(phone);
+
+    if (r1 && r2) {
+      errors.mobile =
+        "Phone Number should be of 10 digits and should only contain numbers";
+    } else if (r2) {
+      errors.mobile = "Phone Number should only contain numbers";
+    } else if (r1) {
+      errors.mobile = "Phone Numbers should be of 10 digits";
+    } else {
+      errors.mobile = "";
+    }
+  }
 
   const validateForm = () => {
     let errors = {};
@@ -32,17 +55,17 @@ function Signup() {
       errors.name = "Name is required";
     }
 
-    if (email.trim() === "") {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      errors.email = "Invalid email format";
+    } else if (email.trim() === "") {
       errors.email = "Email is required";
-    } else {
-      // Simple email format validation
-      const emailRegex = /^\S+@\S+\.\S+$/;
-      if (!emailRegex.test(email)) {
-        errors.email = "Invalid email format";
-      }
     }
-
-    if (mobile.trim() === "") {
+    if (mobile.length !== 10) {
+      errors.mobile = "Mobile no. should be of 10 digits.";
+    } else if (!/^\d{10}$/.test(mobile)) {
+      errors.mobile = "Invalid Mobile no.";
+    } else if (mobile.trim() === "") {
       errors.mobile = "Mobile number is required.";
     }
 
@@ -83,7 +106,7 @@ function Signup() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentIndex((prevIndex) => (prevIndex + 1) % texts.length);
-    }, 2000); // Change text every 2 seconds
+    }, 3000); // Change text every 2 seconds
     return () => clearInterval(interval);
   }, [texts, lowerText]);
 
@@ -93,8 +116,7 @@ function Signup() {
     <div className="signup-container">
       <div className="left-container">
         <div className="binge-box-heading">
-          <div className="binge-heading"> BINGE</div>
-          <div className="box-heading">BOX</div>
+          <Logo />
         </div>
         <form action="" className="signup-form" onSubmit={handleSubmit}>
           <h3 className="d-flex justify-content-start w-100 mb-0 signup-heading">
@@ -136,6 +158,8 @@ function Signup() {
               value={mobile}
               onChange={(e) => {
                 setMobile(e.target.value);
+                checkPhone(e.target.value);
+                // setMobile(e.target.value);
               }}
             />
             <div className="error-signup">

@@ -45,7 +45,14 @@
       line-height: 68px;
     }
   }
-
+.error-payment {
+  color: #f03a47;
+  display: flex;
+  justify-content: flex-start;
+      margin-top: -4rem;
+        padding-left: 1rem;
+        margin-bottom: 0.5rem;
+}
   p {
     font-weight: 600;
     font-size: 32px;
@@ -106,7 +113,21 @@
           margin-top: 1rem;
           width: 35rem;
           margin-bottom: 4.375rem;
+          background: linear-gradient(115.57deg,
+                rgba(255, 255, 255, 0.19) -4.2%,
+                rgba(234, 234, 234, 0.0806194) 70.71%,
+                rgba(223, 214, 214, 0) 125.93%);
+            border: 0.9px solid #8b8b8b;
+            input{
+              color: #ffffff;
+              background: linear-gradient(115.57deg,
+                    rgba(255, 255, 255, 0.19) -4.2%,
+                    rgba(234, 234, 234, 0.0806194) 70.71%,
+                    rgba(223, 214, 214, 0) 125.93%);
+                border: 0.9px solid #8b8b8b;
+            }
         }
+
         .date-cvv {
           display: flex;
           width: 100%;
@@ -131,6 +152,25 @@
 
           color: #ffffff;
         }
+        .upi{
+          // width: 100%;
+          .upi-method
+          { 
+            display: flex;
+            .method{
+            width: 4rem !important;
+           
+            background: linear-gradient(115.57deg,
+                rgba(255, 255, 255, 0.19) -4.2%,
+                rgba(234, 234, 234, 0.0806194) 70.71%,
+                rgba(223, 214, 214, 0) 125.93%);
+            border: 0.9px solid #8b8b8b;
+            border-radius: 0.5rem;
+            color: #ffffff;
+            align-items: center;
+            justify-content: center;
+          }
+        }}
       }
     }
   }
