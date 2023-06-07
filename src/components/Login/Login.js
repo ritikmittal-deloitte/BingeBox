@@ -3,11 +3,17 @@ import { useNavigate } from "react-router-dom";
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { UserContextProvider } from "../../context/Context/UserContext/UserState";
+import { useDispatch } from "react-redux";
+import { AccountAction } from '../../redux/AccountSlice';
+import { dummyData } from "../../mockData/accountsMockData";
+
+
 const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState("");
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // const Login = ({setIsLogin}) => {
   //     const navigate = useNavigate();
@@ -39,13 +45,19 @@ const Login = ({ setIsLogin }) => {
     console.log("errors:", Object.keys(errors).length);
     if (Object.keys(errors).length === 0) {
       console.log("Login successful");
+      if(dummyData.accounts.length===1){
+        dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+        navigate("/home")
+    }
+    else navigate("/accounts")
+    
     } else {
       setErrors(errors);
     }
     // setIsLogin(true);
     // setEmail("");
     // setPassword("");
-    navigate("/home");
+    //navigate("/home");
   };
   return (
     <div className="login-container">
@@ -119,6 +131,7 @@ const Login = ({ setIsLogin }) => {
         </div>
       </div>
     </div>
+  
   );
 };
 

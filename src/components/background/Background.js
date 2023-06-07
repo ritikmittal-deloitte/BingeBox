@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./background.scss";
+import "./Background.scss";
 // import pic1 from "../../assets/images/pic1.svg"
 // import pic2 from "../../assets/images/pic2.svg"
 // import pic3 from "../../assets/images/pic3.svg"
