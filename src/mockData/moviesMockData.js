@@ -180,7 +180,7 @@ import Arrow from '../assets/posters/Arrow.png'
 // ]
 
 // change name to mock data
-export const movies = [
+export const mockData = [
     {
         "id": 1,
         "posterImage": AvengersEndgame,

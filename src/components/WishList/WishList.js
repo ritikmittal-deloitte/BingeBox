@@ -1,6 +1,6 @@
 import React , {useContext, useEffect} from 'react';
 import "./wishlist.scss"
-import { movies } from "../../mockData/moviesMockData";
+import { mockData as movies} from "../../mockData/moviesMockData";
 import Card from '../card/Card';
 import { UserContext } from '../../context/Context/UserContext/UserState';
 

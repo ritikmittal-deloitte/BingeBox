@@ -3,7 +3,7 @@ import "./home.scss";
 import Card from "../card/Card";
 import Card3 from "../card3/Card3";
 import {useLocation} from "react-router-dom";
-import { movies } from "../../mockData/moviesMockData";
+import {  mockData as movies} from "../../mockData/moviesMockData";
 import { ReactComponent as ScrollLogo } from "../../assets/icons/arrow.svg";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";

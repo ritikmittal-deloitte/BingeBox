@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./description.scss";
 import fish from "../../assets/images/fish.gif";
 import { useParams } from "react-router-dom";
-import { movies } from "../../mockData/moviesMockData";
+import { mockData as movies} from "../../mockData/moviesMockData";
 import { photos } from "../../mockData/profilePhotoMockData";
 import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import  { ReactComponent as ScrollLogo } from "./../../assets/icons/arrow.svg";
