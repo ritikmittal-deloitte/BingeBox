@@ -76,24 +76,35 @@
   border-bottom-right-radius: 10px;
   color: white;
 }
+
 .form .heading {
   margin-bottom: -2rem !important;
   font-family: "Nunito Sans";
   font-style: normal;
   font-weight: 600;
 }
+
 .form .inputs {
   width: 100%;
   height: 50px;
-  background: #ffffff;
-  border: 1px solid #8b8b8b;
+  background: linear-gradient(115.57deg,
+
+      rgba(255, 255, 255, 0.19) -4.2%,
+
+      rgba(234, 234, 234, 0.0806194) 70.71%,
+
+      rgba(223, 214, 214, 0) 125.93%);
+
+  border: 0.9px solid #8b8b8b;
   border-radius: 1rem !important;
   margin-top: 10%;
+
   .error-signup {
-      color: #F03A47;
-      display: flex;
-      justify-content: flex-start;
-    }
+    color: #F03A47;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 1rem;
+  }
 }
 
 .form .inputs input {
@@ -102,6 +113,20 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 25px;
+  color:white;
+  background: linear-gradient(
+
+      115.57deg,
+
+      rgba(255, 255, 255, 0.19) -4.2%,
+
+      rgba(234, 234, 234, 0.0806194) 70.71%,
+
+      rgba(223, 214, 214, 0) 125.93%
+
+    );
+
+    border: 0.9px solid #8b8b8b;
   /* identical to box height */
   border-radius: 0.625rem;
   display: flex;
@@ -119,8 +144,9 @@
   justify-content: space-between;
   font-size: 14px;
   font-weight: 500;
-  margin: 2%;
-  margin-bottom: 4%;
+  margin: 5%;
+  position: relative;
+  top: 1rem;
 }
 
 .remember-forgot label input {
@@ -223,6 +249,7 @@
   left: 710px;
   top: 898px;
 }
+
 .google-icon {
   font-size: 2.5625rem;
   padding-right: 0.625rem;
@@ -257,22 +284,23 @@
   text-transform: capitalize;
 
   color: #000000;
+
   .apple-icon {
-      font-size: 2.5625rem;
-      padding-right: 0.625rem;
-      margin-right: 1rem;
-      width: 38px;
-      height: 45px;
-      left: 30px;
-      top: 15px;
-  
-      left: 18.91%;
-      right: 62.19%;
-      top: 13.89%;
-      bottom: 23.61%;
-  
-      background: #000000;
-  
-      background: url("../../assets/icons/apple-logo.svg");
-    }
+    font-size: 2.5625rem;
+    padding-right: 0.625rem;
+    margin-right: 1rem;
+    width: 38px;
+    height: 45px;
+    left: 30px;
+    top: 15px;
+
+    left: 18.91%;
+    right: 62.19%;
+    top: 13.89%;
+    bottom: 23.61%;
+
+    background: #000000;
+
+    background: url("../../assets/icons/apple-logo.svg");
+  }
 }
