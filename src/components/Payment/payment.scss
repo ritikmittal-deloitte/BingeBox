@@ -1,12 +1,11 @@
 .payment-container {
- 
   position: absolute;
   z-index: 1;
   margin-top: 30rem;
   left: 26.93rem;
   transform: translate(-50%, -50%);
   width: 30% !important;
- 
+
   // height: 600px;
   /* background: url("../../assets/images/bg-login.png") no-repeat; */
   background-color: transparent;
@@ -66,8 +65,17 @@
     margin-left: 5.7rem;
     margin-top: 3rem;
     margin-bottom: 1rem;
+    cursor: pointer;
+
+    .active {
+      width: 30%;
+      border-bottom: 0.25rem solid #f03a47;
+      padding-bottom: 1rem;
+    }
   }
+
   .card {
+    margin-top: -1rem;
     padding: 4rem;
     display: flex;
     flex-direction: row;
@@ -93,13 +101,12 @@
           margin-top: 0rem;
           margin-left: 1rem;
           font-size: 1rem;
-         
         }
         .inputs {
           margin-top: 1rem;
           width: 35rem;
           margin-bottom: 4.375rem;
-         }
+        }
         .date-cvv {
           display: flex;
           width: 100%;
@@ -110,20 +117,19 @@
             width: 20%;
           }
         }
-        .pay-btn{
+        .pay-btn {
           border: none;
           margin-left: 15.5rem;
           width: 19.5rem;
           height: 4rem;
-          background: #F03A47;
-            border-radius: 1.25rem;
-            font-weight: 700;
-              font-size: 1.25rem;
-              line-height: 1.5rem;
-              text-align: center;
-            
-              color: #FFFFFF;
+          background: #f03a47;
+          border-radius: 1.25rem;
+          font-weight: 700;
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+          text-align: center;
 
+          color: #ffffff;
         }
       }
     }

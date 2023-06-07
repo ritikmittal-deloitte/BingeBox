@@ -87,7 +87,13 @@ const Login = ({ setIsLogin }) => {
                 <input type="checkbox" />
                 Remember me
               </label>
-              <a href="#">Forgot password?</a>
+              <a
+                onClick={() => {
+                  navigate("/forgot-password");
+                }}
+              >
+                Forgot password?
+              </a>
             </div>
             <button type="submit" className="btn">
               Login

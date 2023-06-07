@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./signup.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
+import { useNavigate } from "react-router-dom";
 
 const upperTexts = [
   '"Lights, Camera, Sign Up "',
@@ -12,6 +13,7 @@ const belowTexts = [
 ];
 
 function Signup() {
+  const navigate = useNavigate();
   const [texts, setTexts] = useState([]);
   const [lowerText, setLowertext] = useState([]);
   const [name, setName] = useState("");
@@ -66,9 +68,11 @@ function Signup() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (validateForm()) {
       // Perform signup logic
       console.log("Signup successful!");
+      navigate("/subscription-plans");
     }
   };
   useEffect(() => {
@@ -128,7 +132,6 @@ function Signup() {
             <input
               placeholder="Mobile Number"
               type="text"
-              pattern="0-9"
               id="mobile"
               value={mobile}
               onChange={(e) => {
