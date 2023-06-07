@@ -14,38 +14,37 @@ const Login = ({ setIsLogin }) => {
 
   // const validateForm = () => {
   const validateForm = () => {
-    const errors = {};
-    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
-    if (!emailRegex.test(email)) {
-      errors.email = "Incorrect Email Id";
-    } else if (email.trim() === "") {
-      errors.email = "Email Id is required.";
+    const error = {};
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (email.trim() === "") {
+      error.email = "Email Id is required.";
     }
+    else if (!emailRegex.test(email)) {
+      error.email = "Incorrect Email Id";
+    } 
 
     if (!password) {
-      errors.password = "Password is required";
+      error.password = "Password is required";
     }
 
-    setErrors(errors);
+    setErrors(error);
     // Return true if there are no errors
-    return Object.keys(errors).length === 0;
+    return Object.keys(error).length === 0;
   };
   // };
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const errors = validateForm();
-    console.log(errors);
-    console.log("errors:", Object.keys(errors).length);
-    if (Object.keys(errors).length === 0) {
+    const errors1 = validateForm();
+    console.log(errors1);
+    console.log("errors:", Object.keys(errors1).length);
+    if (errors1) {
       console.log("Login successful");
-    } else {
-      setErrors(errors);
-    }
+       navigate("/home");
+    } 
     // setIsLogin(true);
     // setEmail("");
     // setPassword("");
-    navigate("/home");
   };
   return (
     <div className="login-container">
@@ -89,7 +88,13 @@ const Login = ({ setIsLogin }) => {
                 <input type="checkbox" />
                 Remember me
               </label>
-              <a href="#">Forgot password?</a>
+              <a
+                onClick={() => {
+                  navigate("/forgot-password");
+                }}
+              >
+                Forgot password?
+              </a>
             </div>
             <button type="submit" className="btn">
               Login

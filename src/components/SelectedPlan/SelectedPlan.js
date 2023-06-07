@@ -1,6 +1,7 @@
 import React from "react";
 import "./selectedplan.scss";
 import { useLocation, useNavigate } from "react-router-dom";
+import Logo from "../Logo/Logo";
 
 function SelectedPlan() {
   const todayDate = new Date();
@@ -17,8 +18,9 @@ function SelectedPlan() {
   return (
     <div className="selected-container">
       <div className="binge-box-heading">
-        <div className="binge-heading"> BINGE</div>
-        <div className="box-heading">BOX</div>
+        <Logo />
+        {/* <div className="binge-heading"> BINGE</div>
+        <div className="box-heading">BOX</div> */}
       </div>
       <div className="card">
         <h2>{p.type} Plan</h2>

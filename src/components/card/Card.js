@@ -14,7 +14,7 @@ const Card = ({ cardData , direct }) => {
   const {watchList,setWatchList}=useContext(UserContext);
   const watch = new Set(watchList);
 //  console.log("Card Data :",cardData)
-  const show = watch.has(cardData.movieId) 
+  const show = watch.has(cardData.id) 
   const navigate = useNavigate();
   const handleMouseOver = () => {
     setOnHovering(true);
@@ -39,13 +39,13 @@ const Card = ({ cardData , direct }) => {
     };
   };
   const handleAddToWatchList=(event)=>{
-    setWatchList(previousState => new Set([...previousState,cardData.movieId]));
+    setWatchList(previousState => new Set([...previousState,cardData.id]));
    event.stopPropagation();
    navigate("/wishlist");
 
   }
   const handleDeleteFromWatchList = (event) =>{
-    watch.delete(cardData.movieId);
+    watch.delete(cardData.id);
     console.log("Watch list updated:",watch)
     setWatchList(new Set(watch))
     event.stopPropagation();
@@ -130,7 +130,7 @@ console.log("Movie id:",cardData)
           <div className="rate-3">&nbsp;CBFC:U/A&nbsp;</div>
           <div className="ab-33"> {cardData.releaseYear} | {cardData.duration}</div> 
           <div className="cat-box">  
-          {cardData.genre.map((item)=>{
+          {cardData?.genre?.map((item)=>{
            return  <div className="last-1">&nbsp;{item}&nbsp;</div>
           })}
           </div>
