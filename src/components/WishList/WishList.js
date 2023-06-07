@@ -8,7 +8,8 @@ import { UserContext } from '../../context/Context/UserContext/UserState';
 const WatchList = () => {
 
     const {watchList , setWatchList}=useContext(UserContext);
-
+    const watch = new Set(watchList);
+//    console.log("watch:",watch)
     useEffect(() => {
         console.log("WatchList :",watchList)
     },[]);
@@ -21,14 +22,10 @@ const WatchList = () => {
             <Card cardData={movie} key={index} />
           ))} */}
           {movies.slice(0,6).map((movie,index)=>{
-          return ( watchList.map((key)=>{
-//                console.log("Wtchlist id checking this time:",key)
-  //              console.log("MOvie id:",movie)
-                if(movie.movieId===key)
+                if(watch.has(movie.movieId))
                 {
-                 return  (<Card cardData={movie} key={index} />);
+                    return  (<Card cardData={movie} key={index} direct="WatchList" />);
                 }
-            }))
           })}
 
             </div>

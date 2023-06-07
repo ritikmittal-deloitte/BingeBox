@@ -33,12 +33,12 @@ import Bitten from '../assets/posters/Bitten.jpg'
 import TrueDetective from '../assets/posters/TrueDetective.jpg'
 import The100 from '../assets/posters/The100.jpg'
 
-import Stranger from '../assets/posters/Stranger.jpeg'
+import Stranger from '../assets/posters/Stanger.jpeg'
 import BreakingBad from '../assets/posters/BreakingBad.jpeg'
 import GameOfThrones from '../assets/posters/GameOfThrones.jpeg'
 import Friends from '../assets/posters/Friends.jpeg'
 import TheOffice from '../assets/posters/TheOffice.jpeg'
-import AOT from '../assets/posters/AOT.jpeg'
+import AOT from '../assets/images/AOT.jpeg'
 import DeathNote from '../assets/posters/DeathNote.jpeg'
 import OnePiece from '../assets/posters/OnePiece.jpeg'
 import Naruto from '../assets/posters/Naruto.jpeg'
@@ -46,7 +46,7 @@ import FullMetal from '../assets/posters/FullMetal.jpeg'
 import DemonSlayer from '../assets/posters/DemonSlayer.jpeg'
 import Hunter from '../assets/posters/Hunter.jpeg'
 import MyHero from '../assets/posters/MyHero.jpeg'
-import DBZ from '../assets/posters/DBZ.jpeg'
+import DBZ from '../assets/images/DBZ.jpeg'
 import Haikyuu from '../assets/posters/Haikyuu.jpeg'
 import Tokyo from '../assets/posters/Tokyo.jpeg'
 import Code from '../assets/posters/Code.jpeg'
@@ -179,6 +179,7 @@ import Arrow from '../assets/posters/Arrow.png'
 
 // ]
 
+// change name to mock data
 export const movies = [
     {
         "id": 1,

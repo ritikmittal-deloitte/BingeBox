@@ -1,0 +1,145 @@
+.plans-container {
+  display: flex;
+
+  .left-container {
+    width: 30%;
+    margin-left: 8rem;
+    .binge-box-heading {
+      width: 90rem;
+      height: 3.5rem;
+      margin-left: 0rem;
+      
+    }
+    h2 {
+      font-size: 4.75rem;
+      font-weight: 900;
+      color: #f03a47;
+      margin-top: 4.12rem;
+    }
+    h4 {
+      font-weight: 300;
+      font-size: 2rem;
+      color: #ffffff;
+
+      margin-top: 1.5rem;
+    }
+  }
+  .right-container {
+    width: 70%;
+    // background: url("../../assets/images/sign-up-bg.svg");
+    // margin-left: 60rem;
+    margin-top: 10rem;
+    // margin-left: 5rem;
+    .cards {    
+      display: flex;
+      justify-content: space-around;
+      margin-top: 9rem;
+      .card {
+        justify-content: center;
+        // height: 28rem;
+        width: 20rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        background: linear-gradient(
+          115.57deg,
+          rgba(255, 255, 255, 0.19) -4.2%,
+          rgba(234, 234, 234, 0.0806194) 70.71%,
+          rgba(223, 214, 214, 0) 125.93%
+        );
+        backdrop-filter: blur(19.7356px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 25px;
+        color: #ffffff;
+        .plan-type {
+          font-weight: 700;
+          font-size: 2rem;
+          color: #f03a47;
+        }
+        .price {
+          font-weight: 700;
+          font-size: 1.25rem;
+          span {
+            font-size: 2.5rem;
+          }
+        }
+        .device {
+          font-weight: 400;
+          font-size: 1.125rem;
+        }
+        .resolution {
+          p {
+            font-weight: 400;
+            font-size: 1rem;
+          }
+          h5 {
+            font-weight: 700;
+            font-size: 1.25rem;
+          }
+        }
+        .quality {
+          p {
+            font-weight: 400;
+            font-size: 1rem;
+          }
+
+          h5 {
+            font-weight: 700;
+            font-size: 1.25rem;
+          }
+        }
+        .supported-device {
+          p {
+            font-weight: 400;
+            font-size: 1rem;
+            color: #f4f4f4;
+          }
+
+          h5 {
+            font-weight: 700;
+            font-size: 1.25rem;
+          }
+        }
+
+        // .btn {
+        //   background-color: #f03a47;
+        //   color: #ffffff;
+        //   width: 14.5rem;
+        //   height:0rem !important;
+        //   align-items: center;
+        //   margin-left: 1.4rem;
+        //   margin-top: 0rem !important;
+        //   font-size: 1.5rem;
+        //   font-weight: 600;
+        //   border-radius: 1.4rem;
+        //   opacity: 0;
+       
+        //   margin: auto;
+        // }
+        
+      }
+      // .card:hover {
+      //   transform: scale(1.10);
+      //   transition: 0.15s linear;
+      //   .btn {
+                // background-color: #f03a47;
+                //     color: #ffffff;
+                //     width: 14.5rem;
+                //     height: 4.3rem !important;
+                //     align-items: center;
+                //     margin-left: 1.4rem;
+                //     margin-top: 3rem !important;
+                //     font-size: 1.5rem;
+                //     font-weight: 600;
+                //     border-radius: 1.4rem;
+                //     opacity: 1;
+                //     display: block;
+                //     margin: auto;
+              
+      //       }
+      // }
+    }
+  }
+}

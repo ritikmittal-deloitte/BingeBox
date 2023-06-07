@@ -1,14 +1,21 @@
-import React from 'react'
+import React,{useContext} from 'react'
+import { useNavigate } from 'react-router-dom'
 import PencilSquare from '../../assets/icons/pencil-square.png'
 import User1 from '../../assets/images/image 74.png'
 import User2 from '../../assets/images/image 75.png'
 import User3 from '../../assets/images/image 76.png'
 import PlusIcon from '../../assets/icons/plus.png'
 import './Profile.scss'
+import { UserContext } from '../../context/Context/UserContext/UserState'
 
 export default function Profile() {
+    const navigate = useNavigate()
+    const {genre,setGenre} = useContext(UserContext)
     const logout = () => {
 
+    }
+    const handlePreferencesPage = (e) => {
+        navigate('/userpreferences',{state:dummyData.genre})
     }
     return (
         <div className='profile-page'>
@@ -17,11 +24,15 @@ export default function Profile() {
                     <div className='heading-container-profile'><div className='profile-heading'>Profile</div></div>
                     <div className='email-section'>
                         <div className='email-detail'>Email &nbsp;-&nbsp;&nbsp; {dummyData.email}</div>
-                        <div className='email-edit-tool'><img src={PencilSquare} alt='tool-icon-not-available' /></div>
+                        <div className='email-edit-tool'>
+                        {/* <img src={PencilSquare} alt='tool-icon-not-available' /> */}
+                        </div>
                     </div>
                     <div className='phone-section'>
                         <div className='phone-detail'>Phone&nbsp; number&nbsp; - &nbsp;&nbsp;{dummyData.phone}</div>
-                        <div className='phone-edit-tool'><img src={PencilSquare} alt='tool-icon-not-available' /></div>
+                        <div className='phone-edit-tool'>
+                        {/* <img src={PencilSquare} alt='tool-icon-not-available' /> */}
+                        </div>
                     </div>
                 </div>
                 <div className="line"></div>
@@ -29,13 +40,13 @@ export default function Profile() {
                         <div className='heading-container-genre'><div className='genre-heading'>Interested Genres</div></div>
                         <div className='interested-genre-section'>
                             <div className='genre-detail'> 
-                                {dummyData.genre.map((item)=>{
+                                {genre.map((item)=>{
                                     return (
                                         <div className='genre-box'>{item}</div>
                                     )
                                 })}
                             </div>
-                            <div className='genre-edit-tool'><img src={PencilSquare} alt='tool-icon-not-available' /></div>
+                            <div className='genre-edit-tool'onClick={(e)=>handlePreferencesPage(e)} style={{cursor:'pointer'}}><img src={PencilSquare} alt='tool-icon-not-available' /></div>
                         </div>
                 </div>
                 <div className="line"></div>
