@@ -59,7 +59,7 @@ const Description = () => {
             </div>
           </div>
           <div className="desc-end-container">
-            <span>{movies[movieId-1].description}</span>
+            <span style={{display:'flex', textAlign:'start'}}>{movies[movieId-1].description}</span>
           </div>
           <div className="cast-container d-flex flex-column justify-content-start align-items-start">
             <p>Cast</p>
