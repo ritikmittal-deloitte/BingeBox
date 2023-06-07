@@ -9,12 +9,11 @@ import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg"
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import img1 from "../../assets/images/Variant8.png";
-//import "../card/card.scss";
+
 import axios from "axios";
 import { UserContext } from "../../context/Context/UserContext/UserState";
 
 const Home = () => {
-
   const { watchList, setWatchList } = useContext(UserContext);
 
   const watch = new Set(watchList);
@@ -22,10 +21,10 @@ const Home = () => {
     if (!watch.has(item.id)) {
       return item;
     }
-  })
+  });
   const location = useLocation();
   let url = location.pathname;
-  console.log("PATH Name:", url)
+  console.log("PATH Name:", url);
   //  console.log("Data filtered out :",data)
   const [topMovies, setTopMovies] = useState([]);
   const [recentMovies, setrecentMovies] = useState([]);
@@ -83,10 +82,11 @@ const Home = () => {
     return;
   };
   useEffect(() => {
-
     const interval = setInterval(() => {
-      if (!onHovering) { check(); }
-    }, 5000)
+      if (!onHovering) {
+        check();
+      }
+    }, 5000);
     return () => {
       if (interval) {
         clearInterval(interval);
@@ -94,12 +94,10 @@ const Home = () => {
     };
   });
 
-
-
   //   setTimeout(() => {
   // if(!onHovering)
   // {
-  //   check(); 
+  //   check();
   // }
   //   }, 5000);
 
@@ -211,8 +209,8 @@ const Home = () => {
 
           <section className="cards">
             {topMovies?.map((movie, index) => {
-              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
-                return <Card cardData={movie} key={index} direct="Home" />
+              if (url.slice(1) === "home" || url.slice(1) === movie.type) {
+                return <Card cardData={movie} key={index} direct="Home" />;
               }
               return null;
             })}
@@ -236,8 +234,8 @@ const Home = () => {
 
           <section className="recent-release-cards">
             {recentMovies.map((movie, index) => {
-              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
-                return <Card cardData={movie} key={index} />
+              if (url.slice(1) === "home" || url.slice(1) === movie.type) {
+                return <Card cardData={movie} key={index} />;
               }
               return null;
             })}
@@ -263,8 +261,8 @@ const Home = () => {
 
           <section className="your-watches-cards">
             {yourWatches.map((movie, index) => {
-              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
-                return <Card3 cardData={movie} key={index} direct="Home" />
+              if (url.slice(1) === "home" || url.slice(1) === movie.type) {
+                return <Card3 cardData={movie} key={index} direct="Home" />;
               }
               return null;
             })}
@@ -285,7 +283,6 @@ const Home = () => {
           {url === "/movies" && <>Trending Movies</>}
           {url === "/tv-shows" && <>Trending Tv Shows</>}
           {url === "/series" && <>Trending Series</>}
-
         </p>
         <div className="top-movies-grid">
           <div
@@ -297,8 +294,8 @@ const Home = () => {
 
           <section className="trending-movie-cards">
             {trendingMovies.map((movie, index) => {
-              if(url.slice(1)==='home' || url.slice(1)===movie.type){
-                return <Card cardData={movie} key={index} direct="Home" />
+              if (url.slice(1) === "home" || url.slice(1) === movie.type) {
+                return <Card cardData={movie} key={index} direct="Home" />;
               }
               return null;
             })}
