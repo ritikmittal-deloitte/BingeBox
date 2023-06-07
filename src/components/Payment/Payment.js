@@ -5,6 +5,7 @@ import SBI from "../../assets/images/sbi.svg";
 import IDBI from "../../assets/images/idbi.svg";
 import AXIS from "../../assets/images/axis.svg";
 import ICICI from "../../assets/images/icici.svg";
+import { ReactComponent as MainLogo }from "../../assets/images/bingeboxlogo.svg";
 import angleRight from "../../assets/icons/angle-right.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useCreditCardValidator, images } from "react-creditcard-validator";
@@ -36,8 +37,9 @@ function Payment() {
   return (
     <div className="payment-container">
       <div className="binge-box-heading">
-        <div className="binge-heading"> BINGE</div>
-        <div className="box-heading">BOX</div>
+        {/* <div className="binge-heading"> BINGE</div>
+        <div className="box-heading">BOX</div> */}
+        <MainLogo />
       </div>
       <p style={{ marginLeft: "4.8rem", width: "100%" }}>
         Choose the mode of payment
