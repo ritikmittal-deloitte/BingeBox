@@ -30,7 +30,7 @@ export default function SearchPage() {
             }
             let genre = itemObj.genre
             let result2 = false;
-            for(let i = 0;i<genre.length;i++){
+            for(let i = 0;i<genre?.length;i++){
                 let g = genre[i].toLowerCase()
                 if(g.includes(search.toLowerCase())){
                     result2 = true;

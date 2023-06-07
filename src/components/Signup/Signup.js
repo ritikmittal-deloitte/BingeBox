@@ -128,7 +128,6 @@ function Signup() {
             <input
               placeholder="Mobile Number"
               type="text"
-              pattern="0-9"
               id="mobile"
               value={mobile}
               onChange={(e) => {
