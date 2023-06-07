@@ -130,7 +130,7 @@ console.log("Movie id:",cardData)
           <div className="rate-3">&nbsp;CBFC:U/A&nbsp;</div>
           <div className="ab-33"> {cardData.releaseYear} | {cardData.duration}</div> 
           <div className="cat-box">  
-          {cardData.genre.map((item)=>{
+          {cardData?.genre?.map((item)=>{
            return  <div className="last-1">&nbsp;{item}&nbsp;</div>
           })}
           </div>
