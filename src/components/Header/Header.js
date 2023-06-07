@@ -76,7 +76,14 @@ useEffect(() => {
     setHelperSearchText(e.target.value)
   }
   const profileNavigate = (e) => {
+    setProfile(false);
     navigate('/profile')
+  }
+
+  const nav = (e) => {
+    setProfile(false);
+    navigate('/login')
+ 
   }
 
   const handleKeyDown = (event) => {
@@ -237,11 +244,11 @@ useEffect(() => {
                 </div>
               </div>
               <div className="line-2"></div>
-              <div className="Box-1"  onClick={(e)=>{profileNavigate(e)}}>
+              <div className="Box-1"  onClick={(e)=>{profileNavigate(e)} }>
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Profile
               </div>
               <div className="line-2"></div>
-              <div className="Box-1" >
+              <div className="Box-1"  onClick={(e)=>{nav(e)}}>
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Help
               </div>
               <div className="sign-out-button">

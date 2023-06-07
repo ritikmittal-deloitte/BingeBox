@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from "react";
 import "./home.scss";
 import Card from "../card/Card";
 import Card3 from "../card3/Card3";
-import {useLocation} from "react-router-dom";
-import { movies } from "../../mockData/moviesMockData";
+import { useLocation } from "react-router-dom";
+import { mockData as movies } from "../../mockData/moviesMockData";
 import { ReactComponent as ScrollLogo } from "../../assets/icons/arrow.svg";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
@@ -15,19 +15,18 @@ import { UserContext } from "../../context/Context/UserContext/UserState";
 
 const Home = () => {
 
-  const {watchList,setWatchList}=useContext(UserContext);
+  const { watchList, setWatchList } = useContext(UserContext);
 
   const watch = new Set(watchList);
-  const data=movies.filter((item)=>{
-    if(!watch.has(item.movieId))
-    {
-      return item ;
+  const data = movies.filter((item) => {
+    if (!watch.has(item.movieId)) {
+      return item;
     }
   })
   const location = useLocation();
-  let url= location.pathname;
-  console.log("PATH Name:",url)
-//  console.log("Data filtered out :",data)
+  let url = location.pathname;
+  console.log("PATH Name:", url)
+  //  console.log("Data filtered out :",data)
   const [topMovies, setTopMovies] = useState([]);
   const [recentMovies, setrecentMovies] = useState([]);
   const [trendingMovies, settrendingMovies] = useState([]);
@@ -81,29 +80,28 @@ const Home = () => {
       console.log("Current page:", current);
       setCurrent(current + 1);
     }
-    return ;
+    return;
   };
   useEffect(() => {
 
-    const interval = setInterval(()=>{
-      if(!onHovering)
-      {check();}
-    },5000)
-    return ()=> {
-      if(interval){
+    const interval = setInterval(() => {
+      if (!onHovering) { check(); }
+    }, 5000)
+    return () => {
+      if (interval) {
         clearInterval(interval);
       }
     };
   });
 
- 
- 
-//   setTimeout(() => {
-// if(!onHovering)
-// {
-//   check(); 
-// }
-//   }, 5000);
+
+
+  //   setTimeout(() => {
+  // if(!onHovering)
+  // {
+  //   check(); 
+  // }
+  //   }, 5000);
 
   const leftScroll = (querySelect) => {
     const left = document.querySelector(querySelect);
@@ -200,11 +198,11 @@ const Home = () => {
 
       <div className="top-movie-container">
         <p className="d-flex">
-        {url==="/home" && <>Top Recommendations for you</>}
-        {url==="/anime" && <>Top Animes for you</>}
-        {url==="/movies" && <>Top Movies for you</>}
-        {url==="/tv-shows" && <>Top Tv Shows for you</>}
-        {url==="/series" && <>Top Series for you</>}
+          {url === "/home" && <>Top Recommendations for you</>}
+          {url === "/anime" && <>Top Animes for you</>}
+          {url === "/movies" && <>Top Movies for you</>}
+          {url === "/tv-shows" && <>Top Tv Shows for you</>}
+          {url === "/series" && <>Top Series for you</>}
         </p>
         <div className="top-movies-grid">
           <div onClick={() => leftScroll(".cards")} className="arrow-style">
@@ -212,9 +210,12 @@ const Home = () => {
           </div>
 
           <section className="cards">
-            {topMovies.map((movie, index) => (
-              <Card cardData={movie} key={index} direct="Home" />
-            ))}
+            {topMovies?.map((movie, index) => {
+              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
+                return <Card cardData={movie} key={index} direct="Home" />
+              }
+              return null;
+            })}
           </section>
 
           <div className="arrow-style1" onClick={() => rightScroll(".cards")}>
@@ -234,9 +235,12 @@ const Home = () => {
           </div>
 
           <section className="recent-release-cards">
-            {recentMovies.map((movie, index) => (
-              <Card cardData={movie} key={index} />
-            ))}
+            {recentMovies.map((movie, index) => {
+              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
+                return <Card cardData={movie} key={index} />
+              }
+              return null;
+            })}
           </section>
 
           <div
@@ -258,9 +262,12 @@ const Home = () => {
           </div>
 
           <section className="your-watches-cards">
-            {yourWatches.map((movie, index) => (
-              <Card3 cardData={movie} key={index} direct="Home"/>
-            ))}
+            {yourWatches.map((movie, index) => {
+              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
+                return <Card3 cardData={movie} key={index} direct="Home" />
+              }
+              return null;
+            })}
           </section>
 
           <div
@@ -273,12 +280,12 @@ const Home = () => {
       </div>
       <div className="top-movie-container">
         <p className="d-flex">
-        {url==="/home" && <>Trending Now</>}
-        {url==="/anime" && <>Trending Animes</>}
-        {url==="/movies" && <>Trending Movies</>}
-        {url==="/tv-shows" && <>Trending Tv Shows</>}
-        {url==="/series" && <>Trending Series</>}
-        
+          {url === "/home" && <>Trending Now</>}
+          {url === "/anime" && <>Trending Animes</>}
+          {url === "/movies" && <>Trending Movies</>}
+          {url === "/tv-shows" && <>Trending Tv Shows</>}
+          {url === "/series" && <>Trending Series</>}
+
         </p>
         <div className="top-movies-grid">
           <div
@@ -289,9 +296,12 @@ const Home = () => {
           </div>
 
           <section className="trending-movie-cards">
-            {trendingMovies.map((movie, index) => (
-              <Card cardData={movie} key={index} direct="Home"/>
-            ))}
+            {trendingMovies.map((movie, index) => {
+              if(url.slice(1)==='home' || url.slice(1)===movie.type){
+                return <Card cardData={movie} key={index} direct="Home" />
+              }
+              return null;
+            })}
           </section>
 
           <div

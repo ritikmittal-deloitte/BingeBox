@@ -57,7 +57,8 @@ const Card = ({ cardData , direct }) => {
 
   const handleOnClick=()=>{
 //    navigate("/wishlist");
-    navigate(`/description/${cardData.movieId}`)
+console.log("Movie id:",cardData)
+    navigate(`/description/${cardData.id}`)
   }
   return (
     <div
@@ -126,11 +127,13 @@ const Card = ({ cardData , direct }) => {
                 <h4>{cardData.movieDuraction}</h4>
               </div> */}
               <div className="card-last-container">
-          <div className="rate-1">&nbsp;CBFC : U/A&nbsp;</div>
-          <div className="ab-3"> {cardData.releaseYear} | {cardData.duration}</div>   
-          {cardData.genre.map((item)=>{
+          <div className="rate-3">&nbsp;CBFC:U/A&nbsp;</div>
+          <div className="ab-33"> {cardData.releaseYear} | {cardData.duration}</div> 
+          <div className="cat-box">  
+          {cardData?.genre?.map((item)=>{
            return  <div className="last-1">&nbsp;{item}&nbsp;</div>
           })}
+          </div>
  </div>
             </div>
 
