@@ -12,7 +12,7 @@ import Logo from "../Logo/Logo";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import CategoryType from "../CategoryType/CategoryType";
 import { UserContext } from "../../context/Context/UserContext/UserState";
-import { useDispatch ,useSelector} from "react-redux";
+
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
 
@@ -29,13 +29,12 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3,setOpen3]=useState(false);
-  const dispatch=useDispatch()
+  
   const handleChangingAccount=(account)=>{
     dispatch(AccountAction.selectCurrentAccount(account))
 
   }
-  const selectedAccount=useSelector((state)=>state.account.currentAccount)
-    console.log("in header",selectedAccount)
+  
 
   const ref = useRef(null);
   const ref2 = useRef(null);
