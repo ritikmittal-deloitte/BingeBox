@@ -24,7 +24,7 @@ const Background = () => {
   // })
   // console.log("div class",divClass)
   return (
-    <div className="main-back-container">
+    <div className="main-back-container ">
       <div className="row1 d-flex flex-column">
         <div className="div1"></div>
         <div className="div2"></div>

@@ -6,6 +6,7 @@ import { UserContextProvider } from "../../context/Context/UserContext/UserState
 import { useDispatch } from "react-redux";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
+import Background from "../background/Background";
 
 
 const Login = ({ setIsLogin }) => {
@@ -138,6 +139,9 @@ const Login = ({ setIsLogin }) => {
         </div>
       </div>
     </div>
+    // <div style={{width:"100%"}}>
+    //   <Background/>
+    // </div>
   
   );
 };
