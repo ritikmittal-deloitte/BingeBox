@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import "./signup.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { useNavigate } from "react-router-dom";
-
 import Logo from "../Logo/Logo";
 
 const upperTexts = [
