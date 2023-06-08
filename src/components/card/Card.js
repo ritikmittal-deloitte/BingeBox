@@ -57,7 +57,7 @@ const Card = ({ cardData , direct }) => {
 
   const handleOnClick=()=>{
 //    navigate("/wishlist");
-console.log("Movie id:",cardData)
+// console.log("Movie id:",cardData)
     navigate(`/description/${cardData.id}`)
   }
   return (
