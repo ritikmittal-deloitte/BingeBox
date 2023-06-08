@@ -12,7 +12,7 @@ import Background from "../background/Background";
 const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState({email:''});
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const Login = ({ setIsLogin }) => {
     if (!password) {
       error.password = "Password is required";
     }
-
+    console.log("Error :",error)
     setErrors(error);
     // Return true if there are no errors
     return Object.keys(error).length === 0;
@@ -43,8 +43,8 @@ const Login = ({ setIsLogin }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     const errors1 = validateForm();
-    console.log(errors1);
-    console.log("errors:", Object.keys(errors1).length);
+//   console.log(errors1);
+ //   console.log("errors:", Object.keys(errors1).length);
     if (errors1) {
       console.log("Login successful");
 
@@ -55,15 +55,16 @@ const Login = ({ setIsLogin }) => {
     else navigate("/accounts")
     
     } else {
-      setErrors(errors);
-    }
+//      setErrors(errors);
+  
+}
 
     
   
   };
   return (
     <div className="login-container">
-      <div className="overlay">
+      <div className="overlay-1">
         <div className="container">
           <div className="binge-box-heading">
             {/* <div className="binge-heading"> BINGE</div>
@@ -107,7 +108,8 @@ const Login = ({ setIsLogin }) => {
                 onClick={() => {
                   navigate("/forgot-password");
                 }}
-              >
+                style={{cursor:"pointer"}}
+                >
                 Forgot password?
               </a>
             </div>
@@ -120,8 +122,9 @@ const Login = ({ setIsLogin }) => {
                 onClick={() => {
                   navigate("/signup");
                 }}
+              style={{cursor:"pointer"}}
               >
-                Sign Up
+              <u>  Sign Up</u>
               </a>
             </div>
             <div className="divider">

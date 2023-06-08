@@ -2,6 +2,7 @@ import React from "react";
 import "./subscriptionplans.scss";
 import { useNavigate } from "react-router-dom";
 import SubscriptionComponent from "./SubscriptionComponent";
+import { ReactComponent as MainLogo } from "./../../assets/images/Group 1000002501.svg";
 import Logo from "../Logo/Logo";
 
 function Subscriptionplans() {
@@ -18,9 +19,10 @@ function Subscriptionplans() {
       <div className="left-container">
         <div
           className="binge-box-heading"
-          style={{ marginTop: "17rem", marginLeft: "10rem" }}
+          style={{ marginTop: "17rem"}}
         >
-          <Logo />
+          {/* <Logo /> */}
+          <MainLogo/>
           {/* <div
             className="binge-heading"
             style={{ heigh: "4rem", width: "17rem" }}
