@@ -643,7 +643,7 @@ export const mockData = [
       {
         "id": 41,
         "posterImage": AOT,
-        "videoUrl": "https://www.youtube.com/embed/4o0tWm8Ka2I",
+        "videoUrl": "https://www.youtube.com/embed/bT9csxkth8g",
         "title": "Attack on Titan",
         "description": "<p>In a world where humanity is threatened by giant humanoid creatures known as Titans, a young boy named Eren Yeager joins a military group to fight against them and uncover the mysteries surrounding their existence.</p>",
         "releaseYear": 2013,
@@ -654,7 +654,7 @@ export const mockData = [
       {
         "id": 42,
         "posterImage": DeathNote,
-        "videoUrl": "https://www.youtube.com/embed/k8ws_APX0Ys",
+        "videoUrl": "https://www.youtube.com/embed/NlJZ-YgAt-c",
         "title": "Death Note",
         "description": "<p>When a high school student discovers a supernatural notebook that grants him the power to kill anyone by writing their name in it, he decides to use it to cleanse the world of evil, but his actions attract the attention of a brilliant detective.</p>",
         "releaseYear": 2006,
@@ -665,7 +665,7 @@ export const mockData = [
       {
         "id": 43,
         "posterImage": OnePiece,
-        "videoUrl": "https://www.youtube.com/embed/I3O6S24iITA",
+        "videoUrl": "https://www.youtube.com/embed/S8_YwFLCh4U",
         "title": "One Piece",
         "description": "<p>Monkey D. Luffy and his pirate crew set out on a grand adventure to find the legendary treasure known as One Piece and become the Pirate King.</p>",
         "releaseYear": 1999,
@@ -676,7 +676,7 @@ export const mockData = [
       {
         "id": 44,
         "posterImage": Naruto,
-        "videoUrl": "https://www.youtube.com/embed/66v7F9B8Fao",
+        "videoUrl": "https://www.youtube.com/embed/QczGoCmX-pI",
         "title": "Naruto",
         "description": "<p>Follow the journey of Naruto Uzumaki, a young ninja who seeks recognition from his peers and dreams of becoming the Hokage, the leader of his village.</p>",
         "releaseYear": 2002,
@@ -687,7 +687,7 @@ export const mockData = [
       {
         "id": 45,
         "posterImage": FullMetal,
-        "videoUrl": "https://www.youtube.com/embed/VQzgWd6i0JI",
+        "videoUrl": "https://www.youtube.com/embed/cqj4u6eyDq8",
         "title": "Fullmetal Alchemist: Brotherhood",
         "description": "<p>In a world where alchemy is a powerful science, two brothers, Edward and Alphonse Elric, embark on a journey to find the Philosopher's Stone to restore their bodies after a disastrous failed experiment.</p>",
         "releaseYear": 2009,
@@ -698,7 +698,7 @@ export const mockData = [
       {
         "id": 46,
         "posterImage": DemonSlayer,
-        "videoUrl": "https://www.youtube.com/embed/ATJYac_dORw",
+        "videoUrl": "https://www.youtube.com/embed/9DhuWapDDrw",
         "title": "Demon Slayer: Kimetsu no Yaiba",
         "description": "<p>Tanjirou Kamado becomes a demon slayer after his family is brutally attacked and his sister is turned into a demon. He sets out on a dangerous journey to find a way to turn her back into a human and seek revenge on the demon responsible.</p>",
         "releaseYear": 2019,
@@ -709,7 +709,7 @@ export const mockData = [
       {
         "id": 47,
         "posterImage": MyHero,
-        "videoUrl": "https://www.youtube.com/embed/UmebVzoOLno",
+        "videoUrl": "https://www.youtube.com/embed/EPVkcwyLQQ8",
         "title": "My Hero Academia",
         "description": "<p>In a world where almost everyone has superpowers, Izuku Midoriya, a young boy born without powers, enrolls in a prestigious hero academy to fulfill his dream of becoming a superhero.</p>",
         "releaseYear": 2016,
@@ -720,7 +720,7 @@ export const mockData = [
       {
         "id": 48,
         "posterImage": Hunter,
-        "videoUrl": "https://www.youtube.com/embed/fl9O2yY1i34",
+        "videoUrl": "https://www.youtube.com/embed/d6kBeJjTGnY",
         "title": "Hunter x Hunter",
         "description": "<p>Gon Freecss sets out on a journey to become a Hunter, a licensed professional who specializes in searching for rare treasures, secret locations, and even dangerous individuals.</p>",
         "releaseYear": 2011,
@@ -742,7 +742,7 @@ export const mockData = [
       {
         "id": 50,
         "posterImage": Haikyuu,
-        "videoUrl": "https://www.youtube.com/embed/Ibyp-Gf4IWU",
+        "videoUrl": "https://www.youtube.com/embed/JOGp2c7-cKc",
         "title": "Haikyuu!!",
         "description": "<p>Shoyo Hinata, a short-statured volleyball enthusiast, joins his high school's volleyball team and aims to overcome his height disadvantage to become a great player.</p>",
         "releaseYear": 2014,
@@ -753,7 +753,7 @@ export const mockData = [
       {
         "id": 51,
         "posterImage": Tokyo,
-        "videoUrl": "https://www.youtube.com/embed/CA4IfvPx0gY",
+        "videoUrl": "https://www.youtube.com/embed/vGuQeQsoRgU",
         "title": "Tokyo Ghoul",
         "description": "<p>In a world where flesh-eating ghouls exist, a young man named Kaneki Ken becomes a half-ghoul after surviving a deadly encounter. He must navigate between the human and ghoul societies while coming to terms with his new identity.</p>",
         "releaseYear": 2014,
@@ -764,7 +764,7 @@ export const mockData = [
       {
         "id": 52,
         "posterImage": Code,
-        "videoUrl": "https://www.youtube.com/embed/8BcYAiMxp9U",
+        "videoUrl": "https://www.youtube.com/embed/v-AGjx0N24U",
         "title": "Code Geass: Lelouch of the Rebellion",
         "description": "<p>Lelouch Lamperouge, a high school student, gains the power of Geass, which allows him to command anyone to obey his orders. With this power, he becomes the masked vigilante known as Zero and leads a rebellion against the oppressive Britannian Empire.</p>",
         "releaseYear": 2006,
@@ -775,7 +775,7 @@ export const mockData = [
       {
         "id": 53,
         "posterImage": Steins,
-        "videoUrl": "https://www.youtube.com/embed/ANg8f_hUiNU",
+        "videoUrl": "https://www.youtube.com/embed/uMYhjVwp0Fk",
         "title": "Steins;Gate",
         "description": "<p>Rintarou Okabe, a self-proclaimed mad scientist, accidentally invents a time machine. He and his friends find themselves caught up in a conspiracy surrounding time travel, leading to dangerous consequences.</p>",
         "releaseYear": 2011,
@@ -786,7 +786,7 @@ export const mockData = [
       {
         "id": 54,
         "posterImage": Fate,
-        "videoUrl": "https://www.youtube.com/embed/rg4DiSXwbis",
+        "videoUrl": "https://www.youtube.com/embed/NPItqNsCXM4",
         "title": "Fate/Stay Night: Unlimited Blade Works",
         "description": "<p>Shirou Emiya is thrust into the world of the Holy Grail War, a battle royale between mages and their summoned heroic spirits. As he gets entangled in the conflict, Shirou must confront his own beliefs and fight to protect what he holds dear.</p>",
         "releaseYear": 2014,
@@ -797,7 +797,7 @@ export const mockData = [
       {
         "id": 55,
         "posterImage": Black,
-        "videoUrl": "https://www.youtube.com/embed/pMoFKbMxw0E",
+        "videoUrl": "https://www.youtube.com/embed/PrgxJ1_sUcs",
         "title": "Black Clover",
         "description": "<p>Asta and Yuno are orphans in a world where magic is everything. While Yuno possesses exceptional magical abilities, Asta has none. Despite this, Asta sets out to become the Wizard King and prove that strength comes from determination rather than magic.</p>",
         "releaseYear": 2017,
