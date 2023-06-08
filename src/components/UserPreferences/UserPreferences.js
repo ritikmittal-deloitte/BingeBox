@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './UserPreferences.scss'
+import { useDispatch } from "react-redux";
 import Comedy from './images/comedy.png'
 import Drama from './images/drama.png'
 import Horror from './images/horror.png'
@@ -15,10 +16,13 @@ import Box from './images/BOX.png'
 import CardComponent from './CardComponent'
 import { generatePath, useLocation, useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/Context/UserContext/UserState'
+import { dummyData } from '../../mockData/accountsMockData'
+import { AccountAction } from '../../redux/AccountSlice';
 
 export default function UserPreferences() {
     const [hoveredIndex, setHoveredIndex] = useState(-1);
     const {genre,setGenre} = useContext(UserContext)
+    const dispatch=useDispatch()
     const navigate = useNavigate()
 
     const handleMouseEnter = (index) => {
@@ -28,6 +32,12 @@ export default function UserPreferences() {
     const handleMouseLeave = () => {
         setHoveredIndex(-1);
     };
+    const handleSuccessFullNavigationAfterSignUp=()=>{
+        
+            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+            navigate("/profile")
+        
+    }
 
     return (
         <div className='user-preferences-page' style={{ color: 'white' }}>
@@ -60,7 +70,7 @@ export default function UserPreferences() {
                             </div>
                         </div>
                         <div className='next-row'>
-                            <div className='next-text' onClick={(e)=>navigate('/profile')}>Next</div>
+                            <div className='next-text' onClick={handleSuccessFullNavigationAfterSignUp}>Next</div>
                         </div>
                     </div>
                 </div>
