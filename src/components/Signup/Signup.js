@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./signup.scss";
-import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
+import { ReactComponent as MainLogo } from "./../../assets/icons/Group 1000002501.svg";
 import { useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 
@@ -114,8 +114,9 @@ function Signup() {
   return (
     <div className="signup-container">
       <div className="left-container">
-        <div className="binge-box-heading">
-          <Logo />
+        <div className="binge-box-heading-1">
+          {/* <Logo /> */}
+          <MainLogo/>
         </div>
         <form action="" className="signup-form" onSubmit={handleSubmit}>
           <h3 className="d-flex justify-content-start w-100 mb-0 signup-heading">

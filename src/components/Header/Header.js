@@ -106,6 +106,9 @@ useEffect(() => {
       searchPageOpen()
     }
   };
+  const SignOut = () =>{
+    navigate('/');
+  }
 
   const searchPageOpen = () => {
     if(helperSearchText.trim()===''){
@@ -274,7 +277,7 @@ useEffect(() => {
               <div className="Box-1"  onClick={(e)=>{nav(e)}}>
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Help
               </div>
-              <div className="sign-out-button">
+              <div className="sign-out-button" onClick={SignOut}>
                   Sign out
               </div>
             </div>}
