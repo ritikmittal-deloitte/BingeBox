@@ -1,12 +1,11 @@
 .payment-container {
- 
   position: absolute;
   z-index: 1;
   margin-top: 30rem;
   left: 26.93rem;
   transform: translate(-50%, -50%);
   width: 30% !important;
- 
+
   // height: 600px;
   /* background: url("../../assets/images/bg-login.png") no-repeat; */
   background-color: transparent;
@@ -23,8 +22,8 @@
     display: flex;
 
     .binge-heading {
-      height: 80%;
-      width: 40%;
+      height: 90%;
+      width: 35%;
       background-color: #f03a47;
       font-family: "Sora";
       font-style: normal;
@@ -37,7 +36,7 @@
     .box-heading {
       height: 80%;
       width: 10%;
-      margin-left: 2%;
+      margin-left: 2.5rem;
       color: #f03a47;
       font-family: "Sora";
       font-style: normal;
@@ -46,7 +45,14 @@
       line-height: 68px;
     }
   }
-
+.error-payment {
+  color: #f03a47;
+  display: flex;
+  justify-content: flex-start;
+      margin-top: -4rem;
+        padding-left: 1rem;
+        margin-bottom: 0.5rem;
+}
   p {
     font-weight: 600;
     font-size: 32px;
@@ -55,7 +61,7 @@
     margin-left: 8rem;
     color: #d8d8d8;
   }
-  .method {
+  .pay-method {
     width: 50rem !important;
     display: flex;
     color: #ffffff;
@@ -66,12 +72,22 @@
     margin-left: 5.7rem;
     margin-top: 3rem;
     margin-bottom: 1rem;
+    cursor: pointer;
+
+    .active {
+      width: 30%;
+      border-bottom: 0.25rem solid #f03a47;
+      padding-bottom: 1rem;
+    }
   }
+
   .card {
+    margin-top: -1rem;
     padding: 4rem;
     display: flex;
     flex-direction: row;
     width: 65rem;
+    height: 37rem;
     border-radius: 25px;
     background: linear-gradient(
       115.57deg,
@@ -93,13 +109,26 @@
           margin-top: 0rem;
           margin-left: 1rem;
           font-size: 1rem;
-         
         }
         .inputs {
           margin-top: 1rem;
           width: 35rem;
           margin-bottom: 4.375rem;
-         }
+          background: linear-gradient(115.57deg,
+                rgba(255, 255, 255, 0.19) -4.2%,
+                rgba(234, 234, 234, 0.0806194) 70.71%,
+                rgba(223, 214, 214, 0) 125.93%);
+            border: 0.9px solid #8b8b8b;
+            input{
+              color: #ffffff;
+              background: linear-gradient(115.57deg,
+                    rgba(255, 255, 255, 0.19) -4.2%,
+                    rgba(234, 234, 234, 0.0806194) 70.71%,
+                    rgba(223, 214, 214, 0) 125.93%);
+                border: 0.9px solid #8b8b8b;
+            }
+        }
+
         .date-cvv {
           display: flex;
           width: 100%;
@@ -110,22 +139,98 @@
             width: 20%;
           }
         }
-        .pay-btn{
+        .pay-btn {
+          margin-top: 26rem;
+          position: fixed;
           border: none;
           margin-left: 15.5rem;
           width: 19.5rem;
           height: 4rem;
-          background: #F03A47;
-            border-radius: 1.25rem;
-            font-weight: 700;
-              font-size: 1.25rem;
-              line-height: 1.5rem;
-              text-align: center;
-            
-              color: #FFFFFF;
+          background: #f03a47;
+          border-radius: 1.25rem;
+          font-weight: 700;
+          font-size: 1.25rem;
+          line-height: 1.5rem;
+          text-align: center;
 
+          color: #ffffff;
+        }
+        .upi{
+          // width: 100%;
+          .upi-method 
+          {
+            display: flex;
+            justify-content:space-between;
+            align-items: center;
+            list-style: none;
+            margin-top: 1rem;
+            margin-left: -1.2rem;
+            .method{
+            width: 4rem;
+            height: 1.8rem;
+            background: linear-gradient(115.57deg,
+                rgba(255, 255, 255, 0.19) -4.2%,
+                rgba(234, 234, 234, 0.0806194) 70.71%,
+                rgba(223, 214, 214, 0) 125.93%);
+            border: 0.9px solid #8b8b8b;
+            color: #ffffff;
+            border-radius: 0.6rem;
+            cursor: pointer;
+            
+          }
         }
       }
+      .methods{
+        display: flex;
+        justify-content: space-between;
+       .banks {
+        
+        .bank{
+          margin-right: 1.5rem;
+          height: 4.875rem;
+          width: 4.875rem;
+          background-color: #ffffff;
+          border-radius: 3rem;
+          justify-content: center;
+          align-items: center;
+        }
+        p{
+          font-weight: 400;
+            font-size: 18px;
+            line-height: 25px;
+          
+            align-items: center;
+          
+            color: #FFFFFF;
+            margin-left: -1.8rem;
+        }
+      }
+        .view{
+        .view-btn{
+          width: 3rem;
+          height: 3rem;
+          margin-top: 1rem;
+          background: linear-gradient(115.57deg,
+                rgba(255, 255, 255, 0.19) -4.2%,
+                rgba(234, 234, 234, 0.0806194) 70.71%,
+                rgba(223, 214, 214, 0) 125.93%);
+            border: 0.9px solid #8b8b8b;
+            color: #ffffff;
+        }
+        p{
+          font-weight: 400;
+            font-size: 18px;
+            line-height: 25px;
+          
+            align-items: center;
+          
+            color: #FFFFFF;
+            margin-left: -1.1rem;
+            margin-top: 0.8rem;
+        }
+      }
+      }
+    }
     }
   }
 }

@@ -1,6 +1,6 @@
 import React , {useContext, useEffect} from 'react';
 import "./wishlist.scss"
-import { movies } from "../../mockData/moviesMockData";
+import { mockData as movies} from "../../mockData/moviesMockData";
 import Card from '../card/Card';
 import { UserContext } from '../../context/Context/UserContext/UserState';
 
@@ -21,8 +21,8 @@ const WatchList = () => {
             {/* {movies.slice(0,3).map((movie, index) => (
             <Card cardData={movie} key={index} />
           ))} */}
-          {movies.slice(0,6).map((movie,index)=>{
-                if(watch.has(movie.movieId))
+          {movies.map((movie,index)=>{
+                if(watch.has(movie.id))
                 {
                     return  (<Card cardData={movie} key={index} direct="WatchList" />);
                 }

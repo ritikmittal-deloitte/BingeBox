@@ -54,9 +54,9 @@ const Card = ({ cardData }) => {
     };
   };
   const handleAddToWatchList = (event) => {
-    console.log("Card Data :", cardData.movieId)
+    console.log("Card Data :", cardData.id)
     console.log("Current Watch List:", watchList)
-    setWatchList([...watchList, cardData.movieId]);
+    setWatchList([...watchList, cardData.id]);
     //    setWatchList(previousState => new Set([...previousState,cardData.movieId]));
     console.log("add to watch list:", event)
     event.stopPropagation();

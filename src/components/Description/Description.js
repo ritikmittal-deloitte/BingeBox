@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./description.scss";
 import fish from "../../assets/images/fish.gif";
 import { useParams } from "react-router-dom";
-import { movies } from "../../mockData/moviesMockData";
+import { mockData as movies} from "../../mockData/moviesMockData";
 import { photos } from "../../mockData/profilePhotoMockData";
 import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import  { ReactComponent as ScrollLogo } from "./../../assets/icons/arrow.svg";
@@ -59,7 +59,7 @@ const Description = () => {
             </div>
           </div>
           <div className="desc-end-container">
-            <span>{movies[movieId-1].description}</span>
+            <span style={{display:'flex', textAlign:'start'}}>{movies[movieId-1].description}</span>
           </div>
           <div className="cast-container d-flex flex-column justify-content-start align-items-start">
             <p>Cast</p>

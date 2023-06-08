@@ -17,6 +17,8 @@ import UserPreferences from "./components/UserPreferences/UserPreferences";
 import Profile from "./components/Profile/Profile";
 import SearchPage from "./components/Searchpage/SearchPage";
 import Accounts from "./components/accounts/Accounts";
+import ForgotPassword from "./components/ForgotPassowrd/ForgotPassword";
+import ResetPassword from "./components/ResetPassword/ResetPassword";
 
 function App() {
   const [isLogin, setIsLogin] = useState(false);
@@ -40,12 +42,14 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/userpreferences" element={<UserPreferences />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/subscription-plans" element={<Subscriptionplans />} />
           <Route path="/payment-successful" element={<PaymentSuccessful />} />
           <Route path="/selected-plan" element={<SelectedPlan />} />
-          <Route path="/accounts" element={<Accounts/>}/>
+          <Route path="/accounts" element={<Accounts />} />
           <Route path="/payment" element={<Payment />} />
 
           {

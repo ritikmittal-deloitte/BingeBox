@@ -7,6 +7,7 @@ import { ReactComponent as SettingsLogo } from "../../assets/icons/settings.svg"
 import { ReactComponent as Logo1 } from "../../assets/images/avatar1.svg";
 import { ReactComponent as Logo2 } from "../../assets/images/avatar2.svg";
 import profilePhoto from "../../assets/images/profile-photo.svg";
+import { useSelector ,useDispatch} from "react-redux";
 import Logo from "../Logo/Logo";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import CategoryType from "../CategoryType/CategoryType";
@@ -22,6 +23,9 @@ const Header = () => {
   const {searchText,setSearchText} = useContext(UserContext)
   const [helperSearchText,setHelperSearchText] = useState('')
   const navigate = useNavigate()
+  const dispatch=useDispatch()
+  const selectedAccount=useSelector((state)=>state.account.currentAccount)
+    console.log("in header",selectedAccount)
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3,setOpen3]=useState(false);
