@@ -8,11 +8,28 @@ export default function Modal({ divRef, closeModal }) {
     const [name, setName] = useState('');
     const [language, setLanguage] = useState('');
     const [genre, setGenre] = useState('');
-    const [profile, setProfile] = useState(null);
-
+    const [profile, setProfile] = useState('');
+    const [errors, setErrors] = useState({});
 
     const modalRef = useRef(null);
     const fileInputRef = useRef(null)
+
+    const validateForm = () => {
+        const errors = {};
+        if (name.trim() === '') {
+            errors.name = 'Name is required';
+        }
+        if (language.trim() === '') {
+            errors.language = 'Language is required';
+        }
+        if (genre.trim() === '') {
+            errors.genre = 'Genre is required';
+        }
+        if (profile.trim() === '') {
+            errors.profile = 'Profile is required';
+        }
+        return errors;
+    };
 
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
@@ -40,11 +57,21 @@ export default function Modal({ divRef, closeModal }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(name, language, genre, profile);
+        const validationErrors = validateForm();
+        if (Object.keys(validationErrors).length === 0) {
+            // Submit the form
+            // You can handle the form submission logic here
+            console.log('Name:', name);
+            console.log('Language:', language);
+            console.log('Genre:', genre);
+            console.log('Profile:', profile);
+            closeModal();
+        } else {
+            setErrors(validationErrors);
+        }
 
         // Perform your submit logic here
         // You can access the form data in the state variables (name, language, genre, profile)
-        closeModal();
     };
 
 
@@ -67,10 +94,13 @@ export default function Modal({ divRef, closeModal }) {
                                     style={{ display: 'none' }}
                                 />
                                 <button type="button" className="file-input-button" onClick={handleButtonClick}>
-                                    <img src={CircleIcon} className='circle-icon' alt='not available'/>
-                                    <img src={UserIcon} className='user-icon' alt='not available'/>
-                                    <img src={CameraIcon} className='camera-icon' alt='not available'/>
+                                    <img src={CircleIcon} className='circle-icon' alt='not available' />
+                                    <img src={UserIcon} className='user-icon' alt='not available' />
+                                    <img src={CameraIcon} className='camera-icon' alt='not available' />
                                 </button>
+                                <div className="error-signup">
+                                    {errors.profile && <span className="error">{errors.profile}</span>}
+                                </div>
                             </div>
                         </div>
                         <div className='line-3'></div>
@@ -84,6 +114,9 @@ export default function Modal({ divRef, closeModal }) {
                                     value={name}
                                     onChange={(e) => setName(e.target.value)}
                                 />
+                                <div className="error-signup">
+                                    {errors.name && <span>* {errors.name}</span>}
+                                </div>
                             </div>
                             <div className='account-input-div'>
                                 <select
@@ -97,6 +130,9 @@ export default function Modal({ divRef, closeModal }) {
                                     <option className='option-account' value="Spanish">Spanish</option>
                                     <option className='option-account' value="French">French</option>
                                 </select>
+                                <div className="error-signup">
+                                    {errors.language && <span className="error">{errors.language}</span>}
+                                </div>
                             </div>
                             <div className='account-input-div'>
                                 <select
@@ -110,6 +146,9 @@ export default function Modal({ divRef, closeModal }) {
                                     <option className='option-account' value="Comedy">Comedy</option>
                                     <option className='option-account' value="Drama">Drama</option>
                                 </select>
+                                <div className="error-signup">
+                                    {errors.genre && <span className="error">{errors.genre}</span>}
+                                </div>
                             </div>
 
                             <div className='submit-button'><button type="submit">Add Account</button></div>
