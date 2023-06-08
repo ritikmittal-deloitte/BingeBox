@@ -3,11 +3,18 @@ import { useNavigate } from "react-router-dom";
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { UserContextProvider } from "../../context/Context/UserContext/UserState";
+import { useDispatch } from "react-redux";
+import { AccountAction } from '../../redux/AccountSlice';
+import { dummyData } from "../../mockData/accountsMockData";
+import Background from "../background/Background";
+
+
 const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+  const [errors, setErrors] = useState({email:''});
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // const Login = ({setIsLogin}) => {
   //     const navigate = useNavigate();
@@ -26,7 +33,7 @@ const Login = ({ setIsLogin }) => {
     if (!password) {
       error.password = "Password is required";
     }
-
+    console.log("Error :",error)
     setErrors(error);
     // Return true if there are no errors
     return Object.keys(error).length === 0;
@@ -36,19 +43,28 @@ const Login = ({ setIsLogin }) => {
   const handleLogin = (e) => {
     e.preventDefault();
     const errors1 = validateForm();
-    console.log(errors1);
-    console.log("errors:", Object.keys(errors1).length);
+//   console.log(errors1);
+ //   console.log("errors:", Object.keys(errors1).length);
     if (errors1) {
       console.log("Login successful");
-       navigate("/home");
-    } 
-    // setIsLogin(true);
-    // setEmail("");
-    // setPassword("");
+
+      if(dummyData.accounts.length===1){
+        dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+        navigate("/home")
+    }
+    else navigate("/accounts")
+    
+    } else {
+//      setErrors(errors);
+  
+}
+
+    
+  
   };
   return (
     <div className="login-container">
-      <div className="overlay">
+      <div className="overlay-1">
         <div className="container">
           <div className="binge-box-heading">
             {/* <div className="binge-heading"> BINGE</div>
@@ -92,7 +108,8 @@ const Login = ({ setIsLogin }) => {
                 onClick={() => {
                   navigate("/forgot-password");
                 }}
-              >
+                style={{cursor:"pointer"}}
+                >
                 Forgot password?
               </a>
             </div>
@@ -105,8 +122,9 @@ const Login = ({ setIsLogin }) => {
                 onClick={() => {
                   navigate("/signup");
                 }}
+              style={{cursor:"pointer"}}
               >
-                Sign Up
+              <u>  Sign Up</u>
               </a>
             </div>
             <div className="divider">
@@ -124,6 +142,10 @@ const Login = ({ setIsLogin }) => {
         </div>
       </div>
     </div>
+    // <div style={{width:"100%"}}>
+    //   <Background/>
+    // </div>
+  
   );
 };
 

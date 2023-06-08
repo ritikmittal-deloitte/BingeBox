@@ -2,6 +2,7 @@ import React from "react";
 import "./selectedplan.scss";
 import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import { ReactComponent as MainLogo } from "./../../assets/images/Group 1000002501.svg";
 
 function SelectedPlan() {
   const todayDate = new Date();
@@ -18,7 +19,7 @@ function SelectedPlan() {
   return (
     <div className="selected-container">
       <div className="binge-box-heading">
-        <Logo />
+        <MainLogo />
         {/* <div className="binge-heading"> BINGE</div>
         <div className="box-heading">BOX</div> */}
       </div>

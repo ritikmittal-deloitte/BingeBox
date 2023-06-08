@@ -31,6 +31,7 @@ const Home = () => {
   const [trendingMovies, settrendingMovies] = useState([]);
   const [yourWatches, setyourWatches] = useState([]);
   const [onHovering, setOnHovering] = useState(false);
+  const [carItems,setCarItems]=useState([]);
   const [current, setCurrent] = useState(1);
   const handleMouseOver = () => {
     setOnHovering(true);
@@ -41,6 +42,7 @@ const Home = () => {
   const handleAddToWatchList = () => {
     console.log("add to watch lsit");
   };
+
 
   const fetchTrendingMovies = async () => {
     //const response=await axios.get("")
@@ -62,12 +64,31 @@ const Home = () => {
     //settrendingMovies(response.data)
     setyourWatches(movies);
   };
+const fetchCarouselItems =async () =>{
+  console.log("TYUDTIDUY")
+  const items= movies.filter((item)=>{
+    return url.slice(1) === 'home' || url.slice(1) === item.type ;
+  })
+  setCarItems(items)
+  console.log("Carousel items:",items.slice(0,5))
 
+}
+  useEffect(() => {
+    setCurrent(1);
+    fetchRecentMovies();
+    fetchTopMovies();
+    fetchTrendingMovies();
+    fetchYourWatches();
+    fetchCarouselItems();
+    
+  }, [url]);
   useEffect(() => {
     fetchRecentMovies();
     fetchTopMovies();
     fetchTrendingMovies();
     fetchYourWatches();
+    fetchCarouselItems();
+    
   }, []);
 
   const check = () => {
@@ -126,12 +147,12 @@ const Home = () => {
         {!onHovering && (
           <>
             <div
-              style={handleBackgorndImage(movies[current].posterImage)}
+              style={handleBackgorndImage(carItems[current-1]?.posterImage)}
               className={`main-banner-container`}
             ></div>
             <div className="banner-video-text-box-1">
               <div className="video-heading">
-                <h2>{movies[current].title}</h2>
+                <h2>{carItems[current-1]?.title}</h2>
               </div>
             </div>
           </>
@@ -140,7 +161,7 @@ const Home = () => {
         {onHovering && (
           <>
             <iframe
-              src={`${movies[current].videoUrl}` + "?autoplay=1&controls=0"}
+              src={`${carItems[current-1].videoUrl}` + "?autoplay=1&controls=0"}
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -148,10 +169,10 @@ const Home = () => {
             ></iframe>
             <div className="banner-video-text-box">
               <div className="video-heading">
-                <h2>{movies[current].title}</h2>
+                <h2>{carItems[current-1].title}</h2>
               </div>
               <div className="video-description">
-                {movies[current].description}
+                {carItems[current-1].description}
               </div>
               <div className="video-category">
                 <div className="last-2">

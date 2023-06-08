@@ -21,7 +21,7 @@ const WatchList = () => {
             {/* {movies.slice(0,3).map((movie, index) => (
             <Card cardData={movie} key={index} />
           ))} */}
-          {movies.slice(0,6).map((movie,index)=>{
+          {movies.map((movie,index)=>{
                 if(watch.has(movie.id))
                 {
                     return  (<Card cardData={movie} key={index} direct="WatchList" />);

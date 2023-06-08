@@ -13,6 +13,10 @@ import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.s
 import CategoryType from "../CategoryType/CategoryType";
 import { UserContext } from "../../context/Context/UserContext/UserState";
 
+import { AccountAction } from '../../redux/AccountSlice';
+import { dummyData } from "../../mockData/accountsMockData";
+
+
 const Header = () => {
   const [selected, setSelected] = useState("0");
   const [profile, setProfile] = useState(false);
@@ -25,6 +29,12 @@ const Header = () => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3,setOpen3]=useState(false);
+  
+  const handleChangingAccount=(account)=>{
+    dispatch(AccountAction.selectCurrentAccount(account))
+
+  }
+  
 
   const ref = useRef(null);
   const ref2 = useRef(null);
@@ -96,6 +106,9 @@ useEffect(() => {
       searchPageOpen()
     }
   };
+  const SignOut = () =>{
+    navigate('/');
+  }
 
   const searchPageOpen = () => {
     if(helperSearchText.trim()===''){
@@ -222,7 +235,7 @@ useEffect(() => {
               className="noti-icon"
             />
             <img
-              src={profilePhoto}
+              src={selectedAccount.img}
               className="profile-style"
               onClick={() => {
                 setProfile(true);
@@ -234,19 +247,28 @@ useEffect(() => {
 
           {profile && open2 && <div className="profile-box" ref={ref2} >
               <div className=""></div>
-              <div className="selected-1">&nbsp;&nbsp;&nbsp; Manisha Singh</div>
+              <div className="selected-1">&nbsp;&nbsp;&nbsp; {selectedAccount.name}</div>
               <div className="line-2"></div>
+              {
+               dummyData.accounts.length>1&&( 
+               <div className="avatar-box">
+              {/* <div className="line-2"></div> */}
               <div className="avatar-box">
               &nbsp;&nbsp;&nbsp;
-                <div>
-              <Logo1/>
-                  <div className="avatar-text">Manan</div>
+              {
+                dummyData.accounts.filter((account)=>account.name!==selectedAccount.name).map((account)=>(
+                  <div>
+              <img src={account.img} onClick={()=>handleChangingAccount(account)} className="profile-conatiner-pic"/>
+                  <div className="avatar-text">{account.name}</div>
                 </div>
-                <div>
-              <Logo2/>
-                  <div className="avatar-text">Raman</div>
-                </div>
+                ))
+              }
+                
               </div>
+              </div>
+               )
+              }
+              
               <div className="line-2"></div>
               <div className="Box-1"  onClick={(e)=>{profileNavigate(e)} }>
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Profile
@@ -255,7 +277,7 @@ useEffect(() => {
               <div className="Box-1"  onClick={(e)=>{nav(e)}}>
              <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Help
               </div>
-              <div className="sign-out-button">
+              <div className="sign-out-button" onClick={SignOut}>
                   Sign out
               </div>
             </div>}
