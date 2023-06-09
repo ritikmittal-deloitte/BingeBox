@@ -9,12 +9,17 @@ import './Profile.scss'
 import { UserContext } from '../../context/Context/UserContext/UserState'
 import AddAccountsModal from './AddAccountsModal'
 import { useRef } from 'react'
+import { AccountAction } from '../../redux/AccountSlice';
+import { useDispatch, useSelector } from "react-redux";
+
 
 export default function Profile() {
-    const navigate = useNavigate()
     const divRef = useRef();
     const { genre, setGenre } = useContext(UserContext)
     const [openModal, setOpenModal] = useState(false)
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const signUpUserDetails = useSelector((state) => state.account.userDetails)
     const logout = () => {
         navigate('/login')
     }
@@ -22,12 +27,16 @@ export default function Profile() {
         navigate('/userpreferences', { state: dummyData.genre })
     }
 
-    const handleModalOpen = (e,p) => {
+    const handleModalOpen = (e, p) => {
         setOpenModal(true)
-        
-    } 
-    const handleModalClose = (e)=> {
+
+    }
+    const handleModalClose = (e) => {
         setOpenModal(false)
+    }
+    const handleAddingAccount = () => {
+        dispatch(AccountAction.addAccount({ name: 'Piyush', img: User1 }))
+        
     }
     return (
         <div className='profile-page'>
@@ -35,13 +44,13 @@ export default function Profile() {
                 <div className='details-section'>
                     <div className='heading-container-profile'><div className='profile-heading'>Profile</div></div>
                     <div className='email-section'>
-                        <div className='email-detail'>Email &nbsp;-&nbsp;&nbsp; {dummyData.email}</div>
+                        <div className='email-detail'>Email &nbsp;-&nbsp;&nbsp; {signUpUserDetails.email}</div>
                         <div className='email-edit-tool'>
                             {/* <img src={PencilSquare} alt='tool-icon-not-available' /> */}
                         </div>
                     </div>
                     <div className='phone-section'>
-                        <div className='phone-detail'>Phone&nbsp; number&nbsp; - &nbsp;&nbsp;{dummyData.phone}</div>
+                        <div className='phone-detail'>Phone&nbsp; number&nbsp; - &nbsp;&nbsp;{signUpUserDetails.phone}</div>
                         <div className='phone-edit-tool'>
                             {/* <img src={PencilSquare} alt='tool-icon-not-available' /> */}
                         </div>
@@ -57,7 +66,7 @@ export default function Profile() {
                                     <div className='genre-box'>{item}</div>
                                 )
                             })}
-                            {genre.length===0 && <div className='no-genres-selected'>No Genres Selected</div>}
+                            {genre.length === 0 && <div className='no-genres-selected'>No Genres Selected</div>}
                         </div>
                         <div className='genre-edit-tool' onClick={(e) => handlePreferencesPage(e)} style={{ cursor: 'pointer' }}><img src={PencilSquare} alt='tool-icon-not-available' /></div>
                     </div>
@@ -67,27 +76,28 @@ export default function Profile() {
                     <div className='heading-container-manage'><div className='manage-heading'>Manage accounts</div></div>
                     <div className='accounts-info-section'>
                         <div className='existing-accounts'>
-                            {dummyData.accounts.map((acc) => {
-                                return (
-                                    <div className='account-box'>
-                                        <img className='account-pic' src={acc.img} alt='pic not available' />
-                                        <div className='account-name'>{acc.name}</div>
-                                    </div>
-                                )
-                            })}
-                        </div>
-                        <div className='add-new-account' onClick={(e) => handleModalOpen(e,'btn')}>
-                            <div className='add-new-icon' ><img src={PlusIcon} className='plus-icon-account' /></div>
-                        </div>
-                    </div>
-                </div>
+                                {signUpUserDetails?.accounts?.map((acc) => {
+        return (
+            <div className='account-box'>
+                <img className='account-pic' src={acc.img} alt='pic not available' />
+                <div className='account-name'>{acc.name}</div>
+            </div>
+        )
+    })}
+        </div>
+        <div className='add-new-account'  onClick={(e) => handleModalOpen(e,'btn')}>
+            <div className='add-new-icon'><img src={PlusIcon} className='plus-icon-account' /></div>
+        </div>
+                    </div >
+                </div >
                 <div className="line"></div>
                 <div className='logout-section'>
                     <div className='logout-button' onClick={(e) => { logout() }}>Logout</div>
                 </div>
-            </div>
-                        {openModal===true && <AddAccountsModal openModal={openModal} setOpenModal={setOpenModal} closeModal={handleModalClose} />}
-        </div>
+            </div >
+        { openModal=== true && <AddAccountsModal openModal={openModal} setOpenModal={setOpenModal} closeModal={handleModalClose} />
+}
+        </div >
     )
 }
 

@@ -2,6 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import CircleIcon from '../../assets/icons/circle.png'
 import CameraIcon from '../../assets/icons/camera.png'
 import UserIcon from '../../assets/icons/user.png'
+import { AccountAction } from '../../redux/AccountSlice';
+import User1 from '../../assets/images/image 74.png'
+import { useDispatch } from 'react-redux';
 import './AddAccountsModal.scss'
 
 export default function Modal({ divRef, closeModal }) {
@@ -10,7 +13,7 @@ export default function Modal({ divRef, closeModal }) {
     const [genre, setGenre] = useState('');
     const [profile, setProfile] = useState(null);
     const [errors, setErrors] = useState({});
-
+    const dispatch = useDispatch()
     const modalRef = useRef(null);
     const fileInputRef = useRef(null)
 
@@ -34,10 +37,19 @@ export default function Modal({ divRef, closeModal }) {
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
         setProfile(file);
-        if(errors.profile!==null){
+        if (errors.profile !== null) {
             let error = errors;
             error.profile = null
             setErrors(error)
+            const reader = new FileReader();
+
+            reader.onloadend = () => {
+                profile(reader.result);
+            };
+
+            if (file) {
+                reader.readAsDataURL(file);
+            }
         }
     };
 
@@ -45,6 +57,10 @@ export default function Modal({ divRef, closeModal }) {
         fileInputRef.current.click();
     };
 
+    const handleAddingAccount = () => {
+        dispatch(AccountAction.addAccount({ name: name, img: URL.createObjectURL(profile) }))
+
+    }
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -70,6 +86,7 @@ export default function Modal({ divRef, closeModal }) {
             console.log('Language:', language);
             console.log('Genre:', genre);
             console.log('Profile:', profile);
+            handleAddingAccount()
             closeModal();
         } else {
             setErrors(validationErrors);
@@ -98,17 +115,17 @@ export default function Modal({ divRef, closeModal }) {
                                     onChange={(e) => handleFileInputChange(e)}
                                     className='profile-input-field'
                                 />
-                                {profile===null && <button type="button" className="file-input-button" onClick={handleButtonClick}>
+                                {profile === null && <button type="button" className="file-input-button" onClick={handleButtonClick}>
                                     <img src={CircleIcon} className='circle-icon' alt='not available' />
                                     <img src={UserIcon} className='user-icon' alt='not available' />
                                     <img src={CameraIcon} className='camera-icon' alt='not available' />
                                 </button>}
                                 {
-                                    profile!==null && <img src={URL.createObjectURL(profile)} className='file-input-button'onClick={handleButtonClick} alt='not available'/>
+                                    profile !== null && <img src={URL.createObjectURL(profile)} className='file-input-button' onClick={handleButtonClick} alt='not available' />
                                 }
                                 {profile && <div className='uploaded-profile-text'>{profile.name}</div>}
                                 <div className="error-signup">
-                                    {errors.profile && <span className="error">{errors.profile.slice(0,15)}</span>}
+                                    {errors.profile && <span className="error">{errors.profile.slice(0, 15)}</span>}
                                 </div>
                             </div>
                         </div>

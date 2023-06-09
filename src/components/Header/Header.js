@@ -25,7 +25,8 @@ const Header = () => {
   const navigate = useNavigate()
   const dispatch=useDispatch()
   const selectedAccount=useSelector((state)=>state.account.currentAccount)
-    console.log("in header",selectedAccount)
+  const signUpUserDetails=useSelector((state)=>state.account.userDetails)
+    console.log("in header",selectedAccount,"signup",signUpUserDetails)
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3,setOpen3]=useState(false);
@@ -250,13 +251,13 @@ useEffect(() => {
               <div className="selected-1">&nbsp;&nbsp;&nbsp; {selectedAccount.name}</div>
               <div className="line-2"></div>
               {
-               dummyData.accounts.length>1&&( 
+               signUpUserDetails?.accounts?.length>1&&( 
                <div className="avatar-box">
               {/* <div className="line-2"></div> */}
               <div className="avatar-box">
               &nbsp;&nbsp;&nbsp;
               {
-                dummyData.accounts.filter((account)=>account.name!==selectedAccount.name).map((account)=>(
+                signUpUserDetails?.accounts?.filter((account)=>account.name!==selectedAccount.name).map((account)=>(
                   <div>
               <img src={account.img} onClick={()=>handleChangingAccount(account)} className="profile-conatiner-pic"/>
                   <div className="avatar-text">{account.name}</div>
