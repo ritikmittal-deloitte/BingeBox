@@ -60,6 +60,7 @@ const Card = ({ cardData , direct }) => {
 // console.log("Movie id:",cardData)
     navigate(`/description/${cardData.id}`)
   }
+  console.log("genres data:",cardData.genre.length)
   return (
     <div
       className={`card-container ${onHovering?"card-container-hovering-style":""}`}
@@ -130,9 +131,21 @@ const Card = ({ cardData , direct }) => {
           <div className="rate-3">&nbsp;CBFC:U/A&nbsp;</div>
           <div className="ab-33"> {cardData.releaseYear} | {cardData.duration}</div> 
           <div className="cat-box">  
-          {cardData?.genre?.map((item)=>{
+          {cardData?.genre?.length > 2 ? (
+            <div className="last-3">
+            {(
+            cardData?.genre?.slice(0,2).map((item)=>{
            return  <div className="last-1">&nbsp;{item}&nbsp;</div>
-          })}
+          }))} 
+          <span className="more-text"><u>
+          +{cardData.genre.length -2}more </u> </span>
+          </div>
+          ) : ( cardData?.genre?.map((item)=>{
+           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
+          }))}
+          {/* {cardData?.genre?.map((item)=>{
+           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
+          })} */}
           </div>
  </div>
             </div>

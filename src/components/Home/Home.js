@@ -255,14 +255,14 @@ const fetchCarouselItems =async () =>{
             <ScrollLogo />
           </div>
 
-          <section className="recent-release-cards">
+          <div className="recent-release-cards">
             {recentMovies.map((movie, index) => {
               if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
                 return <Card cardData={movie} key={index} />
               }
               return null;
             })}
-          </section>
+          </div>
 
           <div
             className="arrow-style1"
@@ -277,7 +277,7 @@ const fetchCarouselItems =async () =>{
         <div className="top-movies-grid">
           <div
             onClick={() => leftScroll(".your-watches-cards")}
-            className="arrow-style"
+            className="arrow-style-4"
           >
             <ScrollLogo />
           </div>
@@ -292,7 +292,7 @@ const fetchCarouselItems =async () =>{
           </section>
 
           <div
-            className="arrow-style1"
+            className="arrow-style-4"
             onClick={() => rightScroll(".your-watches-cards")}
           >
             <ScrollLogo />

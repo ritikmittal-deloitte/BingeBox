@@ -12,7 +12,7 @@ import Logo from "../Logo/Logo";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import CategoryType from "../CategoryType/CategoryType";
 import { UserContext } from "../../context/Context/UserContext/UserState";
-
+import { ReactComponent as ProfileLogo } from "../../assets/icons/Vector2.svg";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
 
@@ -122,8 +122,8 @@ useEffect(() => {
     <div className="d-flex justify-content-between w-100 align-items-end header-container">
       {/* <Logo className="w-30" /> */}
       <MainLogo />
-      <div className="w-30">
-        <div className="d-flex justify-content-between">
+      <div className="w-30 container-11">
+        <div className="navlink-container">
         <NavLink
                 to="/home"
                 className={({ isActive }) =>
@@ -232,7 +232,7 @@ useEffect(() => {
             <NotifiactionLogo
               width="1.1rem"
               height="1.3rem"
-              className="noti-icon"
+              className="notificationIcon"
             />
             <img
               src={selectedAccount.img}
@@ -271,12 +271,10 @@ useEffect(() => {
               
               <div className="line-2"></div>
               <div className="Box-1"  onClick={(e)=>{profileNavigate(e)} }>
-             <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Profile
+              <ProfileLogo style={{marginLeft:"6%"}}/> &nbsp;&nbsp; Profile
               </div>
               <div className="line-2"></div>
-              <div className="Box-1"  onClick={(e)=>{nav(e)}}>
-             <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Help
-              </div>
+              
               <div className="sign-out-button" onClick={SignOut}>
                   Sign out
               </div>

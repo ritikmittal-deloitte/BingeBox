@@ -7,7 +7,7 @@
     z-index: 0;
      position: relative;
     p{
-        font-family: 'Nunito Sans';
+        //font-family: 'Nunito Sans';
 font-style: normal;
 font-weight: 500;
 font-size: 32px;
@@ -19,6 +19,8 @@ color: #FFFFFF;
     }
 }
 .wishlist-grid-container{
+
+    padding-left: 2.2rem;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: max-content;
