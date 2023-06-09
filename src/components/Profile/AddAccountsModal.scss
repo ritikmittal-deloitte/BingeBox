@@ -1,0 +1,198 @@
+.modal-accounts {
+    position: absolute;
+    top: 6rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 34.8125rem;
+    width: 77.5rem;
+    z-index: 100;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+
+
+    .modal-content {
+        background-color: #fff;
+        padding: 0px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        height: 100%;
+        width: 100%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+        position: relative;
+        background: linear-gradient(115.57deg, rgba(255, 255, 255, 0.19) -4.2%, rgba(234, 234, 234, 0.0806194) 70.71%, rgba(223, 214, 214, 0) 125.93%);
+        backdrop-filter: blur(22.0177px);
+        /* Note: backdrop-filter has minimal browser support */
+
+        border-radius: 11.1645px;
+
+        .headline-container-account {
+            height: 15%;
+            width: 95%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .add-new-heading {
+            width: 40%;
+            height: 80%;
+            font-size: 1.25rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .account-form {
+            height: 80%;
+            width: 95%;
+        }
+
+        .account-content {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+        }
+
+        .left-hand-container {
+            width: 22rem;
+            height: 80%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .profile-input-field{
+            display: none;
+        }
+        .file-input-button {
+            height: 9.0625rem;
+            width: 9.0625rem;
+            position: relative;
+            border:none;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .circle-icon {
+                height: 95%;
+                width: 95%;
+                position: absolute;
+            }
+
+            .user-icon {
+                height: 50%;
+                width: 50%;
+                position: absolute;
+                left:25%;
+            }
+
+            .camera-icon {
+                height: 15%;
+                width: 18%;
+                position:absolute;
+                top:80%;
+                left:80%;
+            }
+        }
+        .uploaded-profile-text{
+            color:white;
+        }
+
+        .line-3 {
+            transform: translateX(-50%);
+            width: 1px;
+            height: 90%;
+            border-radius: 100rem;
+            background-color: white;
+            opacity: 0.2;
+        }
+
+        .right-hand-container {
+            width: 74rem;
+            height: 100%;
+            padding-left: 4rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: flex-start;
+        }
+
+        .account-input-div {
+            height: 4.5rem;
+            width: 34.375rem;
+        }
+
+        .account-input-field {
+            height: 100%;
+            width: 100%;
+            background: linear-gradient(115.57deg, rgba(255, 255, 255, 0.19) -4.2%, rgba(234, 234, 234, 0.0806194) 70.71%, rgba(223, 214, 214, 0) 125.93%);
+            border: 0.9px solid #8B8B8B;
+            border-radius: 15px;
+            color: white;
+        }
+        .account-input-field::after{
+            padding-right: 2rem;
+            position: absolute;
+            top: 50%;
+            right: 150px;
+        }
+
+        .account-input-field::placeholder {
+            color: white;
+        }
+
+        select .option-account {
+            background-color: rgb(61, 60, 60);
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type='text'],
+        select {
+            width: 100%;
+            padding: 5px;
+            font-size: 16px;
+        }
+
+        .submit-button {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+
+        }
+
+        button[type='submit'] {
+            background-color: #F03A47;
+            ;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            width: 15.75rem;
+            height: 3.6875rem;
+            border-radius: 0.9875rem;
+            margin-right: 4%;
+        }
+
+
+    }
+}

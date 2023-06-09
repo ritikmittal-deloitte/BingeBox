@@ -191,6 +191,7 @@ export const mockData = [
         "duration": "3h 1min",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4.5,
     },
     {
         "id": 2,
@@ -202,6 +203,7 @@ export const mockData = [
         "duration": "2h 25min",
         "genre": ["Action", "Adventure", "Crime"],
         "type": 'movies',
+        "rating": 4.1,
     },
     {
         "id": 3,
@@ -213,6 +215,7 @@ export const mockData = [
         "duration": "2h 14min",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4.3,
     },
     {
         "id": 4,
@@ -224,6 +227,7 @@ export const mockData = [
         "duration": "2h 2min",
         "genre": ["Crime", "Drama", "Thriller"],
         "type": 'movies',
+        "rating": 4.4,
     },
     {
         "id": 5,
@@ -235,6 +239,7 @@ export const mockData = [
         "duration": "2h 28min",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4,
     },
     {
         "id": 6,
@@ -246,6 +251,7 @@ export const mockData = [
         "duration": "2h 32min",
         "genre": ["Action", "Crime", "Drama"],
         "type": 'movies',
+        "rating": 4.7,
     },
     {
         "id": 7,
@@ -257,6 +263,7 @@ export const mockData = [
         "duration": "2h 7min",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 3.2,
     },
     {
         "id": 8,
@@ -268,6 +275,7 @@ export const mockData = [
         "duration": "2h 58min",
         "genre": ["Adventure", "Drama", "Fantasy"],
         "type": 'movies',
+        "rating": 3.8,
     },
     {
         "id": 9,
@@ -279,6 +287,7 @@ export const mockData = [
         "duration": "2h 49min",
         "genre": ["Adventure", "Drama", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4.3,
     },
     {
         "id": 10,
@@ -290,6 +299,7 @@ export const mockData = [
         "duration": "1h 57min",
         "genre": ["Biography", "Drama"],
         "type": 'movies',
+        "rating": 3.5,
       },
     {
         "id": 11,
@@ -301,6 +311,7 @@ export const mockData = [
         "duration": "2h 16min",
         "genre": ["Action", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4.9,
     },
     {
         "id": 12,
@@ -312,6 +323,7 @@ export const mockData = [
         "duration": "2h 34min",
         "genre": ["Crime", "Drama"],
         "type": 'movies',
+        "rating": 2.8,
     },
     {
         "id": 13,
@@ -323,6 +335,7 @@ export const mockData = [
         "duration": "2h 23min",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4.1,
     },
     {
         "id": 14,
@@ -334,6 +347,7 @@ export const mockData = [
         "duration": "3h 15min",
         "genre": ["Drama", "Romance"],
         "type": 'movies',
+        "rating": 4.2,
     },
     {
         "id": 15,
@@ -345,6 +359,7 @@ export const mockData = [
         "duration": "1h 58min",
         "genre": ["Animation", "Adventure", "Drama", "Kids"],
         "type": 'movies',
+        "rating": 3.0,
     },
     {
         "id": 16,
@@ -354,8 +369,9 @@ export const mockData = [
         "description": "The first installment in the Harry Potter film series, where a young boy named Harry Potter discovers his magical heritage and attends Hogwarts School of Witchcraft and Wizardry.",
         "releaseYear": 2001,
         "duration": "2h 32min",
-        "genre": ["Adventure", "Family", "Fantasy"],
+        "genre": ["Adventure", "Family", "Fantasy","horror"],
         "type": 'movies',
+        "rating": 4.6,
     },
     {
         "id": 17,
@@ -367,6 +383,7 @@ export const mockData = [
         "duration": "2h 22min",
         "genre": ["Drama", "Romance"],
         "type": 'movies',
+        "rating": 3.4,
     },
     {
         "id": 18,
@@ -378,6 +395,7 @@ export const mockData = [
         "duration": "2h 55min",
         "genre": ["Crime", "Drama"],
         "type": 'movies',
+        "rating": 4.3,
     },
     {
         "id": 19,
@@ -389,6 +407,7 @@ export const mockData = [
         "duration": "2h 42min",
         "genre": ["Action", "Adventure", "Fantasy"],
         "type": 'movies',
+        "rating": 4,
     },
     {
         "id": 20,
@@ -400,6 +419,7 @@ export const mockData = [
         "duration": "2h 44min",
         "genre": ["Action", "Adventure"],
         "type": 'movies',
+        "rating": 4.6,
     },
     {
         "id": 21,
@@ -411,6 +431,7 @@ export const mockData = [
         "duration": "2h 23min",
         "genre": ["Drama", "Romance"],
         "type": 'movies',
+        "rating": 3.9,
     },
     {
         "id": 22,
@@ -422,6 +443,7 @@ export const mockData = [
         "duration": "2h",
         "genre": ["Biography", "Drama"],
         "type": 'movies',
+        "rating": 3.1,
     },
     {
         "id": 23,
@@ -433,6 +455,7 @@ export const mockData = [
         "duration": "2h 8min",
         "genre": ["Comedy", "Drama", "Music"],
         "type": 'movies',
+        "rating": 3.5,
     },
     {
         "id": 24,
@@ -444,6 +467,7 @@ export const mockData = [
         "duration": "2h 22min",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 3.4,
     }
     ,
     {
@@ -454,8 +478,9 @@ export const mockData = [
         "description": "Jurassic World Dominion is a 2022 American science fiction action film directed by Colin Trevorrow, who co-wrote the screenplay with Emily Carmichael from a story by Derek Connolly and Trevorrow. ",
         "releaseYear": "2015",
         "duration": "2h 4m",
-        "genre": ["Action", "Adventure", "Sci-Fi"],
+        "genre": ["Action", "Adventure", "Sci-Fi","Horror"],
         "type": 'movies',
+        "rating": 3.5,
 
     },
     {
@@ -468,6 +493,7 @@ export const mockData = [
         "duration": "2h 4m",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4.2,
     }
     , {
         "id": 27,
@@ -479,6 +505,7 @@ export const mockData = [
         "duration": "2h 4m",
         "genre": ["Drama"],
         "type": 'movies',
+        "rating": 3.4,
     }
     , {
         "id": 28,
@@ -490,6 +517,7 @@ export const mockData = [
         "duration": "2h 4m",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4.5,
 
     }, {
         "id": 29,
@@ -501,6 +529,7 @@ export const mockData = [
         "duration": "2h 4m",
         "genre": ["Action", "Adventure", "Sci-Fi"],
         "type": 'movies',
+        "rating": 4,
 
     },
     {
@@ -513,6 +542,7 @@ export const mockData = [
         "duration": "1h 38min",
         "genre": ["Adventure", "Comedy", "Fantasy"],
         "type": 'movies',
+        "rating": 3.5,
       },
       {
         "id": 31,
@@ -524,6 +554,7 @@ export const mockData = [
         "duration": "1 season",
         "genre": ["Music"],
         "type": "series",
+        "rating": 3.7,
       },
       {
         "id": 32,
@@ -539,6 +570,7 @@ export const mockData = [
             "Romance"
         ],
         "type": "series",
+        "rating": 3,
       },
       {
         "id": 33,
@@ -551,9 +583,11 @@ export const mockData = [
         "genre": [
             "Drama",
             "Action",
-            "Science-Fiction"
+            "Science-Fiction",
+            "Horror"
         ],
         "type": "series",
+        "rating": 3.5,
       },
       {
         "id": 34,
@@ -569,6 +603,7 @@ export const mockData = [
             "Thriller"
         ],
         "type": "series",
+        "rating": 3.8,
       },
       {
         "id": 35,
@@ -581,9 +616,11 @@ export const mockData = [
         "genre": [
             "Action",
             "Adventure",
-            "Science-Fiction"
+            "Science-Fiction",
+            "Horror"
         ],
         "type": "series",
+        "rating": 3.5,
       },
       {
         "id": 36,
@@ -595,6 +632,7 @@ export const mockData = [
         "duration": "4 seasons",
         "genre": ["Drama", "Fantasy", "Horror", "Science-Fiction"],
         "type": "tv-shows",
+        "rating": 4.4,
       },
       {
         "id": 37,
@@ -606,6 +644,7 @@ export const mockData = [
         "duration": "5 seasons",
         "genre": ["Crime", "Drama", "Thriller"],
         "type": "tv-shows",
+        "rating": 4.7,
       },
       {
         "id": 38,
@@ -617,6 +656,7 @@ export const mockData = [
         "duration": "8 seasons",
         "genre": ["Action", "Adventure", "Drama", "Fantasy"],
         "type": "tv-shows",
+        "rating": 4.4,
       },
       {
         "id": 39,
@@ -628,6 +668,7 @@ export const mockData = [
         "duration": "10 seasons",
         "genre": ["Comedy", "Romance"],
         "type": "tv-shows",
+        "rating": 4.5,
       },
       {
         "id": 40,
@@ -639,6 +680,7 @@ export const mockData = [
         "duration": "9 seasons",
         "genre": ["Comedy"],
         "type": "tv-shows",
+        "rating": 4.1,
       },
       {
         "id": 41,
@@ -650,6 +692,7 @@ export const mockData = [
         "duration": "4 seasons",
         "genre": ["Action", "Drama", "Fantasy"],
         "type": "anime",
+        "rating": 4.1,
       },
       {
         "id": 42,
@@ -661,6 +704,7 @@ export const mockData = [
         "duration": "1 season",
         "genre": ["Mystery", "Psychological", "Supernatural", "Thriller"],
         "type": "anime",
+        "rating": 4.4,
       },
       {
         "id": 43,
@@ -672,6 +716,7 @@ export const mockData = [
         "duration": "Ongoing",
         "genre": ["Action", "Adventure", "Comedy", "Fantasy"],
         "type": "anime",
+        "rating": 4.3,
       },
       {
         "id": 44,
@@ -683,6 +728,7 @@ export const mockData = [
         "duration": "9 seasons",
         "genre": ["Action", "Adventure", "Comedy", "Fantasy"],
         "type": "anime",
+        "rating": 5,
       },
       {
         "id": 45,
@@ -694,6 +740,7 @@ export const mockData = [
         "duration": "5 seasons",
         "genre": ["Action", "Adventure", "Drama", "Fantasy"],
         "type": "anime",
+        "rating": 4.4,
       },
       {
         "id": 46,
@@ -705,6 +752,7 @@ export const mockData = [
         "duration": "1 season",
         "genre": ["Action", "Demons", "Historical", "Supernatural"],
         "type": "anime",
+        "rating": 4.5,
       },
       {
         "id": 47,
@@ -716,6 +764,7 @@ export const mockData = [
         "duration": "6 seasons",
         "genre": ["Action", "Comedy", "School", "Superpower"],
         "type": "anime",
+        "rating": 4.4,
       },
       {
         "id": 48,
@@ -727,6 +776,7 @@ export const mockData = [
         "duration": "6 seasons",
         "genre": ["Action", "Adventure", "Fantasy"],
         "type": "anime",
+        "rating": 3.7,
       },
       {
         "id": 49,
@@ -738,6 +788,7 @@ export const mockData = [
         "duration": "9 seasons",
         "genre": ["Action", "Adventure", "Fantasy", "Science-Fiction"],
         "type": "anime",
+        "rating": 4.8,
       },
       {
         "id": 50,
@@ -749,6 +800,7 @@ export const mockData = [
         "duration": "4 seasons",
         "genre": ["Comedy", "Drama", "School", "Sports"],
         "type": "anime",
+        "rating": 3.5,
       },
       {
         "id": 51,
@@ -760,6 +812,7 @@ export const mockData = [
         "duration": "4 seasons",
         "genre": ["Action", "Drama", "Horror", "Supernatural"],
         "type": "anime",
+        "rating": 4.2,
       },
       {
         "id": 52,
@@ -771,6 +824,7 @@ export const mockData = [
         "duration": "2 seasons",
         "genre": ["Action", "Drama", "Mecha", "Military"],
         "type": "anime",
+        "rating": 4,
       },
       {
         "id": 53,
@@ -782,6 +836,7 @@ export const mockData = [
         "duration": "1 season",
         "genre": ["Sci-Fi", "Thriller"],
         "type": "anime",
+        "rating": 3.8,
       },
       {
         "id": 54,
@@ -793,6 +848,7 @@ export const mockData = [
         "duration": "2 seasons",
         "genre": ["Action", "Fantasy", "Magic"],
         "type": "anime",
+        "rating": 3.9,
       },
       {
         "id": 55,
@@ -804,6 +860,7 @@ export const mockData = [
         "duration": "4 seasons",
         "genre": ["Action", "Comedy", "Fantasy", "Magic", "Shounen"],
         "type": "anime",
+        "rating": 3.5,
       }
       
       
