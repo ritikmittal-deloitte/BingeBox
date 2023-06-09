@@ -323,9 +323,9 @@ const Home = () => {
 
           <section className="your-watches-cards">
             {contineWatchingList?.map((movie, index) => {
-              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)  && categoryFilter(movie, categories)) {
+              
                 return <Card3 cardData={movie} key={index} direct="Home" />
-              }
+              
               return null;
             })}
           </section>
@@ -355,9 +355,9 @@ const Home = () => {
           </div>
 
           <section className="trending-movie-cards">
-            {shuffleArray(movies,2).map((movie, index) => {
-              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
-                return <Card cardData={movie} key={index} direct="Home" />
+            {movies.map((movie, index) => {
+              if ((url.slice(1) === 'home' || url.slice(1) === movies[(index)%movies.length].type) && categoryFilter(movies[(index)%movies.length], categories)) {
+                return <Card cardData={movies[index]} key={index} direct="Home" />
               }
               return null;
             })}

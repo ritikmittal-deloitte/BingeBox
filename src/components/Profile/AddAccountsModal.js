@@ -59,7 +59,7 @@ export default function Modal({ divRef, closeModal }) {
 
     const handleAddingAccount = () => {
         
-        dispatch(AccountAction.addAccount({ name: name, img: URL.createObjectURL(profile) }))
+        dispatch(AccountAction.addAccount({ name: name, img: profile }))
 
     }
 
@@ -122,7 +122,7 @@ export default function Modal({ divRef, closeModal }) {
                                     <img src={CameraIcon} className='camera-icon' alt='not available' />
                                 </button>}
                                 {
-                                    profile !== null && <img src={URL.createObjectURL(profile)} className='file-input-button' onClick={handleButtonClick} alt='not available' />
+                                    profile !== null && <img src={profile} className='file-input-button' onClick={handleButtonClick} alt='not available' />
                                 }
                                 {profile && <div className='uploaded-profile-text'>{profile.name}</div>}
                                 <div className="error-signup">

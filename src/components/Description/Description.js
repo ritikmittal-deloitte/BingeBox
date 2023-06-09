@@ -32,7 +32,10 @@ const Description = () => {
   const fetchSimilarMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setSimMovies(movies);
+    const data=movies.filter((item)=>{
+      return item.type===movies[movieId-1].type && item.id!==movies[movieId-1].id
+    })
+    setSimMovies(data);
   };
   useEffect(() => {
     fetchSimilarMovies();
@@ -97,8 +100,9 @@ const Description = () => {
             <ScrollLogo />
           </div>
           <section className="cards-grid">
-        {simMovies.slice(0,20).map((movie, index) => (
-              <Cards2 cardData={movie} key={index} />
+        {simMovies.slice(0,15).map((movie, index) => (
+<Cards2 cardData={movie} key={index} />
+
             ))}</section>
             <div
             className="arrow-style3"
