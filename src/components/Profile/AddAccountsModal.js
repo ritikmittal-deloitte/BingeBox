@@ -58,6 +58,7 @@ export default function Modal({ divRef, closeModal }) {
     };
 
     const handleAddingAccount = () => {
+        
         dispatch(AccountAction.addAccount({ name: name, img: URL.createObjectURL(profile) }))
 
     }

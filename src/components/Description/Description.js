@@ -39,11 +39,10 @@ const Description = () => {
   }, []);
   const handlePlayingMovie=(event)=>{
 
-    event.stopPropagation()
-    dispatch(ContinueWatchingAction.addToContinueWatching(movies[movieId-1]))
+    event.stopPropagation();
+    dispatch(ContinueWatchingAction.addToContinueWatching(movies[movieId-1]));
     
     
-
   }
   return (
     
@@ -52,7 +51,7 @@ const Description = () => {
           <div className="d-flex justify-content-between">
             <div className="desc-card-details-container d-flex flex-column align-items-start">
               <h2>{movies[movieId-1].title}</h2>
-              <div className="d-flex  justify-content-between card-release-style">
+              <div className=" card-release-style">
                 <div className="cbfc-style">CBFC : U/A</div>
 
                 <h4 className="px-3">{movies[movieId-1].releaseYear}</h4>
@@ -60,9 +59,10 @@ const Description = () => {
               </div>
             </div>
             <div className="d-flex desc-card-logo-container align-items-center">
-              <div className="play-button d-flex" onClick={(event)=>handlePlayingMovie(event)}>
-                <Triangle /> <h5>Play</h5>{" "}
-              </div>
+              <a  href={movies[movieId-1].videoUrl} target="_blank"  style={{}} className="play-button " onClick={(event)=>handlePlayingMovie(event)}>
+
+                <Triangle /><div style={{marginTop:"-2px"}}> <h5>Play</h5></div>
+                </a >
               {/* <a  href={movies[movieId-1].videoUrl} target="_blank"><PlayLogo /></a > */}
               <div onClick={handleAddToWatchList}>
                 <AddToLogo width={50} height={51} />

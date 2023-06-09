@@ -33,8 +33,10 @@ export default function UserPreferences({setIsLogin}) {
         setHoveredIndex(-1);
     };
     const handleSuccessFullNavigationAfterSignUp=()=>{
+        
             setIsLogin(true);
-            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+//            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+            dispatch(AccountAction.saveSignUpInfo(dummyData))
             navigate("/home")
         
     }

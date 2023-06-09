@@ -98,10 +98,14 @@ color: #FFFFFF;
 // height:64px;
     width: 8rem;
     height: 3rem;
+    text-decoration: none;
     background-color: #F03A47;;
     color: white;
     border-radius: 20px;
     padding: 15px;
+    display: flex;
+    justify-content: center;
+   
     //padding-left: 10px;
     h5{
  //       font-family: 'Inter';
@@ -197,4 +201,9 @@ grid-gap: 2rem;
 grid-auto-flow: column;
 //   grid-auto-columns: calc(100% - 2rem);
 // min-height: 14.75rem;
+}
+.card-release-style{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
 }
