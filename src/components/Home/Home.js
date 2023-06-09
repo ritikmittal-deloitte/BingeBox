@@ -16,7 +16,7 @@ import { UserContext } from "../../context/Context/UserContext/UserState";
 const Home = () => {
 
   const { watchList, setWatchList, categories, setCategories } = useContext(UserContext);
-  const [movies,setMovies] = useState(moviesArr)
+  const [movies, setMovies] = useState(moviesArr)
 
   const watch = new Set(watchList);
   const data = movies.filter((item) => {
@@ -50,33 +50,34 @@ const Home = () => {
   const fetchTrendingMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    console.log('trending',movies)
+    console.log('trending', movies)
     settrendingMovies(movies);
   };
   const fetchTopMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    console.log('topMovies',movies)
+    console.log('topMovies', movies)
     setTopMovies(movies);
   };
   const fetchRecentMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    console.log('release Year',sortByPropertyDescending(movies,'releaseYear'))
-    setrecentMovies(sortByPropertyDescending(movies,'releaseYear'));
+    // console.log('release Year',sortByPropertyDescending(movies,'releaseYear'))
+    // setrecentMovies(sortByPropertyDescending(movies,'releaseYear'));
+    setrecentMovies(movies)
   };
   const fetchYourWatches = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    console.log('your watches',movies)
+    console.log('your watches', movies)
     setyourWatches(movies);
   };
   const fetchTopRated = async () => {
     //const response=await axios.get("")
     //setTopRated(response.data)
-    console.log('topRating',sortByPropertyDescending(movies,'rating'))
-    setTopRated(sortByPropertyDescending(movies,'rating'))
-    // setTopRated(movies)
+    // console.log('topRating',sortByPropertyDescending(movies,'rating'))
+    // setTopRated(sortByPropertyDescending(movies,'rating'))
+    setTopRated(movies)
   }
   const fetchCarouselItems = async () => {
     console.log("TYUDTIDUY")
@@ -247,8 +248,8 @@ const Home = () => {
           </div>
 
           <section className="cards">
-            {topMovies?.map((movie, index) => {
-              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie,categories)) {
+            {shuffleArray(movies,3)?.map((movie, index) => {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
                 return <Card cardData={movie} key={index} direct="Home" />
               }
               return null;
@@ -272,8 +273,8 @@ const Home = () => {
           </div>
 
           <section className="recent-release-cards">
-            {recentMovies.map((movie, index) => {
-              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
+            {sortByPropertyDescending(movies,'releaseYear').map((movie, index) => {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
                 return <Card cardData={movie} key={index} />
               }
               return null;
@@ -300,7 +301,7 @@ const Home = () => {
 
           <section className="your-watches-cards">
             {yourWatches.map((movie, index) => {
-              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
                 return <Card3 cardData={movie} key={index} direct="Home" />
               }
               return null;
@@ -333,8 +334,8 @@ const Home = () => {
           </div>
 
           <section className="trending-movie-cards">
-            {trendingMovies.map((movie, index) => {
-              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
+            {shuffleArray(movies,2).map((movie, index) => {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
                 return <Card cardData={movie} key={index} direct="Home" />
               }
               return null;
@@ -367,9 +368,9 @@ const Home = () => {
           </div>
 
           <section className="top-rated-cards">
-            {topRated.map((movie, index) => {
-              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
-                return <Card cardData={movie} key={index} direct="Home" />
+            {sortByPropertyDescending(movies,'rating').map((movie, index) => {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
+                return <Card3 cardData={movie} key={index} direct="Home" />
               }
               return null;
             })}
@@ -404,29 +405,29 @@ function sortByPropertyDescending(newarray, property) {
   });
 }
 
- const shuffleArray = (newarray) => {
+const shuffleArray = (newarray,p) => {
   let array = newarray;
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  };
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = (Math.floor(p * (i + 1)))%newarray.length;
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+};
 
-  function categoryFilter(item,category){
-    if(category==='all' || category==='categories'|| category==='Categories'|| category==='All'){
+function categoryFilter(item, category) {
+  if (category === 'all' || category === 'categories' || category === 'Categories' || category === 'All') {
+    return true
+  }
+  category = category.toLowerCase()
+  let g = item.genre;
+  for (let i = 0; i < g.length; i++) {
+    let c = g[i].toLowerCase();
+    if (category.includes(c) || c.includes(category)) {
+      console.log(category, c, true)
       return true
     }
-    category = category.toLowerCase()
-    let g = item.genre;
-    for(let i = 0;i<g.length;i++){
-      let c = g[i].toLowerCase();
-      if(category.includes(c) || c.includes(category)){
-        console.log(category,c,true)
-        return true
-      }
-    }
-    console.log(category,item.genre,false)
-
-    return false
   }
+  console.log(category, item.genre, false)
+
+  return false
+}
