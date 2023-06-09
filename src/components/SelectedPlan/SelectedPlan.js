@@ -4,18 +4,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import { ReactComponent as MainLogo } from "./../../assets/images/Group 1000002501.svg";
 
-function SelectedPlan() {
+function SelectedPlan({name,value,setPage,setPrice}) {
   const todayDate = new Date();
+  // console.log(todayDate.getMonth() + 1);
   const navigate = useNavigate();
-  const location = useLocation();
-  let p = location.state.value;
-  let name = location.state.name;
+ // const location = useLocation();
+  let p = value;
+  //let name = location.state.name;
   console.log("Value Recieved:", p);
   const Payment = (value) => {
     let x = 1;
     console.log("Checking");
     console.log("plan Value::", value);
-    navigate("/payment", { state: value });
+    setPrice(value.price);
+    setPage('4');
+//    navigate("/payment", { state: value });
   };
   return (
     <div className="selected-container">
@@ -27,7 +30,8 @@ function SelectedPlan() {
       <div className="card">
         <h2>{p?.type} Plan</h2>
         <p>
-          Hi <span>{name}</span>, Here is your Subscription Plan Details!
+          Hi <span style={{ textTransform: "capitalize" }}>{name}</span>, Here
+          is your Subscription Plan Details!
         </p>
         <p style={{ marginTop: "1.5rem" }}>
           Validity: &nbsp;&nbsp;<span>{todayDate.getDate()}/{todayDate.getMonth()}/{todayDate.getFullYear()+1}</span>
@@ -53,7 +57,7 @@ function SelectedPlan() {
         <div className="btn">
           <button
             className="back-btn"
-            onClick={() => navigate("/subscription-plans")}
+            onClick={() =>{setPage('2')}}
           >
             Back
           </button>

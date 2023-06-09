@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SubscriptionComponent({ p, index, name }) {
+export default function SubscriptionComponent({ p, index, name , setPage,setPlan}) {
   const [hover, setHover] = useState(false);
   console.log("Username:", name);
   const navigate = useNavigate();
@@ -10,7 +10,9 @@ export default function SubscriptionComponent({ p, index, name }) {
     console.log("Checking");
     console.log("Value::", value);
     //    const data = {[..value,..name]}
-    navigate("/selected-plan", { state: { value, name } });
+    setPage('3');
+    setPlan(value);
+//    navigate("/selected-plan", { state: { value, name } });
   };
 
   const handleMouseEnter = () => {

@@ -2,12 +2,13 @@ import React, { useContext, useEffect } from "react";
 import "./paymentsuccessful.scss";
 import Check from "../../assets/images/check.svg";
 import { useNavigate } from "react-router-dom";
-function PaymentSuccessful() {
+function PaymentSuccessful({setPage}) {
   const navigate = useNavigate();
   useEffect(() => {
     setTimeout(() => {
-      navigate("/userpreferences");
-    }, 5000);
+      setPage('6');
+//      navigate("/userpreferences");
+    }, 3000);
   });
   return (
     <div>

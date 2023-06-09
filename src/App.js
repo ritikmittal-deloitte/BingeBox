@@ -45,18 +45,20 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          <Route path="/signup" element={<Signup setIsLogin={setIsLogin} />} />
+          {/* <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/userpreferences" element={<UserPreferences />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/subscription-plans" element={<Subscriptionplans />} />
           <Route path="/payment-successful" element={<PaymentSuccessful />} />
           <Route path="/selected-plan" element={<SelectedPlan />} />
           <Route path="/accounts" element={<Accounts />} />
-          <Route path="/payment" element={<Payment />} />
-
+          <Route path="/payment" element={<Payment />} /> */}
           {
-            isLogin ? ( <Route element={<AppLayout />}>
+            isLogin ? ( 
+            <> <Route path="/accounts" element={<Accounts />} />
+              <Route element={<AppLayout />}>
               <Route path="/home" element={<Home />} />
               <Route path="/movies" element={<Home />} />
               <Route path="/series" element={<Home />} />
@@ -66,10 +68,14 @@ function App() {
               <Route path="/searchresults/:text" element={<SearchPage />} />
               <Route path="/wishlist" element={<WishList />} />
               <Route path="/description/:movieId" element={<Description />} />
-            </Route>) : (
-              url.slice(1)!== "login" ? (window.location.replace('/login')) : (<></>)
-              
+            </Route>
+            </>
+            ) : (
+          <Route
+            path="*"
+            element={<Navigate to={"/login"} replace />}/>
             ) }
+
         </Routes>
       </UserContextProvider>
     </div>

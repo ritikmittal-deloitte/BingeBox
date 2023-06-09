@@ -10,8 +10,8 @@ import angleRight from "../../assets/icons/angle-right.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import Upi from "./Upi";
 
-function Payment() {
-  const location = useLocation();
+function Payment({price,setPage}) {
+//  const location = useLocation();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [cardnumber, setCardnumber] = useState("");
@@ -25,7 +25,7 @@ function Payment() {
   const [isPayNowEnabled, setIsPayNowEnabled] = useState(false);
   const [valid, setValid] = useState(false);
 
-  let p = location.state;
+//  let p = location.state;
   const handleTabClick = (tab) => {
     setActivaTab(tab);
   };
@@ -90,7 +90,8 @@ function Payment() {
 
     // if (!isFormValid) {
     console.log("Payment processed successfully!");
-    navigate("/payment-successful");
+    setPage('5');
+//    navigate("/payment-successful");
   };
 
   const handleInputChange = (event) => {
@@ -106,7 +107,7 @@ function Payment() {
     console.log(isPayNowEnabled);
     console.log(upiId);
     console.log(upiMethod);
-    // setIsPayNowEnabled(true); // Enable the "Pay Now" button when a UPI method is selected
+    setIsPayNowEnabled(true); // Enable the "Pay Now" button when a UPI method is selected
   };
   const handlePayNowClick = () => {
     // Perform payment processing logic with the selected UPI ID and method
@@ -116,6 +117,8 @@ function Payment() {
   const handlePayButton = () => {
     setValid(true);
     console.log("pay");
+    setPage('5');
+    //    navigate("/payment-successful");
   };
 
   return (
@@ -161,7 +164,7 @@ function Payment() {
         <div className="left">
           <p style={{ fontWeight: "400", fontSize: "1.25rem" }}>Payment</p>
           <p style={{ fontWeight: "700", fontSize: "2.5rem" }}>
-            Rs.<span style={{ marginLeft: "0.3rem" }}>{p?.price}</span>
+            Rs.<span style={{ marginLeft: "0.3rem" }}>{price}</span>
           </p>
         </div>
         <div className="right">
@@ -273,25 +276,25 @@ function Payment() {
                   </div>
                   <p>SBI</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={HDFC} />
                   </div>
                   <p>HDFC</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={ICICI} />
                   </div>
                   <p>ICICI</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={AXIS} />
                   </div>
                   <p>AXIS</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={IDBI} />
                   </div>
@@ -307,7 +310,7 @@ function Payment() {
               <button
                 style={{
                   marginTop: "45rem",
-                  backgroundColor: valid ? "f03a47" : "gray",
+                  backgroundColor: valid ? "#f03a47" : "gray",
                 }}
                 className="pay-btn"
                 disabled={!valid}

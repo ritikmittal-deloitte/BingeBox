@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Upi() {
+  const navigate = useNavigate();
   const [upiId, setUpiId] = useState("");
   const [selectedUpiMethod, setSelectedUpiMethod] = useState("");
   const [isPayNowEnabled, setIsPayNowEnabled] = useState(false);
@@ -14,7 +16,7 @@ function Upi() {
 
   const handleUpiMethodClick = (event, upiMethod) => {
     event.preventDefault();
-    const updatedUpiId = upiId + upiMethod;
+    const updatedUpiId = upiId.replace(selectedUpiMethod, "") + upiMethod;
     setUpiId(updatedUpiId);
     setSelectedUpiMethod(upiMethod);
     console.log(isPayNowEnabled);
@@ -26,12 +28,13 @@ function Upi() {
   };
 
   const handlePayNowClick = () => {
+    navigate("/payment-successful");
     // Perform payment processing logic with the selected UPI ID and method
-    console.log(`Processing payment with UPI ID: ${upiId}`);
+    // console.log(`Processing payment with UPI ID: ${upiId}`);
   };
   return (
     <div>
-      <form action="" className="form" style={{ marginTop: "-9rem" }}>
+      <form action="" className="form">
         <label htmlFor="">UPI Id</label>
         <div className="inputs">
           <input
@@ -101,7 +104,7 @@ function Upi() {
           className="pay-btn"
           style={{
             marginTop: "45rem",
-            backgroundColor: isFormValid ? "#f03a47" : "gray",
+            backgroundColor: isPayNowEnabled ? "#f03a47" : "gray",
           }}
           onClick={handlePayNowClick}
           disabled={!isPayNowEnabled}
