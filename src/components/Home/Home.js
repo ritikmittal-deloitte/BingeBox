@@ -331,7 +331,7 @@ const Home = () => {
           </section>
 
           <div
-            className="arrow-style-4"
+            className="arrow-style-5"
             onClick={() => rightScroll(".your-watches-cards")}
           >
             <ScrollLogo />
