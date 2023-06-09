@@ -10,10 +10,13 @@ import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import PhotoComponent from "../photocomponent/PhotoComponent";
 import DescCardComponent from "../descCardComponent/DescCardComponent";
 import Cards2 from "../Cards2/Cards2";
+import { useDispatch } from "react-redux";
+import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
 
 const Description = () => {
   const [simMovies, setSimMovies] = useState([]);
   let { movieId } = useParams();
+  const dispatch=useDispatch()
 
   const leftScroll = (querySelect) => {
     const left = document.querySelector(querySelect);
@@ -34,6 +37,14 @@ const Description = () => {
   useEffect(() => {
     fetchSimilarMovies();
   }, []);
+  const handlePlayingMovie=(event)=>{
+
+    event.stopPropagation()
+    dispatch(ContinueWatchingAction.addToContinueWatching(movies[movieId-1]))
+    
+    
+
+  }
   return (
     
       <div className="desc-container w-100 d-flex flex-column  align-items-center">
@@ -49,7 +60,7 @@ const Description = () => {
               </div>
             </div>
             <div className="d-flex desc-card-logo-container align-items-center">
-              <div className="play-button d-flex">
+              <div className="play-button d-flex" onClick={(event)=>handlePlayingMovie(event)}>
                 <Triangle /> <h5>Play</h5>{" "}
               </div>
               {/* <a  href={movies[movieId-1].videoUrl} target="_blank"><PlayLogo /></a > */}
