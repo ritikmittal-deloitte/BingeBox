@@ -47,9 +47,9 @@ const Login = ({ setIsLogin }) => {
  //   console.log("errors:", Object.keys(errors1).length);
     if (errors1) {
       console.log("Login successful");
-
+      dispatch(AccountAction.saveSignUpInfo(dummyData))
       if(dummyData.accounts.length===1){
-        dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+        //dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
         navigate("/home")
     }
     else navigate("/accounts")

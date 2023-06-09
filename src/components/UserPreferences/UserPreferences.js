@@ -34,7 +34,8 @@ export default function UserPreferences() {
     };
     const handleSuccessFullNavigationAfterSignUp=()=>{
         
-            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+            // dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+            dispatch(AccountAction.saveSignUpInfo(dummyData))
             navigate("/profile")
         
     }
