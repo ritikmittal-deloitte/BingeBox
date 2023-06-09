@@ -57,6 +57,7 @@ export default function Profile() {
                                     <div className='genre-box'>{item}</div>
                                 )
                             })}
+                            {genre.length===0 && <div className='no-genres-selected'>No Genres Selected</div>}
                         </div>
                         <div className='genre-edit-tool' onClick={(e) => handlePreferencesPage(e)} style={{ cursor: 'pointer' }}><img src={PencilSquare} alt='tool-icon-not-available' /></div>
                     </div>

@@ -3,7 +3,7 @@ import "./home.scss";
 import Card from "../card/Card";
 import Card3 from "../card3/Card3";
 import { useLocation } from "react-router-dom";
-import { mockData as movies } from "../../mockData/moviesMockData";
+import { mockData as moviesArr } from "../../mockData/moviesMockData";
 import { ReactComponent as ScrollLogo } from "../../assets/icons/arrow.svg";
 import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
@@ -15,7 +15,8 @@ import { UserContext } from "../../context/Context/UserContext/UserState";
 
 const Home = () => {
 
-  const { watchList, setWatchList } = useContext(UserContext);
+  const { watchList, setWatchList, categories, setCategories } = useContext(UserContext);
+  const [movies,setMovies] = useState(moviesArr)
 
   const watch = new Set(watchList);
   const data = movies.filter((item) => {
@@ -31,8 +32,9 @@ const Home = () => {
   const [recentMovies, setrecentMovies] = useState([]);
   const [trendingMovies, settrendingMovies] = useState([]);
   const [yourWatches, setyourWatches] = useState([]);
+  const [topRated, setTopRated] = useState([])
   const [onHovering, setOnHovering] = useState(false);
-  const [carItems,setCarItems]=useState([]);
+  const [carItems, setCarItems] = useState([]);
   const [current, setCurrent] = useState(1);
   const handleMouseOver = () => {
     setOnHovering(true);
@@ -48,32 +50,43 @@ const Home = () => {
   const fetchTrendingMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
+    console.log('trending',movies)
     settrendingMovies(movies);
   };
   const fetchTopMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
+    console.log('topMovies',movies)
     setTopMovies(movies);
   };
   const fetchRecentMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    setrecentMovies(movies);
+    console.log('release Year',sortByPropertyDescending(movies,'releaseYear'))
+    setrecentMovies(sortByPropertyDescending(movies,'releaseYear'));
   };
   const fetchYourWatches = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
+    console.log('your watches',movies)
     setyourWatches(movies);
   };
-const fetchCarouselItems =async () =>{
-  console.log("TYUDTIDUY")
-  const items= movies.filter((item)=>{
-    return url.slice(1) === 'home' || url.slice(1) === item.type ;
-  })
-  setCarItems(items)
-  console.log("Carousel items:",items.slice(0,5))
+  const fetchTopRated = async () => {
+    //const response=await axios.get("")
+    //setTopRated(response.data)
+    console.log('topRating',sortByPropertyDescending(movies,'rating'))
+    setTopRated(sortByPropertyDescending(movies,'rating'))
+    // setTopRated(movies)
+  }
+  const fetchCarouselItems = async () => {
+    console.log("TYUDTIDUY")
+    const items = movies.filter((item) => {
+      return url.slice(1) === 'home' || url.slice(1) === item.type;
+    })
+    setCarItems(items)
+    console.log("Carousel items:", items.slice(0, 5))
 
-}
+  }
   useEffect(() => {
     setCurrent(1);
     fetchRecentMovies();
@@ -81,7 +94,8 @@ const fetchCarouselItems =async () =>{
     fetchTrendingMovies();
     fetchYourWatches();
     fetchCarouselItems();
-    
+    fetchTopRated()
+
   }, [url]);
   useEffect(() => {
     fetchRecentMovies();
@@ -89,7 +103,7 @@ const fetchCarouselItems =async () =>{
     fetchTrendingMovies();
     fetchYourWatches();
     fetchCarouselItems();
-    
+    fetchTopRated()
   }, []);
 
   const check = () => {
@@ -139,6 +153,8 @@ const fetchCarouselItems =async () =>{
       borderRadius: "0.938rem",
     };
   };
+
+
   return (
     <div className="home-container">
       <div
@@ -149,12 +165,12 @@ const fetchCarouselItems =async () =>{
         {!onHovering && (
           <>
             <div
-              style={handleBackgorndImage(carItems[current-1]?.posterImage)}
+              style={handleBackgorndImage(carItems[current - 1]?.posterImage)}
               className={`main-banner-container`}
             ></div>
             <div className="banner-video-text-box-1">
               <div className="video-heading">
-                <h2>{carItems[current-1]?.title}</h2>
+                <h2>{carItems[current - 1]?.title}</h2>
               </div>
             </div>
           </>
@@ -163,7 +179,7 @@ const fetchCarouselItems =async () =>{
         {onHovering && (
           <>
             <iframe
-              src={`${carItems[current-1].videoUrl}` + "?autoplay=1&controls=0"}
+              src={`${carItems[current - 1].videoUrl}` + "?autoplay=1&controls=0"}
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -171,10 +187,10 @@ const fetchCarouselItems =async () =>{
             ></iframe>
             <div className="banner-video-text-box">
               <div className="video-heading">
-                <h2>{carItems[current-1].title}</h2>
+                <h2>{carItems[current - 1].title}</h2>
               </div>
               <div className="video-description">
-                {carItems[current-1].description}
+                {carItems[current - 1].description}
               </div>
               <div className="video-category">
                 <div className="last-2">
@@ -232,7 +248,7 @@ const fetchCarouselItems =async () =>{
 
           <section className="cards">
             {topMovies?.map((movie, index) => {
-              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie,categories)) {
                 return <Card cardData={movie} key={index} direct="Home" />
               }
               return null;
@@ -257,7 +273,7 @@ const fetchCarouselItems =async () =>{
 
           <section className="recent-release-cards">
             {recentMovies.map((movie, index) => {
-              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
                 return <Card cardData={movie} key={index} />
               }
               return null;
@@ -284,7 +300,7 @@ const fetchCarouselItems =async () =>{
 
           <section className="your-watches-cards">
             {yourWatches.map((movie, index) => {
-              if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
                 return <Card3 cardData={movie} key={index} direct="Home" />
               }
               return null;
@@ -318,7 +334,7 @@ const fetchCarouselItems =async () =>{
 
           <section className="trending-movie-cards">
             {trendingMovies.map((movie, index) => {
-              if(url.slice(1)==='home' || url.slice(1)===movie.type){
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
                 return <Card cardData={movie} key={index} direct="Home" />
               }
               return null;
@@ -333,9 +349,84 @@ const fetchCarouselItems =async () =>{
           </div>
         </div>
       </div>
+      <div className="top-movie-container">
+        <p className="d-flex">
+          {url === "/home" && <>Top Rated</>}
+          {url === "/anime" && <>Top Rated Animes</>}
+          {url === "/movies" && <>Top Rated Movies</>}
+          {url === "/tv-shows" && <>Top Rated Tv Shows</>}
+          {url === "/series" && <>Top Rated Series</>}
+
+        </p>
+        <div className="top-movies-grid">
+          <div
+            onClick={() => leftScroll(".top-rated-cards")}
+            className="arrow-style"
+          >
+            <ScrollLogo />
+          </div>
+
+          <section className="top-rated-cards">
+            {topRated.map((movie, index) => {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type)&& categoryFilter(movie,categories)) {
+                return <Card cardData={movie} key={index} direct="Home" />
+              }
+              return null;
+            })}
+          </section>
+
+          <div
+            className="arrow-style1"
+            onClick={() => rightScroll(".top-rated-cards")}
+          >
+            <ScrollLogo />
+          </div>
+        </div>
+      </div>
       <div className="footer"></div>
     </div>
   );
 };
 
 export default Home;
+
+
+function sortByPropertyDescending(newarray, property) {
+  let array = newarray;
+  return array.sort((a, b) => {
+    if (a[property] < b[property]) {
+      return 1;
+    } else if (a[property] > b[property]) {
+      return -1;
+    } else {
+      return 0;
+    }
+  });
+}
+
+ const shuffleArray = (newarray) => {
+  let array = newarray;
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  };
+
+  function categoryFilter(item,category){
+    if(category==='all' || category==='categories'|| category==='Categories'|| category==='All'){
+      return true
+    }
+    category = category.toLowerCase()
+    let g = item.genre;
+    for(let i = 0;i<g.length;i++){
+      let c = g[i].toLowerCase();
+      if(category.includes(c) || c.includes(category)){
+        console.log(category,c,true)
+        return true
+      }
+    }
+    console.log(category,item.genre,false)
+
+    return false
+  }

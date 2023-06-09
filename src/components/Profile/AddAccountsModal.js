@@ -8,7 +8,7 @@ export default function Modal({ divRef, closeModal }) {
     const [name, setName] = useState('');
     const [language, setLanguage] = useState('');
     const [genre, setGenre] = useState('');
-    const [profile, setProfile] = useState('');
+    const [profile, setProfile] = useState(null);
     const [errors, setErrors] = useState({});
 
     const modalRef = useRef(null);
@@ -25,7 +25,7 @@ export default function Modal({ divRef, closeModal }) {
         if (genre.trim() === '') {
             errors.genre = 'Genre is required';
         }
-        if (profile.trim() === '') {
+        if (profile === null) {
             errors.profile = 'Profile is required';
         }
         return errors;
@@ -34,6 +34,11 @@ export default function Modal({ divRef, closeModal }) {
     const handleFileInputChange = (e) => {
         const file = e.target.files[0];
         setProfile(file);
+        if(errors.profile!==null){
+            let error = errors;
+            error.profile = null
+            setErrors(error)
+        }
     };
 
     const handleButtonClick = () => {
@@ -91,15 +96,19 @@ export default function Modal({ divRef, closeModal }) {
                                     accept="image/*"
                                     ref={fileInputRef}
                                     onChange={(e) => handleFileInputChange(e)}
-                                    style={{ display: 'none' }}
+                                    className='profile-input-field'
                                 />
-                                <button type="button" className="file-input-button" onClick={handleButtonClick}>
+                                {profile===null && <button type="button" className="file-input-button" onClick={handleButtonClick}>
                                     <img src={CircleIcon} className='circle-icon' alt='not available' />
                                     <img src={UserIcon} className='user-icon' alt='not available' />
                                     <img src={CameraIcon} className='camera-icon' alt='not available' />
-                                </button>
+                                </button>}
+                                {
+                                    profile!==null && <img src={URL.createObjectURL(profile)} className='file-input-button'onClick={handleButtonClick} alt='not available'/>
+                                }
+                                {profile && <div className='uploaded-profile-text'>{profile.name}</div>}
                                 <div className="error-signup">
-                                    {errors.profile && <span className="error">{errors.profile}</span>}
+                                    {errors.profile && <span className="error">{errors.profile.slice(0,15)}</span>}
                                 </div>
                             </div>
                         </div>
@@ -127,8 +136,11 @@ export default function Modal({ divRef, closeModal }) {
                                 >
                                     <option className='option-account' value="">Select Language</option>
                                     <option className='option-account' value="English">English</option>
-                                    <option className='option-account' value="Spanish">Spanish</option>
-                                    <option className='option-account' value="French">French</option>
+                                    <option className='option-account' value="Hindi">Hindi</option>
+                                    <option className='option-account' value="Punjabi">Punjabi</option>
+                                    <option className='option-account' value="Bengali">Bengali</option>
+                                    <option className='option-account' value="Marathi">Marathi</option>
+                                    <option className='option-account' value="Kannada">Kannada</option>
                                 </select>
                                 <div className="error-signup">
                                     {errors.language && <span className="error">{errors.language}</span>}
@@ -144,7 +156,10 @@ export default function Modal({ divRef, closeModal }) {
                                     <option className='option-account' value="">Select Genre</option>
                                     <option className='option-account' value="Action">Action</option>
                                     <option className='option-account' value="Comedy">Comedy</option>
-                                    <option className='option-account' value="Drama">Drama</option>
+                                    <option className='option-account' value="Romantic">Romantic</option>
+                                    <option className='option-account' value="Horror">Horror</option>
+                                    <option className='option-account' value="Documentary">Documentary</option>
+                                    <option className='option-account' value="Kids">Kids</option>
                                 </select>
                                 <div className="error-signup">
                                     {errors.genre && <span className="error">{errors.genre}</span>}

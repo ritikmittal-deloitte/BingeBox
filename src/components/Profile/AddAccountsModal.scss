@@ -66,7 +66,9 @@
             justify-content: center;
             align-items: center;
         }
-
+        .profile-input-field{
+            display: none;
+        }
         .file-input-button {
             height: 9.0625rem;
             width: 9.0625rem;
@@ -96,6 +98,9 @@
                 top:80%;
                 left:80%;
             }
+        }
+        .uploaded-profile-text{
+            color:white;
         }
 
         .line-3 {
@@ -129,6 +134,12 @@
             border: 0.9px solid #8B8B8B;
             border-radius: 15px;
             color: white;
+        }
+        .account-input-field::after{
+            padding-right: 2rem;
+            position: absolute;
+            top: 50%;
+            right: 150px;
         }
 
         .account-input-field::placeholder {

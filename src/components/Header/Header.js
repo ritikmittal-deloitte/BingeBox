@@ -20,7 +20,7 @@ import { dummyData } from "../../mockData/accountsMockData";
 const Header = () => {
   const [selected, setSelected] = useState("0");
   const [profile, setProfile] = useState(false);
-  const {searchText,setSearchText} = useContext(UserContext)
+  const {searchText,setSearchText,categories,setCategories} = useContext(UserContext)
   const [helperSearchText,setHelperSearchText] = useState('')
   const navigate = useNavigate()
   const dispatch=useDispatch()
@@ -39,11 +39,11 @@ const Header = () => {
   const ref = useRef(null);
   const ref2 = useRef(null);
   const genres = [
+    "All",
     "Horror",
-    "Romantic",
     "Comedy",
     "Action",
-    "Thrillers",
+    "Horror",
     "Drama",
     "Romance",
     "Fantasy",
@@ -189,7 +189,7 @@ useEffect(() => {
               document.addEventListener("mousedown", handleClickOutside);
             }}
           >
-            Categories
+            {categories}
           </NavLink>
         </div>
         {open && (
@@ -199,7 +199,7 @@ useEffect(() => {
               <div className="genres-box">
                 {genres.map((item) => {
               //    console.log("Item:", item);
-                  return <CategoryType text={item} />;
+                  return <CategoryType text={item} setCategories={setCategories}/>;
                 })}
               </div>
             </div>
