@@ -25,12 +25,12 @@ function SelectedPlan() {
         <div className="box-heading">BOX</div> */}
       </div>
       <div className="card">
-        <h2>{p.type} Plan</h2>
+        <h2>{p?.type} Plan</h2>
         <p>
           Hi <span>{name}</span>, Here is your Subscription Plan Details!
         </p>
         <p style={{ marginTop: "1.5rem" }}>
-          Validity: <span>{todayDate.getFullYear()}</span>
+          Validity: &nbsp;&nbsp;<span>{todayDate.getDate()}/{todayDate.getMonth()}/{todayDate.getFullYear()+1}</span>
         </p>
         <div className="features">
           <h4>Price</h4>
@@ -38,17 +38,17 @@ function SelectedPlan() {
           <h4>Video Quality</h4>
           <h4>Supported Devices</h4>
         </div>
-        <div className="rate">
-          <p>
-            Rs. <span>{p.price}</span>/yr
-          </p>
-          <p style={{ marginLeft: "-1.2rem", marginRight: "0rem" }}>
+        <div className="rate-0">
+          <div className="price-box">
+            Rs. <span style={{fontSize:"2.5rem"}}>{p.price}</span>/yr
+          </div>
+          <div  className="resolution-box">
             {p.resolution}
-          </p>
-          <p style={{ marginLeft: "7rem", marginRight: "0rem" }}>{p.quality}</p>
-          <p style={{ marginLeft: "16.8rem", marginRight: "0rem" }}>
+          </div>
+          <div className="qulaity-box">{p.quality}</div>
+          <div className="device-1">
             {p.supporteddevice}
-          </p>
+          </div>
         </div>
         <div className="btn">
           <button
@@ -57,14 +57,14 @@ function SelectedPlan() {
           >
             Back
           </button>
-          <button
+          <div
             className="payment-btn"
             onClick={() => {
               Payment(p);
             }}
           >
             Proceed to Payment
-          </button>
+          </div>
         </div>
       </div>
     </div>

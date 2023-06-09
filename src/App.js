@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.scss";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, NavLink, useNavigate, useLocation } from "react-router-dom";
 import Login from "./components/Login/Login";
 import AppLayout from "./components/AppLayout/AppLayout";
 import Home from "./components/Home/Home";
@@ -23,6 +23,9 @@ import ResetPassword from "./components/ResetPassword/ResetPassword";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   console.log("islogin", isLogin);
+  const navigate=useNavigate();
+  const location=useLocation();
+  let url=location.pathname;
 
   return (
     <div className="App">
@@ -63,19 +66,10 @@ function App() {
               <Route path="/searchresults/:text" element={<SearchPage />} />
               <Route path="/wishlist" element={<WishList />} />
               <Route path="/description/:movieId" element={<Description />} />
-            </Route>) : (<Route element={<AppLayout />}>
-              <Route path="/home" element={<Home />} />
-              <Route path="/movies" element={<Home />} />
-              <Route path="/series" element={<Home />} />
-              <Route path="/anime" element={<Home />} />
-              <Route path="/tv-shows" element={<Home />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/searchresults/:text" element={<SearchPage />} />
-              <Route path="/wishlist" element={<WishList />} />
-              <Route path="/description/:movieId" element={<Description />} />
-            </Route>)
-           
-          }
+            </Route>) : (
+              url.slice(1)!== "login" ? (window.location.replace('/login')) : (<></>)
+              
+            ) }
         </Routes>
       </UserContextProvider>
     </div>

@@ -47,7 +47,10 @@ function Payment() {
   };
 
   useEffect(() => {
-    validateForm();
+    if(name !== "" || cardnumber!== "" || validDate !== "" || cvv !== "" )
+    {
+      validateForm();
+    }
   }, [name, cardnumber, validDate, cvv]);
 
   const validateForm = () => {
@@ -189,6 +192,7 @@ function Payment() {
                     id="cardnumber"
                     value={cardnumber}
                     onChange={handleCardNumberChange}
+                    maxLength={16}
                   />
                 </div>
               </div>
@@ -208,7 +212,7 @@ function Payment() {
                     style={{ width: "20rem", marginRight: "2rem" }}
                   >
                     <input
-                      placeholder="MM/YYYY "
+                      placeholder="MM/YY"
                       type="text"
                       id="valid-date"
                       value={validDate}
@@ -228,6 +232,7 @@ function Payment() {
                       id="cvv"
                       value={cvv}
                       onChange={handleCvvChange}
+                      maxLength={3}
                     />
                   </div>
                 </div>
@@ -240,7 +245,7 @@ function Payment() {
                 </div>
                 <div
                   className="error-payment"
-                  style={{ marginLeft: "16.5rem", position: "fixed" }}
+                  style={{ marginLeft: "21rem", position: "fixed" }}
                 >
                   {errors.cvv && (
                     <span style={{ color: "#f03a47" }}>{errors.cvv}</span>
