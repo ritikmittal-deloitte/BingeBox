@@ -46,7 +46,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
 
-          <Route path="/signup" element={<Signup setIsLogin={setIsLogin} />} />
+          <Route path="/signup" element={<Signup setIsLogin={setIsLogin}    />} />
           {/* <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/userpreferences" element={<UserPreferences />} />
@@ -58,10 +58,12 @@ function App() {
           {
             isLogin ? ( 
             <> <Route path="/accounts" element={<Accounts />} />
+            <Route path="/userpreferences" element={<UserPreferences  setIsLogin={setIsLogin}  />} />
               <Route element={<AppLayout />}>
               <Route path="/home" element={<Home />} />
               <Route path="/movies" element={<Home />} />
               <Route path="/series" element={<Home />} />
+              
               <Route path="/anime" element={<Home />} />
               <Route path="/tv-shows" element={<Home />} />
               <Route path="/profile" element={<Profile />} />

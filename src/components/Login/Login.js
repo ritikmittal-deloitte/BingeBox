@@ -45,19 +45,44 @@ const Login = ({setIsLogin}) => {
     const errors1 = validateForm();
 //   console.log(errors1);
  //   console.log("errors:", Object.keys(errors1).length);
-    if (errors1) {
-      console.log("Login successful");
-      setIsLogin(true);
-      if(dummyData.accounts.length===1){
+//     if (errors1) {
+//       console.log("Login successful");
+//       setIsLogin(true);
+//       if(dummyData.accounts.length===1){
        
-        dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
-        navigate("/home")
-    }
-    else navigate("/accounts")
+//         dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+//         navigate("/home")
+//     }
+//     else navigate("/accounts")
     
-    } else {
-//      setErrors(errors);
+//     } else {
+// //      setErrors(errors);
   
+// }
+if (errors1) {
+
+  console.log("Login successful");
+  setIsLogin(true);
+  dispatch(AccountAction.saveSignUpInfo(dummyData))
+
+  if(dummyData.accounts.length===1){
+
+    //dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+
+    navigate("/home")
+
+}
+
+else navigate("/accounts")
+
+
+
+} else {
+
+//      setErrors(errors);
+
+
+
 }
 
     

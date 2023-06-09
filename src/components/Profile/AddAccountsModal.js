@@ -44,7 +44,7 @@ export default function Modal({ divRef, closeModal }) {
             const reader = new FileReader();
 
             reader.onloadend = () => {
-                profile(reader.result);
+                setProfile(reader.result);
             };
 
             if (file) {
@@ -58,6 +58,7 @@ export default function Modal({ divRef, closeModal }) {
     };
 
     const handleAddingAccount = () => {
+        
         dispatch(AccountAction.addAccount({ name: name, img: URL.createObjectURL(profile) }))
 
     }
