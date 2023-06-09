@@ -7,7 +7,8 @@ import { ReactComponent as CheckedIcon } from "../../assets/icons/checked.svg";
 import "./card.scss";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Context/UserContext/UserState";
-
+import { useDispatch } from "react-redux";
+import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
 
 const Card = ({ cardData , direct }) => {
   const [onHovering, setOnHovering] = useState(false);
@@ -16,6 +17,7 @@ const Card = ({ cardData , direct }) => {
 //  console.log("Card Data :",cardData)
   const show = watch.has(cardData.id) 
   const navigate = useNavigate();
+  const dispatch=useDispatch()
   const handleMouseOver = () => {
     setOnHovering(true);
   };
@@ -59,6 +61,14 @@ const Card = ({ cardData , direct }) => {
 //    navigate("/wishlist");
 // console.log("Movie id:",cardData)
     navigate(`/description/${cardData.id}`)
+  }
+  const handlePlayingMovie=(event)=>{
+
+    event.stopPropagation()
+    dispatch(ContinueWatchingAction.addToContinueWatching(cardData))
+    
+    
+
   }
   return (
     <div
@@ -111,7 +121,7 @@ const Card = ({ cardData , direct }) => {
         >
           <div className="card-end-container">
           <div className="card-logo-container ">
-            <a  href={cardData.videoUrl} target="_blank"><PlayLogo width={40} height={41} /></a >
+            <a  href={cardData.videoUrl} target="_blank" onClick={(event)=>handlePlayingMovie(event)}><PlayLogo width={40} height={41} /></a >
             
               {!show && <div onClick={(event)=>{handleAddToWatchList(event)}}><AddToLogo width={40} height={41} /></div >} 
               {direct==="WatchList" && show && <div onClick={(event)=>{handleDeleteFromWatchList(event)}}><DeleteLogo width={40} height={41} /></div >} 
@@ -130,9 +140,21 @@ const Card = ({ cardData , direct }) => {
           <div className="rate-3">&nbsp;CBFC:U/A&nbsp;</div>
           <div className="ab-33"> {cardData.releaseYear} | {cardData.duration}</div> 
           <div className="cat-box">  
-          {cardData?.genre?.map((item)=>{
+          {cardData?.genre?.length > 2 ? (
+            <div className="last-3">
+            {(
+            cardData?.genre?.slice(0,2).map((item)=>{
            return  <div className="last-1">&nbsp;{item}&nbsp;</div>
-          })}
+          }))} 
+          <span className="more-text"><u>
+          +{cardData.genre.length -2}more </u> </span>
+          </div>
+          ) : ( cardData?.genre?.map((item)=>{
+           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
+          }))}
+          {/* {cardData?.genre?.map((item)=>{
+           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
+          })} */}
           </div>
  </div>
             </div>

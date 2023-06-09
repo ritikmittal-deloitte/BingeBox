@@ -12,9 +12,15 @@ import img1 from "../../assets/images/Variant8.png";
 
 import axios from "axios";
 import { UserContext } from "../../context/Context/UserContext/UserState";
+import { useSelector, useDispatch } from "react-redux";
+import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
 
 const Home = () => {
   const { watchList, setWatchList } = useContext(UserContext);
+  const contineWatchingList = useSelector(
+    (state) => state.continueWatching.contineWatchingList
+  );
+  console.log("listttt", contineWatchingList);
 
   const watch = new Set(watchList);
   const data = movies.filter((item) => {
@@ -31,8 +37,9 @@ const Home = () => {
   const [trendingMovies, settrendingMovies] = useState([]);
   const [yourWatches, setyourWatches] = useState([]);
   const [onHovering, setOnHovering] = useState(false);
-  const [carItems,setCarItems]=useState([]);
+  const [carItems, setCarItems] = useState([]);
   const [current, setCurrent] = useState(1);
+  const dispatch = useDispatch();
   const handleMouseOver = () => {
     setOnHovering(true);
   };
@@ -42,7 +49,6 @@ const Home = () => {
   const handleAddToWatchList = () => {
     console.log("add to watch lsit");
   };
-
 
   const fetchTrendingMovies = async () => {
     //const response=await axios.get("")
@@ -64,15 +70,14 @@ const Home = () => {
     //settrendingMovies(response.data)
     setyourWatches(movies);
   };
-const fetchCarouselItems =async () =>{
-  console.log("TYUDTIDUY")
-  const items= movies.filter((item)=>{
-    return url.slice(1) === 'home' || url.slice(1) === item.type ;
-  })
-  setCarItems(items)
-  console.log("Carousel items:",items.slice(0,5))
-
-}
+  const fetchCarouselItems = async () => {
+    console.log("TYUDTIDUY");
+    const items = movies.filter((item) => {
+      return url.slice(1) === "home" || url.slice(1) === item.type;
+    });
+    setCarItems(items);
+    console.log("Carousel items:", items.slice(0, 5));
+  };
   useEffect(() => {
     setCurrent(1);
     fetchRecentMovies();
@@ -80,7 +85,6 @@ const fetchCarouselItems =async () =>{
     fetchTrendingMovies();
     fetchYourWatches();
     fetchCarouselItems();
-    
   }, [url]);
   useEffect(() => {
     fetchRecentMovies();
@@ -88,7 +92,6 @@ const fetchCarouselItems =async () =>{
     fetchTrendingMovies();
     fetchYourWatches();
     fetchCarouselItems();
-    
   }, []);
 
   const check = () => {
@@ -137,6 +140,12 @@ const fetchCarouselItems =async () =>{
       borderRadius: "0.938rem",
     };
   };
+  const handlePlayingMovie = (event) => {
+    event.stopPropagation();
+    dispatch(
+      ContinueWatchingAction.addToContinueWatching(carItems[current - 1])
+    );
+  };
   return (
     <div className="home-container">
       <div
@@ -147,12 +156,12 @@ const fetchCarouselItems =async () =>{
         {!onHovering && (
           <>
             <div
-              style={handleBackgorndImage(carItems[current-1]?.posterImage)}
+              style={handleBackgorndImage(carItems[current - 1]?.posterImage)}
               className={`main-banner-container`}
             ></div>
             <div className="banner-video-text-box-1">
               <div className="video-heading">
-                <h2>{carItems[current-1]?.title}</h2>
+                <h2>{carItems[current - 1]?.title}</h2>
               </div>
             </div>
           </>
@@ -161,7 +170,9 @@ const fetchCarouselItems =async () =>{
         {onHovering && (
           <>
             <iframe
-              src={`${carItems[current-1].videoUrl}` + "?autoplay=1&controls=0"}
+              src={
+                `${carItems[current - 1].videoUrl}` + "?autoplay=1&controls=0"
+              }
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -169,10 +180,10 @@ const fetchCarouselItems =async () =>{
             ></iframe>
             <div className="banner-video-text-box">
               <div className="video-heading">
-                <h2>{carItems[current-1].title}</h2>
+                <h2>{carItems[current - 1].title}</h2>
               </div>
               <div className="video-description">
-                {carItems[current-1].description}
+                {carItems[current - 1].description}
               </div>
               <div className="video-category">
                 <div className="last-2">
@@ -183,7 +194,10 @@ const fetchCarouselItems =async () =>{
                 </div>
               </div>
               <div className="banner-play-box">
-                <div className="play-button d-flex">
+                <div
+                  className="play-button d-flex"
+                  onClick={(event) => handlePlayingMovie(event)}
+                >
                   <Triangle /> <h5>Play</h5>{" "}
                 </div>
                 {/* <a  href={movies[0].videoUrl} target="_blank"><PlayLogo /></a > */}
@@ -253,14 +267,14 @@ const fetchCarouselItems =async () =>{
             <ScrollLogo />
           </div>
 
-          <section className="recent-release-cards">
+          <div className="recent-release-cards">
             {recentMovies.map((movie, index) => {
               if (url.slice(1) === "home" || url.slice(1) === movie.type) {
                 return <Card cardData={movie} key={index} />;
               }
               return null;
             })}
-          </section>
+          </div>
 
           <div
             className="arrow-style1"
@@ -275,13 +289,13 @@ const fetchCarouselItems =async () =>{
         <div className="top-movies-grid">
           <div
             onClick={() => leftScroll(".your-watches-cards")}
-            className="arrow-style"
+            className="arrow-style-4"
           >
             <ScrollLogo />
           </div>
 
           <section className="your-watches-cards">
-            {yourWatches.map((movie, index) => {
+            {contineWatchingList?.map((movie, index) => {
               if (url.slice(1) === "home" || url.slice(1) === movie.type) {
                 return <Card3 cardData={movie} key={index} direct="Home" />;
               }
@@ -290,7 +304,7 @@ const fetchCarouselItems =async () =>{
           </section>
 
           <div
-            className="arrow-style1"
+            className="arrow-style-4"
             onClick={() => rightScroll(".your-watches-cards")}
           >
             <ScrollLogo />

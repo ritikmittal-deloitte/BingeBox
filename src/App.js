@@ -53,7 +53,7 @@ function App() {
           <Route path="/payment" element={<Payment />} />
 
           {
-            <Route element={<AppLayout />}>
+            isLogin ? ( <Route element={<AppLayout />}>
               <Route path="/home" element={<Home />} />
               <Route path="/movies" element={<Home />} />
               <Route path="/series" element={<Home />} />
@@ -63,7 +63,18 @@ function App() {
               <Route path="/searchresults/:text" element={<SearchPage />} />
               <Route path="/wishlist" element={<WishList />} />
               <Route path="/description/:movieId" element={<Description />} />
-            </Route>
+            </Route>) : (<Route element={<AppLayout />}>
+              <Route path="/home" element={<Home />} />
+              <Route path="/movies" element={<Home />} />
+              <Route path="/series" element={<Home />} />
+              <Route path="/anime" element={<Home />} />
+              <Route path="/tv-shows" element={<Home />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/searchresults/:text" element={<SearchPage />} />
+              <Route path="/wishlist" element={<WishList />} />
+              <Route path="/description/:movieId" element={<Description />} />
+            </Route>)
+           
           }
         </Routes>
       </UserContextProvider>
