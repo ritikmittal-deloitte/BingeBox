@@ -8,7 +8,8 @@ function SelectedPlan() {
   const todayDate = new Date();
   const navigate = useNavigate();
   const location = useLocation();
-  let p = location.state;
+  let p = location.state.value;
+  let name = location.state.name;
   console.log("Value Recieved:", p);
   const Payment = (value) => {
     let x = 1;
@@ -26,7 +27,7 @@ function SelectedPlan() {
       <div className="card">
         <h2>{p.type} Plan</h2>
         <p>
-          Hi <span>Manish Singh</span>, Here is your Subscription Plan Details!
+          Hi <span>{name}</span>, Here is your Subscription Plan Details!
         </p>
         <p style={{ marginTop: "1.5rem" }}>
           Validity: <span>{todayDate.getFullYear()}</span>

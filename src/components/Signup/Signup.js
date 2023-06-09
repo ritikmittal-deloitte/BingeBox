@@ -94,7 +94,8 @@ function Signup() {
     if (validateForm()) {
       // Perform signup logic
       console.log("Signup successful!");
-      navigate("/subscription-plans");
+
+      navigate("/subscription-plans", { state: name });
     }
   };
   useEffect(() => {
@@ -116,7 +117,7 @@ function Signup() {
       <div className="left-container">
         <div className="binge-box-heading-1">
           {/* <Logo /> */}
-          <MainLogo/>
+          <MainLogo />
         </div>
         <form action="" className="signup-form" onSubmit={handleSubmit}>
           <h3 className="d-flex justify-content-start w-100 mb-0 signup-heading">

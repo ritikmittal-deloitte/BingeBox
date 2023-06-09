@@ -150,10 +150,15 @@
 }
 
 .remember-forgot label input {
-  accent-color: #e4e4e4;
+  accent-color: beige;
   margin-right: 4px;
 }
-
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(182, 182, 164);
+  opacity: 1;
+  /* Firefox */
+}
 .remember-forgot a {
   color: #e4e4e4;
   text-decoration: none;

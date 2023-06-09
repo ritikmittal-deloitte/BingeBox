@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function SubscriptionComponent({ p, index }) {
+export default function SubscriptionComponent({ p, index, name }) {
   const [hover, setHover] = useState(false);
+  console.log("Username:", name);
   const navigate = useNavigate();
   const SelectPlan = (value) => {
     let x = 1;
     console.log("Checking");
     console.log("Value::", value);
-    navigate("/selected-plan", { state: value });
+    //    const data = {[..value,..name]}
+    navigate("/selected-plan", { state: { value, name } });
   };
 
   const handleMouseEnter = () => {
@@ -87,7 +89,13 @@ export default function SubscriptionComponent({ p, index }) {
         <p>Supported Devices</p>
         <h5>{p.supporteddevice}</h5>
       </div>
-      <button className="btn" style={btnStyle()} onClick={()=>{SelectPlan(p)}}>
+      <button
+        className="btn"
+        style={btnStyle()}
+        onClick={() => {
+          SelectPlan(p);
+        }}
+      >
         Buy Now
       </button>
     </div>

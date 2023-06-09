@@ -1,11 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../Logo/Logo";
 import "./forgotpassword.scss";
 import leftArrow from "../../assets/icons/arrow-left.svg";
 import { useNavigate } from "react-router-dom";
 
 function ForgotPassword() {
+  const [errors, setErrors] = useState({});
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
+
+  const validateEmail = () => {
+    let error = {};
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      error.email = "Invalid email format";
+    } else if (email.trim() === "") {
+      error.email = "Email is required";
+    }
+    setErrors(error);
+    console.log(errors);
+    return Object.keys(errors).length === 0;
+  };
+
+  const handleSubmit = () => {
+    if (!validateEmail()) {
+      navigate("/reset-password");
+    }
+  };
+
   return (
     <div className="forgot-password">
       <div className="forgot-container">
@@ -18,9 +40,26 @@ function ForgotPassword() {
           password reset instructions
         </p>
         <div className="inputs">
-          <input placeholder="Email Id" type="email" id="email" />
+          <input
+            placeholder="Email Id"
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => {
+              setEmail(e.target.value);
+            }}
+          />
         </div>
-        <button type="submit" className="btn">
+        <div className="error-signup">
+          {errors.email && <span>* {errors.email}</span>}
+        </div>
+        <button
+          type="submit"
+          className="btn"
+          onClick={(e) => {
+            handleSubmit();
+          }}
+        >
           Send Email
         </button>
 

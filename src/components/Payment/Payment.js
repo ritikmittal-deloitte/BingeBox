@@ -1,37 +1,118 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./payment.scss";
 import HDFC from "../../assets/images/hdfc.svg";
 import SBI from "../../assets/images/sbi.svg";
 import IDBI from "../../assets/images/idbi.svg";
 import AXIS from "../../assets/images/axis.svg";
 import ICICI from "../../assets/images/icici.svg";
-import { ReactComponent as MainLogo }from "../../assets/images/bingeboxlogo.svg";
+import { ReactComponent as MainLogo } from "../../assets/images/bingeboxlogo.svg";
 import angleRight from "../../assets/icons/angle-right.svg";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useCreditCardValidator, images } from "react-creditcard-validator";
-import Logo from "../Logo/Logo";
+import Upi from "./Upi";
 
 function Payment() {
   const location = useLocation();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [cardnumber, setCardnumber] = useState("");
-  const [validdate, setValiddate] = useState("");
+  const [validDate, setValidDate] = useState("");
   const [cvv, setCvv] = useState("");
   const [errors, setErrors] = useState({});
   const [activeTab, setActivaTab] = useState("creditDebit");
-  const [isValid, setValid] = useState(false);
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [upiId, setUpiId] = useState("");
+  const [selectedUpiMethod, setSelectedUpiMethod] = useState("");
+  const [isPayNowEnabled, setIsPayNowEnabled] = useState(false);
+  const [valid, setValid] = useState(false);
 
-  const {
-    getCardNumberProps,
-    getExpiryDateProps,
-    getCVCProps,
-    getCardImageProps,
-    meta: { erroredInputs },
-  } = useCreditCardValidator();
   let p = location.state;
   const handleTabClick = (tab) => {
     setActivaTab(tab);
+  };
+
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleCardNumberChange = (e) => {
+    setCardnumber(e.target.value);
+  };
+
+  const handleValidDateChange = (e) => {
+    setValidDate(e.target.value);
+  };
+
+  const handleCvvChange = (e) => {
+    setCvv(e.target.value);
+  };
+
+  useEffect(() => {
+    validateForm();
+  }, [name, cardnumber, validDate, cvv]);
+
+  const validateForm = () => {
+    const errors = {};
+    const regex = /^[A-Za-z\s]+$/;
+    if (!name.trim()) {
+      errors.name = "* Name is required";
+    } else if (!regex.test(name.trim())) {
+      errors.name = "* Invalid name";
+    }
+
+    // Regular expression pattern for credit card validation
+    const creditCardRegex =
+      /^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14}|3[47][0-9]{13}|3(?:0[0-5]|[68][0-9])[0-9]{11}|6(?:011|5[0-9]{2})[0-9]{12}|(?:2131|1800|35\d{3})\d{11})$/;
+    if (!creditCardRegex.test(cardnumber.replace(/\s/g, ""))) {
+      errors.cardnumber = "* Invalid credit card number";
+    }
+
+    // Regular expression pattern for expiry date validation (MM/YY format)
+    const expiryDateRegex = /^(0[1-9]|1[0-2])\/([0-9]{2})$/;
+    if (!expiryDateRegex.test(validDate)) {
+      errors.validDate = "* Invalid expiry date";
+    }
+
+    // Regular expression pattern for CVV validation (3 or 4 digits)
+    const cvvRegex = /^[0-9]{3,4}$/;
+    if (!cvvRegex.test(cvv)) {
+      errors.cvv = "* Invalid CVV";
+    }
+
+    setErrors(errors);
+    setIsFormValid(Object.keys(errors).length === 0);
+  };
+
+  const handlePayment = () => {
+    // Perform payment processing logic here
+
+    // if (!isFormValid) {
+    console.log("Payment processed successfully!");
+    navigate("/payment-successful");
+  };
+
+  const handleInputChange = (event) => {
+    const { value } = event.target;
+    setUpiId(value);
+    setIsPayNowEnabled(false); // Disable the "Pay Now" button when the UPI ID changes
+  };
+
+  const handleUpiMethodClick = (upiMethod) => {
+    const updatedUpiId = upiId + upiMethod;
+    setUpiId(updatedUpiId);
+    setSelectedUpiMethod(upiMethod);
+    console.log(isPayNowEnabled);
+    console.log(upiId);
+    console.log(upiMethod);
+    // setIsPayNowEnabled(true); // Enable the "Pay Now" button when a UPI method is selected
+  };
+  const handlePayNowClick = () => {
+    // Perform payment processing logic with the selected UPI ID and method
+    console.log(`Processing payment with UPI ID: ${upiId}`);
+  };
+
+  const handlePayButton = () => {
+    setValid(true);
+    console.log("pay");
   };
 
   return (
@@ -77,7 +158,7 @@ function Payment() {
         <div className="left">
           <p style={{ fontWeight: "400", fontSize: "1.25rem" }}>Payment</p>
           <p style={{ fontWeight: "700", fontSize: "2.5rem" }}>
-            Rs. <span style={{ marginLeft: "2rem" }}>{p.price}</span>
+            Rs.<span style={{ marginLeft: "0.3rem" }}>{p?.price}</span>
           </p>
         </div>
         <div className="right">
@@ -90,36 +171,31 @@ function Payment() {
                   type="text"
                   id="name"
                   value={name}
-                  onChange={(e) => {
-                    setName(e.target.value);
-                  }}
+                  onChange={handleNameChange}
                 />
               </div>
               <div className="error-payment">
-                {errors.name && <span>* {errors.name}</span>}
+                {errors.name && (
+                  <span style={{ color: "#f03a47" }}>{errors.name}</span>
+                )}
+                {/* {nameError && <span style={{ color: "red" }}>{nameError}</span>} */}
               </div>
               <label htmlFor="">Card Number </label>
               <div style={{ display: "flex" }}>
-                <div className="inputs" style={{ width: "30rem" }}>
+                <div className="inputs">
                   <input
-                    {...getCardNumberProps()}
                     placeholder="XXXX XXXX XXXX XXXX "
                     // type="number"
                     id="cardnumber"
+                    value={cardnumber}
+                    onChange={handleCardNumberChange}
                   />
                 </div>
-                <svg
-                  style={{
-                    width: "4rem",
-                    height: "2rem",
-                    marginTop: "1.5rem",
-                    marginLeft: "1rem",
-                  }}
-                  {...getCardImageProps({ images })}
-                />
               </div>
               <div className="error-payment">
-                {erroredInputs.cardNumber && erroredInputs.cardNumber}
+                {errors.cardnumber && (
+                  <span style={{ color: "#f03a47" }}>{errors.cardnumber}</span>
+                )}
               </div>
 
               <div className="date-cvv">
@@ -132,10 +208,11 @@ function Payment() {
                     style={{ width: "20rem", marginRight: "2rem" }}
                   >
                     <input
-                      {...getExpiryDateProps()}
                       placeholder="MM/YYYY "
                       type="text"
                       id="valid-date"
+                      value={validDate}
+                      onChange={handleValidDateChange}
                     />
                   </div>
                 </div>
@@ -146,66 +223,46 @@ function Payment() {
                   </label>
                   <div className="inputs" style={{ width: "12.875rem" }}>
                     <input
-                      {...getCVCProps()}
                       placeholder="***"
                       type="password"
                       id="cvv"
+                      value={cvv}
+                      onChange={handleCvvChange}
                     />
                   </div>
                 </div>
               </div>
               <div style={{ display: "flex", justifyContent: "space-between" }}>
                 <div className="error-payment">
-                  {erroredInputs.expiryDate && erroredInputs.expiryDate}
+                  {errors.validDate && (
+                    <span style={{ color: "#f03a47" }}>{errors.validDate}</span>
+                  )}
                 </div>
-                <div className="error-payment" style={{ marginLeft: "10rem" }}>
-                  {erroredInputs.cvc && erroredInputs.cvc}
+                <div
+                  className="error-payment"
+                  style={{ marginLeft: "16.5rem", position: "fixed" }}
+                >
+                  {errors.cvv && (
+                    <span style={{ color: "#f03a47" }}>{errors.cvv}</span>
+                  )}
                 </div>
               </div>
 
-              {
-                <button
-                  className="pay-btn"
-                  onClick={() => {
-                    navigate("/payment-successful");
-                  }}
-                >
-                  Pay Now
-                </button>
-              }
-            </form>
-          )}
-          {activeTab === "upi" && (
-            <form action="" className="form" style={{ marginTop: "-9rem" }}>
-              <label htmlFor="">UPI Id</label>
-              <div className="inputs">
-                <input placeholder="Enter UPI Id" type="text" id="name" />
-                <div className="upi">
-                  <ul className="upi-method">
-                    <li className="method">@oksbi</li>
-                    <li className="method">@okaxis</li>
-                    <li className="method">@ybl</li>
-                    <li className="method">@paytm</li>
-                    <li className="method">@upi</li>
-                    <li className="method">@ap1</li>
-                  </ul>
-                </div>
-              </div>
               <button
                 className="pay-btn"
-                style={{ marginTop: "45rem" }}
-                onClick={() => {
-                  navigate("/payment-successful");
-                }}
+                onClick={handlePayment}
+                disabled={!isFormValid}
+                style={{ backgroundColor: isFormValid ? "#f03a47" : "gray" }}
               >
                 Pay Now
               </button>
             </form>
           )}
+          {activeTab === "upi" && <Upi />}
           {activeTab === "netBanking" && (
             <form action="" className="form" style={{ marginTop: "-11rem" }}>
               <div className="methods">
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={SBI} />
                   </div>
@@ -243,11 +300,15 @@ function Payment() {
                 </div>
               </div>
               <button
-                style={{ marginTop: "45rem" }}
-                className="pay-btn"
-                onClick={() => {
-                  navigate("/payment-successful");
+                style={{
+                  marginTop: "45rem",
+                  backgroundColor: valid ? "f03a47" : "gray",
                 }}
+                className="pay-btn"
+                disabled={!valid}
+                // onClick={() => {
+                //   navigate("/payment-successful");
+                // }}
               >
                 Pay Now
               </button>
