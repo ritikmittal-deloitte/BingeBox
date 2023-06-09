@@ -60,7 +60,7 @@ const Card = ({ cardData , direct }) => {
 // console.log("Movie id:",cardData)
     navigate(`/description/${cardData.id}`)
   }
-  console.log("genres data:",cardData.genre.length)
+//  console.log("genres data:",cardData.genre.length)
   return (
     <div
       className={`card-container ${onHovering?"card-container-hovering-style":""}`}
