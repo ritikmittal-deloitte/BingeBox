@@ -6,6 +6,7 @@ import { ReactComponent as MainLogo } from "./../../assets/images/Group 10000025
 
 function SelectedPlan() {
   const todayDate = new Date();
+  // console.log(todayDate.getMonth() + 1);
   const navigate = useNavigate();
   const location = useLocation();
   let p = location.state.value;
@@ -27,10 +28,11 @@ function SelectedPlan() {
       <div className="card">
         <h2>{p.type} Plan</h2>
         <p>
-          Hi <span>{name}</span>, Here is your Subscription Plan Details!
+          Hi <span style={{ textTransform: "capitalize" }}>{name}</span>, Here
+          is your Subscription Plan Details!
         </p>
         <p style={{ marginTop: "1.5rem" }}>
-          Validity: <span>{todayDate.getFullYear()}</span>
+          Validity: <span>{todayDate.getFullYear() + 1}</span>
         </p>
         <div className="features">
           <h4>Price</h4>

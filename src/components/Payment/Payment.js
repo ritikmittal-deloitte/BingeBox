@@ -103,7 +103,7 @@ function Payment() {
     console.log(isPayNowEnabled);
     console.log(upiId);
     console.log(upiMethod);
-    // setIsPayNowEnabled(true); // Enable the "Pay Now" button when a UPI method is selected
+    setIsPayNowEnabled(true); // Enable the "Pay Now" button when a UPI method is selected
   };
   const handlePayNowClick = () => {
     // Perform payment processing logic with the selected UPI ID and method
@@ -113,6 +113,7 @@ function Payment() {
   const handlePayButton = () => {
     setValid(true);
     console.log("pay");
+    navigate("/payment-successful");
   };
 
   return (
@@ -268,25 +269,25 @@ function Payment() {
                   </div>
                   <p>SBI</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={HDFC} />
                   </div>
                   <p>HDFC</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={ICICI} />
                   </div>
                   <p>ICICI</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={AXIS} />
                   </div>
                   <p>AXIS</p>
                 </div>
-                <div className="banks">
+                <div className="banks" onClick={handlePayButton}>
                   <div className="bank">
                     <img src={IDBI} />
                   </div>
@@ -302,7 +303,7 @@ function Payment() {
               <button
                 style={{
                   marginTop: "45rem",
-                  backgroundColor: valid ? "f03a47" : "gray",
+                  backgroundColor: valid ? "#f03a47" : "gray",
                 }}
                 className="pay-btn"
                 disabled={!valid}
