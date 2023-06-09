@@ -12,7 +12,7 @@
   background-position: center;
   border-radius: 10px;
   // margin-top: 5%;
-
+ 
   .binge-box-heading {
     // margin-top: 3.5rem;
     margin-bottom: 3rem;
@@ -48,6 +48,7 @@
   .error-payment {
     color: #f03a47;
     display: flex;
+    width: 100%;
     justify-content: flex-start;
     margin-top: -4rem;
     padding-left: 1rem;
@@ -245,3 +246,4 @@
     }
   }
 }
+

@@ -85,10 +85,9 @@ border-radius: 10px;
          }
      }
 
-     .rate {
+     .rate-0 {
          display: flex;
-         justify-content: flex-start;
-         width: 72rem;
+                  width: 72rem;
          height: 9rem;
          align-items: center;
          margin-left: 0rem !important;
@@ -104,15 +103,7 @@ border-radius: 10px;
 .reslution{
 margin-left: -5rem !important;
          }
-         p {
-             margin-right: 8rem;
-             font-size: 1.25rem;
-             font-weight: 700;
-             span{
-                font-size: 2.5rem;
-             }
 
-         }
          
 
      }
@@ -143,6 +134,7 @@ margin-left: -5rem !important;
          }
 
          .payment-btn {
+            cursor: pointer;
              padding: 1rem;
              font-weight: 700;
              font-size: 20px;
@@ -151,6 +143,9 @@ margin-left: -5rem !important;
              background: #f03a47;
              border-radius: 15px;
              text-align: center;
+             display: flex;
+             justify-content: center;
+             align-items: center;
              margin-left: 2rem;
              margin-right: 4.95rem;
 
@@ -158,5 +153,34 @@ margin-left: -5rem !important;
          }
      }
  }
+}
+.price-box{
+    width: 13rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: start;
+}
+.resolution-box{
+    width: 15rem;
+    text-align: start;
+    margin-left: 3.8rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+
+}
+.qulaity-box{
+    width: 10rem;
+    margin-left: 5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-align: start;
+}
+.device-1{
+    width: 19rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-left: 7.5rem;
+    // border: 2px solid red;
+
 }
    

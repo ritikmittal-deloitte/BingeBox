@@ -10,8 +10,8 @@ import angleRight from "../../assets/icons/angle-right.svg";
 import { useLocation, useNavigate } from "react-router-dom";
 import Upi from "./Upi";
 
-function Payment() {
-  const location = useLocation();
+function Payment({price,setPage}) {
+//  const location = useLocation();
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [cardnumber, setCardnumber] = useState("");
@@ -25,7 +25,7 @@ function Payment() {
   const [isPayNowEnabled, setIsPayNowEnabled] = useState(false);
   const [valid, setValid] = useState(false);
 
-  let p = location.state;
+//  let p = location.state;
   const handleTabClick = (tab) => {
     setActivaTab(tab);
   };
@@ -47,7 +47,10 @@ function Payment() {
   };
 
   useEffect(() => {
-    validateForm();
+    if(name !== "" || cardnumber!== "" || validDate !== "" || cvv !== "" )
+    {
+      validateForm();
+    }
   }, [name, cardnumber, validDate, cvv]);
 
   const validateForm = () => {
@@ -87,13 +90,15 @@ function Payment() {
 
     // if (!isFormValid) {
     console.log("Payment processed successfully!");
-    navigate("/payment-successful");
+    setPage('5');
+//    navigate("/payment-successful");
   };
 
   const handlePayButton = () => {
     setValid(true);
     console.log("pay");
-    navigate("/payment-successful");
+    setPage('5');
+    //    navigate("/payment-successful");
   };
 
   return (
@@ -139,7 +144,7 @@ function Payment() {
         <div className="left">
           <p style={{ fontWeight: "400", fontSize: "1.25rem" }}>Payment</p>
           <p style={{ fontWeight: "700", fontSize: "2.5rem" }}>
-            Rs.<span style={{ marginLeft: "0.3rem" }}>{p?.price}</span>
+            Rs.<span style={{ marginLeft: "0.3rem" }}>{price}</span>
           </p>
         </div>
         <div className="right">
@@ -170,6 +175,7 @@ function Payment() {
                     id="cardnumber"
                     value={cardnumber}
                     onChange={handleCardNumberChange}
+                    maxLength={16}
                   />
                 </div>
               </div>
@@ -189,7 +195,7 @@ function Payment() {
                     style={{ width: "20rem", marginRight: "2rem" }}
                   >
                     <input
-                      placeholder="MM/YYYY "
+                      placeholder="MM/YY"
                       type="text"
                       id="valid-date"
                       value={validDate}
@@ -209,6 +215,7 @@ function Payment() {
                       id="cvv"
                       value={cvv}
                       onChange={handleCvvChange}
+                      maxLength={3}
                     />
                   </div>
                 </div>
@@ -221,7 +228,7 @@ function Payment() {
                 </div>
                 <div
                   className="error-payment"
-                  style={{ marginLeft: "16.5rem", position: "fixed" }}
+                  style={{ marginLeft: "21rem", position: "fixed" }}
                 >
                   {errors.cvv && (
                     <span style={{ color: "#f03a47" }}>{errors.cvv}</span>

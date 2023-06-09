@@ -5,10 +5,13 @@ import SubscriptionComponent from "./SubscriptionComponent";
 import { ReactComponent as MainLogo } from "./../../assets/images/Group 1000002501.svg";
 import Logo from "../Logo/Logo";
 
-function Subscriptionplans() {
+function Subscriptionplans({name,setPage,setPlan}) {
   // const navigate = useNavigate();
-  const location = useLocation();
-  const name = location.state;
+
+
+  // const location = useLocation();
+  // const name = location.state;
+
   // const SelectPlan = (value) => {
   //   let x = 1;
   //   console.log("Checking");
@@ -36,7 +39,7 @@ function Subscriptionplans() {
       <div className="right-container">
         <div className="cards">
           {plans.map((p, index) => {
-            return <SubscriptionComponent p={p} index={index} name={name} />;
+            return <SubscriptionComponent p={p} index={index} name={name} setPage={setPage} setPlan={setPlan}/>;
           })}
         </div>
       </div>

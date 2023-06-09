@@ -20,12 +20,13 @@ import { dummyData } from "../../mockData/accountsMockData";
 const Header = () => {
   const [selected, setSelected] = useState("0");
   const [profile, setProfile] = useState(false);
-  const {searchText,setSearchText} = useContext(UserContext)
+  const {searchText,setSearchText,categories,setCategories} = useContext(UserContext)
   const [helperSearchText,setHelperSearchText] = useState('')
   const navigate = useNavigate()
   const dispatch=useDispatch()
   const selectedAccount=useSelector((state)=>state.account.currentAccount)
-    console.log("in header",selectedAccount)
+  const signUpUserDetails=useSelector((state)=>state.account.userDetails)
+    console.log("in header",selectedAccount,"signup",signUpUserDetails)
   const [open, setOpen] = useState(false);
   const location = useLocation();
   let url = location.pathname;
@@ -42,11 +43,11 @@ const Header = () => {
   const ref2 = useRef(null);
 //  const [message, setMessage] = useState('');
   const genres = [
+    "All",
     "Horror",
-    "Romantic",
     "Comedy",
     "Action",
-    "Thrillers",
+    "Horror",
     "Drama",
     "Romance",
     "Fantasy",
@@ -204,7 +205,7 @@ useEffect(() => {
               document.addEventListener("mousedown", handleClickOutside);
             }}
           >
-            Categories
+            {categories}
           </NavLink>
         </div>
         {open && (
@@ -214,7 +215,7 @@ useEffect(() => {
               <div className="genres-box">
                 {genres.map((item) => {
               //    console.log("Item:", item);
-                  return <CategoryType text={item} />;
+                  return <CategoryType text={item} setCategories={setCategories}/>;
                 })}
               </div>
             </div>
@@ -269,13 +270,13 @@ useEffect(() => {
               <div className="selected-1">&nbsp;&nbsp;&nbsp; {selectedAccount.name}</div>
               <div className="line-2"></div>
               {
-               dummyData.accounts.length>1&&( 
+               signUpUserDetails?.accounts?.length>1&&( 
                <div className="avatar-box">
               {/* <div className="line-2"></div> */}
               <div className="avatar-box">
               &nbsp;&nbsp;&nbsp;
               {
-                dummyData.accounts.filter((account)=>account.name!==selectedAccount.name).map((account)=>(
+                signUpUserDetails?.accounts?.filter((account)=>account.name!==selectedAccount.name).map((account)=>(
                   <div>
               <img src={account.img} onClick={()=>handleChangingAccount(account)} className="profile-conatiner-pic"/>
                   <div className="avatar-text">{account.name}</div>
