@@ -200,7 +200,7 @@ useEffect(() => {
               <div className="genres-box">
                 {genres.map((item) => {
               //    console.log("Item:", item);
-                  return <CategoryType text={item} setCategories={setCategories}/>;
+                  return <CategoryType text={item} type={'genre'} setCategories={setCategories}/>;
                 })}
               </div>
             </div>
@@ -209,7 +209,7 @@ useEffect(() => {
               <div className="genres-box">
                 {languages.map((item) => {
           //        console.log("Item:", item);
-                  return <CategoryType text={item} />;
+                  return <CategoryType text={item} type={'language'}/>;
                 })}
               </div>
             </div>
