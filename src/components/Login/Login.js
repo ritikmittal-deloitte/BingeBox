@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
-import { UserContextProvider } from "../../context/Context/UserContext/UserState";
+import { UserContext, UserContextProvider } from "../../context/Context/UserContext/UserState";
 import { useDispatch } from "react-redux";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
 import Background from "../background/Background";
 
 
-const Login = ({ setIsLogin }) => {
+const Login = ({setIsLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({email:''});
@@ -45,18 +45,44 @@ const Login = ({ setIsLogin }) => {
     const errors1 = validateForm();
 //   console.log(errors1);
  //   console.log("errors:", Object.keys(errors1).length);
-    if (errors1) {
-      console.log("Login successful");
-
-      if(dummyData.accounts.length===1){
-        dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
-        navigate("/home")
-    }
-    else navigate("/accounts")
+//     if (errors1) {
+//       console.log("Login successful");
+//       setIsLogin(true);
+//       if(dummyData.accounts.length===1){
+       
+//         dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+//         navigate("/home")
+//     }
+//     else navigate("/accounts")
     
-    } else {
-//      setErrors(errors);
+//     } else {
+// //      setErrors(errors);
   
+// }
+if (errors1) {
+
+  console.log("Login successful");
+  setIsLogin(true);
+  dispatch(AccountAction.saveSignUpInfo(dummyData))
+
+  if(dummyData.accounts.length===1){
+
+    //dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+
+    navigate("/home")
+
+}
+
+else navigate("/accounts")
+
+
+
+} else {
+
+//      setErrors(errors);
+
+
+
 }
 
     

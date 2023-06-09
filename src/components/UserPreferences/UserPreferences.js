@@ -19,7 +19,7 @@ import { UserContext } from '../../context/Context/UserContext/UserState'
 import { dummyData } from '../../mockData/accountsMockData'
 import { AccountAction } from '../../redux/AccountSlice';
 
-export default function UserPreferences() {
+export default function UserPreferences({setIsLogin}) {
     const [hoveredIndex, setHoveredIndex] = useState(-1);
     const {genre,setGenre} = useContext(UserContext)
     const dispatch=useDispatch()
@@ -34,8 +34,10 @@ export default function UserPreferences() {
     };
     const handleSuccessFullNavigationAfterSignUp=()=>{
         
-            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
-            navigate("/profile")
+            setIsLogin(true);
+//            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
+            dispatch(AccountAction.saveSignUpInfo(dummyData))
+            navigate("/home")
         
     }
 

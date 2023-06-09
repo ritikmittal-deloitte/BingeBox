@@ -42,16 +42,17 @@
 
   .top-movies-grid {
     
-    
     display: flex;
     position: relative;
+    overflow-y:scroll;
+
     ::-webkit-scrollbar-thumb {
       background-color: transparent;
       border-radius: 10px;
       border: 1px solid transparent;
     }
 
-    .cards,.recent-release-cards,.your-watches-cards,.trending-movie-cards {
+    .cards,.recent-release-cards,.your-watches-cards,.trending-movie-cards,.top-rated-cards {
         position: relative;
         z-index: 0;
       overflow-x: auto;
@@ -60,18 +61,18 @@
       grid-gap: 1.5rem; 
       grid-auto-flow: column;
       align-items: center;
-      //   grid-auto-columns: calc(100% - 2rem);
-      // min-height: 14.75rem;
+      padding-left: 1.7rem;
       min-height: 17rem;
     }
     
   }
+  
   .arrow-style{
     display: flex;
     position: absolute;
     z-index: 1;
     margin-left: 0.5%;
-    margin-top: 6.5%;
+    margin-top: 6%;
     transform: rotate(180deg);
     width: 3.4rem;
     height: 3.4rem;
@@ -85,9 +86,28 @@
     align-items: center;
     justify-content: center;
 }
+.arrow-style-4{
+  display: flex;
+  position: absolute;
+  z-index: 1;
+  margin-left: 0.5%;
+  margin-top: 11%;
+  transform: rotate(180deg);
+  width: 3.4rem;
+  height: 3.4rem;
+  background-color: linear-gradient(
+      90deg,
+      #1e1515 27.37%,
+      rgba(30, 21, 21, 0.08) 100%
+    );
+    backdrop-filter: blur(19.7356px);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
 
 .arrow-style1{
-   margin-top: 6.5%;
+   margin-top: 6%;
    position: absolute;
    z-index: 1;
    margin-left: 96%;
@@ -104,13 +124,32 @@
       align-items: center;
     justify-content: center;
 }
+.arrow-style-5{
+  margin-top: 11%;
+  position: absolute;
+  z-index: 1;
+  margin-left: 96%;
+  width: 3.4rem;
+   height: 3.4rem;
+   background-color: linear-gradient(
+       90deg,
+       #1e1515 27.37%,
+       rgba(30, 21, 21, 0.08) 100%
+     );
+     backdrop-filter: blur(19.7356px);
+     border-radius: 50%;
+     display: flex;
+     align-items: center;
+   justify-content: center;
+}
 }
 .top-movie-container{
   margin-top: 3%;
   width: 95%;
   margin-left: 5%;
+
   p{
-    font-family: 'Nunito Sans';
+    // font-family: 'Nunito Sans';
 font-style: normal;
 font-weight: 600;
 font-size: 24px;
@@ -198,7 +237,7 @@ text-align: justify;
   text-align: center;
   width: max-content;
   height: 1.5rem;
-  font-family: 'Roboto';
+   //font-family: 'Roboto';
 font-style: normal;
 font-weight: 400;
 font-size: 14px;

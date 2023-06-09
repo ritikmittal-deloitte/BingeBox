@@ -7,10 +7,6 @@
   z-index: 0;
 }
 
-// .signup-overlay {
-//   width: 100%;
-//   height: 100%;
-// }
 
 .error-signup {
   color: #f03a47;
@@ -32,7 +28,7 @@
   height: 80%;
   width: 13%;
   background-color: #f03a47;
-  font-family: "Sora";
+  //font-family: "Sora";
   font-style: normal;
   font-weight: 700;
   font-size: 54.282px;
@@ -45,7 +41,7 @@
   width: 10%;
   margin-left: 0.3%;
   color: #f03a47;
-  font-family: "Sora";
+  //font-family: "Sora";
   font-style: normal;
   font-weight: 700;
   font-size: 54.282px;
@@ -61,8 +57,6 @@
   display: flex;
   flex-direction: column;
   margin-left: 19rem;
-  // justify-content: center;
-  // align-items: center;
   background: transparent;
   width: 100%;
   height: 100%;
@@ -71,12 +65,11 @@
   color: white;
 
   .signup-heading {
-    font-family: "Nunito Sans";
+    //font-family: "Nunito Sans";
     font-style: normal;
     font-weight: 600;
     font-size: 32px;
     line-height: 44px;
-    /* identical to box height */
 
     display: flex;
     align-items: center;
@@ -162,16 +155,15 @@
   position: absolute;
   width: 825.33px;
   height: 1590.88px;
-  left: 800px;
-  top: -162px;
+  left: 1000px;
+  top: -100px;
   background: url("../../assets/images/sign-up-bg.svg");
 
   opacity: 1;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 
   .change-text {
     width: 36rem;
-    margin-left: 12rem;
-    margin-top: 28rem;
+    margin-left: 4rem;
+    margin-top: 23rem;
   }
 }

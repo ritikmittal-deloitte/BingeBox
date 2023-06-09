@@ -12,7 +12,7 @@
   background-position: center;
   border-radius: 10px;
   // margin-top: 5%;
-
+ 
   .binge-box-heading {
     // margin-top: 3.5rem;
     margin-bottom: 3rem;
@@ -25,7 +25,7 @@
       height: 90%;
       width: 35%;
       background-color: #f03a47;
-      font-family: "Sora";
+      //font-family: "Sora";
       font-style: normal;
       font-weight: 700;
       font-size: 54.282px;
@@ -38,21 +38,22 @@
       width: 10%;
       margin-left: 2.5rem;
       color: #f03a47;
-      font-family: "Sora";
+      //font-family: "Sora";
       font-style: normal;
       font-weight: 700;
       font-size: 54.282px;
       line-height: 68px;
     }
   }
-.error-payment {
-  color: #f03a47;
-  display: flex;
-  justify-content: flex-start;
-      margin-top: -4rem;
-        padding-left: 1rem;
-        margin-bottom: 0.5rem;
-}
+  .error-payment {
+    color: #f03a47;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    margin-top: -4rem;
+    padding-left: 1rem;
+    margin-bottom: 0.5rem;
+  }
   p {
     font-weight: 600;
     font-size: 32px;
@@ -114,19 +115,29 @@
           margin-top: 1rem;
           width: 35rem;
           margin-bottom: 4.375rem;
-          background: linear-gradient(115.57deg,
-                rgba(255, 255, 255, 0.19) -4.2%,
-                rgba(234, 234, 234, 0.0806194) 70.71%,
-                rgba(223, 214, 214, 0) 125.93%);
+          background: linear-gradient(
+            115.57deg,
+            rgba(255, 255, 255, 0.19) -4.2%,
+            rgba(234, 234, 234, 0.0806194) 70.71%,
+            rgba(223, 214, 214, 0) 125.93%
+          );
+          border: 0.9px solid #8b8b8b;
+          input {
+            color: #ffffff;
+            background: linear-gradient(
+              115.57deg,
+              rgba(255, 255, 255, 0.19) -4.2%,
+              rgba(234, 234, 234, 0.0806194) 70.71%,
+              rgba(223, 214, 214, 0) 125.93%
+            );
             border: 0.9px solid #8b8b8b;
-            input{
-              color: #ffffff;
-              background: linear-gradient(115.57deg,
-                    rgba(255, 255, 255, 0.19) -4.2%,
-                    rgba(234, 234, 234, 0.0806194) 70.71%,
-                    rgba(223, 214, 214, 0) 125.93%);
-                border: 0.9px solid #8b8b8b;
-            }
+          }
+          input::placeholder {
+            /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: beige;
+            opacity: 1;
+            /* Firefox */
+          }
         }
 
         .date-cvv {
@@ -155,82 +166,84 @@
 
           color: #ffffff;
         }
-        .upi{
+        .upi {
           // width: 100%;
-          .upi-method 
-          {
+          .upi-method {
             display: flex;
-            justify-content:space-between;
+            justify-content: space-between;
             align-items: center;
             list-style: none;
             margin-top: 1rem;
             margin-left: -1.2rem;
-            .method{
-            width: 4rem;
-            height: 1.8rem;
-            background: linear-gradient(115.57deg,
+            .method {
+              width: 5rem;
+              height: 1.8rem;
+              background: linear-gradient(
+                115.57deg,
                 rgba(255, 255, 255, 0.19) -4.2%,
                 rgba(234, 234, 234, 0.0806194) 70.71%,
-                rgba(223, 214, 214, 0) 125.93%);
-            border: 0.9px solid #8b8b8b;
-            color: #ffffff;
-            border-radius: 0.6rem;
-            cursor: pointer;
-            
+                rgba(223, 214, 214, 0) 125.93%
+              );
+              border: 0.9px solid #8b8b8b;
+              color: #ffffff;
+              border-radius: 0.6rem;
+              cursor: pointer;
+            }
+          }
+        }
+        .methods {
+          display: flex;
+          justify-content: space-between;
+          .banks {
+            .bank {
+              margin-right: 1.5rem;
+              height: 4.875rem;
+              width: 4.875rem;
+              background-color: #ffffff;
+              border-radius: 3rem;
+              justify-content: center;
+              align-items: center;
+            }
+            p {
+              font-weight: 400;
+              font-size: 18px;
+              line-height: 25px;
+
+              align-items: center;
+
+              color: #ffffff;
+              margin-left: -1.8rem;
+            }
+          }
+          .view {
+            .view-btn {
+              width: 3rem;
+              height: 3rem;
+              margin-top: 1rem;
+              background: linear-gradient(
+                115.57deg,
+                rgba(255, 255, 255, 0.19) -4.2%,
+                rgba(234, 234, 234, 0.0806194) 70.71%,
+                rgba(223, 214, 214, 0) 125.93%
+              );
+              border: 0.9px solid #8b8b8b;
+              color: #ffffff;
+            }
+            p {
+              font-weight: 400;
+              font-size: 18px;
+              line-height: 25px;
+
+              align-items: center;
+
+              color: #ffffff;
+              margin-left: -1.1rem;
+              margin-top: 0.8rem;
+            }
           }
         }
       }
-      .methods{
-        display: flex;
-        justify-content: space-between;
-       .banks {
-        
-        .bank{
-          margin-right: 1.5rem;
-          height: 4.875rem;
-          width: 4.875rem;
-          background-color: #ffffff;
-          border-radius: 3rem;
-          justify-content: center;
-          align-items: center;
-        }
-        p{
-          font-weight: 400;
-            font-size: 18px;
-            line-height: 25px;
-          
-            align-items: center;
-          
-            color: #FFFFFF;
-            margin-left: -1.8rem;
-        }
-      }
-        .view{
-        .view-btn{
-          width: 3rem;
-          height: 3rem;
-          margin-top: 1rem;
-          background: linear-gradient(115.57deg,
-                rgba(255, 255, 255, 0.19) -4.2%,
-                rgba(234, 234, 234, 0.0806194) 70.71%,
-                rgba(223, 214, 214, 0) 125.93%);
-            border: 0.9px solid #8b8b8b;
-            color: #ffffff;
-        }
-        p{
-          font-weight: 400;
-            font-size: 18px;
-            line-height: 25px;
-          
-            align-items: center;
-          
-            color: #FFFFFF;
-            margin-left: -1.1rem;
-            margin-top: 0.8rem;
-        }
-      }
-      }
-    }
     }
   }
 }
+

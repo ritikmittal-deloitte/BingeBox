@@ -2,6 +2,7 @@ import React from "react";
 import "./Cards2.scss";
 import { ReactComponent as Image1 } from "./../../assets/images/01image.svg";
 import { ReactComponent as Image2 } from "./../../assets/images/+.svg";
+import {ReactComponent as Plus} from "./../../assets/icons/Frame 1000002499.svg"
 export default function Cards2({ cardData }) {
   return (
     <div className="Cards-container">
@@ -10,10 +11,12 @@ export default function Cards2({ cardData }) {
         <div className="des-top-bar">
           <div className="size-1">
             {" "}
-            <b> jurassic world </b>
+            <b style={{marginLeft:"5%"}}> jurassic world </b>
           </div>
           <div className="plus-icon">
-            <Image2 />          </div>
+            {/* <Image2 />           */}
+            <Plus/>
+            </div>
             &nbsp;
         </div>
 

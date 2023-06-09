@@ -1,12 +1,17 @@
 import React from "react";
 import "./subscriptionplans.scss";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import SubscriptionComponent from "./SubscriptionComponent";
 import { ReactComponent as MainLogo } from "./../../assets/images/Group 1000002501.svg";
 import Logo from "../Logo/Logo";
 
-function Subscriptionplans() {
+function Subscriptionplans({name,setPage,setPlan}) {
   // const navigate = useNavigate();
+
+
+  // const location = useLocation();
+  // const name = location.state;
+
   // const SelectPlan = (value) => {
   //   let x = 1;
   //   console.log("Checking");
@@ -17,12 +22,9 @@ function Subscriptionplans() {
   return (
     <div className="plans-container">
       <div className="left-container">
-        <div
-          className="binge-box-heading"
-          style={{ marginTop: "17rem"}}
-        >
+        <div className="binge-box-heading" style={{ marginTop: "17rem" }}>
           {/* <Logo /> */}
-          <MainLogo/>
+          <MainLogo />
           {/* <div
             className="binge-heading"
             style={{ heigh: "4rem", width: "17rem" }}
@@ -37,7 +39,7 @@ function Subscriptionplans() {
       <div className="right-container">
         <div className="cards">
           {plans.map((p, index) => {
-            return <SubscriptionComponent p={p} index={index} />;
+            return <SubscriptionComponent p={p} index={index} name={name} setPage={setPage} setPlan={setPlan}/>;
           })}
         </div>
       </div>

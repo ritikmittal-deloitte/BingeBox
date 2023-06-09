@@ -24,7 +24,7 @@
 .desc-card-details-container {
     h2,
     h4 {
-      font-family: "Nunito Sans";
+    //  font-family: "Nunito Sans";
       font-style: normal;
       font-weight: 700;
       
@@ -38,7 +38,7 @@
     }
     h2 {
       //font-size: 20px;
-      font-family: 'Nunito Sans';
+ //     font-family: 'Nunito Sans';
 font-style: normal;
 font-weight: 700;
 font-size: 40px;
@@ -98,13 +98,17 @@ color: #FFFFFF;
 // height:64px;
     width: 8rem;
     height: 3rem;
+    text-decoration: none;
     background-color: #F03A47;;
     color: white;
     border-radius: 20px;
     padding: 15px;
+    display: flex;
+    justify-content: center;
+   
     //padding-left: 10px;
     h5{
-        font-family: 'Inter';
+ //       font-family: 'Inter';
 font-style: normal;
 font-weight: 700;
 font-size: 20px;
@@ -117,7 +121,7 @@ color: #FFFFFF;
   .desc-end-container{
     padding-top: 3rem;
     span{
-        font-family: 'Nunito Sans';
+   //     font-family: 'Nunito Sans';
 font-style: normal;
 font-weight: 400;
 font-size: 18px;
@@ -197,4 +201,9 @@ grid-gap: 2rem;
 grid-auto-flow: column;
 //   grid-auto-columns: calc(100% - 2rem);
 // min-height: 14.75rem;
+}
+.card-release-style{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
 }

@@ -4,17 +4,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 import Logo from "../Logo/Logo";
 import { ReactComponent as MainLogo } from "./../../assets/images/Group 1000002501.svg";
 
-function SelectedPlan() {
+function SelectedPlan({name,value,setPage,setPrice}) {
   const todayDate = new Date();
+  // console.log(todayDate.getMonth() + 1);
   const navigate = useNavigate();
-  const location = useLocation();
-  let p = location.state;
+ // const location = useLocation();
+  let p = value;
+  //let name = location.state.name;
   console.log("Value Recieved:", p);
   const Payment = (value) => {
     let x = 1;
     console.log("Checking");
     console.log("plan Value::", value);
-    navigate("/payment", { state: value });
+    setPrice(value.price);
+    setPage('4');
+//    navigate("/payment", { state: value });
   };
   return (
     <div className="selected-container">
@@ -24,12 +28,13 @@ function SelectedPlan() {
         <div className="box-heading">BOX</div> */}
       </div>
       <div className="card">
-        <h2>{p.type} Plan</h2>
+        <h2>{p?.type} Plan</h2>
         <p>
-          Hi <span>Manish Singh</span>, Here is your Subscription Plan Details!
+          Hi <span style={{ textTransform: "capitalize" }}>{name}</span>, Here
+          is your Subscription Plan Details!
         </p>
         <p style={{ marginTop: "1.5rem" }}>
-          Validity: <span>{todayDate.getFullYear()}</span>
+          Validity: &nbsp;&nbsp;<span>{todayDate.getDate()}/{todayDate.getMonth()}/{todayDate.getFullYear()+1}</span>
         </p>
         <div className="features">
           <h4>Price</h4>
@@ -37,33 +42,33 @@ function SelectedPlan() {
           <h4>Video Quality</h4>
           <h4>Supported Devices</h4>
         </div>
-        <div className="rate">
-          <p>
-            Rs. <span>{p.price}</span>/yr
-          </p>
-          <p style={{ marginLeft: "-1.2rem", marginRight: "0rem" }}>
+        <div className="rate-0">
+          <div className="price-box">
+            Rs. <span style={{fontSize:"2.5rem"}}>{p.price}</span>/yr
+          </div>
+          <div  className="resolution-box">
             {p.resolution}
-          </p>
-          <p style={{ marginLeft: "7rem", marginRight: "0rem" }}>{p.quality}</p>
-          <p style={{ marginLeft: "16.8rem", marginRight: "0rem" }}>
+          </div>
+          <div className="qulaity-box">{p.quality}</div>
+          <div className="device-1">
             {p.supporteddevice}
-          </p>
+          </div>
         </div>
         <div className="btn">
           <button
             className="back-btn"
-            onClick={() => navigate("/subscription-plans")}
+            onClick={() =>{setPage('2')}}
           >
             Back
           </button>
-          <button
+          <div
             className="payment-btn"
             onClick={() => {
               Payment(p);
             }}
           >
             Proceed to Payment
-          </button>
+          </div>
         </div>
       </div>
     </div>
