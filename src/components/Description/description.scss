@@ -103,6 +103,9 @@ color: #FFFFFF;
     color: white;
     border-radius: 20px;
     padding: 15px;
+    display: flex;
+    justify-content: center;
+   
     //padding-left: 10px;
     h5{
  //       font-family: 'Inter';
@@ -198,4 +201,9 @@ grid-gap: 2rem;
 grid-auto-flow: column;
 //   grid-auto-columns: calc(100% - 2rem);
 // min-height: 14.75rem;
+}
+.card-release-style{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
 }
