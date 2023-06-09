@@ -90,26 +90,6 @@ function Payment() {
     navigate("/payment-successful");
   };
 
-  const handleInputChange = (event) => {
-    const { value } = event.target;
-    setUpiId(value);
-    setIsPayNowEnabled(false); // Disable the "Pay Now" button when the UPI ID changes
-  };
-
-  const handleUpiMethodClick = (upiMethod) => {
-    const updatedUpiId = upiId + upiMethod;
-    setUpiId(updatedUpiId);
-    setSelectedUpiMethod(upiMethod);
-    console.log(isPayNowEnabled);
-    console.log(upiId);
-    console.log(upiMethod);
-    setIsPayNowEnabled(true); // Enable the "Pay Now" button when a UPI method is selected
-  };
-  const handlePayNowClick = () => {
-    // Perform payment processing logic with the selected UPI ID and method
-    console.log(`Processing payment with UPI ID: ${upiId}`);
-  };
-
   const handlePayButton = () => {
     setValid(true);
     console.log("pay");
