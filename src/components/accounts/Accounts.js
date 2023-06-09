@@ -10,7 +10,7 @@ const Accounts = () => {
     const dispatch = useDispatch();
     const navigate=useNavigate()
     const handleSelectingAccount=(account)=>{
-        console.log("aacount",account)
+//        console.log("aacount",account)
         dispatch(AccountAction.selectCurrentAccount(account))
         navigate("/home")
     }

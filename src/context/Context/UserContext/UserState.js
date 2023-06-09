@@ -6,6 +6,7 @@ const UserContextProvider = ({ children }) => {
 
     const [watchList , setWatchList]=useState(new Set([1]))
     const [searchText, setSearchText] = useState('')
+    const [isLogin, setIsLogin] = useState(false);
     const [genre,setGenre] = useState(['Horror', 'Romantic', 'Comedy'])
     const [categories,setCategories] = useState('Categories')
 

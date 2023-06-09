@@ -9,11 +9,12 @@ import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg"
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import img1 from "../../assets/images/Variant8.png";
-//import "../card/card.scss";
+
 import axios from "axios";
 import { UserContext } from "../../context/Context/UserContext/UserState";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
+import { Shuffle } from "@mui/icons-material";
 
 const Home = () => {
 
@@ -27,10 +28,10 @@ const Home = () => {
     if (!watch.has(item.id)) {
       return item;
     }
-  })
+  });
   const location = useLocation();
   let url = location.pathname;
-  console.log("PATH Name:", url)
+  console.log("PATH Name:", url);
   //  console.log("Data filtered out :",data)
   const [topMovies, setTopMovies] = useState([]);
   const [recentMovies, setrecentMovies] = useState([]);
@@ -40,7 +41,7 @@ const Home = () => {
   const [onHovering, setOnHovering] = useState(false);
   const [carItems, setCarItems] = useState([]);
   const [current, setCurrent] = useState(1);
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const handleMouseOver = () => {
     setOnHovering(true);
   };
@@ -51,7 +52,6 @@ const Home = () => {
     console.log("add to watch lsit");
   };
 
-
   const fetchTrendingMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
@@ -61,7 +61,8 @@ const Home = () => {
   const fetchTopMovies = async () => {
     //const response=await axios.get("")
     //settrendingMovies(response.data)
-    console.log('topMovies', movies)
+   // const data=shuffleArray(movies,3);
+  //  console.log('topMovies', data)
     setTopMovies(movies);
   };
   const fetchRecentMovies = async () => {
@@ -103,6 +104,7 @@ const Home = () => {
     fetchTopRated()
 
   }, [url]);
+
   useEffect(() => {
     fetchRecentMovies();
     fetchTopMovies();
@@ -124,10 +126,11 @@ const Home = () => {
     return;
   };
   useEffect(() => {
-
     const interval = setInterval(() => {
-      if (!onHovering) { check(); }
-    }, 5000)
+      if (!onHovering) {
+        check();
+      }
+    }, 5000);
     return () => {
       if (interval) {
         clearInterval(interval);
@@ -135,12 +138,10 @@ const Home = () => {
     };
   });
 
-
-
   //   setTimeout(() => {
   // if(!onHovering)
   // {
-  //   check(); 
+  //   check();
   // }
   //   }, 5000);
 
@@ -159,14 +160,12 @@ const Home = () => {
       borderRadius: "0.938rem",
     };
   };
-  const handlePlayingMovie=(event)=>{
-
-    event.stopPropagation()
-    dispatch(ContinueWatchingAction.addToContinueWatching(carItems[current-1]))
-    
-    
-
-  }
+  const handlePlayingMovie = (event) => {
+    event.stopPropagation();
+    dispatch(
+      ContinueWatchingAction.addToContinueWatching(carItems[current - 1])
+    );
+  };
   return (
     <div className="home-container">
       <div
@@ -213,7 +212,10 @@ const Home = () => {
                 </div>
               </div>
               <div className="banner-play-box">
-                <div className="play-button d-flex" onClick={(event)=>handlePlayingMovie(event)}>
+                <div
+                  className="play-button d-flex"
+                  onClick={(event) => handlePlayingMovie(event)}
+                >
                   <Triangle /> <h5>Play</h5>{" "}
                 </div>
                 {/* <a  href={movies[0].videoUrl} target="_blank"><PlayLogo /></a > */}
@@ -258,6 +260,14 @@ const Home = () => {
             <ScrollLogo />
           </div>
 
+          {/* <section className="cards">
+            {data.map((movie, index) => {
+              if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
+                return <Card cardData={movie} key={index} direct="Home" />
+              }
+              return null;
+            })}
+          </section> */}
           <section className="cards">
             {movies.map((movie, index) => {
               if ((url.slice(1) === 'home' || url.slice(1) === movies[(index+5)%movies.length].type) && categoryFilter(movies[(index+5)%movies.length], categories)) {
@@ -290,7 +300,8 @@ const Home = () => {
               }
               return null;
             })}
-          </section>
+            </section>
+          </div>
 
           <div
             className="arrow-style1"
@@ -299,13 +310,13 @@ const Home = () => {
             <ScrollLogo />
           </div>
         </div>
-      </div>
+      
       <div className="top-movie-container">
         <p className="d-flex">Your Watches</p>
         <div className="top-movies-grid">
           <div
             onClick={() => leftScroll(".your-watches-cards")}
-            className="arrow-style"
+            className="arrow-style-4"
           >
             <ScrollLogo />
           </div>
@@ -320,7 +331,7 @@ const Home = () => {
           </section>
 
           <div
-            className="arrow-style1"
+            className="arrow-style-5"
             onClick={() => rightScroll(".your-watches-cards")}
           >
             <ScrollLogo />
@@ -334,7 +345,6 @@ const Home = () => {
           {url === "/movies" && <>Trending Movies</>}
           {url === "/tv-shows" && <>Trending Tv Shows</>}
           {url === "/series" && <>Trending Series</>}
-
         </p>
         <div className="top-movies-grid">
           <div
@@ -373,7 +383,7 @@ const Home = () => {
         <div className="top-movies-grid">
           <div
             onClick={() => leftScroll(".top-rated-cards")}
-            className="arrow-style"
+            className="arrow-style-4"
           >
             <ScrollLogo />
           </div>
@@ -388,7 +398,7 @@ const Home = () => {
           </section>
 
           <div
-            className="arrow-style1"
+            className="arrow-style-5"
             onClick={() => rightScroll(".top-rated-cards")}
           >
             <ScrollLogo />

@@ -12,7 +12,7 @@ import Logo from "../Logo/Logo";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import CategoryType from "../CategoryType/CategoryType";
 import { UserContext } from "../../context/Context/UserContext/UserState";
-
+import { ReactComponent as ProfileLogo } from "../../assets/icons/Vector2.svg";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
 
@@ -28,6 +28,8 @@ const Header = () => {
   const signUpUserDetails=useSelector((state)=>state.account.userDetails)
     console.log("in header",selectedAccount,"signup",signUpUserDetails)
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  let url = location.pathname;
   const [open2, setOpen2] = useState(false);
   const [open3,setOpen3]=useState(false);
   
@@ -39,6 +41,7 @@ const Header = () => {
 
   const ref = useRef(null);
   const ref2 = useRef(null);
+//  const [message, setMessage] = useState('');
   const genres = [
     "All",
     "Horror",
@@ -88,6 +91,7 @@ useEffect(() => {
 
   console.log("Opened:",open)
   const searchTextFunction = (e) => {
+//    setMessage(e.target.value)
     setHelperSearchText(e.target.value)
   }
   const profileNavigate = (e) => {
@@ -118,13 +122,24 @@ useEffect(() => {
     setSearchText(helperSearchText)
     navigate(`/searchresults/${helperSearchText}`,{state:searchText})
   }
+  const handleClick = () => {
+    // 👇️ clear input value
+    console.log("URL:",url.slice(1,5))
+    if(url.slice(1,5)==="sear")
+    {
+     navigate('home'); 
+    }
+    setHelperSearchText('');
+//    setMessage('');
+
+  };
 
   return (
     <div className="d-flex justify-content-between w-100 align-items-end header-container">
       {/* <Logo className="w-30" /> */}
       <MainLogo />
-      <div className="w-30">
-        <div className="d-flex justify-content-between">
+      <div className="w-30 container-11">
+        <div className="navlink-container">
         <NavLink
                 to="/home"
                 className={({ isActive }) =>
@@ -222,18 +237,22 @@ useEffect(() => {
           &nbsp; <SearchLogo width="1.3rem" height="1.3rem" onClick={(e)=>{searchPageOpen()}}/>
           <input
             type="text"
+            autoclear
             placeholder="search here"
             style={{ color: "white" , borderColor:"transparent" }}
             onChange={(e)=>{searchTextFunction(e)}}
             onKeyDown={handleKeyDown}
+            value={helperSearchText}
           />
+          {helperSearchText!=="" ?(<div onClick={handleClick} className="clear-button">Clear</div>):(<div style={{width:"2.5rem"}}></div>)}
+
         </div>
         <div>
           <div className=" last-container">
             <NotifiactionLogo
               width="1.1rem"
               height="1.3rem"
-              className="noti-icon"
+              className="notificationIcon"
             />
             <img
               src={selectedAccount.img}
@@ -272,12 +291,10 @@ useEffect(() => {
               
               <div className="line-2"></div>
               <div className="Box-1"  onClick={(e)=>{profileNavigate(e)} }>
-             <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Profile
+              <ProfileLogo style={{marginLeft:"6%"}}/> &nbsp;&nbsp; Profile
               </div>
               <div className="line-2"></div>
-              <div className="Box-1"  onClick={(e)=>{nav(e)}}>
-             <SettingsLogo style={{marginLeft:"6%"}}/>&nbsp;&nbsp; Help
-              </div>
+              
               <div className="sign-out-button" onClick={SignOut}>
                   Sign out
               </div>

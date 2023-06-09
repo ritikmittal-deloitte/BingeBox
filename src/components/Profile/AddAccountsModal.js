@@ -44,7 +44,7 @@ export default function Modal({ divRef, closeModal }) {
             const reader = new FileReader();
 
             reader.onloadend = () => {
-                profile(reader.result);
+                setProfile(reader.result);
             };
 
             if (file) {
