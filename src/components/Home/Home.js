@@ -12,10 +12,14 @@ import img1 from "../../assets/images/Variant8.png";
 //import "../card/card.scss";
 import axios from "axios";
 import { UserContext } from "../../context/Context/UserContext/UserState";
+import { useSelector,useDispatch } from "react-redux";
+import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
 
 const Home = () => {
 
   const { watchList, setWatchList } = useContext(UserContext);
+  const contineWatchingList=useSelector((state)=>state.continueWatching.contineWatchingList)
+  console.log("listttt",contineWatchingList)
 
   const watch = new Set(watchList);
   const data = movies.filter((item) => {
@@ -34,6 +38,7 @@ const Home = () => {
   const [onHovering, setOnHovering] = useState(false);
   const [carItems,setCarItems]=useState([]);
   const [current, setCurrent] = useState(1);
+  const dispatch=useDispatch()
   const handleMouseOver = () => {
     setOnHovering(true);
   };
@@ -139,6 +144,14 @@ const fetchCarouselItems =async () =>{
       borderRadius: "0.938rem",
     };
   };
+  const handlePlayingMovie=(event)=>{
+
+    event.stopPropagation()
+    dispatch(ContinueWatchingAction.addToContinueWatching(carItems[current-1]))
+    
+    
+
+  }
   return (
     <div className="home-container">
       <div
@@ -185,7 +198,7 @@ const fetchCarouselItems =async () =>{
                 </div>
               </div>
               <div className="banner-play-box">
-                <div className="play-button d-flex">
+                <div className="play-button d-flex" onClick={(event)=>handlePlayingMovie(event)}>
                   <Triangle /> <h5>Play</h5>{" "}
                 </div>
                 {/* <a  href={movies[0].videoUrl} target="_blank"><PlayLogo /></a > */}
@@ -283,7 +296,7 @@ const fetchCarouselItems =async () =>{
           </div>
 
           <section className="your-watches-cards">
-            {yourWatches.map((movie, index) => {
+            {contineWatchingList?.map((movie, index) => {
               if (url.slice(1) === 'home' || url.slice(1) === movie.type) {
                 return <Card3 cardData={movie} key={index} direct="Home" />
               }

@@ -7,7 +7,8 @@ import { ReactComponent as CheckedIcon } from "../../assets/icons/checked.svg";
 import "./card.scss";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Context/UserContext/UserState";
-
+import { useDispatch } from "react-redux";
+import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
 
 const Card = ({ cardData , direct }) => {
   const [onHovering, setOnHovering] = useState(false);
@@ -16,6 +17,7 @@ const Card = ({ cardData , direct }) => {
 //  console.log("Card Data :",cardData)
   const show = watch.has(cardData.id) 
   const navigate = useNavigate();
+  const dispatch=useDispatch()
   const handleMouseOver = () => {
     setOnHovering(true);
   };
@@ -60,7 +62,14 @@ const Card = ({ cardData , direct }) => {
 // console.log("Movie id:",cardData)
     navigate(`/description/${cardData.id}`)
   }
-//  console.log("genres data:",cardData.genre.length)
+  const handlePlayingMovie=(event)=>{
+
+    event.stopPropagation()
+    dispatch(ContinueWatchingAction.addToContinueWatching(cardData))
+    
+    
+
+  }
   return (
     <div
       className={`card-container ${onHovering?"card-container-hovering-style":""}`}
@@ -112,7 +121,7 @@ const Card = ({ cardData , direct }) => {
         >
           <div className="card-end-container">
           <div className="card-logo-container ">
-            <a  href={cardData.videoUrl} target="_blank"><PlayLogo width={40} height={41} /></a >
+            <a  href={cardData.videoUrl} target="_blank" onClick={(event)=>handlePlayingMovie(event)}><PlayLogo width={40} height={41} /></a >
             
               {!show && <div onClick={(event)=>{handleAddToWatchList(event)}}><AddToLogo width={40} height={41} /></div >} 
               {direct==="WatchList" && show && <div onClick={(event)=>{handleDeleteFromWatchList(event)}}><DeleteLogo width={40} height={41} /></div >} 
