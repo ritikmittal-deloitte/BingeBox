@@ -1,101 +1,58 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
-import { UserContext, UserContextProvider } from "../../context/Context/UserContext/UserState";
 import { useDispatch } from "react-redux";
-import { AccountAction } from '../../redux/AccountSlice';
+import { AccountAction } from "../../redux/AccountSlice";
 import { dummyData } from "../../mockData/accountsMockData";
-import Background from "../background/Background";
 
-
-const Login = ({setIsLogin}) => {
+const Login = ({ setIsLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState({email:''});
+  const [errors, setErrors] = useState({ email: "" });
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  // const Login = ({setIsLogin}) => {
-  //     const navigate = useNavigate();
-
-  // const validateForm = () => {
   const validateForm = () => {
     const error = {};
     const emailRegex = /^\S+@\S+\.\S+$/;
     if (email.trim() === "") {
       error.email = "Email Id is required.";
-    }
-    else if (!emailRegex.test(email)) {
+    } else if (!emailRegex.test(email)) {
       error.email = "Incorrect Email Id";
-    } 
+    }
 
     if (!password) {
       error.password = "Password is required";
     }
-    console.log("Error :",error)
+    console.log("Error :", error);
     setErrors(error);
-    // Return true if there are no errors
+
     return Object.keys(error).length === 0;
   };
-  // };
 
   const handleLogin = (e) => {
     e.preventDefault();
     const errors1 = validateForm();
-//   console.log(errors1);
- //   console.log("errors:", Object.keys(errors1).length);
-//     if (errors1) {
-//       console.log("Login successful");
-//       setIsLogin(true);
-//       if(dummyData.accounts.length===1){
-       
-//         dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
-//         navigate("/home")
-//     }
-//     else navigate("/accounts")
-    
-//     } else {
-// //      setErrors(errors);
-  
-// }
-if (errors1) {
 
-  console.log("Login successful");
-  setIsLogin(true);
-  dispatch(AccountAction.saveSignUpInfo(dummyData))
+    if (errors1) {
+      console.log("Login successful");
+      setIsLogin(true);
+      dispatch(AccountAction.saveSignUpInfo(dummyData));
 
-  if(dummyData.accounts.length===1){
-
-    //dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
-
-    navigate("/home")
-
-}
-
-else navigate("/accounts")
-
-
-
-} else {
-
-//      setErrors(errors);
-
-
-
-}
-
-    
-  
+      if (dummyData.accounts.length === 1) {
+        navigate("/home");
+      } else navigate("/accounts");
+    } else {
+      // setErrors(errors);
+    }
   };
   return (
     <div className="login-container">
       <div className="overlay-1">
         <div className="container">
           <div className="binge-box-heading">
-            {/* <div className="binge-heading"> BINGE</div>
-            <div className="box-heading">BOX</div> */}
-            <MainLogo/>
+            <MainLogo />
           </div>
           <form onSubmit={handleLogin} className="form">
             <h3 className="d-flex justify-content-start w-100 mb-0 heading">
@@ -134,8 +91,8 @@ else navigate("/accounts")
                 onClick={() => {
                   navigate("/forgot-password");
                 }}
-                style={{cursor:"pointer"}}
-                >
+                style={{ cursor: "pointer" }}
+              >
                 Forgot password?
               </a>
             </div>
@@ -148,9 +105,9 @@ else navigate("/accounts")
                 onClick={() => {
                   navigate("/signup");
                 }}
-              style={{cursor:"pointer"}}
+                style={{ cursor: "pointer" }}
               >
-              <u>  Sign Up</u>
+                <u> Sign Up</u>
               </a>
             </div>
             <div className="divider">
@@ -168,10 +125,6 @@ else navigate("/accounts")
         </div>
       </div>
     </div>
-    // <div style={{width:"100%"}}>
-    //   <Background/>
-    // </div>
-  
   );
 };
 

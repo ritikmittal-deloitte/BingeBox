@@ -1,16 +1,14 @@
-.applayout-container{
-   height: 100%;
-   
-
+.applayout-container {
+  height: 100%;
 }
-.a{
-   z-index: 1;
-position: absolute;
+.a {
+  z-index: 1;
+  position: absolute;
 }
-.b{
-   z-index: 0;
-   position: relative;
+.b {
+  z-index: 0;
+  position: relative;
 }
-.c{
-   position: relative;
+.c {
+  position: relative;
 }

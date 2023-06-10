@@ -1,264 +1,253 @@
 .profile-page {
-    background-image: url('../../assets/images/Rectangle 23.png');
-    height: 51.8125rem;
-    width: 104.125rem;
-    position: absolute;
-    left: 9.6875rem;
-    top: 4rem;
-    border-radius: 0.9375rem;
-    display: flex;
-    justify-content: center;
+  background-image: url("../../assets/images/Rectangle 23.png");
+  height: 51.8125rem;
+  width: 104.125rem;
+  position: absolute;
+  left: 9.6875rem;
+  top: 4rem;
+  border-radius: 0.9375rem;
+  display: flex;
+  justify-content: center;
 }
 
 .profile-container {
-    width: 94%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 94%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .details-section {
-    height: 13.5rem;
-    width: 100%;
-    margin-top: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  height: 13.5rem;
+  width: 100%;
+  margin-top: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .heading-container-profile {
-    width: 100%;
+  width: 100%;
 }
 
 .profile-heading {
-    color: white;
-    //font-family: sans-serif;
-    font-weight: 500;
-    font-size: 2rem;
-    height: 2.5rem;
-    width: 4rem;
+  color: white;
+  font-weight: 500;
+  font-size: 2rem;
+  height: 2.5rem;
+  width: 4rem;
 }
 
 .email-section {
-    //font-family: sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    height: 1.6875rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2.2rem;
-    width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  height: 1.6875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2.2rem;
+  width: 100%;
 }
 
 .email-detail {
-    height: 1.6875rem;
-    width: 40%;
-    display: flex;
-    color: white;
-    //font-family: sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    overflow: hidden;
+  height: 1.6875rem;
+  width: 40%;
+  display: flex;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 400;
+  overflow: hidden;
 }
 
 .phone-section {
-    //font-family: sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    height: 1.6875rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2rem;
-    width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  height: 1.6875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  width: 100%;
 }
 
 .phone-detail {
-    height: 1.6875rem;
-    width: 40%;
-    display: flex;
-    color: white;
-    //font-family: sans-serif;
-    font-size: 1.25rem;
-    font-weight: 400;
-    overflow: hidden;
+  height: 1.6875rem;
+  width: 40%;
+  display: flex;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 400;
+  overflow: hidden;
 }
 
 .genre-section {
-    height: 12.5rem;
-    width: 100%;
+  height: 12.5rem;
+  width: 100%;
 }
 
 .heading-container-genre {
-    margin-top: 2.5rem;
-    width: 100%;
+  margin-top: 2.5rem;
+  width: 100%;
 }
 
 .genre-heading {
-    color: white;
-    //font-family: sans-serif;
-    font-weight: 500;
-    font-size: 1.5rem;
-    height: 2.5rem;
-    width: 14rem;
-    display: flex;
-    justify-content: flex-start;
+  color: white;
+  font-weight: 500;
+  font-size: 1.5rem;
+  height: 2.5rem;
+  width: 14rem;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .interested-genre-section {
-    margin-top: 1.5rem;
-    display: flex;
-    justify-content: space-between;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
 }
-.no-genres-selected{
-    height:90%;
-    font-size: 1.25rem;
-    color:white;
+.no-genres-selected {
+  height: 90%;
+  font-size: 1.25rem;
+  color: white;
 }
 
 .genre-detail {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
 .genre-box {
-    color: white;
-    background-color: #666666;
-    height: 2.5625rem;
-    // width: 5.3125rem;
-    //font-family: sans-serif;
-    font-weight: 400;
-    font-size: 1.125rem;
-    border-radius: 0.9375rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  color: white;
+  background-color: #666666;
+  height: 2.5625rem;
+  font-weight: 400;
+  font-size: 1.125rem;
+  border-radius: 0.9375rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .manage-accounts-section {
-    height: 18rem;
-    width: 100%;
+  height: 18rem;
+  width: 100%;
 }
 
 .heading-container-manage {
-    margin-top: 2.5rem;
-    height: 1.5rem;
-    width: 100%;
+  margin-top: 2.5rem;
+  height: 1.5rem;
+  width: 100%;
 }
 
 .manage-heading {
-    height: 100%;
-    width: 25%;
-    color: white;
-    font-size: 1.5rem;
-    //font-family: sans-serif;
-    font-weight: 500;
-    display: flex;
-    justify-content: flex-start;
+  height: 100%;
+  width: 25%;
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 500;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .accounts-info-section {
-    margin-top: 3rem;
-    width: 100%;
-    height: 7.045rem;
-    display: flex;
-    justify-content: flex-start;
+  margin-top: 3rem;
+  width: 100%;
+  height: 7.045rem;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .existing-accounts {
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 3rem;
-    margin-right: 3rem;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3rem;
+  margin-right: 3rem;
 }
 
 .account-box {
-    height: 100%;
-    width: 4.7625rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+  height: 100%;
+  width: 4.7625rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .account-pic {
-    height: 70%;
-    width: 100%;
+  height: 70%;
+  width: 100%;
 }
 
 .account-name {
-    color: white;
-    //font-family: sans-serif;
-    font-weight: 400;
-    font-size: 1.3125rem;
-    height: 1.5625rem;
-    overflow: hidden;
+  color: white;
+  font-weight: 400;
+  font-size: 1.3125rem;
+  height: 1.5625rem;
+  overflow: hidden;
 }
 
 .add-new-account {
-    height: 90%;
-    width: 6.3rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+  height: 90%;
+  width: 6.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
 .add-new-icon {
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    background: linear-gradient(115.57deg, rgba(255, 255, 255, 0.19) -4.2%, rgba(234, 234, 234, 0.0806194) 70.71%, rgba(223, 214, 214, 0) 125.93%);
-    border: 0.917933px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(37.1763px);
-    border-radius: 363.5px;
-    transform: matrix(-1, 0, 0, 1, 0, 0);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background: linear-gradient(
+    115.57deg,
+    rgba(255, 255, 255, 0.19) -4.2%,
+    rgba(234, 234, 234, 0.0806194) 70.71%,
+    rgba(223, 214, 214, 0) 125.93%
+  );
+  border: 0.917933px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(37.1763px);
+  border-radius: 363.5px;
+  transform: matrix(-1, 0, 0, 1, 0, 0);
 }
 
 .plus-icon-account {
-    height: 2rem;
-    width: 2rem;
-    font-size: 2rem;
+  height: 2rem;
+  width: 2rem;
+  font-size: 2rem;
 }
 
 .logout-section {
-    margin-top:1rem;
-    height: 4rem;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  margin-top: 1rem;
+  height: 4rem;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .logout-button {
-    //font-family: sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 24px;
-    /* or 100% */
-    cursor: pointer;
-
-    /* Primary/Red 100 */
-
-    color: #F03A47;
-
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  /* or 100% */
+  cursor: pointer;
+  color: #f03a47;
 }
 
 .line {
-    border-top: 0.1px solid white;
-    width: 100%;
-    opacity: 0.4;
-    // margin: 10px;
+  border-top: 0.1px solid white;
+  width: 100%;
+  opacity: 0.4;
 }

@@ -7,12 +7,9 @@ import AXIS from "../../assets/images/axis.svg";
 import ICICI from "../../assets/images/icici.svg";
 import { ReactComponent as MainLogo } from "../../assets/images/bingeboxlogo.svg";
 import angleRight from "../../assets/icons/angle-right.svg";
-import { useLocation, useNavigate } from "react-router-dom";
 import Upi from "./Upi";
 
-function Payment({price,setPage}) {
-//  const location = useLocation();
-  const navigate = useNavigate();
+function Payment({ price, setPage }) {
   const [name, setName] = useState("");
   const [cardnumber, setCardnumber] = useState("");
   const [validDate, setValidDate] = useState("");
@@ -25,7 +22,6 @@ function Payment({price,setPage}) {
   const [isPayNowEnabled, setIsPayNowEnabled] = useState(false);
   const [valid, setValid] = useState(false);
 
-//  let p = location.state;
   const handleTabClick = (tab) => {
     setActivaTab(tab);
   };
@@ -47,8 +43,7 @@ function Payment({price,setPage}) {
   };
 
   useEffect(() => {
-    if(name !== "" || cardnumber!== "" || validDate !== "" || cvv !== "" )
-    {
+    if (name !== "" || cardnumber !== "" || validDate !== "" || cvv !== "") {
       validateForm();
     }
   }, [name, cardnumber, validDate, cvv]);
@@ -86,12 +81,7 @@ function Payment({price,setPage}) {
   };
 
   const handlePayment = () => {
-    // Perform payment processing logic here
-
-    // if (!isFormValid) {
-    console.log("Payment processed successfully!");
-    setPage('5');
-//    navigate("/payment-successful");
+    setPage("5");
   };
 
   const handleInputChange = (event) => {
@@ -104,9 +94,6 @@ function Payment({price,setPage}) {
     const updatedUpiId = upiId + upiMethod;
     setUpiId(updatedUpiId);
     setSelectedUpiMethod(upiMethod);
-    console.log(isPayNowEnabled);
-    console.log(upiId);
-    console.log(upiMethod);
     setIsPayNowEnabled(true); // Enable the "Pay Now" button when a UPI method is selected
   };
   const handlePayNowClick = () => {
@@ -116,16 +103,12 @@ function Payment({price,setPage}) {
 
   const handlePayButton = () => {
     setValid(true);
-    console.log("pay");
-    setPage('5');
-    //    navigate("/payment-successful");
+    setPage("5");
   };
 
   return (
     <div className="payment-container">
       <div className="binge-box-heading">
-        {/* <div className="binge-heading"> BINGE</div>
-        <div className="box-heading">BOX</div> */}
         <MainLogo />
       </div>
       <p style={{ marginLeft: "4.8rem", width: "100%" }}>
@@ -136,7 +119,6 @@ function Payment({price,setPage}) {
           className={`tab ${activeTab === "creditDebit" ? "active" : ""}`}
           onClick={() => {
             handleTabClick("creditDebit");
-            console.log("credit card active");
           }}
         >
           Credit/Debit
@@ -145,7 +127,6 @@ function Payment({price,setPage}) {
           className={`tab ${activeTab === "upi" ? "active" : ""}`}
           onClick={() => {
             handleTabClick("upi");
-            console.log("upi");
           }}
         >
           UPI
@@ -154,7 +135,6 @@ function Payment({price,setPage}) {
           className={`tab ${activeTab === "netBanking" ? "active" : ""}`}
           onClick={() => {
             handleTabClick("netBanking");
-            console.log("netBanking");
           }}
         >
           Net Banking
@@ -184,14 +164,12 @@ function Payment({price,setPage}) {
                 {errors.name && (
                   <span style={{ color: "#f03a47" }}>{errors.name}</span>
                 )}
-                {/* {nameError && <span style={{ color: "red" }}>{nameError}</span>} */}
               </div>
               <label htmlFor="">Card Number </label>
               <div style={{ display: "flex" }}>
                 <div className="inputs">
                   <input
                     placeholder="XXXX XXXX XXXX XXXX "
-                    // type="number"
                     id="cardnumber"
                     value={cardnumber}
                     onChange={handleCardNumberChange}
@@ -314,9 +292,6 @@ function Payment({price,setPage}) {
                 }}
                 className="pay-btn"
                 disabled={!valid}
-                // onClick={() => {
-                //   navigate("/payment-successful");
-                // }}
               >
                 Pay Now
               </button>

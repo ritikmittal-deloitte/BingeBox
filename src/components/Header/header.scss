@@ -6,196 +6,191 @@
   a {
     text-decoration: none;
     color: white !important;
-    //font-family: "Nunito Sans";
-
   }
-  
-    
-    input{
-        background-color:transparent;
-        border: none;
-        padding-left: 4%;
-        width: 23rem;
-        height: 1.22rem;
-      }
 
-input:focus { 
-  outline: none !important;
-}
-  
-  
+  input {
+    background-color: transparent;
+    border: none;
+    padding-left: 4%;
+    width: 23rem;
+    height: 1.22rem;
+  }
+
+  input:focus {
+    outline: none !important;
+  }
 }
 .header-link-active-style {
   font-weight: 600;
   border-bottom: 2px solid red;
-  
 }
-.last-container{
-    display: flex;
-    align-items: center;
-    padding-left:1rem;
-    min-height: 2.5rem;
-
+.last-container {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  min-height: 2.5rem;
 }
-.notificationIcon{
-margin-top: 5%;
+.notificationIcon {
+  margin-top: 5%;
 }
-.profile-style{
-    width: 65%;
-    height: 65%;
-    padding-left: 2rem;
+.profile-style {
+  width: 65%;
+  height: 65%;
+  padding-left: 2rem;
 }
-.search-box{
+.search-box {
   display: flex;
   align-items: center;
 
   box-sizing: border-box;
-  background: linear-gradient(115.57deg, rgba(255, 255, 255, 0.19) -4.2%, rgba(234, 234, 234, 0.0806194) 70.71%, rgba(223, 214, 214, 0) 125.93%);
-backdrop-filter: blur(37.1763px);
-/* Note: backdrop-filter has minimal browser support */
-
-border-radius: 15px;
-height: 2.5rem;
-}
-.options{
-  display: flex;
-  flex-direction: column;
-}
-.category-box{
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  z-index: 1;
-  // border: 2px solid blue;
-  background: linear-gradient(115.57deg, rgba(255, 255, 255, 0.19) -4.2%, rgba(31, 18, 18, 0.081) 70.71%, rgba(223, 214, 214, 0) 125.93%);
+  background: linear-gradient(
+    115.57deg,
+    rgba(255, 255, 255, 0.19) -4.2%,
+    rgba(234, 234, 234, 0.0806194) 70.71%,
+    rgba(223, 214, 214, 0) 125.93%
+  );
   backdrop-filter: blur(37.1763px);
-  
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 15px;
+  height: 2.5rem;
 }
-.profile-box{
+.options {
+  display: flex;
+  flex-direction: column;
+}
+.category-box {
   display: flex;
   flex-direction: column;
   position: absolute;
   z-index: 1;
-  background: linear-gradient(115.57deg, rgba(255, 255, 255, 0.19) -4.2%, rgba(234, 234, 234, 0.0806194) 70.71%, rgba(223, 214, 214, 0) 125.93%);
-backdrop-filter: blur(37.1763px);
-/* Note: backdrop-filter has minimal browser support */
 
-border-radius: 15px;
-width: 21rem;
-margin-top: 1%;
-margin-left: -12%;
+  background: linear-gradient(
+    115.57deg,
+    rgba(255, 255, 255, 0.19) -4.2%,
+    rgba(31, 18, 18, 0.081) 70.71%,
+    rgba(223, 214, 214, 0) 125.93%
+  );
+  backdrop-filter: blur(37.1763px);
+}
+.profile-box {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  z-index: 1;
+  background: linear-gradient(
+    115.57deg,
+    rgba(255, 255, 255, 0.19) -4.2%,
+    rgba(234, 234, 234, 0.0806194) 70.71%,
+    rgba(223, 214, 214, 0) 125.93%
+  );
+  backdrop-filter: blur(37.1763px);
+  /* Note: backdrop-filter has minimal browser support */
 
-  }
-  .line-2{
-    border-top: 0.1px solid white;
-    width: 100%;
-    border-radius: 180%;
-    height: 3px;
-    opacity: 0.2;
-  }
-  .avatar-box{
-    margin-top: 2%;
-    width: 100%;
-    height: 6rem;
-    display: flex;
-    align-items: center;
-    gap:0.6rem;
-  }
-  .Box-1{
-    width: 100%;
-    height: 3.5rem;
-    display: flex;
-    align-items: center;
-  //  //font-family: 'Cabin';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 24px;
-// border-bottom: 0.1px solid white ;
-// border-opacity: 0.4;
-/* Neurtal/White */
+  border-radius: 15px;
+  width: 21rem;
+  margin-top: 1%;
+  margin-left: -12%;
+}
+.line-2 {
+  border-top: 0.1px solid white;
+  width: 100%;
+  border-radius: 180%;
+  height: 3px;
+  opacity: 0.2;
+}
+.avatar-box {
+  margin-top: 2%;
+  width: 100%;
+  height: 6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.Box-1 {
+  width: 100%;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
 
-color: #FFFFFF;
-cursor: pointer;
-  }
-  .selected-1{
-    width: 100%;
-    min-height: 4rem ;
-    display: flex;
-    align-items: center;
- //   //font-family: 'Nunito Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-    // border-bottom: 0.1px solid white ;
-    // border-opacity: 0.4;
-    color: #FFFFFF;
-  }
-.sign-out-button{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+
+  color: #ffffff;
+  cursor: pointer;
+}
+.selected-1 {
+  width: 100%;
+  min-height: 4rem;
+  display: flex;
+  align-items: center;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 27px;
+  color: #ffffff;
+}
+.sign-out-button {
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  background: #F03A47;
-border-radius: 0px 0px 15px 15px;
-//font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 20px;
-line-height: 27px;
-height: 3rem;
-color: #FBFBFB;
+  background: #f03a47;
+  border-radius: 0px 0px 15px 15px;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  height: 3rem;
+  color: #fbfbfb;
 }
-.avatar-text{
-  //font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 19px;
-/* identical to box height, or 121% */
+.avatar-text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
 
-text-align: center;
-
-/* Neurtal/White */
-
-color: #FFFFFF;
+  text-align: center;
+  color: #ffffff;
 }
-.genres-box{
+.genres-box {
   margin-top: 5%;
   display: flex;
   flex-wrap: wrap;
-  gap:1rem;
+  gap: 1rem;
 }
-.genres-box-1{
+.genres-box-1 {
   margin-top: 3%;
   text-align: start;
   width: 86%;
   margin-left: 6%;
 }
-.languages-box-1{
+.languages-box-1 {
   margin-top: 3%;
   text-align: start;
   width: 86%;
   margin-left: 6%;
-margin-bottom: 3%;  
+  margin-bottom: 3%;
 }
-.profile-conatiner-pic{
+.profile-conatiner-pic {
   width: 85%;
   height: 85%;
 }
-.navlink-container{
+.navlink-container {
   display: flex;
   justify-content: space-between;
-
 }
-.container-11{
+.container-11 {
   margin-bottom: 0.5%;
 }
-.clear-button{
+.clear-button {
   width: 2.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: start;
   cursor: pointer;
 }

@@ -1,9 +1,7 @@
 .card-container-3 {
   width: 15rem;
   border: 1px solid black;
-
   border-radius: 0.938rem;
-
   display: flex;
   height: 23rem;
   justify-content: center;
@@ -17,12 +15,6 @@
   justify-content: flex-end;
   align-items: flex-end;
 }
-
-// .card-container-3:hover {
-//   position: relative;
-//   z-index: 1;
-//   transform: scale(1.2, 1.3);
-// }
 
 .hover-card-style-3 {
   video {
@@ -48,29 +40,23 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 4%;
-  width:100%;
-  height:40%;
+  width: 100%;
+  height: 40%;
 
   h4 {
-   // font-family: "Nunito Sans";
     font-style: normal;
     font-weight: 700;
-
     line-height: 40px;
-    /* or 100% */
-
     color: #ffffff;
   }
 
   h4 {
     font-size: 15px;
   }
-
 }
 
 .card-movie-name-3 {
   text-align: start;
- // font-family: 'Nunito Sans';
   font-style: normal;
   font-weight: 600;
   display: flex;
@@ -92,29 +78,25 @@
   gap: 1rem;
   align-items: center;
   justify-content: space-evenly;
-  padding-bottom:14%;
-  //justify-content: end;
+  padding-bottom: 14%;
 }
 
 .ab-3 {
   display: flex;
   align-items: center;
   margin-left: 0%;
- // font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 12px;
-  height:50%;
-  color: #FFFFFF;
-  
-
+  height: 50%;
+  color: #ffffff;
 }
 
 .card-last-container-3 {
   display: flex;
   gap: 4%;
-  height:60%;
+  height: 60%;
 }
 
 .rate-1-card-3 {
@@ -122,15 +104,13 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  border: 0.6px solid #9A9B9C;
+  border: 0.6px solid #9a9b9c;
   border-radius: 26px;
   color: white;
- // font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 12px;
-  width:30%;
+  width: 30%;
   height: 1rem;
-  
 }

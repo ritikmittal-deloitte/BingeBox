@@ -2,11 +2,9 @@
   width: 100%;
   height: 100%;
   display: flex;
-
   position: relative;
   z-index: 0;
 }
-
 
 .error-signup {
   color: #f03a47;
@@ -28,7 +26,6 @@
   height: 80%;
   width: 13%;
   background-color: #f03a47;
-  //font-family: "Sora";
   font-style: normal;
   font-weight: 700;
   font-size: 54.282px;
@@ -41,7 +38,6 @@
   width: 10%;
   margin-left: 0.3%;
   color: #f03a47;
-  //font-family: "Sora";
   font-style: normal;
   font-weight: 700;
   font-size: 54.282px;
@@ -65,7 +61,6 @@
   color: white;
 
   .signup-heading {
-    //font-family: "Nunito Sans";
     font-style: normal;
     font-weight: 600;
     font-size: 32px;

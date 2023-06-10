@@ -1,23 +1,16 @@
-.photo-style{
-    width: 75%;
-    height: 75%;
-    //padding-left: 2rem;
+.photo-style {
+  width: 75%;
+  height: 75%;
 }
-.photo-container{
-    width: max-content  ;
-    margin-right: 1rem;
-    p{
-        //font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 400;
-font-size: 1rem;
-line-height: 25px;
-/* identical to box height, or 121% */
-
-text-align: center;
-
-/* Neurtal/White */
-
-color: #FFFFFF;
-    }
+.photo-container {
+  width: max-content;
+  margin-right: 1rem;
+  p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 25px;
+    text-align: center;
+    color: #ffffff;
+  }
 }

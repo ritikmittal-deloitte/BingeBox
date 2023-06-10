@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg";
 import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import "./card3.scss";
@@ -10,7 +9,6 @@ const Card = ({ cardData }) => {
   const [onHovering, setOnHovering] = useState(false);
   const { watchList, setWatchList } = useContext(UserContext);
 
-  // console.log("Card Data :",cardData)
   const navigate = useNavigate();
 
   const handleMouseOver = () => {
@@ -43,29 +41,13 @@ const Card = ({ cardData }) => {
     };
   };
 
-  const handleVideoStyle = () => {
-    return {
-      width: "100%",
-      height: "100%",
-      borderRadius: "0.938rem",
-    };
-  };
   const handleAddToWatchList = (event) => {
-    console.log("Card Data :", cardData.id);
-    console.log("Current Watch List:", watchList);
     setWatchList([...watchList, cardData.id]);
-    //    setWatchList(previousState => new Set([...previousState,cardData.movieId]));
-    console.log("add to watch list:", event);
     event.stopPropagation();
     navigate("/wishlist");
   };
-  // const handlePlayMovie=()=>{
-  //   console.log("play movie")
-  //   window.location.replace('https://www.youtube.com/watch?v=fb5ELWi-ekk');
-  // }
 
   const handleOnClick = () => {
-    //    navigate("/wishlist");
     navigate(`/description/${cardData.id}`);
   };
 
@@ -86,31 +68,6 @@ const Card = ({ cardData }) => {
         ></div>
       )}
 
-      {/* {onHovering && (
-        <div
-          className={`d-flex align-items-end  w-100 h-100 hover-card-style  ${
-            onHovering ? "overlay-styles-3" : ""
-          }`}
-        >
-          <div className="card-end-container w-100 d-flex justify-content-around">
-            <div className="card-details-container d-flex flex-column align-items-start">
-              <h2>{cardData.title}</h2>
-              <div className="d-flex  justify-content-between card-release-style">
-                <div className="cbfc-style">CBFC : U/A</div>
-
-                <h4 className="px-3">{cardData.releaseYear}</h4>
-                <h4>{cardData.movieDuraction}</h4>
-              </div>
-            </div>
-            <div className="d-flex card-logo-container align-items-center">
-            <div onClick={handlePlayMovie}><PlayLogo /></div >
-              <div onClick={handleAddToWatchList}><AddToLogo width={50} height={51} /></div >
-              
-            </div>
-          </div>
-        </div>
-        
-      )} */}
       {onHovering && (
         <>
           <iframe
@@ -141,12 +98,7 @@ const Card = ({ cardData }) => {
                   <span className="card-movie-name-3">
                     &nbsp;&nbsp;{cardData.title.slice(0, 18)}
                   </span>
-                  {/* <div className="d-flex  justify-content-between card-release-style">
-                <div className="cbfc-style">CBFC : U/A</div>
 
-                <h4 className="px-3">{cardData.releaseYear}</h4>
-                <h4>{cardData.movieDuraction}</h4>
-              </div> */}
                   <div className="card-last-container-3">
                     <div className="obj-details" style={{ width: "100%" }}>
                       <div
@@ -167,22 +119,34 @@ const Card = ({ cardData }) => {
                           {cardData.duration}
                         </div>
                       </div>
-                      <div style={{ display: 'flex', width: '100%', overflow: 'hidden', gap: '4%', paddingLeft: '5%', marginTop: '5%' }}>
-                        {/* {cardData.genre.map((item) => {
-                          return <div className="last-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>&nbsp;{item}&nbsp;</div>
-                        })} */}
+                      <div
+                        style={{
+                          display: "flex",
+                          width: "100%",
+                          overflow: "hidden",
+                          gap: "4%",
+                          paddingLeft: "5%",
+                          marginTop: "5%",
+                        }}
+                      >
                         {cardData?.genre?.length > 2 ? (
-            <div style={{display:"flex",gap:"10px"}}>
-            {(
-            cardData?.genre?.slice(0,2).map((item)=>{
-           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
-          }))} 
-          <span className="more-text"><u>
-          +{cardData.genre.length -2}more </u> </span>
-          </div>
-          ) : ( cardData?.genre?.map((item)=>{
-           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
-          }))}
+                          <div style={{ display: "flex", gap: "10px" }}>
+                            {cardData?.genre?.slice(0, 2).map((item) => {
+                              return (
+                                <div className="last-1">&nbsp;{item}&nbsp;</div>
+                              );
+                            })}
+                            <span className="more-text">
+                              <u>+{cardData.genre.length - 2}more </u>{" "}
+                            </span>
+                          </div>
+                        ) : (
+                          cardData?.genre?.map((item) => {
+                            return (
+                              <div className="last-1">&nbsp;{item}&nbsp;</div>
+                            );
+                          })
+                        )}
                       </div>
                     </div>
                   </div>
@@ -193,7 +157,6 @@ const Card = ({ cardData }) => {
                     target="_blank"
                     style={{ textDecoration: "none" }}
                   >
-                    {/* <PlayLogo width={40} height={41} /> */}
                     <div
                       className="play-button d-flex"
                       style={{
@@ -201,7 +164,7 @@ const Card = ({ cardData }) => {
                         justifyContent: "space-around",
                         alignItems: "center",
                       }}
-                      onClick={(e)=>e.stopPropagation()}
+                      onClick={(e) => e.stopPropagation()}
                     >
                       <Triangle style={{ height: "90%", width: "25%" }} />{" "}
                       <span style={{ fontSize: "18px" }}>Play</span>

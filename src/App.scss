@@ -1,19 +1,11 @@
-
-
 .App {
   text-align: center;
-  //  background-color: red;
-  // //  background-image: url("./assets/images/Backgrond_image.png");
-  //  background-image: url("./assets/images/Backgrond_image2.svg");
-  //background-color: red;
-  
   overflow: hidden;
   height: 100vh;
-background-image: url("./assets/images/backgrond-image.svg");
-
+  background-image: url("./assets/images/backgrond-image.svg");
 }
-.body{
-  font-family: 'Nunito Sans';
+.body {
+  font-family: "Nunito Sans";
 }
 .App-logo {
   height: 40vmin;

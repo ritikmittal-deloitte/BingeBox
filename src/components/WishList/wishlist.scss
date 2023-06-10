@@ -1,43 +1,39 @@
-.wishlist-page{
-    padding-top: 2rem;
-    width: 80%;
-    overflow-y: scroll;
-    height: 100%;
-    flex-grow: 100;
-    z-index: 0;
-     position: relative;
-    p{
-        //font-family: 'Nunito Sans';
-font-style: normal;
-font-weight: 500;
-font-size: 32px;
-line-height: 44px;
-margin-left: 5%;
-
-
-color: #FFFFFF;
-    }
-}
-.wishlist-grid-container{
-
-    padding-left: 2.2rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: max-content;
-    
-    row-gap: 4rem;
+.wishlist-page {
+  padding-top: 2rem;
+  width: 80%;
+  overflow-y: scroll;
+  height: 100%;
+  flex-grow: 100;
+  z-index: 0;
+  position: relative;
+  p {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 44px;
     margin-left: 5%;
-    justify-content: space-around;
-    width: 90%;
-    .card-container{
-        height: 15rem;
-    }
+    color: #ffffff;
+  }
 }
-.footer{
-    width: 100%;
-    height: 20px;
-    margin-top: 20%;
+.wishlist-grid-container {
+  padding-left: 2.2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: max-content;
 
-    position: absolute;
-    z-index: 1;
+  row-gap: 4rem;
+  margin-left: 5%;
+  justify-content: space-around;
+  width: 90%;
+  .card-container {
+    height: 15rem;
+  }
+}
+.footer {
+  width: 100%;
+  height: 20px;
+  margin-top: 20%;
+
+  position: absolute;
+  z-index: 1;
 }

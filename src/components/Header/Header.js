@@ -1,47 +1,36 @@
-import React, { useContext , useRef, useState , useEffect } from "react";
+import React, { useContext, useRef, useState, useEffect } from "react";
 import { ReactComponent as NotifiactionLogo } from "../../assets/icons/Vector.svg";
 import "./header.scss";
-import { NavLink,useNavigate , useLocation } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { ReactComponent as SearchLogo } from "../../assets/icons/search.svg";
-import { ReactComponent as SettingsLogo } from "../../assets/icons/settings.svg";
-import { ReactComponent as Logo1 } from "../../assets/images/avatar1.svg";
-import { ReactComponent as Logo2 } from "../../assets/images/avatar2.svg";
-import profilePhoto from "../../assets/images/profile-photo.svg";
-import { useSelector ,useDispatch} from "react-redux";
-import Logo from "../Logo/Logo";
+import { useSelector, useDispatch } from "react-redux";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import CategoryType from "../CategoryType/CategoryType";
 import { UserContext } from "../../context/Context/UserContext/UserState";
 import { ReactComponent as ProfileLogo } from "../../assets/icons/Vector2.svg";
-import { AccountAction } from '../../redux/AccountSlice';
-import { dummyData } from "../../mockData/accountsMockData";
-
+import { AccountAction } from "../../redux/AccountSlice";
 
 const Header = () => {
-  const [selected, setSelected] = useState("0");
   const [profile, setProfile] = useState(false);
-  const {searchText,setSearchText,categories,setCategories} = useContext(UserContext)
-  const [helperSearchText,setHelperSearchText] = useState('')
-  const navigate = useNavigate()
-  const dispatch=useDispatch()
-  const selectedAccount=useSelector((state)=>state.account.currentAccount)
-  const signUpUserDetails=useSelector((state)=>state.account.userDetails)
-    console.log("in header",selectedAccount,"signup",signUpUserDetails)
+  const { searchText, setSearchText, categories, setCategories } =
+    useContext(UserContext);
+  const [helperSearchText, setHelperSearchText] = useState("");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const selectedAccount = useSelector((state) => state.account.currentAccount);
+  const signUpUserDetails = useSelector((state) => state.account.userDetails);
+  console.log("in header", selectedAccount, "signup", signUpUserDetails);
   const [open, setOpen] = useState(false);
   const location = useLocation();
   let url = location.pathname;
   const [open2, setOpen2] = useState(false);
-  const [open3,setOpen3]=useState(false);
-  
-  const handleChangingAccount=(account)=>{
-    dispatch(AccountAction.selectCurrentAccount(account))
 
-  }
-  
+  const handleChangingAccount = (account) => {
+    dispatch(AccountAction.selectCurrentAccount(account));
+  };
 
   const ref = useRef(null);
   const ref2 = useRef(null);
-//  const [message, setMessage] = useState('');
   const genres = [
     "All",
     "Horror",
@@ -66,141 +55,99 @@ const Header = () => {
     "Bengali",
   ];
 
-
-
   const handleClickOutside = (event) => {
-//      console.log("Worked")
     if (!ref?.current?.contains(event.target)) {
-//      console.log("Worked233")
       setOpen(false);
-      
     }
     if (!ref2?.current?.contains(event.target)) {
-            setOpen2(false);
-            setProfile(false);
-
-          }
+      setOpen2(false);
+      setProfile(false);
+    }
   };
-useEffect(() => {
-  document.addEventListener("mousedown", handleClickOutside);
-  document.addEventListener("mousedown", handleClickOutside);
-}, []);
-  const check = (value) => {
-    console.log("Value:", value);
-  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+  }, []);
 
-  console.log("Opened:",open)
   const searchTextFunction = (e) => {
-//    setMessage(e.target.value)
-    setHelperSearchText(e.target.value)
-  }
+    setHelperSearchText(e.target.value);
+  };
   const profileNavigate = (e) => {
     setProfile(false);
-    navigate('/profile')
-  }
-
-  const nav = (e) => {
-    setProfile(false);
-    navigate('/login')
- 
-  }
+    navigate("/profile");
+  };
 
   const handleKeyDown = (event) => {
-    if (event.key === 'Enter') {
-      // 👇 Get input value
-      searchPageOpen()
+    if (event.key === "Enter") {
+      searchPageOpen();
     }
   };
-  const SignOut = () =>{
-    navigate('/');
-  }
+  const SignOut = () => {
+    navigate("/");
+  };
 
   const searchPageOpen = () => {
-    if(helperSearchText.trim()===''){
-      return
+    if (helperSearchText.trim() === "") {
+      return;
     }
-    setSearchText(helperSearchText)
-    navigate(`/searchresults/${helperSearchText}`,{state:searchText})
-  }
+    setSearchText(helperSearchText);
+    navigate(`/searchresults/${helperSearchText}`, { state: searchText });
+  };
   const handleClick = () => {
-    // 👇️ clear input value
-    console.log("URL:",url.slice(1,5))
-    if(url.slice(1,5)==="sear")
-    {
-     navigate('home'); 
+    if (url.slice(1, 5) === "sear") {
+      navigate("home");
     }
-    setHelperSearchText('');
-//    setMessage('');
-
+    setHelperSearchText("");
   };
 
   return (
     <div className="d-flex justify-content-between w-100 align-items-end header-container">
-      {/* <Logo className="w-30" /> */}
       <MainLogo />
       <div className="w-30 container-11">
         <div className="navlink-container">
-        <NavLink
-                to="/home"
-                className={({ isActive }) =>
-    isActive ? 'header-link-active-style' : ''}
-            // className={selected === "0" ? "header-link-active-style" : ""}
-            // onClick={() => {
-            //   setSelected("0");
-            // }}
+          <NavLink
+            to="/home"
+            className={({ isActive }) =>
+              isActive ? "header-link-active-style" : ""
+            }
           >
             Home
           </NavLink>
           <NavLink
-                to="/movies"
-         //   className={selected === "1" ? "header-link-active-style" : ""}
+            to="/movies"
             className={({ isActive }) =>
-    isActive ? 'header-link-active-style' : ''}
-            // onClick={() => {
-            //   setSelected("1");
-            // }}
+              isActive ? "header-link-active-style" : ""
+            }
           >
             Movies
           </NavLink>
           <NavLink
-              to="/series"
-            // className={selected === "2" ? "header-link-active-style" : ""}
-            // onClick={() => {
-            //   setSelected("2");
-            // }}
+            to="/series"
             className={({ isActive }) =>
-    isActive ? 'header-link-active-style' : ''}
+              isActive ? "header-link-active-style" : ""
+            }
           >
             Series
           </NavLink>
           <NavLink
             to="/tv-shows"
-            // className={selected === "3" ? "header-link-active-style" : ""}
-            // onClick={() => {
-            //   setSelected("3");
-            // }}
             className={({ isActive }) =>
-    isActive ? 'header-link-active-style' : ''}
+              isActive ? "header-link-active-style" : ""
+            }
           >
             TV Shows
           </NavLink>
 
           <NavLink
             to="/anime"
-            // className={selected === "4" ? "header-link-active-style" : ""}
-            // onClick={() => {
-            //   setSelected("4");
-            // }}
             className={({ isActive }) =>
-    isActive ? 'header-link-active-style' : ''}
+              isActive ? "header-link-active-style" : ""
+            }
           >
             Anime
           </NavLink>
           <NavLink
-            //to="/anime"
-//            className={open ? "header-link-active-style" : ""}
-
-            onClick={() => {  
+            onClick={() => {
               setOpen(true);
               document.addEventListener("mousedown", handleClickOutside);
             }}
@@ -214,8 +161,13 @@ useEffect(() => {
               <span style={{ color: "white" }}>Genres</span>
               <div className="genres-box">
                 {genres.map((item) => {
-              //    console.log("Item:", item);
-                  return <CategoryType text={item} type={'genre'} setCategories={setCategories}/>;
+                  return (
+                    <CategoryType
+                      text={item}
+                      type={"genre"}
+                      setCategories={setCategories}
+                    />
+                  );
                 })}
               </div>
             </div>
@@ -223,8 +175,7 @@ useEffect(() => {
               <span style={{ color: "white" }}>Languages</span>
               <div className="genres-box">
                 {languages.map((item) => {
-          //        console.log("Item:", item);
-                  return <CategoryType text={item} type={'language'}/>;
+                  return <CategoryType text={item} type={"language"} />;
                 })}
               </div>
             </div>
@@ -234,18 +185,32 @@ useEffect(() => {
 
       <div className="d-flex  align-items-end w-40">
         <div className=" search-box">
-          &nbsp; <SearchLogo width="1.3rem" height="1.3rem" onClick={(e)=>{searchPageOpen()}}/>
+          &nbsp;{" "}
+          <SearchLogo
+            width="1.3rem"
+            height="1.3rem"
+            onClick={(e) => {
+              searchPageOpen();
+            }}
+          />
           <input
             type="text"
             autoclear
             placeholder="search here"
-            style={{ color: "white" , borderColor:"transparent" }}
-            onChange={(e)=>{searchTextFunction(e)}}
+            style={{ color: "white", borderColor: "transparent" }}
+            onChange={(e) => {
+              searchTextFunction(e);
+            }}
             onKeyDown={handleKeyDown}
             value={helperSearchText}
           />
-          {helperSearchText!=="" ?(<div onClick={handleClick} className="clear-button">Clear</div>):(<div style={{width:"2.5rem"}}></div>)}
-
+          {helperSearchText !== "" ? (
+            <div onClick={handleClick} className="clear-button">
+              Clear
+            </div>
+          ) : (
+            <div style={{ width: "2.5rem" }}></div>
+          )}
         </div>
         <div>
           <div className=" last-container">
@@ -265,42 +230,53 @@ useEffect(() => {
             />
           </div>
 
-          {profile && open2 && <div className="profile-box" ref={ref2} >
+          {profile && open2 && (
+            <div className="profile-box" ref={ref2}>
               <div className=""></div>
-              <div className="selected-1">&nbsp;&nbsp;&nbsp; {selectedAccount.name}</div>
+              <div className="selected-1">
+                &nbsp;&nbsp;&nbsp; {selectedAccount.name}
+              </div>
               <div className="line-2"></div>
-              {
-               signUpUserDetails?.accounts?.length>1&&( 
-               <div className="avatar-box">
-              {/* <div className="line-2"></div> */}
-              <div className="avatar-box">
-              &nbsp;&nbsp;&nbsp;
-              {
-                signUpUserDetails?.accounts?.filter((account)=>account.name!==selectedAccount.name).map((account)=>(
-                  <div>
-              <img src={account.img} onClick={()=>handleChangingAccount(account)} className="profile-conatiner-pic"/>
-                  <div className="avatar-text">{account.name}</div>
+              {signUpUserDetails?.accounts?.length > 1 && (
+                <div className="avatar-box">
+                  {/* <div className="line-2"></div> */}
+                  <div className="avatar-box">
+                    &nbsp;&nbsp;&nbsp;
+                    {signUpUserDetails?.accounts
+                      ?.filter(
+                        (account) => account.name !== selectedAccount.name
+                      )
+                      .map((account) => (
+                        <div>
+                          <img
+                            src={account.img}
+                            onClick={() => handleChangingAccount(account)}
+                            className="profile-conatiner-pic"
+                          />
+                          <div className="avatar-text">{account.name}</div>
+                        </div>
+                      ))}
+                  </div>
                 </div>
-                ))
-              }
-                
-              </div>
-              </div>
-               )
-              }
-              
+              )}
+
               <div className="line-2"></div>
-              <div className="Box-1"  onClick={(e)=>{profileNavigate(e)} }>
-              <ProfileLogo style={{marginLeft:"6%"}}/> &nbsp;&nbsp; Profile
+              <div
+                className="Box-1"
+                onClick={(e) => {
+                  profileNavigate(e);
+                }}
+              >
+                <ProfileLogo style={{ marginLeft: "6%" }} /> &nbsp;&nbsp;
+                Profile
               </div>
               <div className="line-2"></div>
-              
+
               <div className="sign-out-button" onClick={SignOut}>
-                  Sign out
+                Sign out
               </div>
-            </div>}
-           
-          
+            </div>
+          )}
         </div>
       </div>
     </div>
