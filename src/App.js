@@ -47,9 +47,9 @@ function App() {
           <Route path="/login" element={<Login setIsLogin={setIsLogin} />} />
 
           <Route path="/signup" element={<Signup setIsLogin={setIsLogin}    />} />
-          {/* <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/userpreferences" element={<UserPreferences />} />
+        {/*   <Route path="/userpreferences" element={<UserPreferences />} />
           <Route path="/subscription-plans" element={<Subscriptionplans />} />
           <Route path="/payment-successful" element={<PaymentSuccessful />} />
           <Route path="/selected-plan" element={<SelectedPlan />} />
