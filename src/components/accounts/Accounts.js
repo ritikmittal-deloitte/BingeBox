@@ -3,8 +3,8 @@ import "./accounts.scss"
 import Logo from "../Logo/Logo"
 import { dummyData } from '../../mockData/accountsMockData';
 import { AccountAction } from '../../redux/AccountSlice';
-import { useDispatch } from "react-redux";
 import { useNavigate } from 'react-router-dom';
+import { useSelector ,useDispatch} from "react-redux";
 
 const Accounts = () => {
     const dispatch = useDispatch();
@@ -15,7 +15,7 @@ const Accounts = () => {
         navigate("/home")
     }
 
-
+    const signUpUserDetails=useSelector((state)=>state.account.userDetails)
     return (
         <div className='accounts-main-container'>
             <div className='inner-account-container'>
@@ -26,7 +26,7 @@ const Accounts = () => {
                 <h3>Who is Watching?</h3>
                 <div className='accounts-container'>
                     {
-                        dummyData.accounts.map((account)=>(
+                        signUpUserDetails?.accounts?.map((account)=>(
                             <div className='account-style' >
                                 <img src={account.img} onClick={()=>handleSelectingAccount(account)}/>
                                 <div className='account-name-style'>{account.name}</div>

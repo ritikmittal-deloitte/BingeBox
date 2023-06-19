@@ -41,8 +41,9 @@ input:focus {
 margin-top: 5%;
 }
 .profile-style{
-    width: 65%;
-    height: 65%;
+    width: 6rem;
+    height: 4.3rem;
+    border-radius: 100%;
     padding-left: 2rem;
 }
 .search-box{
@@ -182,8 +183,9 @@ color: #FFFFFF;
 margin-bottom: 3%;  
 }
 .profile-conatiner-pic{
-  width: 85%;
-  height: 85%;
+  width: 4.2rem;
+  height: 4.2rem;
+  border-radius: 100%;
 }
 .navlink-container{
   display: flex;
