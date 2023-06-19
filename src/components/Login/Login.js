@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { UserContext, UserContextProvider } from "../../context/Context/UserContext/UserState";
-import { useDispatch } from "react-redux";
+import { useDispatch , useSelector} from "react-redux";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
 import Background from "../background/Background";
@@ -15,7 +15,9 @@ const Login = ({setIsLogin}) => {
   const [errors, setErrors] = useState({email:''});
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const signUpUserDetails=useSelector((state)=>state.account.userDetails)
 
+  console.log("Signup DEtais:",signUpUserDetails)
   // const Login = ({setIsLogin}) => {
   //     const navigate = useNavigate();
 
@@ -64,6 +66,7 @@ if (errors1) {
   console.log("Login successful");
   setIsLogin(true);
   dispatch(AccountAction.saveSignUpInfo(dummyData))
+//  dispatch(AccountAction.saveSignUpInfo(dummyData))
 
   if(dummyData.accounts.length===1){
 
