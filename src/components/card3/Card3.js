@@ -5,10 +5,17 @@ import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import "./card3.scss";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../context/Context/UserContext/UserState";
+import { useDispatch } from "react-redux";
+import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
 
 const Card = ({ cardData }) => {
   const [onHovering, setOnHovering] = useState(false);
   const { watchList, setWatchList } = useContext(UserContext);
+  const dispatch = useDispatch();
+  const handlePlayingMovie = (event) => {
+    //event.stopPropagation();
+    dispatch(ContinueWatchingAction.addToContinueWatching(cardData));
+  };
 
   // console.log("Card Data :",cardData)
   const navigate = useNavigate();
@@ -167,22 +174,37 @@ const Card = ({ cardData }) => {
                           {cardData.duration}
                         </div>
                       </div>
-                      <div style={{ display: 'flex', width: '100%', overflow: 'hidden', gap: '4%', paddingLeft: '5%', marginTop: '5%' }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          width: "100%",
+                          overflow: "hidden",
+                          gap: "4%",
+                          paddingLeft: "5%",
+                          marginTop: "5%",
+                        }}
+                      >
                         {/* {cardData.genre.map((item) => {
                           return <div className="last-1" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>&nbsp;{item}&nbsp;</div>
                         })} */}
                         {cardData?.genre?.length > 2 ? (
-            <div style={{display:"flex",gap:"10px"}}>
-            {(
-            cardData?.genre?.slice(0,2).map((item)=>{
-           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
-          }))} 
-          <span className="more-text"><u>
-          +{cardData.genre.length -2}more </u> </span>
-          </div>
-          ) : ( cardData?.genre?.map((item)=>{
-           return  <div className="last-1">&nbsp;{item}&nbsp;</div>
-          }))}
+                          <div style={{ display: "flex", gap: "10px" }}>
+                            {cardData?.genre?.slice(0, 2).map((item) => {
+                              return (
+                                <div className="last-1">&nbsp;{item}&nbsp;</div>
+                              );
+                            })}
+                            <span className="more-text">
+                              <u>+{cardData.genre.length - 2}more </u>{" "}
+                            </span>
+                          </div>
+                        ) : (
+                          cardData?.genre?.map((item) => {
+                            return (
+                              <div className="last-1">&nbsp;{item}&nbsp;</div>
+                            );
+                          })
+                        )}
                       </div>
                     </div>
                   </div>
@@ -201,7 +223,10 @@ const Card = ({ cardData }) => {
                         justifyContent: "space-around",
                         alignItems: "center",
                       }}
-                      onClick={(e)=>e.stopPropagation()}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePlayingMovie(e);
+                      }}
                     >
                       <Triangle style={{ height: "90%", width: "25%" }} />{" "}
                       <span style={{ fontSize: "18px" }}>Play</span>
