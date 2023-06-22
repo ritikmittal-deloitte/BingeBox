@@ -14,7 +14,7 @@ import Fantasy from './images/fantasy.jpg'
 import Binge from './images/BINGE.png'
 import Box from './images/BOX.png'
 import CardComponent from './CardComponent'
-import { generatePath, useLocation, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/Context/UserContext/UserState'
 import { dummyData } from '../../mockData/accountsMockData'
 import { AccountAction } from '../../redux/AccountSlice';
