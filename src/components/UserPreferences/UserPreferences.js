@@ -36,7 +36,7 @@ export default function UserPreferences({setIsLogin}) {
         
             setIsLogin(true);
 //            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
-            dispatch(AccountAction.saveSignUpInfo(dummyData))
+        // dispatch(AccountAction.saveSignUpInfo(dummyData))
             navigate("/home")
         
     }

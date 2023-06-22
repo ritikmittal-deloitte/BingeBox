@@ -7,6 +7,7 @@ import { useDispatch , useSelector} from "react-redux";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
 import Background from "../background/Background";
+import User3 from '../../assets/images/image 76.png'
 
 
 const Login = ({setIsLogin}) => {
@@ -65,10 +66,15 @@ if (errors1) {
 
   console.log("Login successful");
   setIsLogin(true);
-  dispatch(AccountAction.saveSignUpInfo(dummyData))
+  dispatch(AccountAction.saveSignUpInfo({
+    email: email,
+    phone: 1234567891,
+    genre: ['Horror', 'Romantic', 'Comedy'],
+    accounts: [{ name: 'User', img: User3 }]
+  }))
 //  dispatch(AccountAction.saveSignUpInfo(dummyData))
 
-  if(dummyData.accounts.length===1){
+  if(signUpUserDetails?.accounts?.length===1){
 
     //dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
 
