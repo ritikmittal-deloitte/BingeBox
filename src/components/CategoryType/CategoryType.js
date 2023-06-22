@@ -1,11 +1,12 @@
 import React from 'react';
 import "./CategoryType.scss";
-export default function CategoryType({text,setCategories,type}) {
+export default function CategoryType({text,setCategories,type, setOpen}) {
 //    console.log("Text coming:",text)
   const handleCategories = ()=> {
     if(type==='genre'){
       setCategories(text)
     }
+    setOpen(false);
   }
     return (
 
