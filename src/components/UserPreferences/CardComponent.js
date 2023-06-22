@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import CheckIcon from './images/check-icon.png'
+import CheckIcon from './genres/check-icon.png'
 
 export default function CardComponent({ item,present,genre,setGenre }) {
     const [selected, setSelected] = useState(present)
