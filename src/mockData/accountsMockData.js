@@ -4,7 +4,7 @@ import User3 from '../assets/images/image 76.png'
 
 export const dummyData = {
     email: 'veenusingh96@gmail.com',
-    phone: '1234567891',
+    phone: '6395456123',
     genre: ['Horror', 'Romantic', 'Comedy'],
     accounts: [{ name: 'Naina', img: User3 }, { name: 'Saurabh', img: User1 },{ name: 'Sonali', img: User2 }]
 }

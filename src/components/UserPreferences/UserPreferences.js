@@ -1,20 +1,20 @@
 import React, { useContext, useState } from 'react'
 import './UserPreferences.scss'
 import { useDispatch } from "react-redux";
-import Comedy from './images/comedy.png'
-import Drama from './images/drama.png'
-import Horror from './images/horror.png'
-import Kids from './images/kids.png'
-import Romantic from './images/romantic.png'
-import Action from './images/action.png'
-import Documentaries from './images/documentaries.png'
-import Hollywood from './images/hollywood.png'
-import Bollywood from './images/bollywood.png'
-import Fantasy from './images/fantasy.jpg'
-import Binge from './images/BINGE.png'
-import Box from './images/BOX.png'
+import Comedy from './genres/comedy.png'
+import Drama from './genres/drama.png'
+import Horror from './genres/horror.png'
+import Kids from './genres/kids.png'
+import Romantic from './genres/romantic.png'
+import Action from './genres/action.png'
+import Documentaries from './genres/documentary.png'
+import Hollywood from './genres/hollywood.png'
+import Bollywood from './genres/bollywood.png'
+import Fantasy from './genres/fantasy.jpg'
+import Binge from './genres/BINGE.png'
+import Box from './genres/BOX.png'
 import CardComponent from './CardComponent'
-import { generatePath, useLocation, useNavigate } from 'react-router-dom'
+import {  useNavigate } from 'react-router-dom'
 import { UserContext } from '../../context/Context/UserContext/UserState'
 import { dummyData } from '../../mockData/accountsMockData'
 import { AccountAction } from '../../redux/AccountSlice';
@@ -36,7 +36,7 @@ export default function UserPreferences({setIsLogin}) {
         
             setIsLogin(true);
 //            dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
-            dispatch(AccountAction.saveSignUpInfo(dummyData))
+        // dispatch(AccountAction.saveSignUpInfo(dummyData))
             navigate("/home")
         
     }

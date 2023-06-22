@@ -1,12 +1,16 @@
+
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
-import { UserContext, UserContextProvider } from "../../context/Context/UserContext/UserState";
 import { useDispatch , useSelector} from "react-redux";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
+
 import Background from "../background/Background";
+import User3 from '../../assets/images/image 76.png'
+
 
 
 const Login = ({setIsLogin}) => {
@@ -16,8 +20,7 @@ const Login = ({setIsLogin}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const signUpUserDetails=useSelector((state)=>state.account.userDetails)
-
-  console.log("Signup DEtais:",signUpUserDetails)
+//  console.log("Signup DEtais:",signUpUserDetails)
   // const Login = ({setIsLogin}) => {
   //     const navigate = useNavigate();
 
@@ -65,10 +68,15 @@ if (errors1) {
 
   console.log("Login successful");
   setIsLogin(true);
-  dispatch(AccountAction.saveSignUpInfo(dummyData))
+  dispatch(AccountAction.saveSignUpInfo({
+    email: email,
+    phone: 1234567891,
+    genre: ['Horror', 'Romantic', 'Comedy'],
+    accounts: [{ name: 'User', img: User3 }]
+  }))
 //  dispatch(AccountAction.saveSignUpInfo(dummyData))
 
-  if(dummyData.accounts.length===1){
+  if(signUpUserDetails?.accounts?.length===1){
 
     //dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
 
@@ -133,8 +141,7 @@ else navigate("/accounts")
                 <input type="checkbox" />
                 Remember me
               </label>
-              <a
-                onClick={() => {
+              <a onClick={() => {
                   navigate("/forgot-password");
                 }}
                 style={{cursor:"pointer"}}
@@ -142,9 +149,31 @@ else navigate("/accounts")
                 Forgot password?
               </a>
             </div>
-            <button type="submit" className="btn">
+
+            {/* <button type="submit" className="btn" disabled={!email || !password} style={{background:`${!email || !password?"#9f9f9f !important":"#f03a47 !important "}`}}>
               Login
-            </button>
+            </button> */}
+            {
+        email === "" ||
+        password === ""
+
+        ? (
+          <button type="submit" className="login-btn-disabled" >
+            Login
+          </button>
+        ) : (
+          <button
+            type="submit"
+            className="btn"
+            style={{
+              backgroundColor: "#F03A47",
+              fontSize: "1.5rem",
+              fontWeight: "600",
+            }}
+          >
+            Login
+          </button>
+        )}
             <div className="sign-up">
               <label htmlFor="">Doesn't Have An Account ?</label>
               <a
