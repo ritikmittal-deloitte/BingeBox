@@ -1,6 +1,6 @@
-import logo from "./logo.svg";
+
 import "./App.scss";
-import { Routes, Route, Navigate, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate} from "react-router-dom";
 import Login from "./components/Login/Login";
 import AppLayout from "./components/AppLayout/AppLayout";
 import Home from "./components/Home/Home";
@@ -8,10 +8,6 @@ import WishList from "./components/WishList/WishList";
 import { useState } from "react";
 import Description from "./components/Description/Description";
 import Signup from "./components/Signup/Signup";
-import Subscriptionplans from "./components/Subscriptionplans/Subscriptionplans";
-import PaymentSuccessful from "./components/PaymentSuccessful/PaymentSuccessful";
-import SelectedPlan from "./components/SelectedPlan/SelectedPlan";
-import Payment from "./components/Payment/Payment";
 import { UserContextProvider } from "./context/Context/UserContext/UserState";
 import UserPreferences from "./components/UserPreferences/UserPreferences";
 import Profile from "./components/Profile/Profile";
@@ -23,9 +19,8 @@ import ResetPassword from "./components/ResetPassword/ResetPassword";
 function App() {
   const [isLogin, setIsLogin] = useState(false);
   console.log("islogin", isLogin);
-  const navigate=useNavigate();
-  const location=useLocation();
-  let url=location.pathname;
+  // const navigate=useNavigate();
+  // const location=useLocation();
 
   return (
     <div className="App">

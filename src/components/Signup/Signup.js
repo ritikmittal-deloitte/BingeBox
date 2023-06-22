@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./signup.scss";
 import { ReactComponent as MainLogo } from "./../../assets/icons/Group 1000002501.svg";
-import { useNavigate } from "react-router-dom";
-import Logo from "../Logo/Logo";
+
 import Subscriptionplans from "../Subscriptionplans/Subscriptionplans";
 import SelectedPlan from "../SelectedPlan/SelectedPlan";
 import Payment from "../Payment/Payment";
@@ -22,14 +21,12 @@ const belowTexts = [
 ];
 
 function Signup({setIsLogin}) {
-  const navigate = useNavigate();
   const [texts, setTexts] = useState([]);
   const [lowerText, setLowertext] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
-  const [isValid, setIsValid] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [checkbox, setCheckbox] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,7 +34,21 @@ function Signup({setIsLogin}) {
   const [plan,setPlan]=useState({});
   const [price,setPrice]=useState(0);
 const [page,setPage]=useState('1');
+
+const handleCheckPassword=(value)=>{
+  console.log("val",value,"pas",password)
+  for(var i=0;i<value.length;i++){
+    if(value[i]!==password[i]){
+      setErrors({...errors,confirmPassword:"Password should match"})
+    }
+    else{
+      setErrors({...errors,confirmPassword:""})
+    }
+  }
+}
+
 const dispatch=useDispatch();
+
   function checkPhone(phone) {
     let r1 = false;
     let r2 = false;
@@ -207,6 +218,7 @@ const dispatch=useDispatch();
             value={confirmPassword}
             onChange={(e) => {
               setConfirmPassword(e.target.value);
+              handleCheckPassword(e.target.value)
             }}
           />
           <div className="error-signup">
@@ -225,7 +237,7 @@ const dispatch=useDispatch();
               }}
             />
           </label>
-          By signing up you agree to our <a href="#">privacy policy</a>
+          By signing up you agree to our <a href="/">privacy policy</a>
         </div>
         <div className="error-signup" style={{ marginBottom: "1%" }}>
           {errors.checkbox && <span>* {errors.checkbox}</span>}
@@ -233,7 +245,8 @@ const dispatch=useDispatch();
         {name === "" ||
         email === "" ||
         password === "" ||
-        confirmPassword === "" ? (
+
+        confirmPassword === ""||confirmPassword!==password ||mobile.length!==10||!checkbox? (
           <button type="submit" className="btn" disabled>
             Sign Up
           </button>
@@ -294,7 +307,7 @@ const dispatch=useDispatch();
   {page==='3' && <SelectedPlan name={name} value={plan} setPage={setPage} setPrice={setPrice}/>}
   {page === '4' && <Payment  price={price} setPage={setPage}/>}
   {page === '5' && <PaymentSuccessful setPage={setPage}/>}
-  {page =='6' && <UserPreferences setIsLogin={setIsLogin} />}
+  {page ==='6' && <UserPreferences setIsLogin={setIsLogin} />}
   </>
    
   );

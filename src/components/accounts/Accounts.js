@@ -1,7 +1,6 @@
 import React from 'react';
 import "./accounts.scss"
 import Logo from "../Logo/Logo"
-import { dummyData } from '../../mockData/accountsMockData';
 import { AccountAction } from '../../redux/AccountSlice';
 import { useNavigate } from 'react-router-dom';
 import { useSelector ,useDispatch} from "react-redux";
@@ -28,7 +27,7 @@ const Accounts = () => {
                     {
                         signUpUserDetails?.accounts?.map((account)=>(
                             <div className='account-style' >
-                                <img src={account.img} onClick={()=>handleSelectingAccount(account)}/>
+                                <img src={account.img} onClick={()=>handleSelectingAccount(account)} alt=''/>
                                 <div className='account-name-style'>{account.name}</div>
                             </div>
                         ))
