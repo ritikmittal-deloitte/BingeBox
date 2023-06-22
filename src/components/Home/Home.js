@@ -21,6 +21,7 @@ const Home = () => {
   const { watchList, setWatchList, categories, setCategories } = useContext(UserContext);
   const [movies, setMovies] = useState(moviesArr)
   const contineWatchingList=useSelector((state)=>state.continueWatching.contineWatchingList)
+  console.log("wtach",contineWatchingList)
 //  console.log("listttt",contineWatchingList)
 
   const watch = new Set(watchList);
@@ -225,7 +226,9 @@ const Home = () => {
                   className="play-button d-flex"
                   onClick={(event) => handlePlayingMovie(event)}
                 >
-                  <Triangle /> <h5>Play</h5>{" "}
+                  <a href={carItems[current - 1].videoUrl}  target="_blank" className=" d-flex align-items-center play-button-style">
+                  <Triangle style={{height:"1.7rem",width:"1.7rem"}} /> <h5>Play</h5>{" "}
+                  </a>
                 </div>
                 {/* <a  href={movies[0].videoUrl} target="_blank"><PlayLogo /></a > */}
                

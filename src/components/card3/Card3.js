@@ -74,7 +74,7 @@ const Card = ({ cardData }) => {
 
   const handleOnClick = () => {
     //    navigate("/wishlist");
-    navigate(`/description/${cardData.id}`);
+    navigate(`/description/${cardData.id}`, {state : cardData});
   };
 
   return (

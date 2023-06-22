@@ -48,6 +48,16 @@ const handleCheckPassword=(value)=>{
 }
 
 const dispatch=useDispatch();
+  function checkEmail(email) {
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    if (!emailRegex.test(email)) {
+      errors.email = "Invalid email format";
+    } else if (email.trim() === "") {
+      errors.email = "Email is required";
+    } else{
+      errors.email = ''
+    }
+  }
 
   function checkPhone(phone) {
     let r1 = false;
@@ -174,6 +184,7 @@ const dispatch=useDispatch();
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
+              checkEmail(e.target.value)
             }}
           />
           <div className="error-signup">
