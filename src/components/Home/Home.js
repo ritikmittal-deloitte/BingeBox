@@ -9,19 +9,19 @@ import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg"
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import img1 from "../../assets/images/Variant8.png";
-
+import { ReactComponent as CheckedIcon } from "../../assets/icons/checked.svg";
 import axios from "axios";
+import { ReactComponent as DeleteLogo } from "../../assets/icons/delete icon.svg";
 import { UserContext } from "../../context/Context/UserContext/UserState";
 import { useSelector, useDispatch } from "react-redux";
 import { ContinueWatchingAction } from "../../redux/ContinueWatchingSlice";
-import { Shuffle } from "@mui/icons-material";
 
 const Home = () => {
 
   const { watchList, setWatchList, categories, setCategories } = useContext(UserContext);
   const [movies, setMovies] = useState(moviesArr)
   const contineWatchingList=useSelector((state)=>state.continueWatching.contineWatchingList)
-  console.log("listttt",contineWatchingList)
+//  console.log("listttt",contineWatchingList)
 
   const watch = new Set(watchList);
   const data = movies.filter((item) => {
@@ -37,6 +37,7 @@ const Home = () => {
   const [recentMovies, setrecentMovies] = useState([]);
   const [trendingMovies, settrendingMovies] = useState([]);
   const [yourWatches, setyourWatches] = useState([]);
+
   const [topRated, setTopRated] = useState([])
   const [onHovering, setOnHovering] = useState(false);
   const [carItems, setCarItems] = useState([]);
@@ -48,8 +49,10 @@ const Home = () => {
   const handleMouseOut = () => {
     setOnHovering(false);
   };
-  const handleAddToWatchList = () => {
-    console.log("add to watch lsit");
+  const handleAddToWatchList = (event) => {
+    setWatchList(previousState => new Set([...previousState,carItems[current - 1].id]));
+    event.stopPropagation();
+//    console.log("add to watch lsit");
   };
 
   const fetchTrendingMovies = async () => {
@@ -86,13 +89,19 @@ const Home = () => {
     setTopRated(movies)
   }
   const fetchCarouselItems = async () => {
-    console.log("TYUDTIDUY")
+//    console.log("TYUDTIDUY")
     const items = movies.filter((item) => {
       return url.slice(1) === 'home' || url.slice(1) === item.type;
     })
     setCarItems(items)
     console.log("Carousel items:", items.slice(0, 5))
 
+  }
+  const handleDeleteFromWatchList = (event) =>{
+    watch.delete(carItems[current - 1].id);
+    console.log("Watch list updated:",watch)
+    setWatchList(new Set(watch))
+    event.stopPropagation();
   }
   useEffect(() => {
     setCurrent(1);
@@ -219,9 +228,11 @@ const Home = () => {
                   <Triangle /> <h5>Play</h5>{" "}
                 </div>
                 {/* <a  href={movies[0].videoUrl} target="_blank"><PlayLogo /></a > */}
-                <div onClick={handleAddToWatchList}>
+               
+               {watch.has(carItems[current - 1].id) ? (<div ><CheckedIcon width={40} height={41}  /></div >) : (<div onClick={handleAddToWatchList}>
                   <AddToLogo width={50} height={51} />
-                </div>
+                </div>)}
+                
               </div>
             </div>
           </>
@@ -296,7 +307,7 @@ const Home = () => {
           <section className="recent-release-cards">
             {sortByPropertyDescending(movies,'releaseYear').map((movie, index) => {
               if ((url.slice(1) === 'home' || url.slice(1) === movie.type) && categoryFilter(movie, categories)) {
-                return <Card cardData={movie} key={index} />
+                return <Card cardData={movie} key={index} direct="Home" />
               }
               return null;
             })}

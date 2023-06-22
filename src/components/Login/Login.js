@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { UserContext, UserContextProvider } from "../../context/Context/UserContext/UserState";
@@ -16,8 +16,7 @@ const Login = ({setIsLogin}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const signUpUserDetails=useSelector((state)=>state.account.userDetails)
-
-  console.log("Signup DEtais:",signUpUserDetails)
+//  console.log("Signup DEtais:",signUpUserDetails)
   // const Login = ({setIsLogin}) => {
   //     const navigate = useNavigate();
 

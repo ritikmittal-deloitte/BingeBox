@@ -3,13 +3,15 @@ import { ReactComponent as PlayLogo } from "../../assets/images/play-button.svg"
 import { ReactComponent as Triangle } from "../../assets/icons/triangle.svg";
 import { ReactComponent as AddToLogo } from "../../assets/icons/addTodesc.svg";
 import "./card3.scss";
+import { ReactComponent as DeleteLogo } from "../../assets/icons/delete icon.svg";
 import { useNavigate } from "react-router-dom";
+import { ReactComponent as CheckedIcon } from "../../assets/icons/checked.svg";
 import { UserContext } from "../../context/Context/UserContext/UserState";
 
 const Card = ({ cardData }) => {
   const [onHovering, setOnHovering] = useState(false);
   const { watchList, setWatchList } = useContext(UserContext);
-
+  const watch = new Set(watchList);
   // console.log("Card Data :",cardData)
   const navigate = useNavigate();
 
@@ -57,12 +59,18 @@ const Card = ({ cardData }) => {
     //    setWatchList(previousState => new Set([...previousState,cardData.movieId]));
     console.log("add to watch list:", event);
     event.stopPropagation();
-    navigate("/wishlist");
+//    navigate("/wishlist");
   };
   // const handlePlayMovie=()=>{
   //   console.log("play movie")
   //   window.location.replace('https://www.youtube.com/watch?v=fb5ELWi-ekk');
   // }
+  const handleDeleteFromWatchList = (event) =>{
+    watch.delete(cardData.id);
+    console.log("Watch list updated:",watch)
+    setWatchList(new Set(watch))
+    event.stopPropagation();
+  }
 
   const handleOnClick = () => {
     //    navigate("/wishlist");
@@ -207,13 +215,12 @@ const Card = ({ cardData }) => {
                       <span style={{ fontSize: "18px" }}>Play</span>
                     </div>
                   </a>
-                  <div
-                    onClick={(event) => {
-                      handleAddToWatchList(event);
-                    }}
-                  >
-                    <AddToLogo width={40} height={41} />
-                  </div>
+
+                  {watch.has(cardData.id) ? (<div>
+                  <CheckedIcon width={50} height={51} />
+                </div>) : (<div onClick={handleAddToWatchList}>
+                  <AddToLogo width={50} height={51} />
+                </div>)}
                 </div>
               </div>
             </div>
