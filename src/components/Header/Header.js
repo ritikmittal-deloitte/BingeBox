@@ -205,7 +205,7 @@ useEffect(() => {
               document.addEventListener("mousedown", handleClickOutside);
             }}
           >
-            {categories}
+            Categories
           </NavLink>
         </div>
         {open && (
@@ -215,7 +215,7 @@ useEffect(() => {
               <div className="genres-box">
                 {genres.map((item) => {
               //    console.log("Item:", item);
-                  return <CategoryType text={item} type={'genre'} setCategories={setCategories}/>;
+                  return <CategoryType text={item} type={'genre'} setCategories={setCategories}  setOpen={setOpen} />;
                 })}
               </div>
             </div>

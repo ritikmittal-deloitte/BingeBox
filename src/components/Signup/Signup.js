@@ -7,6 +7,9 @@ import SelectedPlan from "../SelectedPlan/SelectedPlan";
 import Payment from "../Payment/Payment";
 import PaymentSuccessful from "../PaymentSuccessful/PaymentSuccessful";
 import UserPreferences from "../UserPreferences/UserPreferences";
+import { AccountAction } from '../../redux/AccountSlice';
+import { useDispatch } from "react-redux";
+import User3 from '../../assets/images/image 76.png'
 
 const upperTexts = [
   '"Lights, Camera, Sign Up "',
@@ -31,6 +34,7 @@ function Signup({setIsLogin}) {
   const [plan,setPlan]=useState({});
   const [price,setPrice]=useState(0);
 const [page,setPage]=useState('1');
+
 const handleCheckPassword=(value)=>{
   console.log("val",value,"pas",password)
   for(var i=0;i<value.length;i++){
@@ -42,6 +46,9 @@ const handleCheckPassword=(value)=>{
     }
   }
 }
+
+const dispatch=useDispatch();
+
   function checkPhone(phone) {
     let r1 = false;
     let r2 = false;
@@ -110,6 +117,13 @@ const handleCheckPassword=(value)=>{
       // Perform signup logic
       console.log("Signup successful!");
       setPage('2');
+      const body={
+        email:email,
+    phone: mobile,
+    genre: ['Horror', 'Romantic', 'Comedy'],
+    accounts: [{ name: name, img: User3 }]
+      }
+      dispatch(AccountAction.saveSignUpInfo(body))
 //      navigate("/subscription-plans", { state: name });
     }
   };

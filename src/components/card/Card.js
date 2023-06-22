@@ -43,7 +43,7 @@ const Card = ({ cardData , direct }) => {
   const handleAddToWatchList=(event)=>{
     setWatchList(previousState => new Set([...previousState,cardData.id]));
    event.stopPropagation();
-   navigate("/wishlist");
+//   navigate("/wishlist");
 
   }
   const handleDeleteFromWatchList = (event) =>{
@@ -60,7 +60,7 @@ const Card = ({ cardData , direct }) => {
   const handleOnClick=()=>{
 //    navigate("/wishlist");
 // console.log("Movie id:",cardData)
-    navigate(`/description/${cardData.id}`)
+    navigate(`/description/${cardData.id}`, {state : cardData})
   }
   const handlePlayingMovie=(event)=>{
 

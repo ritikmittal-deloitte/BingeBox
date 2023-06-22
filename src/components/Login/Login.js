@@ -1,10 +1,16 @@
-import React, {useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import React, { useContext, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+
 import "../Login/login.scss";
 import { ReactComponent as MainLogo } from "./../../assets/images/bingeboxlogo.svg";
 import { useDispatch , useSelector} from "react-redux";
 import { AccountAction } from '../../redux/AccountSlice';
 import { dummyData } from "../../mockData/accountsMockData";
+
+import Background from "../background/Background";
+import User3 from '../../assets/images/image 76.png'
+
 
 
 const Login = ({setIsLogin}) => {
@@ -14,8 +20,7 @@ const Login = ({setIsLogin}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const signUpUserDetails=useSelector((state)=>state.account.userDetails)
-
-  console.log("Signup DEtais:",signUpUserDetails)
+//  console.log("Signup DEtais:",signUpUserDetails)
   // const Login = ({setIsLogin}) => {
   //     const navigate = useNavigate();
 
@@ -63,10 +68,15 @@ if (errors1) {
 
   console.log("Login successful");
   setIsLogin(true);
-  dispatch(AccountAction.saveSignUpInfo(dummyData))
+  dispatch(AccountAction.saveSignUpInfo({
+    email: email,
+    phone: 1234567891,
+    genre: ['Horror', 'Romantic', 'Comedy'],
+    accounts: [{ name: 'User', img: User3 }]
+  }))
 //  dispatch(AccountAction.saveSignUpInfo(dummyData))
 
-  if(dummyData.accounts.length===1){
+  if(signUpUserDetails?.accounts?.length===1){
 
     //dispatch(AccountAction.selectCurrentAccount(dummyData.accounts[0]))
 
